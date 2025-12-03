@@ -1,0 +1,49 @@
+experiment_name: resnet50_baseline
+seed: 42
+
+data:
+  infected_dir: "\\\\medctr.ad.wfubmc.edu\\dfs\\gurcan_rsch$\\scratch\\WSI\\zhengjie\\DATA\\GMU_cell_1023\\brain endothelial cells reimaged\\Infected well\\infected well no labels"
+  uninfected_dir: "\\\\medctr.ad.wfubmc.edu\\dfs\\gurcan_rsch$\\scratch\\WSI\\zhengjie\\DATA\\GMU_cell_1023\\brain endothelial cells reimaged\\Uninfected well\\uninfected well no labels"
+  infected_label: 1
+  uninfected_label: 0
+  split_ratios: [0.7, 0.15, 0.15]
+  split_seed: 123
+  batch_size: 4
+  num_workers: 4
+  drop_last: false
+  transforms:
+    image_size: 512
+    random_flip: true
+    random_rotation: true
+    color_jitter: false
+    mean: [0.5, 0.5, 0.5]
+    std: [0.25, 0.25, 0.25]
+  frames:
+    strategy: window_random
+    window_hours: [16, 30]
+    frames_per_hour: 2.0
+    target_frame: 64
+
+model:
+  name: resnet50
+  pretrained: true
+  num_classes: 1
+  dropout: 0.3
+  train_backbone: true
+
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0001
+
+scheduler:
+  t_max: 20
+  eta_min: 0.000001
+
+training:
+  epochs: 30
+  amp: true
+  grad_clip: 1.0
+  checkpoint_dir: checkpoints
+
+logging:
+  output_dir: outputs
