@@ -16,25 +16,39 @@ _LABEL_PATTERN = re.compile(r"_p(?P<position>\d+)_")
 
 
 @dataclass
-class FrameSelectionConfig:
-    """Configuration describing how to sample a frame from a time-course TIFF."""
+class FrameExtractionPolicy:
+    """Rules for expanding each TIFF stack into multiple frame samples."""
 
-    strategy: str = "window_random"  # options: target, window_random, window_center, mean_project, max_project
-    target_frame: int = 64
-    window_start: Optional[int] = None
-    window_end: Optional[int] = None
     frames_per_hour: float = 2.0
-    percentile: float = 90.0
+    infected_window_hours: Tuple[float, float] = (16.0, 30.0)
+    infected_stride: int = 1
+    uninfected_stride: int = 1
+    uninfected_use_all: bool = True
 
     @classmethod
-    def from_dict(cls, data: Optional[Dict]) -> "FrameSelectionConfig":
+    def from_dict(cls, data: Optional[Dict]) -> "FrameExtractionPolicy":
         data = data or {}
-        cfg = cls(**{k: v for k, v in data.items() if k in cls.__dataclass_fields__})
-        if "window_hours" in (data or {}):
-            start_h, end_h = data["window_hours"]
-            cfg.window_start = math.floor(start_h * cfg.frames_per_hour)
-            cfg.window_end = math.ceil(end_h * cfg.frames_per_hour)
-        return cfg
+        filtered = {k: v for k, v in data.items() if k in cls.__dataclass_fields__}
+        if "window_hours" in data:  # backwards compatibility
+            filtered["infected_window_hours"] = tuple(data["window_hours"])
+        return cls(**filtered)
+
+    def infected_indices(self, total_frames: int) -> List[int]:
+        start_h, end_h = self.infected_window_hours
+        start_idx = max(0, math.floor(start_h * self.frames_per_hour))
+        end_idx = max(start_idx, math.floor(end_h * self.frames_per_hour))
+        end_idx = min(end_idx, total_frames - 1)
+        stride = max(1, self.infected_stride)
+        indices = list(range(start_idx, end_idx + 1, stride))
+        if not indices:
+            indices = [min(start_idx, total_frames - 1)]
+        return indices
+
+    def uninfected_indices(self, total_frames: int) -> List[int]:
+        stride = max(1, self.uninfected_stride)
+        if not self.uninfected_use_all:
+            return [0]
+        return list(range(0, total_frames, stride))
 
 
 @dataclass
@@ -43,7 +57,17 @@ class DataItem:
     label: int
     condition: str
     position: str
-    total_frames: Optional[int] = None
+    total_frames: int
+
+
+@dataclass
+class FrameSample:
+    path: Path
+    label: int
+    condition: str
+    position: str
+    frame_index: int
+    total_frames: int
 
 
 @dataclass
@@ -58,59 +82,37 @@ class TimeCourseTiffDataset(Dataset):
 
     def __init__(
         self,
-        items: Sequence[DataItem],
+        samples: Sequence[FrameSample],
         transform: Optional[Callable] = None,
-        frame_cfg: Optional[FrameSelectionConfig] = None,
     ) -> None:
-        self.items = list(items)
+        self.samples = list(samples)
         self.transform = transform
-        self.frame_cfg = frame_cfg or FrameSelectionConfig()
 
     def __len__(self) -> int:  # pragma: no cover - trivial
-        return len(self.items)
+        return len(self.samples)
 
     def __getitem__(self, idx: int):
-        item = self.items[idx]
-        frame = self._load_frame(item)
+        sample = self.samples[idx]
+        frame = self._load_frame(sample)
         image = self._to_image(frame)
         if self.transform:
             image = self.transform(image)
-        return image, item.label, {"path": str(item.path), "condition": item.condition, "position": item.position}
+        return (
+            image,
+            sample.label,
+            {
+                "path": str(sample.path),
+                "condition": sample.condition,
+                "position": sample.position,
+                "frame_index": sample.frame_index,
+            },
+        )
 
-    def _load_frame(self, item: DataItem) -> np.ndarray:
-        cfg = self.frame_cfg
-        with tifffile.TiffFile(item.path) as tif:
-            total_frames = len(tif.pages)
-            index = self._select_frame_index(cfg, total_frames)
-            if cfg.strategy in {"mean_project", "max_project"}:
-                stack = tif.asarray()
-                if cfg.strategy == "mean_project":
-                    frame = stack.mean(axis=0)
-                else:
-                    frame = stack.max(axis=0)
-            else:
-                index = max(0, min(total_frames - 1, index))
-                frame = tif.asarray(key=index)
+    def _load_frame(self, sample: FrameSample) -> np.ndarray:
+        with tifffile.TiffFile(sample.path) as tif:
+            index = max(0, min(sample.total_frames - 1, sample.frame_index))
+            frame = tif.asarray(key=index)
         return frame.astype(np.float32)
-
-    def _select_frame_index(self, cfg: FrameSelectionConfig, total_frames: int) -> int:
-        strategy = cfg.strategy.lower()
-        if strategy == "target":
-            return cfg.target_frame
-        if strategy == "window_center":
-            start = cfg.window_start or 0
-            end = cfg.window_end or total_frames
-            return (start + end) // 2
-        if strategy == "window_random":
-            start = cfg.window_start or 0
-            end = cfg.window_end or total_frames
-            if end <= start:
-                end = total_frames
-            return random.randint(start, max(start, end - 1))
-        if strategy == "percentile":
-            percentile = np.clip(cfg.percentile, 0, 100)
-            return int(round((percentile / 100.0) * (total_frames - 1)))
-        return cfg.target_frame
 
     def _to_image(self, frame: np.ndarray) -> Image.Image:
         frame = frame - frame.min()
@@ -133,7 +135,11 @@ def _scan_condition(condition_dir: Path, label: int, condition_name: str) -> Lis
     for path in sorted(condition_dir.glob("*.tif*")):
         match = _LABEL_PATTERN.search(path.name)
         position = match.group("position") if match else "unknown"
-        items.append(DataItem(path=path, label=label, condition=condition_name, position=position))
+        with tifffile.TiffFile(path) as tif:
+            total_frames = len(tif.pages)
+        items.append(
+            DataItem(path=path, label=label, condition=condition_name, position=position, total_frames=total_frames)
+        )
     if not items:
         raise RuntimeError(f"No TIFF files discovered in {condition_dir}")
     return items
@@ -176,9 +182,34 @@ def build_datasets(
     ratios = data_cfg.get("split_ratios", [0.7, 0.15, 0.15])
     split = _stratified_split(all_items, ratios, seed=data_cfg.get("split_seed", 42))
 
-    frame_cfg = FrameSelectionConfig.from_dict(data_cfg.get("frames"))
+    policy = FrameExtractionPolicy.from_dict(data_cfg.get("frames"))
 
-    train_ds = TimeCourseTiffDataset(split.train, transform=transforms.get("train"), frame_cfg=frame_cfg)
-    val_ds = TimeCourseTiffDataset(split.val, transform=transforms.get("val"), frame_cfg=frame_cfg)
-    test_ds = TimeCourseTiffDataset(split.test, transform=transforms.get("test"), frame_cfg=frame_cfg)
+    train_samples = _expand_samples(split.train, policy)
+    val_samples = _expand_samples(split.val, policy)
+    test_samples = _expand_samples(split.test, policy)
+
+    train_ds = TimeCourseTiffDataset(train_samples, transform=transforms.get("train"))
+    val_ds = TimeCourseTiffDataset(val_samples, transform=transforms.get("val"))
+    test_ds = TimeCourseTiffDataset(test_samples, transform=transforms.get("test"))
     return train_ds, val_ds, test_ds
+
+
+def _expand_samples(items: Sequence[DataItem], policy: FrameExtractionPolicy) -> List[FrameSample]:
+    samples: List[FrameSample] = []
+    for item in items:
+        if item.condition == "infected":
+            frame_indices = policy.infected_indices(item.total_frames)
+        else:
+            frame_indices = policy.uninfected_indices(item.total_frames)
+        for idx in frame_indices:
+            samples.append(
+                FrameSample(
+                    path=item.path,
+                    label=item.label,
+                    condition=item.condition,
+                    position=item.position,
+                    frame_index=idx,
+                    total_frames=item.total_frames,
+                )
+            )
+    return samples

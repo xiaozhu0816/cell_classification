@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import argparse
 import math
+from collections import Counter
 from pathlib import Path
 from typing import Dict, Tuple
 
 import torch
 import torch.nn as nn
-from torch.cuda import amp
+from torch import amp
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
@@ -37,6 +38,20 @@ def create_dataloaders(train_ds, val_ds, test_ds, data_cfg: Dict) -> Tuple[DataL
     return train_loader, eval_loader(val_ds), eval_loader(test_ds)
 
 
+def log_dataset_overview(logger, dataset, split_name: str, max_examples: int = 3) -> None:
+    samples = getattr(dataset, "samples", dataset)
+    counter = Counter(sample.condition for sample in samples)
+    label_counter = Counter(sample.label for sample in samples)
+    breakdown = ", ".join(f"{cond}:{count}" for cond, count in sorted(counter.items()))
+    label_breakdown = ", ".join(f"label{label}:{count}" for label, count in sorted(label_counter.items()))
+    logger.info(
+        f"{split_name} split -> total:{len(dataset)} | conditions[{breakdown}] | labels[{label_breakdown}]"
+    )
+    sample_paths = [f"{sample.path}#t{sample.frame_index}" for sample in samples[:max_examples]]
+    if sample_paths:
+        logger.info(f"{split_name} sample frames: {sample_paths}")
+
+
 def train_one_epoch(
     model,
     loader,
@@ -50,11 +65,13 @@ def train_one_epoch(
 ) -> float:
     model.train()
     meter = AverageMeter("train_loss")
+    amp_device = device.type
+    autocast_enabled = use_amp and amp_device == "cuda"
     for images, labels, _ in tqdm(loader, desc="train", leave=False):
         images = images.to(device, non_blocking=True)
         labels = labels.float().unsqueeze(1).to(device, non_blocking=True)
         optimizer.zero_grad(set_to_none=True)
-        with amp.autocast(enabled=use_amp):
+        with amp.autocast(amp_device, enabled=autocast_enabled):
             logits = model(images)
             loss = criterion(logits, labels)
         scaler.scale(loss).backward()
@@ -95,6 +112,7 @@ def main() -> None:
     cfg = load_config(args.config)
     set_seed(cfg.get("seed", 42))
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    amp_device = device.type
     experiment_name = cfg.get("experiment_name", "cell_classification")
     log_dir = Path(cfg.get("logging", {}).get("output_dir", "outputs"))
     log_dir.mkdir(parents=True, exist_ok=True)
@@ -105,6 +123,8 @@ def main() -> None:
     transforms = build_transforms(transform_cfg)
     train_ds, val_ds, test_ds = build_datasets(data_cfg, transforms)
     train_loader, val_loader, test_loader = create_dataloaders(train_ds, val_ds, test_ds, data_cfg)
+    for split_name, dataset in (("train", train_ds), ("val", val_ds), ("test", test_ds)):
+        log_dataset_overview(logger, dataset, split_name)
 
     model_cfg = cfg.get("model", {})
     model = build_model(model_cfg).to(device)
@@ -125,7 +145,7 @@ def main() -> None:
     criterion = nn.BCEWithLogitsLoss()
     use_amp = training_cfg.get("amp", True)
     grad_clip = training_cfg.get("grad_clip")
-    scaler = amp.GradScaler(enabled=use_amp)
+    scaler = amp.GradScaler(amp_device, enabled=use_amp and amp_device == "cuda")
     epochs = training_cfg.get("epochs", 10)
     best_auc = 0.0
     checkpoint_dir = Path(cfg.get("training", {}).get("checkpoint_dir", "checkpoints"))

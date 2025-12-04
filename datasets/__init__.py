@@ -1,8 +1,13 @@
-from .timecourse_dataset import TimeCourseTiffDataset, build_datasets, FrameSelectionConfig, DataSplit
+from .timecourse_dataset import (
+    TimeCourseTiffDataset,
+    build_datasets,
+    FrameExtractionPolicy,
+    DataSplit,
+)
 
 __all__ = [
     "TimeCourseTiffDataset",
-    "FrameSelectionConfig",
+    "FrameExtractionPolicy",
     "DataSplit",
     "build_datasets",
 ]
