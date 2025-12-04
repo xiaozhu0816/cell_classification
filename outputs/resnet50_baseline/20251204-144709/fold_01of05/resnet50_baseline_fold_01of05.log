@@ -1,0 +1,24 @@
+2025-12-04 14:47:09,945 | INFO | train split -> total:2684 | conditions[infected:638, uninfected:2046] | labels[label0:2046, label1:638]
+2025-12-04 14:47:09,946 | INFO | train TIFFs -> total:44 | per-condition[infected:22, uninfected:22] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 14:47:09,946 | INFO | val split -> total:732 | conditions[infected:174, uninfected:558] | labels[label0:558, label1:174]
+2025-12-04 14:47:09,947 | INFO | val TIFFs -> total:12 | per-condition[infected:6, uninfected:6] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 14:47:09,947 | INFO | test split -> total:976 | conditions[infected:232, uninfected:744] | labels[label0:744, label1:232]
+2025-12-04 14:47:09,947 | INFO | test TIFFs -> total:16 | per-condition[infected:8, uninfected:8] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 14:47:10,475 | INFO | Fold 1/5 - Epoch 1/5
+2025-12-04 14:48:53,163 | INFO | train loss: 0.1939
+2025-12-04 14:49:30,723 | INFO | val: accuracy:0.9727 | precision:1.0000 | recall:0.8851 | f1:0.9390 | auc:1.0000 | loss:0.0716
+2025-12-04 14:49:32,669 | INFO | New best model with AUC 1.0000
+2025-12-04 14:49:32,669 | INFO | Fold 1/5 - Epoch 2/5
+2025-12-04 14:51:25,484 | INFO | train loss: 0.0012
+2025-12-04 14:52:00,826 | INFO | val: accuracy:0.9836 | precision:1.0000 | recall:0.9310 | f1:0.9643 | auc:1.0000 | loss:0.0507
+2025-12-04 14:52:00,827 | INFO | Fold 1/5 - Epoch 3/5
+2025-12-04 14:53:55,495 | INFO | train loss: 0.0003
+2025-12-04 14:54:28,717 | INFO | val: accuracy:0.9822 | precision:1.0000 | recall:0.9253 | f1:0.9612 | auc:1.0000 | loss:0.0596
+2025-12-04 14:54:28,717 | INFO | Fold 1/5 - Epoch 4/5
+2025-12-04 14:56:21,705 | INFO | train loss: 0.0002
+2025-12-04 14:56:55,993 | INFO | val: accuracy:0.9918 | precision:1.0000 | recall:0.9655 | f1:0.9825 | auc:1.0000 | loss:0.0242
+2025-12-04 14:56:55,993 | INFO | Fold 1/5 - Epoch 5/5
+2025-12-04 14:58:47,376 | INFO | train loss: 0.0002
+2025-12-04 14:59:25,214 | INFO | val: accuracy:0.9986 | precision:1.0000 | recall:0.9943 | f1:0.9971 | auc:1.0000 | loss:0.0017
+2025-12-04 14:59:25,214 | INFO | Evaluating on test split
+2025-12-04 15:00:05,414 | INFO | test: accuracy:0.9990 | precision:1.0000 | recall:0.9957 | f1:0.9978 | auc:1.0000 | loss:0.0015

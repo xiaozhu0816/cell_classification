@@ -1,0 +1,130 @@
+[
+  {
+    "index": 654,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p1_t0-94_ec.tiff",
+    "frame_index": 44,
+    "label": 0,
+    "label_name": "uninfected",
+    "pred_label": 0,
+    "pred_name": "uninfected",
+    "prob_infected": 0.03266221657395363,
+    "outputs": {
+      "raw": "cam_001_uninfected_prob0.03_raw.png",
+      "input": "cam_001_uninfected_prob0.03_input.png",
+      "heatmap": "cam_001_uninfected_prob0.03_heatmap.png",
+      "overlay": "cam_001_uninfected_prob0.03_overlay.png"
+    }
+  },
+  {
+    "index": 114,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p7_t0-94_ec.tiff",
+    "frame_index": 59,
+    "label": 1,
+    "label_name": "infected",
+    "pred_label": 1,
+    "pred_name": "infected",
+    "prob_infected": 0.9955244064331055,
+    "outputs": {
+      "raw": "cam_002_infected_prob1.00_raw.png",
+      "input": "cam_002_infected_prob1.00_input.png",
+      "heatmap": "cam_002_infected_prob1.00_heatmap.png",
+      "overlay": "cam_002_infected_prob1.00_overlay.png"
+    }
+  },
+  {
+    "index": 25,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p25_t0-94_ec.tiff",
+    "frame_index": 57,
+    "label": 1,
+    "label_name": "infected",
+    "pred_label": 1,
+    "pred_name": "infected",
+    "prob_infected": 0.9995321035385132,
+    "outputs": {
+      "raw": "cam_003_infected_prob1.00_raw.png",
+      "input": "cam_003_infected_prob1.00_input.png",
+      "heatmap": "cam_003_infected_prob1.00_heatmap.png",
+      "overlay": "cam_003_infected_prob1.00_overlay.png"
+    }
+  },
+  {
+    "index": 281,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p36_t0-94_ec.tiff",
+    "frame_index": 43,
+    "label": 0,
+    "label_name": "uninfected",
+    "pred_label": 0,
+    "pred_name": "uninfected",
+    "prob_infected": 0.03229503706097603,
+    "outputs": {
+      "raw": "cam_004_uninfected_prob0.03_raw.png",
+      "input": "cam_004_uninfected_prob0.03_input.png",
+      "heatmap": "cam_004_uninfected_prob0.03_heatmap.png",
+      "overlay": "cam_004_uninfected_prob0.03_overlay.png"
+    }
+  },
+  {
+    "index": 250,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p36_t0-94_ec.tiff",
+    "frame_index": 12,
+    "label": 0,
+    "label_name": "uninfected",
+    "pred_label": 0,
+    "pred_name": "uninfected",
+    "prob_infected": 0.040310394018888474,
+    "outputs": {
+      "raw": "cam_005_uninfected_prob0.04_raw.png",
+      "input": "cam_005_uninfected_prob0.04_input.png",
+      "heatmap": "cam_005_uninfected_prob0.04_heatmap.png",
+      "overlay": "cam_005_uninfected_prob0.04_overlay.png"
+    }
+  },
+  {
+    "index": 228,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p22_t0-94_ec.tiff",
+    "frame_index": 83,
+    "label": 0,
+    "label_name": "uninfected",
+    "pred_label": 0,
+    "pred_name": "uninfected",
+    "prob_infected": 0.02502124384045601,
+    "outputs": {
+      "raw": "cam_006_uninfected_prob0.03_raw.png",
+      "input": "cam_006_uninfected_prob0.03_input.png",
+      "heatmap": "cam_006_uninfected_prob0.03_heatmap.png",
+      "overlay": "cam_006_uninfected_prob0.03_overlay.png"
+    }
+  },
+  {
+    "index": 142,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p3_t0-94_ec.tiff",
+    "frame_index": 58,
+    "label": 1,
+    "label_name": "infected",
+    "pred_label": 1,
+    "pred_name": "infected",
+    "prob_infected": 0.9758708477020264,
+    "outputs": {
+      "raw": "cam_007_infected_prob0.98_raw.png",
+      "input": "cam_007_infected_prob0.98_input.png",
+      "heatmap": "cam_007_infected_prob0.98_heatmap.png",
+      "overlay": "cam_007_infected_prob0.98_overlay.png"
+    }
+  },
+  {
+    "index": 104,
+    "path": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p7_t0-94_ec.tiff",
+    "frame_index": 49,
+    "label": 1,
+    "label_name": "infected",
+    "pred_label": 1,
+    "pred_name": "infected",
+    "prob_infected": 0.9995771050453186,
+    "outputs": {
+      "raw": "cam_008_infected_prob1.00_raw.png",
+      "input": "cam_008_infected_prob1.00_input.png",
+      "heatmap": "cam_008_infected_prob1.00_heatmap.png",
+      "overlay": "cam_008_infected_prob1.00_overlay.png"
+    }
+  }
+]

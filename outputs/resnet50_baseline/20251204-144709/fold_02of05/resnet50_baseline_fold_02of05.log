@@ -1,0 +1,7 @@
+2025-12-04 15:00:15,856 | INFO | train split -> total:2777 | conditions[infected:638, uninfected:2139] | labels[label0:2139, label1:638]
+2025-12-04 15:00:15,858 | INFO | train TIFFs -> total:45 | per-condition[infected:22, uninfected:23] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 15:00:15,858 | INFO | val split -> total:639 | conditions[infected:174, uninfected:465] | labels[label0:465, label1:174]
+2025-12-04 15:00:15,859 | INFO | val TIFFs -> total:11 | per-condition[infected:6, uninfected:5] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 15:00:15,859 | INFO | test split -> total:976 | conditions[infected:232, uninfected:744] | labels[label0:744, label1:232]
+2025-12-04 15:00:15,859 | INFO | test TIFFs -> total:16 | per-condition[infected:8, uninfected:8] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 15:00:16,280 | INFO | Fold 2/5 - Epoch 1/5

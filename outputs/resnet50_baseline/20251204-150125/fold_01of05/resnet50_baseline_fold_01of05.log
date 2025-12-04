@@ -1,0 +1,36 @@
+2025-12-04 15:01:26,567 | INFO | train split -> total:2684 | conditions[infected:638, uninfected:2046] | labels[label0:2046, label1:638]
+2025-12-04 15:01:26,568 | INFO | train TIFFs -> total:44 | per-condition[infected:22, uninfected:22] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 15:01:26,568 | INFO | val split -> total:732 | conditions[infected:174, uninfected:558] | labels[label0:558, label1:174]
+2025-12-04 15:01:26,568 | INFO | val TIFFs -> total:12 | per-condition[infected:6, uninfected:6] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 15:01:26,568 | INFO | test split -> total:976 | conditions[infected:232, uninfected:744] | labels[label0:744, label1:232]
+2025-12-04 15:01:26,569 | INFO | test TIFFs -> total:16 | per-condition[infected:8, uninfected:8] | avg-frames/TIFF[infected:29.0, uninfected:93.0]
+2025-12-04 15:01:27,075 | INFO | Fold 1/5 - Epoch 1/10
+2025-12-04 15:02:52,378 | INFO | train loss: 0.1939
+2025-12-04 15:03:30,661 | INFO | val: accuracy:0.9809 | precision:1.0000 | recall:0.9195 | f1:0.9581 | auc:1.0000 | loss:0.0605
+2025-12-04 15:03:32,346 | INFO | New best model with AUC 1.0000
+2025-12-04 15:03:32,346 | INFO | Fold 1/5 - Epoch 2/10
+2025-12-04 15:05:04,005 | INFO | train loss: 0.0012
+2025-12-04 15:05:41,326 | INFO | val: accuracy:0.9836 | precision:1.0000 | recall:0.9310 | f1:0.9643 | auc:1.0000 | loss:0.0515
+2025-12-04 15:05:41,326 | INFO | Fold 1/5 - Epoch 3/10
+2025-12-04 15:07:05,685 | INFO | train loss: 0.0003
+2025-12-04 15:07:40,857 | INFO | val: accuracy:0.9795 | precision:1.0000 | recall:0.9138 | f1:0.9550 | auc:1.0000 | loss:0.0606
+2025-12-04 15:07:40,857 | INFO | Fold 1/5 - Epoch 4/10
+2025-12-04 15:09:05,838 | INFO | train loss: 0.0002
+2025-12-04 15:09:41,575 | INFO | val: accuracy:0.9918 | precision:1.0000 | recall:0.9655 | f1:0.9825 | auc:1.0000 | loss:0.0222
+2025-12-04 15:09:41,575 | INFO | Fold 1/5 - Epoch 5/10
+2025-12-04 15:11:03,493 | INFO | train loss: 0.0002
+2025-12-04 15:11:38,268 | INFO | val: accuracy:0.9986 | precision:1.0000 | recall:0.9943 | f1:0.9971 | auc:1.0000 | loss:0.0016
+2025-12-04 15:11:38,269 | INFO | Fold 1/5 - Epoch 6/10
+2025-12-04 15:13:01,954 | INFO | train loss: 0.0002
+2025-12-04 15:13:37,563 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 15:13:37,564 | INFO | Fold 1/5 - Epoch 7/10
+2025-12-04 15:15:08,092 | INFO | train loss: 0.0002
+2025-12-04 15:15:43,659 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 15:15:43,659 | INFO | Fold 1/5 - Epoch 8/10
+2025-12-04 15:17:04,386 | INFO | train loss: 0.0002
+2025-12-04 15:17:41,688 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 15:17:41,688 | INFO | Fold 1/5 - Epoch 9/10
+2025-12-04 15:19:10,001 | INFO | train loss: 0.0001
+2025-12-04 15:19:46,222 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 15:19:46,222 | INFO | Fold 1/5 - Epoch 10/10
+2025-12-04 15:21:11,991 | INFO | train loss: 0.0001

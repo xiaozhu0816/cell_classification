@@ -11,7 +11,8 @@ import numpy as np
 import tifffile
 from PIL import Image
 from torch.utils.data import Dataset
-
+from sklearn.model_selection import StratifiedKFold
+from rich import print
 _LABEL_PATTERN = re.compile(r"_p(?P<position>\d+)_")
 
 
@@ -170,6 +171,8 @@ def _stratified_split(items: Sequence[DataItem], ratios: Sequence[float], seed: 
 def build_datasets(
     data_cfg: Dict,
     transforms: Dict[str, Optional[Callable]],
+    fold_index: Optional[int] = None,
+    num_folds: int = 1,
 ) -> Tuple[TimeCourseTiffDataset, TimeCourseTiffDataset, TimeCourseTiffDataset]:
     infected_dir = Path(data_cfg["infected_dir"])
     uninfected_dir = Path(data_cfg["uninfected_dir"])
@@ -180,13 +183,34 @@ def build_datasets(
     all_items = infected_items + uninfected_items
 
     ratios = data_cfg.get("split_ratios", [0.7, 0.15, 0.15])
-    split = _stratified_split(all_items, ratios, seed=data_cfg.get("split_seed", 42))
+    split_seed = data_cfg.get("split_seed", 42)
+    split = _stratified_split(all_items, ratios, seed=split_seed)
 
     policy = FrameExtractionPolicy.from_dict(data_cfg.get("frames"))
 
-    train_samples = _expand_samples(split.train, policy)
-    val_samples = _expand_samples(split.val, policy)
-    test_samples = _expand_samples(split.test, policy)
+    if num_folds > 1:
+        if fold_index is None:
+            raise ValueError("fold_index must be provided when num_folds > 1")
+        if fold_index < 0 or fold_index >= num_folds:
+            raise ValueError("fold_index out of range")
+        cv_items = split.train + split.val
+        if len(cv_items) < num_folds:
+            raise ValueError("Not enough files to perform the requested number of folds")
+        labels = [item.label for item in cv_items]
+        skf = StratifiedKFold(n_splits=num_folds, shuffle=True, random_state=split_seed)
+        folds = list(skf.split(range(len(cv_items)), labels))
+        train_idx, val_idx = folds[fold_index]
+        train_items = [cv_items[i] for i in train_idx]
+        val_items = [cv_items[i] for i in val_idx]
+    else:
+        train_items = split.train
+        val_items = split.val
+
+    test_items = split.test
+
+    train_samples = _expand_samples(train_items, policy)
+    val_samples = _expand_samples(val_items, policy)
+    test_samples = _expand_samples(test_items, policy)
 
     train_ds = TimeCourseTiffDataset(train_samples, transform=transforms.get("train"))
     val_ds = TimeCourseTiffDataset(val_samples, transform=transforms.get("val"))

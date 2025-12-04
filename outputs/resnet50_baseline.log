@@ -264,3 +264,38 @@
 2025-12-03 17:22:27,477 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
 2025-12-03 17:22:27,478 | INFO | Evaluating on test split
 2025-12-03 17:23:09,284 | INFO | test: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 14:10:02,837 | INFO | train split -> total:3050 | conditions[infected:725, uninfected:2325] | labels[label0:2325, label1:725]
+2025-12-04 14:10:02,838 | INFO | train sample frames: ['/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p18_t0-94_ec.tiff#t32', '/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p18_t0-94_ec.tiff#t33', '/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p18_t0-94_ec.tiff#t34']
+2025-12-04 14:10:02,838 | INFO | val split -> total:366 | conditions[infected:87, uninfected:279] | labels[label0:279, label1:87]
+2025-12-04 14:10:02,838 | INFO | val sample frames: ['/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p21_t0-94_ec.tiff#t32', '/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p21_t0-94_ec.tiff#t33', '/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p21_t0-94_ec.tiff#t34']
+2025-12-04 14:10:02,838 | INFO | test split -> total:976 | conditions[infected:232, uninfected:744] | labels[label0:744, label1:232]
+2025-12-04 14:10:02,838 | INFO | test sample frames: ['/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff#t32', '/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff#t33', '/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff#t34']
+2025-12-04 14:10:03,473 | INFO | Epoch 1/30
+2025-12-04 14:12:11,254 | INFO | train loss: 0.1722
+2025-12-04 14:12:50,812 | INFO | val: accuracy:0.9563 | precision:1.0000 | recall:0.8161 | f1:0.8987 | auc:1.0000 | loss:0.1019
+2025-12-04 14:12:52,936 | INFO | New best model with AUC 1.0000
+2025-12-04 14:12:52,936 | INFO | Epoch 2/30
+2025-12-04 14:15:03,450 | INFO | train loss: 0.0009
+2025-12-04 14:15:40,605 | INFO | val: accuracy:0.9727 | precision:1.0000 | recall:0.8851 | f1:0.9390 | auc:1.0000 | loss:0.1125
+2025-12-04 14:15:40,606 | INFO | Epoch 3/30
+2025-12-04 14:17:48,967 | INFO | train loss: 0.0003
+2025-12-04 14:18:27,239 | INFO | val: accuracy:0.9781 | precision:1.0000 | recall:0.9080 | f1:0.9518 | auc:1.0000 | loss:0.0613
+2025-12-04 14:18:27,239 | INFO | Epoch 4/30
+2025-12-04 14:20:31,005 | INFO | train loss: 0.0002
+2025-12-04 14:21:08,843 | INFO | val: accuracy:0.9945 | precision:1.0000 | recall:0.9770 | f1:0.9884 | auc:1.0000 | loss:0.0144
+2025-12-04 14:21:08,843 | INFO | Epoch 5/30
+2025-12-04 14:23:15,287 | INFO | train loss: 0.0002
+2025-12-04 14:23:53,202 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0003
+2025-12-04 14:23:53,202 | INFO | Epoch 6/30
+2025-12-04 14:26:00,328 | INFO | train loss: 0.0002
+2025-12-04 14:26:33,718 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 14:26:33,718 | INFO | Epoch 7/30
+2025-12-04 14:28:38,824 | INFO | train loss: 0.0002
+2025-12-04 14:29:13,697 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 14:29:13,698 | INFO | Epoch 8/30
+2025-12-04 14:31:16,970 | INFO | train loss: 0.0001
+2025-12-04 14:31:51,130 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 14:31:51,130 | INFO | Epoch 9/30
+2025-12-04 14:33:50,479 | INFO | train loss: 0.0001
+2025-12-04 14:34:26,013 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2025-12-04 14:34:26,013 | INFO | Epoch 10/30
