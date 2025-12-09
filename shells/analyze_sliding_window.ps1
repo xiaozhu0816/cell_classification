@@ -9,27 +9,38 @@
 $CONFIG = "configs/resnet50_baseline.yaml"
 $RUN_DIR = "checkpoints/resnet50_baseline/20251208-162511"  # Update this to your actual run directory
 $WINDOW_SIZE = 5  # Window size in hours (k)
-$WINDOW_STARTS = "0 2 4 6 8 10 12 14 16 18 20 22 24"  # Starting hours (x values)
+$START_HOUR = 1  # Starting hour for first window
+$END_HOUR = 30  # Maximum ending hour
+$STRIDE = 2  # Step size between windows (default: window size for no overlap)
+              # stride < window_size creates overlap
+              # stride = window_size creates adjacent windows (no gap, no overlap)
+              # stride > window_size creates gaps between windows
 $SPLIT = "test"
-$METRIC = "auc"
-$MAX_HOUR = 30  # Optional: maximum hour to consider
+$METRICS = "auc accuracy f1"  # Multiple metrics for combined plot + individual plots
+                               # Or use single metric with $METRIC
 
-# Run sliding window analysis with k=5
-Write-Host "Running sliding window analysis with window size = $WINDOW_SIZE hours..." -ForegroundColor Cyan
+# Example 1: Auto-generate windows with overlap (stride < window_size)
+Write-Host "Running sliding window analysis with window size = $WINDOW_SIZE hours, stride = $STRIDE hours..." -ForegroundColor Cyan
 python analyze_sliding_window.py `
     --config $CONFIG `
     --run-dir $RUN_DIR `
     --window-size $WINDOW_SIZE `
-    --window-starts $WINDOW_STARTS `
+    --start-hour $START_HOUR `
+    --end-hour $END_HOUR `
+    --stride $STRIDE `
     --split $SPLIT `
-    --metric $METRIC `
-    --max-hour $MAX_HOUR
+    --metrics $METRICS
 
 Write-Host ""
 Write-Host "Analysis complete! Check the following locations:" -ForegroundColor Green
-Write-Host "  - Plot: $RUN_DIR/analysis/sliding_window_k${WINDOW_SIZE}_${METRIC}.png"
-Write-Host "  - Data: $RUN_DIR/analysis/sliding_window_k${WINDOW_SIZE}_${METRIC}.json"
+Write-Host "  - Combined plot: $RUN_DIR/analysis/sliding_window_w${WINDOW_SIZE}_s${STRIDE}_combined.png"
+Write-Host "  - Individual plots: $RUN_DIR/analysis/sliding_window_w${WINDOW_SIZE}_s${STRIDE}_<metric>.png"
+Write-Host "  - Data: $RUN_DIR/analysis/sliding_window_w${WINDOW_SIZE}_s${STRIDE}_data.json"
 
 Write-Host ""
-Write-Host "To try different window sizes, run:" -ForegroundColor Yellow
-Write-Host "  python analyze_sliding_window.py --config $CONFIG --run-dir $RUN_DIR --window-size 10 --window-starts 0 5 10 15 20 --split $SPLIT --metric $METRIC"
+Write-Host "Alternative usage examples:" -ForegroundColor Yellow
+Write-Host "  # No overlap (adjacent windows):"
+Write-Host "  python analyze_sliding_window.py --config $CONFIG --run-dir $RUN_DIR --window-size 10 --stride 10 --start-hour 0 --end-hour 30 --metrics auc accuracy"
+Write-Host ""
+Write-Host "  # Manual window positions:"
+Write-Host "  python analyze_sliding_window.py --config $CONFIG --run-dir $RUN_DIR --window-size 5 --window-starts 0 5 10 15 20 25 --metrics auc f1"

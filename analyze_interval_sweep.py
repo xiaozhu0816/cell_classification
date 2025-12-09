@@ -31,7 +31,15 @@ def parse_args() -> argparse.Namespace:
         default="test",
         help="Dataset split used for evaluation",
     )
-    parser.add_argument("--metric", default="auc", help="Metric key to summarize (e.g., auc, accuracy, f1)")
+    parser.add_argument(
+        "--metrics",
+        nargs="+",
+        default=None,
+        help="Metrics to plot (e.g., auc accuracy f1). "
+             "If multiple provided, creates combined plot + individual plots. "
+             "If not provided, uses --metric for backward compatibility",
+    )
+    parser.add_argument("--metric", default="auc", help="Single metric key to summarize (e.g., auc, accuracy, f1). Use --metrics for multiple metrics")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--weights-only", action="store_true", help="Load checkpoints with weights_only=True")
     parser.add_argument("--output-dir", default=None, help="Directory to write plots and JSON summaries")
@@ -86,17 +94,19 @@ def evaluate_interval(
     start_hour: float,
     mode: str,
     split: str,
-    metric_key: str,
+    metric_keys: List[str],
     task_cfg: Dict,
     analysis_cfg: Dict,
     weights_only: bool,
-) -> Tuple[List[float], float | None, float | None]:
+) -> Dict[str, Tuple[List[float], float | None, float | None]]:
     data_cfg = copy.deepcopy(base_data_cfg)
     data_cfg["frames"] = apply_interval_override(base_data_cfg.get("frames"), start_hour, hour, mode)
     batch_size = data_cfg.get("batch_size", 256)
     num_workers = data_cfg.get("num_workers", 4)
 
-    fold_metrics: List[float] = []
+    # Initialize storage for each metric
+    fold_metrics_dict: Dict[str, List[float]] = {key: [] for key in metric_keys}
+    
     for fold_idx in range(fold_count):
         fold_name = f"fold_{fold_idx + 1:02d}of{fold_count:02d}"
         ckpt_path = run_dir / fold_name / "best.pt"
@@ -119,22 +129,32 @@ def evaluate_interval(
 
         logger = logging.getLogger(f"sweep_{mode}_{fold_name}")
         metrics = evaluate_loader(model, loader, task_cfg, analysis_cfg, device, logger)
-        metric_value = metrics.get(metric_key)
-        if metric_value is None or math.isnan(metric_value):
-            logging.warning("[%s] Metric '%s' unavailable for hour %.2f", fold_name, metric_key, hour)
-            continue
-        fold_metrics.append(float(metric_value))
+        
+        # Collect all requested metrics
+        for metric_key in metric_keys:
+            metric_value = metrics.get(metric_key)
+            if metric_value is not None and not math.isnan(metric_value):
+                fold_metrics_dict[metric_key].append(float(metric_value))
+        
         del model
         if device.type == "cuda":
             torch.cuda.empty_cache()
 
-    if not fold_metrics:
-        return [], None, None
-    values = np.asarray(fold_metrics, dtype=np.float32)
-    return fold_metrics, float(values.mean()), float(values.std(ddof=0))
+    # Compute statistics for each metric
+    results = {}
+    for metric_key in metric_keys:
+        fold_values = fold_metrics_dict[metric_key]
+        if fold_values:
+            values = np.asarray(fold_values, dtype=np.float32)
+            results[metric_key] = (fold_values, float(values.mean()), float(values.std(ddof=0)))
+        else:
+            results[metric_key] = ([], None, None)
+    
+    return results
 
 
-def plot_error_bars(hours: List[float], stats: Dict[str, Dict[str, List[float]]], metric: str, output_path: Path) -> None:
+def plot_single_metric_sweep(hours: List[float], stats: Dict[str, Dict[str, List[float]]], metric: str, output_path: Path) -> None:
+    """Plot error bars for a single metric across both modes."""
     modes = ["train-test", "test-only"]
     labels = ["Train=[start,x], Test=[start,x]", "Train=full, Test=[start,x]"]
     fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
@@ -149,15 +169,72 @@ def plot_error_bars(hours: List[float], stats: Dict[str, Dict[str, List[float]]]
         ]
         if valid_points:
             v_hours, v_means, v_stds = zip(*valid_points)
-            ax.errorbar(v_hours, v_means, yerr=v_stds, fmt="-o", capsize=4)
-        ax.set_title(label)
-        ax.set_xlabel("Upper bound hour (x)")
+            ax.errorbar(v_hours, v_means, yerr=v_stds, fmt="-o", capsize=4, linewidth=2, markersize=6)
+        ax.set_title(label, fontsize=11)
+        ax.set_xlabel("Upper bound hour (x)", fontsize=10)
         ax.grid(True, linestyle="--", alpha=0.4)
-    axes[0].set_ylabel(metric)
+    axes[0].set_ylabel(metric.upper(), fontsize=11)
+    fig.suptitle(f"Interval Sweep Analysis: {metric.upper()}", fontsize=13, y=1.02)
     fig.tight_layout()
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, dpi=200)
+    fig.savefig(output_path, dpi=200, bbox_inches="tight")
     plt.close(fig)
+    logging.info("Saved plot for %s to %s", metric, output_path)
+
+
+def plot_multi_metric_sweep(
+    hours: List[float],
+    all_stats: Dict[str, Dict[str, Dict[str, List[float]]]],  # metric -> mode -> stats
+    output_path: Path,
+) -> None:
+    """Plot combined error bars for multiple metrics."""
+    modes = ["train-test", "test-only"]
+    labels = ["Train=[start,x], Test=[start,x]", "Train=full, Test=[start,x]"]
+    
+    fig, axes = plt.subplots(1, 2, figsize=(15, 6), sharey=False)
+    colors = plt.cm.tab10(np.linspace(0, 1, len(all_stats)))
+    markers = ['o', 's', '^', 'D', 'v', '<', '>', 'p', '*', 'h']
+    
+    for ax, mode, label in zip(axes, modes, labels):
+        for idx, (metric, stats) in enumerate(all_stats.items()):
+            mode_stats = stats.get(mode, {})
+            means = mode_stats.get("mean", [])
+            stds = mode_stats.get("std", [])
+            
+            valid_points = [
+                (hour, mean, stds[j] if j < len(stds) and stds[j] is not None else 0.0)
+                for j, (hour, mean) in enumerate(zip(hours, means))
+                if mean is not None
+            ]
+            
+            if valid_points:
+                v_hours, v_means, v_stds = zip(*valid_points)
+                marker = markers[idx % len(markers)]
+                ax.errorbar(
+                    v_hours,
+                    v_means,
+                    yerr=v_stds,
+                    fmt=f"-{marker}",
+                    capsize=4,
+                    linewidth=1.5,
+                    markersize=6,
+                    color=colors[idx],
+                    label=metric.upper(),
+                    alpha=0.8,
+                )
+        
+        ax.set_title(label, fontsize=11)
+        ax.set_xlabel("Upper bound hour (x)", fontsize=10)
+        ax.grid(True, linestyle="--", alpha=0.4)
+        ax.legend(fontsize=9, loc="best")
+    
+    axes[0].set_ylabel("Metric Value", fontsize=11)
+    fig.suptitle("Interval Sweep Analysis: Multiple Metrics", fontsize=13, y=1.02)
+    fig.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    logging.info("Saved combined multi-metric plot to %s", output_path)
 
 
 def main() -> None:
@@ -181,15 +258,29 @@ def main() -> None:
     hours = sorted(args.upper_hours)
     if any(hour < args.start_hour for hour in hours):
         raise ValueError("All upper bound hours must be >= start-hour")
+    
+    # Determine which metrics to evaluate
+    if args.metrics:
+        metric_keys = args.metrics
+        logging.info("Evaluating metrics: %s", ", ".join(metric_keys))
+    else:
+        metric_keys = [args.metric]
+        logging.info("Evaluating single metric: %s", args.metric)
+    
     modes = ("train-test", "test-only")
-    stats: Dict[str, Dict[str, List[float]]] = {
-        mode: {"fold_metrics": [], "mean": [], "std": []} for mode in modes
+    
+    # Structure: all_stats[metric][mode] = {"fold_metrics": [...], "mean": [...], "std": [...]}
+    all_stats: Dict[str, Dict[str, Dict[str, List]]] = {
+        metric_key: {
+            mode: {"fold_metrics": [], "mean": [], "std": []} for mode in modes
+        }
+        for metric_key in metric_keys
     }
 
     for mode in modes:
         logging.info("Evaluating mode=%s", mode)
         for hour in hours:
-            fold_values, mean_value, std_value = evaluate_interval(
+            interval_results = evaluate_interval(
                 cfg,
                 base_data_cfg,
                 transforms,
@@ -200,33 +291,58 @@ def main() -> None:
                 args.start_hour,
                 mode,
                 args.split,
-                args.metric,
+                metric_keys,
                 task_cfg,
                 analysis_cfg,
                 args.weights_only,
             )
-            stats[mode]["fold_metrics"].append(fold_values)
-            stats[mode]["mean"].append(mean_value)
-            stats[mode]["std"].append(std_value)
+            
+            # Store results for each metric
+            for metric_key in metric_keys:
+                fold_values, mean_value, std_value = interval_results[metric_key]
+                all_stats[metric_key][mode]["fold_metrics"].append(fold_values)
+                all_stats[metric_key][mode]["mean"].append(mean_value)
+                all_stats[metric_key][mode]["std"].append(std_value)
+                
+                if mean_value is not None:
+                    logging.info(
+                        "  [%.1f, %.1fh] %s = %.4f ± %.4f",
+                        args.start_hour,
+                        hour,
+                        metric_key.upper(),
+                        mean_value,
+                        std_value,
+                    )
 
     output_dir = Path(args.output_dir) if args.output_dir else run_dir / "analysis"
-    plot_path = output_dir / f"interval_sweep_{args.metric}.png"
-    plot_error_bars(hours, stats, args.metric, plot_path)
-    logging.info("Saved sweep plot to %s", plot_path)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # If multiple metrics, create combined plot
+    if len(metric_keys) > 1:
+        logging.info("Creating combined plot for all metrics...")
+        combined_plot_path = output_dir / "interval_sweep_combined.png"
+        plot_multi_metric_sweep(hours, all_stats, combined_plot_path)
+    
+    # Create individual plots for each metric
+    for metric_key in metric_keys:
+        plot_path = output_dir / f"interval_sweep_{metric_key}.png"
+        plot_single_metric_sweep(hours, all_stats[metric_key], metric_key, plot_path)
 
+    # Save raw data
     if args.save_data:
         save_path = Path(args.save_data)
     else:
-        save_path = output_dir / f"interval_sweep_{args.metric}.json"
+        save_path = output_dir / "interval_sweep_data.json"
+    
     save_path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "config": args.config,
         "run_dir": str(run_dir),
         "start_hour": args.start_hour,
         "hours": hours,
-        "metric": args.metric,
+        "metrics": metric_keys,
         "split": args.split,
-        "stats": stats,
+        "stats": all_stats,
     }
     with save_path.open("w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2)

@@ -43,8 +43,29 @@ def parse_args() -> argparse.Namespace:
         "--window-starts",
         type=float,
         nargs="+",
-        required=True,
-        help="Starting hours x for windows [x, x+k]. E.g., 0 2 4 6 8 10",
+        default=None,
+        help="Starting hours x for windows [x, x+k]. E.g., 0 2 4 6 8 10. "
+             "If not provided, windows are auto-generated using --start-hour, --end-hour, and --stride",
+    )
+    parser.add_argument(
+        "--start-hour",
+        type=float,
+        default=1.0,
+        help="Starting hour for first window (used when --window-starts not provided)",
+    )
+    parser.add_argument(
+        "--end-hour",
+        type=float,
+        default=30.0,
+        help="Maximum ending hour (used when --window-starts not provided)",
+    )
+    parser.add_argument(
+        "--stride",
+        type=float,
+        default=None,
+        help="Step size between consecutive windows (hours). "
+             "Default is window-size (no overlap). "
+             "stride < window-size creates overlap, stride > window-size creates gaps",
     )
     parser.add_argument(
         "--split",
@@ -53,9 +74,18 @@ def parse_args() -> argparse.Namespace:
         help="Dataset split used for evaluation",
     )
     parser.add_argument(
+        "--metrics",
+        nargs="+",
+        default=None,
+        help="Metrics to plot (e.g., auc accuracy f1). "
+             "If multiple provided, creates combined plot + individual plots. "
+             "If not provided, uses --metric for backward compatibility",
+    )
+    parser.add_argument(
         "--metric",
         default="auc",
-        help="Metric key to summarize (e.g., auc, accuracy, f1)",
+        help="Single metric key to summarize (e.g., auc, accuracy, f1). "
+             "Use --metrics for multiple metrics",
     )
     parser.add_argument(
         "--device",
@@ -134,16 +164,20 @@ def evaluate_window(
     window_start: float,
     window_end: float,
     split: str,
-    metric_key: str,
+    metric_keys: List[str],
     task_cfg: Dict,
     analysis_cfg: Dict,
     weights_only: bool,
-) -> Tuple[List[float], float | None, float | None]:
+) -> Dict[str, Tuple[List[float], float | None, float | None]]:
     """
     Evaluate model on data from window [window_start, window_end].
     Both train and test data are from this same window.
     
+    Args:
+        metric_keys: List of metric names to extract
+    
     Returns:
+        Dictionary mapping metric_key -> (fold_metrics, mean, std)
         fold_metrics: List of metric values for each fold
         mean: Mean across folds (or None if no valid metrics)
         std: Standard deviation across folds (or None if no valid metrics)
@@ -156,7 +190,8 @@ def evaluate_window(
     batch_size = data_cfg.get("batch_size", 256)
     num_workers = data_cfg.get("num_workers", 4)
 
-    fold_metrics: List[float] = []
+    # Initialize storage for each metric
+    fold_metrics_dict: Dict[str, List[float]] = {key: [] for key in metric_keys}
     
     for fold_idx in range(fold_count):
         fold_name = f"fold_{fold_idx + 1:02d}of{fold_count:02d}"
@@ -187,33 +222,33 @@ def evaluate_window(
         logger.setLevel(logging.WARNING)  # Reduce verbosity
         
         metrics = evaluate_loader(model, loader, task_cfg, analysis_cfg, device, logger)
-        metric_value = metrics.get(metric_key)
         
-        if metric_value is None or math.isnan(metric_value):
-            logging.warning(
-                "[%s] Metric '%s' unavailable for window [%.1f, %.1f]h",
-                fold_name,
-                metric_key,
-                window_start,
-                window_end,
-            )
-            continue
-        
-        fold_metrics.append(float(metric_value))
+        # Collect all requested metrics
+        for metric_key in metric_keys:
+            metric_value = metrics.get(metric_key)
+            
+            if metric_value is not None and not math.isnan(metric_value):
+                fold_metrics_dict[metric_key].append(float(metric_value))
         
         # Cleanup
         del model
         if device.type == "cuda":
             torch.cuda.empty_cache()
 
-    if not fold_metrics:
-        return [], None, None
+    # Compute statistics for each metric
+    results = {}
+    for metric_key in metric_keys:
+        fold_values = fold_metrics_dict[metric_key]
+        if fold_values:
+            values = np.asarray(fold_values, dtype=np.float32)
+            results[metric_key] = (fold_values, float(values.mean()), float(values.std(ddof=0)))
+        else:
+            results[metric_key] = ([], None, None)
     
-    values = np.asarray(fold_metrics, dtype=np.float32)
-    return fold_metrics, float(values.mean()), float(values.std(ddof=0))
+    return results
 
 
-def plot_sliding_window_results(
+def plot_single_metric(
     window_centers: List[float],
     means: List[float],
     stds: List[float],
@@ -222,7 +257,7 @@ def plot_sliding_window_results(
     output_path: Path,
 ) -> None:
     """
-    Create an error bar plot showing metric performance for each sliding window.
+    Create an error bar plot for a single metric.
     
     Args:
         window_centers: Center point of each window (x + k/2)
@@ -242,7 +277,7 @@ def plot_sliding_window_results(
     ]
     
     if not valid_points:
-        logging.warning("No valid data points to plot")
+        logging.warning("No valid data points to plot for metric '%s'", metric)
         plt.close(fig)
         return
     
@@ -280,7 +315,86 @@ def plot_sliding_window_results(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output_path, dpi=200, bbox_inches="tight")
     plt.close(fig)
-    logging.info("Saved sliding window plot to %s", output_path)
+    logging.info("Saved plot for %s to %s", metric, output_path)
+
+
+def plot_multi_metric(
+    window_centers: List[float],
+    metric_results: Dict[str, Tuple[List[float], List[float]]],  # metric -> (means, stds)
+    window_size: float,
+    output_path: Path,
+) -> None:
+    """
+    Create a combined error bar plot for multiple metrics.
+    
+    Args:
+        window_centers: Center point of each window (x + k/2)
+        metric_results: Dictionary mapping metric name to (means, stds) tuples
+        window_size: Width of each window (k)
+        output_path: Path to save the plot
+    """
+    fig, ax = plt.subplots(figsize=(14, 7))
+    
+    colors = plt.cm.tab10(np.linspace(0, 1, len(metric_results)))
+    markers = ['o', 's', '^', 'D', 'v', '<', '>', 'p', '*', 'h']
+    
+    any_valid = False
+    for idx, (metric, (means, stds)) in enumerate(metric_results.items()):
+        # Filter out None values
+        valid_points = [
+            (center, mean, std)
+            for center, mean, std in zip(window_centers, means, stds)
+            if mean is not None
+        ]
+        
+        if not valid_points:
+            logging.warning("No valid data points for metric '%s'", metric)
+            continue
+        
+        any_valid = True
+        v_centers, v_means, v_stds = zip(*valid_points)
+        
+        # Create error bar plot
+        marker = markers[idx % len(markers)]
+        ax.errorbar(
+            v_centers,
+            v_means,
+            yerr=v_stds,
+            fmt=f"-{marker}",
+            capsize=4,
+            linewidth=1.5,
+            markersize=7,
+            color=colors[idx],
+            label=metric.upper(),
+            alpha=0.8,
+        )
+    
+    if not any_valid:
+        logging.warning("No valid data to plot for any metric")
+        plt.close(fig)
+        return
+    
+    ax.set_xlabel("Window Center (hours)", fontsize=12)
+    ax.set_ylabel("Metric Value", fontsize=12)
+    ax.set_title(
+        f"Sliding Window Analysis: Multiple Metrics\n"
+        f"(Train & Test both use [x, x+{window_size}h])",
+        fontsize=13,
+    )
+    ax.grid(True, linestyle="--", alpha=0.4)
+    ax.legend(fontsize=10, loc="best")
+    
+    # Add window interval annotations on secondary x-axis
+    ax2 = ax.twiny()
+    ax2.set_xlim(ax.get_xlim())
+    ax2.set_xlabel("Window Start Hour (x)", fontsize=11, color="gray")
+    ax2.tick_params(axis="x", labelcolor="gray")
+    
+    fig.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=200, bbox_inches="tight")
+    plt.close(fig)
+    logging.info("Saved combined multi-metric plot to %s", output_path)
 
 
 def main() -> None:
@@ -311,10 +425,42 @@ def main() -> None:
     
     # Validate window configurations
     window_size = args.window_size
-    window_starts = sorted(args.window_starts)
-    
     if window_size <= 0:
         raise ValueError("Window size must be positive")
+    
+    # Determine stride (step size)
+    stride = args.stride if args.stride is not None else window_size
+    if stride <= 0:
+        raise ValueError("Stride must be positive")
+    
+    # Generate or use provided window starts
+    if args.window_starts is not None:
+        window_starts = sorted(args.window_starts)
+        logging.info("Using %d user-provided window start positions", len(window_starts))
+    else:
+        # Auto-generate window starts using stride
+        window_starts = []
+        current = args.start_hour
+        max_end = args.max_hour if args.max_hour is not None else args.end_hour
+        
+        while current + window_size <= max_end:
+            window_starts.append(current)
+            current += stride
+        
+        logging.info(
+            "Auto-generated %d windows: start=%.1fh, end=%.1fh, size=%.1fh, stride=%.1fh",
+            len(window_starts),
+            args.start_hour,
+            max_end,
+            window_size,
+            stride,
+        )
+        
+        if not window_starts:
+            raise ValueError(
+                f"No valid windows with start={args.start_hour}, "
+                f"end={max_end}, size={window_size}"
+            )
     
     # Build window intervals
     windows: List[Tuple[float, float, float]] = []  # (start, end, center)
@@ -337,26 +483,39 @@ def main() -> None:
     if not windows:
         raise ValueError("No valid windows to evaluate")
     
+    # Determine which metrics to evaluate
+    if args.metrics:
+        metric_keys = args.metrics
+        logging.info("Evaluating metrics: %s", ", ".join(metric_keys))
+    else:
+        metric_keys = [args.metric]
+        logging.info("Evaluating single metric: %s", args.metric)
+    
     logging.info(
-        "Evaluating %d sliding windows with size=%.1fh",
+        "Evaluating %d sliding windows with size=%.1fh, stride=%.1fh",
         len(windows),
         window_size,
+        stride,
     )
     
     # Evaluate each window
-    results: Dict[str, List] = {
-        "window_starts": [],
-        "window_ends": [],
-        "window_centers": [],
-        "fold_metrics": [],
-        "means": [],
-        "stds": [],
+    # Structure: results[metric_key] = {"window_starts": [...], "means": [...], ...}
+    results: Dict[str, Dict[str, List]] = {
+        metric_key: {
+            "window_starts": [],
+            "window_ends": [],
+            "window_centers": [],
+            "fold_metrics": [],
+            "means": [],
+            "stds": [],
+        }
+        for metric_key in metric_keys
     }
     
     for start, end, center in windows:
         logging.info("Evaluating window [%.1f, %.1f]h (center=%.1f)", start, end, center)
         
-        fold_values, mean_value, std_value = evaluate_window(
+        window_results = evaluate_window(
             cfg,
             base_data_cfg,
             transforms,
@@ -366,50 +525,78 @@ def main() -> None:
             start,
             end,
             args.split,
-            args.metric,
+            metric_keys,
             task_cfg,
             analysis_cfg,
             args.weights_only,
         )
         
-        results["window_starts"].append(start)
-        results["window_ends"].append(end)
-        results["window_centers"].append(center)
-        results["fold_metrics"].append(fold_values)
-        results["means"].append(mean_value)
-        results["stds"].append(std_value)
+        # Store results for each metric
+        for metric_key in metric_keys:
+            fold_values, mean_value, std_value = window_results[metric_key]
+            
+            results[metric_key]["window_starts"].append(start)
+            results[metric_key]["window_ends"].append(end)
+            results[metric_key]["window_centers"].append(center)
+            results[metric_key]["fold_metrics"].append(fold_values)
+            results[metric_key]["means"].append(mean_value)
+            results[metric_key]["stds"].append(std_value)
+            
+            if mean_value is not None:
+                logging.info(
+                    "  %s = %.4f ± %.4f",
+                    metric_key.upper(),
+                    mean_value,
+                    std_value,
+                )
         
-        if mean_value is not None:
-            logging.info(
-                "  Window [%.1f, %.1f]h: %s = %.4f ± %.4f",
-                start,
-                end,
-                args.metric,
-                mean_value,
-                std_value,
-            )
-        else:
+        if all(window_results[mk][1] is None for mk in metric_keys):
             logging.warning("  Window [%.1f, %.1f]h: No valid metrics", start, end)
     
     # Generate output
     output_dir = Path(args.output_dir) if args.output_dir else run_dir / "analysis"
+    output_dir.mkdir(parents=True, exist_ok=True)
     
-    # Save plot
-    plot_path = output_dir / f"sliding_window_k{window_size:.0f}_{args.metric}.png"
-    plot_sliding_window_results(
-        results["window_centers"],
-        results["means"],
-        results["stds"],
-        window_size,
-        args.metric,
-        plot_path,
-    )
+    # Determine filename suffix
+    stride_suffix = f"_s{stride:.0f}" if stride != window_size else ""
+    base_filename = f"sliding_window_w{window_size:.0f}{stride_suffix}"
+    
+    # If multiple metrics, create combined plot
+    if len(metric_keys) > 1:
+        logging.info("Creating combined plot for all metrics...")
+        combined_plot_path = output_dir / f"{base_filename}_combined.png"
+        
+        # Prepare data for multi-metric plot
+        metric_plot_data = {}
+        for metric_key in metric_keys:
+            metric_plot_data[metric_key] = (
+                results[metric_key]["means"],
+                results[metric_key]["stds"],
+            )
+        
+        # Use window_centers from first metric (all should be the same)
+        window_centers = results[metric_keys[0]]["window_centers"]
+        plot_multi_metric(window_centers, metric_plot_data, window_size, combined_plot_path)
+    
+    # Create individual plots for each metric
+    for metric_key in metric_keys:
+        metric_result = results[metric_key]
+        plot_path = output_dir / f"{base_filename}_{metric_key}.png"
+        
+        plot_single_metric(
+            metric_result["window_centers"],
+            metric_result["means"],
+            metric_result["stds"],
+            window_size,
+            metric_key,
+            plot_path,
+        )
     
     # Save raw data
     if args.save_data:
         save_path = Path(args.save_data)
     else:
-        save_path = output_dir / f"sliding_window_k{window_size:.0f}_{args.metric}.json"
+        save_path = output_dir / f"{base_filename}_data.json"
     
     save_path.parent.mkdir(parents=True, exist_ok=True)
     
@@ -417,9 +604,10 @@ def main() -> None:
         "config": args.config,
         "run_dir": str(run_dir),
         "window_size": window_size,
+        "stride": stride,
         "window_starts": window_starts,
         "max_hour": args.max_hour,
-        "metric": args.metric,
+        "metrics": metric_keys,
         "split": args.split,
         "results": results,
     }
@@ -429,19 +617,29 @@ def main() -> None:
     
     logging.info("Saved sliding window data to %s", save_path)
     
-    # Summary statistics
-    valid_means = [m for m in results["means"] if m is not None]
-    if valid_means:
-        logging.info("\nSummary:")
-        logging.info("  Best window: [%.1f, %.1f]h with %s=%.4f",
-                    results["window_starts"][results["means"].index(max(valid_means))],
-                    results["window_ends"][results["means"].index(max(valid_means))],
-                    args.metric,
-                    max(valid_means))
-        logging.info("  Overall mean %s: %.4f ± %.4f",
-                    args.metric,
-                    np.mean(valid_means),
-                    np.std(valid_means, ddof=1 if len(valid_means) > 1 else 0))
+    # Summary statistics for each metric
+    logging.info("\n" + "="*60)
+    logging.info("Summary Statistics:")
+    logging.info("="*60)
+    
+    for metric_key in metric_keys:
+        metric_result = results[metric_key]
+        valid_means = [m for m in metric_result["means"] if m is not None]
+        
+        if valid_means:
+            best_idx = metric_result["means"].index(max(valid_means))
+            logging.info(f"\n{metric_key.upper()}:")
+            logging.info("  Best window: [%.1f, %.1f]h with value=%.4f",
+                        metric_result["window_starts"][best_idx],
+                        metric_result["window_ends"][best_idx],
+                        max(valid_means))
+            logging.info("  Overall mean: %.4f ± %.4f",
+                        np.mean(valid_means),
+                        np.std(valid_means, ddof=1 if len(valid_means) > 1 else 0))
+        else:
+            logging.warning(f"\n{metric_key.upper()}: No valid data")
+    
+    logging.info("="*60)
 
 
 if __name__ == "__main__":

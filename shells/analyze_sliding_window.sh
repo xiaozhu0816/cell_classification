@@ -10,22 +10,37 @@
 CONFIG="configs/resnet50_baseline.yaml"
 RUN_DIR="checkpoints/resnet50_baseline/20251208-162511"  # Update this to your actual run directory
 WINDOW_SIZE=5  # Window size in hours (k)
-WINDOW_STARTS="0 2 4 6 8 10 12 14 16 18 20 22 24"  # Starting hours (x values)
+START_HOUR=1  # Starting hour for first window
+END_HOUR=30  # Maximum ending hour
+STRIDE=2  # Step size between windows (default: window size for no overlap)
+          # stride < window_size creates overlap
+          # stride = window_size creates adjacent windows (no gap, no overlap)
+          # stride > window_size creates gaps between windows
 SPLIT="test"
-METRIC="auc"
-MAX_HOUR=30  # Optional: maximum hour to consider
+METRICS="auc accuracy f1"  # Multiple metrics for combined plot + individual plots
 
-# Run sliding window analysis
+# Run sliding window analysis with overlap
+echo "Running sliding window analysis with window size = $WINDOW_SIZE hours, stride = $STRIDE hours..."
 python analyze_sliding_window.py \
     --config "$CONFIG" \
     --run-dir "$RUN_DIR" \
     --window-size $WINDOW_SIZE \
-    --window-starts $WINDOW_STARTS \
+    --start-hour $START_HOUR \
+    --end-hour $END_HOUR \
+    --stride $STRIDE \
     --split "$SPLIT" \
-    --metric "$METRIC" \
-    --max-hour $MAX_HOUR
+    --metrics $METRICS
 
 echo ""
 echo "Analysis complete! Check the following locations:"
-echo "  - Plot: $RUN_DIR/analysis/sliding_window_k${WINDOW_SIZE}_${METRIC}.png"
-echo "  - Data: $RUN_DIR/analysis/sliding_window_k${WINDOW_SIZE}_${METRIC}.json"
+echo "  - Combined plot: $RUN_DIR/analysis/sliding_window_w${WINDOW_SIZE}_s${STRIDE}_combined.png"
+echo "  - Individual plots: $RUN_DIR/analysis/sliding_window_w${WINDOW_SIZE}_s${STRIDE}_<metric>.png"
+echo "  - Data: $RUN_DIR/analysis/sliding_window_w${WINDOW_SIZE}_s${STRIDE}_data.json"
+
+echo ""
+echo "Alternative usage examples:"
+echo "  # No overlap (adjacent windows):"
+echo "  python analyze_sliding_window.py --config \$CONFIG --run-dir \$RUN_DIR --window-size 10 --stride 10 --start-hour 0 --end-hour 30 --metrics auc accuracy"
+echo ""
+echo "  # Manual window positions:"
+echo "  python analyze_sliding_window.py --config \$CONFIG --run-dir \$RUN_DIR --window-size 5 --window-starts 0 5 10 15 20 25 --metrics auc f1"

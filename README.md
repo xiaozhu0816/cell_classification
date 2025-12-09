@@ -148,6 +148,7 @@ During regression runs the script reports MAE and RMSE instead of classification
 Use `analyze_interval_sweep.py` to probe how performance evolves as you tighten the infected interval upper bound. The script loads every fold checkpoint, rebuilds the requested split with custom frame policies, and plots mean ± std error bars for two scenarios: (1) both training/test restricted to `[start, x]`, and (2) training keeps the full range while evaluation clips to `[start, x]`.
 
 ```powershell
+# Single metric
 python analyze_interval_sweep.py `
    --config configs/resnet50_baseline.yaml `
    --run-dir checkpoints/resnet50_baseline/20251205-101010 `
@@ -155,12 +156,26 @@ python analyze_interval_sweep.py `
    --start-hour 1 `
    --metric auc `
    --split test
+
+# Multiple metrics (creates combined + individual plots)
+python analyze_interval_sweep.py `
+   --config configs/resnet50_baseline.yaml `
+   --run-dir checkpoints/resnet50_baseline/20251205-101010 `
+   --upper-hours 8 10 12 14 16 18 20 `
+   --start-hour 1 `
+   --metrics auc accuracy f1 precision recall `
+   --split test
 ```
 
-Outputs:
+**Outputs:**
 
-- `analysis/interval_sweep_<metric>.png`: two-panel error-bar chart.
-- `analysis/interval_sweep_<metric>.json`: raw fold metrics + statistics for downstream plotting.
+- `analysis/interval_sweep_combined.png`: Combined two-panel plot with all metrics (if `--metrics` used)
+- `analysis/interval_sweep_<metric>.png`: Individual two-panel error-bar chart for each metric
+- `analysis/interval_sweep_data.json`: Raw fold metrics + statistics for all metrics
+
+The two panels show:
+1. **Left panel**: Both train and test restricted to `[start, x]`
+2. **Right panel**: Train uses full range, test restricted to `[start, x]`
 
 Pass `--weights-only` if your checkpoints require the safer PyTorch deserializer, or `--output-dir`/`--save-data` to customize where the artifacts land.
 
@@ -169,42 +184,61 @@ Pass `--weights-only` if your checkpoints require the safer PyTorch deserializer
 Use `analyze_sliding_window.py` to evaluate model performance across different time windows of fixed width. The script trains and evaluates on consecutive windows `[x, x+k]` where `k` is the window width (e.g., 5 or 10 hours) and `x` varies from the start to the end of the infection timeline.
 
 ```powershell
+# Auto-generate windows with stride (supports overlap)
 python analyze_sliding_window.py `
    --config configs/resnet50_baseline.yaml `
    --run-dir checkpoints/resnet50_baseline/20251205-101010 `
-   --window-width 5 `
+   --window-size 5 `
    --start-hour 1 `
    --end-hour 30 `
-   --metric auc `
+   --stride 2 `
+   --metrics auc accuracy f1 `
+   --split test
+
+# Or manually specify window positions
+python analyze_sliding_window.py `
+   --config configs/resnet50_baseline.yaml `
+   --run-dir checkpoints/resnet50_baseline/20251205-101010 `
+   --window-size 5 `
+   --window-starts 0 5 10 15 20 25 `
+   --metrics auc f1 `
    --split test
 ```
 
 **Parameters:**
-- `--window-width`: Size of the sliding window in hours (default: 5)
-- `--start-hour`: Starting hour for the first window (default: 1)
-- `--end-hour`: Maximum ending hour (default: 30)
-- `--metric`: Which metric to plot (choices: accuracy, precision, recall, f1, auc; default: auc)
+- `--window-size`: Size of the sliding window in hours (default: 5)
+- `--stride`: Step size between consecutive windows (default: window-size for no overlap)
+  - `stride < window-size`: Creates overlapping windows
+  - `stride = window-size`: Adjacent windows with no gap or overlap
+  - `stride > window-size`: Creates gaps between windows
+- `--start-hour`: Starting hour for first window (default: 1, used with auto-generation)
+- `--end-hour`: Maximum ending hour (default: 30, used with auto-generation)
+- `--window-starts`: Manual list of window start positions (alternative to auto-generation)
+- `--metrics`: Multiple metrics to plot (e.g., `auc accuracy f1`). Creates both combined and individual plots
+- `--metric`: Single metric (default: auc, for backward compatibility)
 - `--split`: Dataset split to evaluate on (default: test)
 
 **Outputs:**
-- `analysis/sliding_window_<metric>_w<width>.png`: Error bar chart showing mean ± std for each window position
-- `analysis/sliding_window_<metric>_w<width>.json`: Raw fold metrics and statistics
+- `analysis/sliding_window_w<width>_s<stride>_combined.png`: Combined plot with all metrics (if multiple metrics)
+- `analysis/sliding_window_w<width>_s<stride>_<metric>.png`: Individual plot for each metric
+- `analysis/sliding_window_w<width>_s<stride>_data.json`: Raw fold metrics and statistics
 
 This is useful for understanding:
 - Which time windows are most predictive for infection classification
 - Whether performance is consistent across early/middle/late infection stages
-- Optimal window placement for early detection systems
+- Optimal window placement and overlap strategies for early detection systems
+- Comparative performance across multiple metrics simultaneously
 
 **Example use cases:**
 ```powershell
-# Narrow 5-hour windows to find the most discriminative period
-python analyze_sliding_window.py --config configs/resnet50_baseline.yaml --run-dir checkpoints/resnet50_baseline/20251205-101010 --window-width 5 --metric auc
+# Overlapping 5-hour windows (stride=2) with multiple metrics
+python analyze_sliding_window.py --config configs/resnet50_baseline.yaml --run-dir checkpoints/resnet50_baseline/20251205-101010 --window-size 5 --stride 2 --start-hour 0 --end-hour 30 --metrics auc accuracy f1
 
-# Wider 10-hour windows for more stable estimates
-python analyze_sliding_window.py --config configs/resnet50_baseline.yaml --run-dir checkpoints/resnet50_baseline/20251205-101010 --window-width 10 --metric f1
+# Adjacent 10-hour windows (no overlap) with AUC only
+python analyze_sliding_window.py --config configs/resnet50_baseline.yaml --run-dir checkpoints/resnet50_baseline/20251205-101010 --window-size 10 --stride 10 --metrics auc
 
-# Focus on early infection (0-20 hours) with 3-hour windows
-python analyze_sliding_window.py --config configs/resnet50_baseline.yaml --run-dir checkpoints/resnet50_baseline/20251205-101010 --window-width 3 --start-hour 0 --end-hour 20
+# Custom window positions with multiple metrics
+python analyze_sliding_window.py --config configs/resnet50_baseline.yaml --run-dir checkpoints/resnet50_baseline/20251205-101010 --window-size 6 --window-starts 0 4 8 12 16 20 --metrics auc precision recall
 ```
 
 Shell scripts are provided for convenience:
