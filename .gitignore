@@ -1,0 +1,13 @@
+*.pth
+*.pt
+*.ckpt
+*.bin
+*.model
+*.npy
+*.npz
+*.h5
+*.tar
+*.gz
+logs/
+checkpoints/
+outputs/

@@ -12,7 +12,7 @@ import tifffile
 from PIL import Image
 from torch.utils.data import Dataset
 from sklearn.model_selection import StratifiedKFold
-from rich import print
+
 _LABEL_PATTERN = re.compile(r"_p(?P<position>\d+)_")
 
 
@@ -52,6 +52,59 @@ class FrameExtractionPolicy:
         return list(range(0, total_frames, stride))
 
 
+_SPLIT_KEY_ALIASES = {
+    "train": ("train",),
+    "val": ("val", "validation"),
+    "test": ("test", "eval", "evaluation"),
+}
+_SPECIAL_FRAME_KEYS = set().union(*_SPLIT_KEY_ALIASES.values(), {"default"})
+
+
+def _policy_config_for_split(frames_cfg: Optional[Dict], split_name: str) -> Dict:
+    frames_cfg = frames_cfg or {}
+    split_name = split_name.lower()
+    has_nested = any(key in frames_cfg for key in _SPECIAL_FRAME_KEYS)
+    if not has_nested:
+        return frames_cfg
+    base_cfg = {k: v for k, v in frames_cfg.items() if k not in _SPECIAL_FRAME_KEYS}
+    overrides: Optional[Dict] = None
+    for key in _SPLIT_KEY_ALIASES.get(split_name, (split_name,)):
+        value = frames_cfg.get(key)
+        if isinstance(value, dict):
+            overrides = value
+            break
+    if overrides is None and split_name != "train":
+        train_cfg = frames_cfg.get("train")
+        if isinstance(train_cfg, dict):
+            overrides = train_cfg
+    if overrides is None:
+        default_cfg = frames_cfg.get("default")
+        if isinstance(default_cfg, dict):
+            overrides = default_cfg
+    merged = {**base_cfg}
+    if overrides:
+        merged.update(overrides)
+    return merged
+
+
+def _resolve_policy(frames_cfg: Optional[Dict], split_name: str) -> FrameExtractionPolicy:
+    return FrameExtractionPolicy.from_dict(_policy_config_for_split(frames_cfg, split_name))
+
+
+def resolve_frame_policies(frames_cfg: Optional[Dict]) -> Dict[str, FrameExtractionPolicy]:
+    return {split: _resolve_policy(frames_cfg, split) for split in ("train", "val", "test")}
+
+
+def format_policy_summary(policy: FrameExtractionPolicy) -> str:
+    start, end = policy.infected_window_hours
+    uninfected_mode = "all" if policy.uninfected_use_all else "first-only"
+    return (
+        f"frames_per_hour={policy.frames_per_hour:.2f} | "
+        f"infected=[{start:.1f},{end:.1f}] stride={policy.infected_stride} | "
+        f"uninfected={uninfected_mode} stride={policy.uninfected_stride}"
+    )
+
+
 @dataclass
 class DataItem:
     path: Path
@@ -69,6 +122,7 @@ class FrameSample:
     position: str
     frame_index: int
     total_frames: int
+    hours_since_start: float
 
 
 @dataclass
@@ -85,9 +139,11 @@ class TimeCourseTiffDataset(Dataset):
         self,
         samples: Sequence[FrameSample],
         transform: Optional[Callable] = None,
+        frames_per_hour: float = 2.0,
     ) -> None:
         self.samples = list(samples)
         self.transform = transform
+        self.frames_per_hour = frames_per_hour if frames_per_hour > 0 else 1.0
 
     def __len__(self) -> int:  # pragma: no cover - trivial
         return len(self.samples)
@@ -98,6 +154,9 @@ class TimeCourseTiffDataset(Dataset):
         image = self._to_image(frame)
         if self.transform:
             image = self.transform(image)
+        hours = getattr(sample, "hours_since_start", None)
+        if hours is None:
+            hours = sample.frame_index / self.frames_per_hour
         return (
             image,
             sample.label,
@@ -106,6 +165,7 @@ class TimeCourseTiffDataset(Dataset):
                 "condition": sample.condition,
                 "position": sample.position,
                 "frame_index": sample.frame_index,
+                "hours_since_start": float(hours),
             },
         )
 
@@ -186,7 +246,10 @@ def build_datasets(
     split_seed = data_cfg.get("split_seed", 42)
     split = _stratified_split(all_items, ratios, seed=split_seed)
 
-    policy = FrameExtractionPolicy.from_dict(data_cfg.get("frames"))
+    frames_cfg = data_cfg.get("frames")
+    train_policy = _resolve_policy(frames_cfg, "train")
+    val_policy = _resolve_policy(frames_cfg, "val")
+    test_policy = _resolve_policy(frames_cfg, "test")
 
     if num_folds > 1:
         if fold_index is None:
@@ -208,24 +271,38 @@ def build_datasets(
 
     test_items = split.test
 
-    train_samples = _expand_samples(train_items, policy)
-    val_samples = _expand_samples(val_items, policy)
-    test_samples = _expand_samples(test_items, policy)
+    train_samples = _expand_samples(train_items, train_policy)
+    val_samples = _expand_samples(val_items, val_policy)
+    test_samples = _expand_samples(test_items, test_policy)
 
-    train_ds = TimeCourseTiffDataset(train_samples, transform=transforms.get("train"))
-    val_ds = TimeCourseTiffDataset(val_samples, transform=transforms.get("val"))
-    test_ds = TimeCourseTiffDataset(test_samples, transform=transforms.get("test"))
+    train_ds = TimeCourseTiffDataset(
+        train_samples,
+        transform=transforms.get("train"),
+        frames_per_hour=train_policy.frames_per_hour,
+    )
+    val_ds = TimeCourseTiffDataset(
+        val_samples,
+        transform=transforms.get("val"),
+        frames_per_hour=val_policy.frames_per_hour,
+    )
+    test_ds = TimeCourseTiffDataset(
+        test_samples,
+        transform=transforms.get("test"),
+        frames_per_hour=test_policy.frames_per_hour,
+    )
     return train_ds, val_ds, test_ds
 
 
 def _expand_samples(items: Sequence[DataItem], policy: FrameExtractionPolicy) -> List[FrameSample]:
     samples: List[FrameSample] = []
+    frames_per_hour = max(policy.frames_per_hour, 1e-6)
     for item in items:
         if item.condition == "infected":
             frame_indices = policy.infected_indices(item.total_frames)
         else:
             frame_indices = policy.uninfected_indices(item.total_frames)
         for idx in frame_indices:
+            hours_since_start = idx / frames_per_hour
             samples.append(
                 FrameSample(
                     path=item.path,
@@ -234,6 +311,7 @@ def _expand_samples(items: Sequence[DataItem], policy: FrameExtractionPolicy) ->
                     position=item.position,
                     frame_index=idx,
                     total_frames=item.total_frames,
+                    hours_since_start=hours_since_start,
                 )
             )
     return samples

@@ -1,4 +1,4 @@
-experiment_name: resnet50_baseline
+experiment_name: resnet50_early
 seed: 42
 
 data:
@@ -11,7 +11,7 @@ data:
   batch_size: 256
   num_workers: 4
   drop_last: false
-  balance_sampler: false
+  balance_sampler: true
   transforms:
     image_size: 512
     random_flip: true
@@ -21,7 +21,7 @@ data:
     std: [0.25, 0.25, 0.25]
   frames:
     frames_per_hour: 2.0
-    infected_window_hours: [16, 30]
+    infected_window_hours: [1, 16]
     infected_stride: 1
     uninfected_stride: 1
     uninfected_use_all: true
@@ -52,10 +52,9 @@ logging:
   output_dir: outputs
 
 analysis:
-  thresholds: [0.10, 0.15, 0.20, 0.25, 0.30, 0.50]
+  thresholds: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30]
   time_bins:
-    - [0, 8]
-    - [8, 12]
-    - [12, 16]
-    - [16, 24]
-    - [24, 32]
+    - [0, 6]
+    - [6, 10]
+    - [10, 14]
+    - [14, 16]

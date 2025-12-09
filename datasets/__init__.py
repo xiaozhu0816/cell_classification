@@ -3,6 +3,8 @@ from .timecourse_dataset import (
     build_datasets,
     FrameExtractionPolicy,
     DataSplit,
+    resolve_frame_policies,
+    format_policy_summary,
 )
 
 __all__ = [
@@ -10,4 +12,6 @@ __all__ = [
     "FrameExtractionPolicy",
     "DataSplit",
     "build_datasets",
+    "resolve_frame_policies",
+    "format_policy_summary",
 ]
