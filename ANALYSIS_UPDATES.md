@@ -1,194 +1,263 @@
-# Analysis Scripts Update Summary
+# Analysis Scripts: Training vs Evaluation-Only
 
 ## Overview
 
-This document summarizes the new features added to `analyze_sliding_window.py` and `analyze_interval_sweep.py` to support multi-metric visualization and configurable window overlap.
+This project now has **TWO types** of analysis scripts:
 
-## Changes Made
+1. **Training-Based Analysis** (NEW) - Trains fresh models for each time window
+2. **Evaluation-Only Analysis** (LEGACY) - Evaluates pre-trained checkpoints
 
-### 1. Multi-Metric Support
+## Key Difference
 
-Both analysis scripts now support evaluating and plotting multiple metrics simultaneously.
+### ❌ What I Implemented Wrong Initially:
+- `analyze_sliding_window.py` - Loads existing checkpoints and evaluates on filtered data
+- `analyze_interval_sweep.py` - Loads existing checkpoints and evaluates on filtered data
+- **Problem**: Only shows how pre-trained models perform on different time windows, doesn't tell you which windows are best for training
 
-#### Features:
-- **Combined plots**: When multiple metrics are specified, a combined plot is generated showing all metrics on the same chart for easy comparison
-- **Individual plots**: Each metric also gets its own dedicated plot
-- **Backward compatibility**: Single metric mode still works using `--metric` flag
+### ✅ What You Actually Needed:
+- `analyze_sliding_window_train.py` - **Trains new models** for each time window [x, x+k]
+- `analyze_interval_sweep_train.py` - **Trains new models** for each interval [start, x]
+- **Benefit**: Shows which time periods contain the most informative signal for learning
 
-#### Usage:
+## New Files Created
 
-```powershell
-# Multiple metrics
-python analyze_sliding_window.py --metrics auc accuracy f1 precision recall ...
-python analyze_interval_sweep.py --metrics auc accuracy f1 precision recall ...
+### 1. Training-Based Analysis Scripts
 
-# Single metric (backward compatible)
-python analyze_sliding_window.py --metric auc ...
-python analyze_interval_sweep.py --metric auc ...
+#### `analyze_sliding_window_train.py`
+**Purpose**: Train separate models on different time windows to find the most informative periods.
+
+**What it does:**
+- For each window [x, x+k]:
+  - Filters train/val/test to only use frames from [x, x+k]
+  - Trains a brand new model from scratch
+  - Tests on the same window
+  - Records metrics across K-folds
+- Plots performance vs. window position
+
+**Example output:**
 ```
-
-#### Outputs:
-- `*_combined.png`: Combined plot with all metrics (only when multiple metrics specified)
-- `*_<metric>.png`: Individual plot for each metric
-- `*_data.json`: JSON file containing results for all metrics
-
-### 2. Sliding Window Overlap Control (analyze_sliding_window.py)
-
-The sliding window script now supports configurable overlap between consecutive windows through a `--stride` parameter.
-
-#### Features:
-- **Overlapping windows**: `stride < window-size` creates windows that overlap
-- **Adjacent windows**: `stride = window-size` creates touching windows with no gap or overlap
-- **Gapped windows**: `stride > window-size` creates windows with gaps between them
-- **Auto-generation**: Windows can be automatically generated based on start/end hours and stride
-- **Manual specification**: Windows can still be manually specified via `--window-starts`
-
-#### Parameters:
-
-```powershell
---window-size    # Size of each window (k hours)
---stride         # Step size between windows (default: window-size)
---start-hour     # First window starts here (used with auto-generation)
---end-hour       # Last window ends before this (used with auto-generation)
---window-starts  # Manual list of window start positions (alternative)
+Window [0,5]:   AUC = 0.65 ± 0.03  ← Early, weak signal
+Window [10,15]: AUC = 0.88 ± 0.02  ← Mid-infection, strong
+Window [20,25]: AUC = 0.95 ± 0.01  ← Late, very strong
 ```
+**Interpretation**: Models trained on 20-25h windows perform best, so cytopathic effects are most discriminative after 20h.
 
-#### Examples:
-
-```powershell
-# Overlapping 5-hour windows with 2-hour stride
-python analyze_sliding_window.py \
-    --window-size 5 \
-    --stride 2 \
-    --start-hour 0 \
-    --end-hour 30 \
-    --metrics auc accuracy
-
-# Adjacent 10-hour windows (no overlap)
-python analyze_sliding_window.py \
-    --window-size 10 \
-    --stride 10 \
-    --start-hour 0 \
-    --end-hour 30 \
-    --metrics auc
-
-# Manual window positions
-python analyze_sliding_window.py \
-    --window-size 5 \
-    --window-starts 0 5 10 15 20 25 \
-    --metrics auc f1
-```
-
-## File Modifications
-
-### Modified Files:
-
-1. **`analyze_sliding_window.py`**
-   - Added `--stride` parameter for overlap control
-   - Added `--start-hour` and `--end-hour` for auto-generation
-   - Made `--window-starts` optional (auto-generated if not provided)
-   - Added `--metrics` parameter for multiple metrics
-   - Updated `evaluate_window()` to return results for all metrics
-   - Created `plot_single_metric()` for individual metric plots
-   - Created `plot_multi_metric()` for combined metric plots
-   - Enhanced output naming with stride suffix
-
-2. **`analyze_interval_sweep.py`**
-   - Added `--metrics` parameter for multiple metrics
-   - Updated `evaluate_interval()` to return results for all metrics
-   - Created `plot_single_metric_sweep()` for individual metric plots
-   - Created `plot_multi_metric_sweep()` for combined metric plots
-   - Enhanced result storage structure to support multiple metrics
-
-3. **`shells/analyze_sliding_window.sh`**
-   - Updated to demonstrate stride usage
-   - Added examples for overlapping windows
-   - Added examples for multiple metrics
-
-4. **`shells/analyze_sliding_window.ps1`**
-   - Updated to demonstrate stride usage
-   - Added examples for overlapping windows
-   - Added examples for multiple metrics
-
-5. **`README.md`**
-   - Updated "Interval sweep error bars" section with multi-metric examples
-   - Updated "Sliding window analysis" section with stride and multi-metric examples
-   - Added detailed parameter descriptions
-   - Added use case examples
-
-## Usage Examples
-
-### Example 1: Overlapping Windows with Multiple Metrics
-
-```powershell
-python analyze_sliding_window.py \
+**Usage:**
+```bash
+python analyze_sliding_window_train.py \
     --config configs/resnet50_baseline.yaml \
-    --run-dir checkpoints/resnet50_baseline/20251208-162511 \
     --window-size 5 \
-    --stride 2 \
+    --stride 5 \
     --start-hour 0 \
     --end-hour 30 \
-    --metrics auc accuracy f1 precision recall \
-    --split test
+    --metrics auc accuracy f1 \
+    --k-folds 5 \
+    --epochs 10
 ```
 
-**Result**: Windows [0,5], [2,7], [4,9], [6,11], ... [25,30] evaluated with all 5 metrics, producing:
-- `sliding_window_w5_s2_combined.png` (all metrics together)
-- `sliding_window_w5_s2_auc.png`
-- `sliding_window_w5_s2_accuracy.png`
-- `sliding_window_w5_s2_f1.png`
-- `sliding_window_w5_s2_precision.png`
-- `sliding_window_w5_s2_recall.png`
-- `sliding_window_w5_s2_data.json` (all metrics data)
+**Shell scripts:**
+- `shells/analyze_sliding_window_train.sh`
+- `shells/analyze_sliding_window_train.ps1`
 
-### Example 2: Interval Sweep with Multiple Metrics
+#### `analyze_interval_sweep_train.py`
+**Purpose**: Train models with different infected interval ranges to understand how much temporal data is needed.
 
-```powershell
-python analyze_interval_sweep.py \
+**What it does:**
+- For each upper bound X:
+  - Mode 1 (train-test): Both train and test use [start, X]
+  - Mode 2 (test-only): Train uses full range, test uses [start, X]
+  - Trains fresh models for both modes
+  - Compares performance across K-folds
+- Generates two-panel comparison plots
+
+**Usage:**
+```bash
+python analyze_interval_sweep_train.py \
     --config configs/resnet50_baseline.yaml \
-    --run-dir checkpoints/resnet50_baseline/20251208-162511 \
-    --upper-hours 6 8 10 12 14 16 18 20 \
+    --upper-hours 8 10 12 14 16 18 20 \
     --start-hour 1 \
     --metrics auc accuracy f1 \
-    --split test
+    --k-folds 5 \
+    --epochs 10
 ```
 
-**Result**: Intervals [1,6], [1,8], [1,10], ... [1,20] evaluated with 3 metrics, producing:
-- `interval_sweep_combined.png` (all metrics, two panels)
-- `interval_sweep_auc.png` (two panels)
-- `interval_sweep_accuracy.png` (two panels)
-- `interval_sweep_f1.png` (two panels)
-- `interval_sweep_data.json` (all metrics data)
+**Shell scripts:**
+- `shells/analyze_interval_sweep_train.sh`
+- `shells/analyze_interval_sweep_train.ps1`
 
-## Benefits
+### 2. Bug Fixes
 
-### 1. Comprehensive Metric Comparison
-- View multiple metrics side-by-side to understand trade-offs
-- Identify which metrics are most sensitive to time windows
-- Compare early-detection performance across different evaluation criteria
+#### `utils/metrics.py`
+**Fixed**: ROC AUC warning when only one class is present
 
-### 2. Flexible Window Overlap
-- Find optimal overlap for continuous monitoring systems
-- Balance computational cost vs. temporal resolution
-- Identify redundancy in adjacent time windows
+**Before:**
+```python
+try:
+    results["auc"] = metrics.roc_auc_score(labels, probs)
+except ValueError:
+    results["auc"] = float("nan")
+```
 
-### 3. Efficient Experimentation
-- Single script run generates all metric plots
-- Reduced computation time (evaluate once, plot multiple metrics)
-- Easier to share comprehensive results with collaborators
+**After:**
+```python
+try:
+    import warnings
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", message=".*ROC AUC score is not defined.*")
+        results["auc"] = metrics.roc_auc_score(labels, probs)
+except (ValueError, RuntimeWarning):
+    results["auc"] = float("nan")
+```
 
-## Backward Compatibility
+**Benefit**: Suppresses the sklearn warning about undefined ROC AUC when only one class is present in a batch.
 
-All changes maintain backward compatibility:
-- Single metric mode works with existing `--metric` flag
-- Default stride equals window size (no overlap, original behavior)
-- Manual `--window-starts` still supported
-- Existing shell scripts will continue to work (though updated versions are provided)
+## File Structure
 
-## Next Steps
+```
+cell_classification/
+├── analyze_sliding_window.py              # LEGACY: Evaluation-only
+├── analyze_sliding_window_train.py        # NEW: Full training
+├── analyze_interval_sweep.py              # LEGACY: Evaluation-only  
+├── analyze_interval_sweep_train.py        # NEW: Full training
+├── shells/
+│   ├── analyze_sliding_window.sh          # LEGACY: For evaluation-only
+│   ├── analyze_sliding_window.ps1         # LEGACY: For evaluation-only
+│   ├── analyze_sliding_window_train.sh    # NEW: For training
+│   ├── analyze_sliding_window_train.ps1   # NEW: For training
+│   ├── analyze_interval_sweep_train.sh    # NEW: For training
+│   └── analyze_interval_sweep_train.ps1   # NEW: For training
+└── utils/
+    └── metrics.py                         # FIXED: ROC AUC warning suppression
+```
 
-Users can now:
-1. Experiment with different overlap strategies to optimize early detection
-2. Compare multiple performance metrics across time windows simultaneously
-3. Generate comprehensive reports with single commands
-4. Identify which time windows and metrics are most reliable for infection classification
+## When to Use Which
+
+### Use Training-Based Scripts When:
+- ✅ You want to discover which time windows are most informative for **training**
+- ✅ You want to understand which periods contain the strongest infection signal
+- ✅ You're designing an early detection system and need to know optimal time ranges
+- ✅ You have compute resources and time for full training runs
+- ✅ You want definitive answers about temporal information content
+
+### Use Evaluation-Only Scripts When:
+- ✅ You already have trained checkpoints and want quick analysis
+- ✅ You want to test how existing models perform on different time ranges
+- ✅ You need fast turnaround without re-training
+- ✅ You're debugging or doing exploratory analysis
+
+## Performance Considerations
+
+### Training-Based Analysis:
+- **Time**: Hours to days (trains multiple models × K-folds)
+- **Compute**: Requires GPU for reasonable speed
+- **Example**: 6 windows × 5 folds × 10 epochs ≈ 300 training runs
+- **Benefit**: Authoritative results on optimal time windows
+
+### Evaluation-Only Analysis:
+- **Time**: Minutes
+- **Compute**: Can run on CPU
+- **Example**: 6 windows × 5 folds ≈ 30 evaluations
+- **Benefit**: Fast iteration for hypothesis testing
+
+## Updated README Sections
+
+The README now has two main analysis sections:
+
+1. **Advanced Analysis: Training-Based Window Evaluation** (NEW)
+   - Interval sweep training analysis
+   - Sliding window training analysis
+   - With interpretation examples
+
+2. **Evaluation-Only Analysis (Using Pre-Trained Checkpoints)** (LEGACY)
+   - Interval sweep error bars (evaluation-only)
+   - Sliding window analysis (evaluation-only)
+   - Clearly marked as "legacy" for existing checkpoints
+
+## Quick Start Examples
+
+### Training-Based Sliding Window Analysis:
+```bash
+# Edit and run the shell script
+bash shells/analyze_sliding_window_train.sh
+
+# Or directly:
+python analyze_sliding_window_train.py \
+    --window-size 5 --stride 5 \
+    --metrics auc accuracy f1 \
+    --k-folds 5 --epochs 10
+```
+
+### Training-Based Interval Sweep Analysis:
+```bash
+# Edit and run the shell script
+bash shells/analyze_interval_sweep_train.sh
+
+# Or directly:
+python analyze_interval_sweep_train.py \
+    --upper-hours 8 10 12 14 16 18 20 \
+    --metrics auc accuracy f1 \
+    --k-folds 5 --epochs 10
+```
+
+## Output Locations
+
+### Training-Based Scripts:
+```
+outputs/
+├── sliding_window_analysis/
+│   └── <timestamp>/
+│       ├── sliding_window_w5_s5_combined.png
+│       ├── sliding_window_w5_s5_auc.png
+│       ├── sliding_window_w5_s5_data.json
+│       └── sliding_window_train.log
+└── interval_sweep_analysis/
+    └── <timestamp>/
+        ├── interval_sweep_combined.png
+        ├── interval_sweep_auc.png
+        ├── interval_sweep_data.json
+        └── interval_sweep_train.log
+```
+
+### Evaluation-Only Scripts:
+```
+checkpoints/<experiment>/<run_id>/
+└── analysis/
+    ├── sliding_window_w5_s2_combined.png
+    ├── interval_sweep_combined.png
+    └── *.json
+```
+
+## Summary of Changes
+
+### Files Added:
+1. `analyze_sliding_window_train.py` - Full training for sliding windows
+2. `analyze_interval_sweep_train.py` - Full training for interval sweep
+3. `shells/analyze_sliding_window_train.sh` - Bash helper script
+4. `shells/analyze_sliding_window_train.ps1` - PowerShell helper script
+5. `shells/analyze_interval_sweep_train.sh` - Bash helper script
+6. `shells/analyze_interval_sweep_train.ps1` - PowerShell helper script
+
+### Files Modified:
+1. `utils/metrics.py` - Fixed ROC AUC warning
+2. `README.md` - Major restructure with training vs evaluation sections
+3. `ANALYSIS_UPDATES.md` - This file (complete rewrite)
+
+### Files Unchanged (Legacy):
+1. `analyze_sliding_window.py` - Kept for quick evaluation
+2. `analyze_interval_sweep.py` - Kept for quick evaluation
+3. `shells/analyze_sliding_window.sh` - For legacy script
+4. `shells/analyze_sliding_window.ps1` - For legacy script
+
+## Recommendations
+
+1. **For research/publication**: Use training-based analysis to get definitive results
+2. **For quick checks**: Use evaluation-only analysis with existing checkpoints
+3. **For early detection optimization**: Use sliding window training to find optimal periods
+4. **For understanding temporal information**: Use interval sweep training to see how much data is needed
+
+All scripts support:
+- ✅ K-fold cross-validation
+- ✅ Multiple metrics simultaneously
+- ✅ Combined and individual plots
+- ✅ JSON data export for further analysis
+- ✅ Detailed logging

@@ -1,6 +1,99 @@
 # Cell Classification Pipeline
 
-This repository contains a PyTorch training pipeline that classifies live-cell imaging time-course TIFF stacks as **infected** or **uninfected**. Each TIFF file stores 95 time points (t0–t94) acquired every 30 minutes. Empirically, infected cells begin to show cytopathic effects (CPE) between 16–30 hours post-infection, so the default configuration samples frames within that window.
+This repository contains a PyTorch training pipeline that classifies live-cell imaging time-course TIFF stack   - PyTorch ≥ 2.6 users can add `--weights-only` for stricter deserialization; the script automatically allowlists `numpy.core.multiarray.scalar` (required by our checkpoints) and falls back to the legacy path if necessary.
+
+## Advanced Analysis: Training-Based Window Evaluation
+
+The following analysis scripts **train fresh models** for different time windows to discover which time periods contain the most informative signal for infection classification. These are compute-intensive but provide deeper insights than evaluation-only analysis.
+
+### Interval sweep training analysis
+
+Use `analyze_interval_sweep_train.py` to train models with different infected interval ranges and compare their performance. This reveals how much temporal information is needed for accurate classification.
+
+```powershell
+python analyze_interval_sweep_train.py `
+   --config configs/resnet50_baseline.yaml `
+   --upper-hours 8 10 12 14 16 18 20 `
+   --start-hour 1 `
+   --metrics auc accuracy f1 `
+   --k-folds 5 `
+   --epochs 10 `
+   --split test
+```
+
+**What it does:**
+- For each upper bound X, trains models using infected frames from [start, X]
+- Runs in two modes:
+  - **train-test**: Both train and test use [start, X]
+  - **test-only**: Train uses full range, test restricted to [start, X]
+- Reports metrics across K-fold cross-validation
+- Generates two-panel plots comparing both modes
+
+**Outputs:**
+- `outputs/interval_sweep_analysis/<timestamp>/interval_sweep_combined.png`: All metrics together
+- `outputs/interval_sweep_analysis/<timestamp>/interval_sweep_<metric>.png`: Individual two-panel plots
+- `outputs/interval_sweep_analysis/<timestamp>/interval_sweep_data.json`: Raw results
+- `outputs/interval_sweep_analysis/<timestamp>/interval_sweep_train.log`: Training log
+
+**Shell scripts:**
+- Unix/Linux: `bash shells/analyze_interval_sweep_train.sh`
+- Windows PowerShell: `.\shells\analyze_interval_sweep_train.ps1`
+
+### Sliding window training analysis
+
+Use `analyze_sliding_window_train.py` to train models on different time windows [x, x+k] and identify which periods are most predictive.
+
+```powershell
+python analyze_sliding_window_train.py `
+   --config configs/resnet50_baseline.yaml `
+   --window-size 5 `
+   --stride 5 `
+   --start-hour 0 `
+   --end-hour 30 `
+   --metrics auc accuracy f1 `
+   --k-folds 5 `
+   --epochs 10 `
+   --split test
+```
+
+**What it does:**
+- For each window [x, x+k], trains a fresh model using only frames from that window
+- Train/val/test all use the same time interval [x, x+k]
+- Shows which time periods contain the strongest infection signal
+- Supports overlapping windows via `--stride` parameter
+
+**Parameters:**
+- `--window-size`: Width of each window in hours (default: 5)
+- `--stride`: Step between windows (default: window-size for no overlap)
+  - `stride < window-size`: Overlapping windows
+  - `stride = window-size`: Adjacent windows
+  - `stride > window-size`: Gaps between windows
+- `--k-folds`: Number of CV folds (default: from config)
+- `--epochs`: Training epochs per window (default: from config)
+
+**Outputs:**
+- `outputs/sliding_window_analysis/<timestamp>/sliding_window_w<size>_s<stride>_combined.png`: All metrics
+- `outputs/sliding_window_analysis/<timestamp>/sliding_window_w<size>_s<stride>_<metric>.png`: Individual plots
+- `outputs/sliding_window_analysis/<timestamp>/sliding_window_w<size>_s<stride>_data.json`: Raw results
+- `outputs/sliding_window_analysis/<timestamp>/sliding_window_train.log`: Training log
+
+**Example interpretation:**
+```
+Window [0,5]:   AUC = 0.65 ± 0.03  ← Early period, weak signal
+Window [10,15]: AUC = 0.88 ± 0.02  ← Mid-infection, strong signal
+Window [20,25]: AUC = 0.95 ± 0.01  ← Late infection, very strong signal
+```
+This shows that models trained on later time windows (20-25h) achieve the best performance, indicating that cytopathic effects become most discriminative after 20 hours.
+
+**Shell scripts:**
+- Unix/Linux: `bash shells/analyze_sliding_window_train.sh`
+- Windows PowerShell: `.\shells\analyze_sliding_window_train.ps1`
+
+## Evaluation-Only Analysis (Using Pre-Trained Checkpoints)
+
+For quick analysis using pre-trained checkpoints without re-training, use the following scripts. These are much faster but don't reveal which time windows are optimal for training.
+
+### Interval sweep error bars (evaluation-only)s **infected** or **uninfected**. Each TIFF file stores 95 time points (t0–t94) acquired every 30 minutes. Empirically, infected cells begin to show cytopathic effects (CPE) between 16–30 hours post-infection, so the default configuration samples frames within that window.
 
 ## Project layout
 
@@ -179,9 +272,9 @@ The two panels show:
 
 Pass `--weights-only` if your checkpoints require the safer PyTorch deserializer, or `--output-dir`/`--save-data` to customize where the artifacts land.
 
-### Sliding window analysis
+### Sliding window analysis (evaluation-only)
 
-Use `analyze_sliding_window.py` to evaluate model performance across different time windows of fixed width. The script trains and evaluates on consecutive windows `[x, x+k]` where `k` is the window width (e.g., 5 or 10 hours) and `x` varies from the start to the end of the infection timeline.
+Use `analyze_sliding_window.py` to evaluate pre-trained models on different time windows. The script loads existing checkpoints and tests them on data filtered to windows `[x, x+k]`.
 
 ```powershell
 # Auto-generate windows with stride (supports overlap)
@@ -205,7 +298,10 @@ python analyze_sliding_window.py `
    --split test
 ```
 
+**Note:** This script evaluates pre-trained models. For training-based analysis (recommended for discovering optimal time windows), see [Sliding window training analysis](#sliding-window-training-analysis).
+
 **Parameters:**
+- `--run-dir`: Path to checkpoint directory with fold subfolders
 - `--window-size`: Size of the sliding window in hours (default: 5)
 - `--stride`: Step size between consecutive windows (default: window-size for no overlap)
   - `stride < window-size`: Creates overlapping windows

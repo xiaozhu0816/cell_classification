@@ -34,7 +34,10 @@ def binary_metrics(logits: np.ndarray, labels: np.ndarray) -> Dict[str, float]:
         "f1": metrics.f1_score(labels, preds, zero_division=0),
     }
     try:
-        results["auc"] = metrics.roc_auc_score(labels, probs)
-    except ValueError:
+        import warnings
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message=".*ROC AUC score is not defined.*")
+            results["auc"] = metrics.roc_auc_score(labels, probs)
+    except (ValueError, RuntimeWarning):
         results["auc"] = float("nan")
     return results
