@@ -180,11 +180,23 @@ def log_time_bin_metrics(
 def create_dataloaders(train_ds, val_ds, test_ds, data_cfg: Dict) -> Tuple[DataLoader, DataLoader, DataLoader]:
     batch_size = data_cfg.get("batch_size", 4)
     num_workers = data_cfg.get("num_workers", 4)
+    
+    # Evaluation can use larger batch size since no gradients are computed
+    eval_batch_size_multiplier = data_cfg.get("eval_batch_size_multiplier", 2)
+    eval_batch_size = batch_size * eval_batch_size_multiplier
+    
     loader_kwargs = {
         "batch_size": batch_size,
         "num_workers": num_workers,
         "pin_memory": True,
     }
+    
+    eval_loader_kwargs = {
+        "batch_size": eval_batch_size,
+        "num_workers": num_workers,
+        "pin_memory": True,
+    }
+    
     train_sampler = None
     if data_cfg.get("balance_sampler"):
         train_sampler = build_class_balanced_sampler(train_ds)
@@ -195,7 +207,7 @@ def create_dataloaders(train_ds, val_ds, test_ds, data_cfg: Dict) -> Tuple[DataL
         drop_last=data_cfg.get("drop_last", True),
         **loader_kwargs,
     )
-    eval_loader = lambda ds: DataLoader(ds, shuffle=False, **loader_kwargs)  # noqa: E731
+    eval_loader = lambda ds: DataLoader(ds, shuffle=False, **eval_loader_kwargs)  # noqa: E731
     return train_loader, eval_loader(val_ds), eval_loader(test_ds)
 
 

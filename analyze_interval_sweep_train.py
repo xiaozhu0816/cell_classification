@@ -74,6 +74,15 @@ def parse_args() -> argparse.Namespace:
         help="Dataset split used for final evaluation",
     )
     parser.add_argument(
+        "--mode",
+        choices=["both", "test-only", "train-test"],
+        default="both",
+        help="Which experiment mode to run: "
+             "'test-only' (train on ALL, test on [1,x]), "
+             "'train-test' (train on [1,x], test on [1,x]), "
+             "or 'both' (run both modes for comparison)",
+    )
+    parser.add_argument(
         "--metrics",
         nargs="+",
         default=None,
@@ -286,6 +295,29 @@ def train_and_evaluate_interval(
                         task_cfg=task_cfg,
                         analysis_cfg=analysis_cfg,
                     )
+                    
+                    # Save checkpoint for best model
+                    checkpoint_dir = output_dir / "checkpoints" / f"{mode}_interval_{start_hour:.0f}-{hour:.0f}"
+                    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+                    checkpoint_path = checkpoint_dir / f"fold_{fold_idx + 1:02d}_best.pth"
+                    
+                    checkpoint = {
+                        'epoch': epoch,
+                        'model_state_dict': model.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict(),
+                        'mode': mode,
+                        'start_hour': start_hour,
+                        'upper_hour': hour,
+                        'fold': fold_idx + 1,
+                        'best_val_score': best_score,
+                        'best_metrics': best_metrics,
+                        'config': cfg,
+                    }
+                    if scheduler:
+                        checkpoint['scheduler_state_dict'] = scheduler.state_dict()
+                    
+                    torch.save(checkpoint, checkpoint_path)
+                    logger.info(f"Saved checkpoint: {checkpoint_path}")
         
         # Collect metrics from best model
         if best_metrics:
@@ -421,8 +453,7 @@ def main() -> None:
     
     logger = get_logger(
         name="interval_sweep_train",
-        log_dir=output_dir,
-        log_file="interval_sweep_train.log"
+        log_dir=output_dir
     )
     
     logger.info("="*60)
@@ -464,9 +495,16 @@ def main() -> None:
         metric_keys = [args.metric]
         logger.info(f"Evaluating single metric: {args.metric}")
     
-    modes = ("train-test", "test-only")
+    # Determine which modes to run based on --mode parameter
+    if args.mode == "both":
+        modes = ("train-test", "test-only")
+    elif args.mode == "test-only":
+        modes = ("test-only",)
+    else:  # train-test
+        modes = ("train-test",)
     
-    logger.info(f"Will train {len(hours)} intervals × 2 modes × {k_folds} folds")
+    logger.info(f"Running mode(s): {', '.join(modes)}")
+    logger.info(f"Will train {len(hours)} intervals × {len(modes)} mode(s) × {k_folds} folds")
     logger.info(f"Total training runs: {len(hours) * 2 * k_folds}")
     logger.info("="*60)
     
@@ -543,6 +581,12 @@ def main() -> None:
     logger.info(f"\nSaved data to {save_path}")
     logger.info("="*60)
     logger.info(f"Analysis complete! Results saved to: {output_dir}")
+    logger.info(f"\nOutputs:")
+    logger.info(f"  - Plots: {output_dir}/*.png")
+    logger.info(f"  - Data: {save_path}")
+    logger.info(f"  - Checkpoints: {output_dir}/checkpoints/*/fold_*_best.pth")
+    logger.info(f"  - Log: {output_dir}/interval_sweep_train.log")
+    logger.info("="*60)
 
 
 if __name__ == "__main__":

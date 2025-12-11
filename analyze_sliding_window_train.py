@@ -310,6 +310,28 @@ def train_and_evaluate_window(
                         task_cfg=task_cfg,
                         analysis_cfg=analysis_cfg,
                     )
+                    
+                    # Save checkpoint for best model
+                    checkpoint_dir = output_dir / "checkpoints" / f"window_{window_start:.0f}-{window_end:.0f}"
+                    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+                    checkpoint_path = checkpoint_dir / f"fold_{fold_idx + 1:02d}_best.pth"
+                    
+                    checkpoint = {
+                        'epoch': epoch,
+                        'model_state_dict': model.state_dict(),
+                        'optimizer_state_dict': optimizer.state_dict(),
+                        'window_start': window_start,
+                        'window_end': window_end,
+                        'fold': fold_idx + 1,
+                        'best_val_score': best_score,
+                        'best_metrics': best_metrics,
+                        'config': cfg,
+                    }
+                    if scheduler:
+                        checkpoint['scheduler_state_dict'] = scheduler.state_dict()
+                    
+                    torch.save(checkpoint, checkpoint_path)
+                    logger.info(f"Saved checkpoint: {checkpoint_path}")
         
         # Collect metrics from best model
         if best_metrics:
@@ -475,8 +497,7 @@ def main() -> None:
     
     logger = get_logger(
         name="sliding_window_train",
-        log_dir=output_dir,
-        log_file="sliding_window_train.log"
+        log_dir=output_dir
     )
     
     logger.info("="*60)
@@ -690,6 +711,12 @@ def main() -> None:
     
     logger.info("="*60)
     logger.info(f"Analysis complete! Results saved to: {output_dir}")
+    logger.info(f"\nOutputs:")
+    logger.info(f"  - Plots: {output_dir}/*.png")
+    logger.info(f"  - Data: {save_path}")
+    logger.info(f"  - Checkpoints: {output_dir}/checkpoints/window_*/fold_*_best.pth")
+    logger.info(f"  - Log: {output_dir}/sliding_window_train.log")
+    logger.info("="*60)
 
 
 if __name__ == "__main__":

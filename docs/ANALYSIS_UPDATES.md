@@ -209,13 +209,51 @@ outputs/
 │       ├── sliding_window_w5_s5_combined.png
 │       ├── sliding_window_w5_s5_auc.png
 │       ├── sliding_window_w5_s5_data.json
-│       └── sliding_window_train.log
+│       ├── sliding_window_train.log
+│       └── checkpoints/
+│           ├── window_0-5/
+│           │   ├── fold_01_best.pth
+│           │   ├── fold_02_best.pth
+│           │   └── ...
+│           ├── window_5-10/
+│           │   └── fold_*_best.pth
+│           └── ...
 └── interval_sweep_analysis/
     └── <timestamp>/
         ├── interval_sweep_combined.png
         ├── interval_sweep_auc.png
         ├── interval_sweep_data.json
-        └── interval_sweep_train.log
+        ├── interval_sweep_train.log
+        └── checkpoints/
+            ├── train-test_interval_1-8/
+            │   └── fold_*_best.pth
+            ├── train-test_interval_1-10/
+            │   └── fold_*_best.pth
+            ├── test-only_interval_1-8/
+            │   └── fold_*_best.pth
+            └── ...
+```
+
+**Checkpoint Contents:**
+Each `.pth` file contains:
+- `model_state_dict`: Trained model weights
+- `optimizer_state_dict`: Optimizer state
+- `scheduler_state_dict`: Learning rate scheduler state (if used)
+- `epoch`: Best epoch number
+- `window_start`, `window_end`: Time window (sliding window only)
+- `mode`, `start_hour`, `upper_hour`: Interval configuration (interval sweep only)
+- `fold`: Fold number
+- `best_val_score`: Best validation metric score
+- `best_metrics`: Full metrics dictionary from evaluation
+- `config`: Complete configuration used for training
+
+**Loading a checkpoint:**
+```python
+checkpoint = torch.load('fold_01_best.pth')
+model.load_state_dict(checkpoint['model_state_dict'])
+print(f"Best {checkpoint.get('window_start')}-{checkpoint.get('window_end')}h window")
+print(f"Validation AUC: {checkpoint['best_val_score']:.4f}")
+print(f"Test metrics: {checkpoint['best_metrics']}")
 ```
 
 ### Evaluation-Only Scripts:
@@ -236,11 +274,18 @@ checkpoints/<experiment>/<run_id>/
 4. `shells/analyze_sliding_window_train.ps1` - PowerShell helper script
 5. `shells/analyze_interval_sweep_train.sh` - Bash helper script
 6. `shells/analyze_interval_sweep_train.ps1` - PowerShell helper script
+7. `load_checkpoint_example.py` - Example script for loading and using saved checkpoints
 
 ### Files Modified:
-1. `utils/metrics.py` - Fixed ROC AUC warning
-2. `README.md` - Major restructure with training vs evaluation sections
-3. `ANALYSIS_UPDATES.md` - This file (complete rewrite)
+1. `utils/metrics.py` - Fixed ROC AUC warning suppression
+2. `train.py` - Added `eval_batch_size_multiplier` for faster validation/testing
+3. `configs/resnet50_baseline.yaml` - Added eval_batch_size_multiplier=2 (eval uses 512 batch size)
+4. `configs/resnet50_early.yaml` - Added eval_batch_size_multiplier=2
+5. `configs/resnet50_time_regression.yaml` - Added eval_batch_size_multiplier=3 (eval uses 384 batch size)
+6. `README.md` - Major restructure with training vs evaluation sections + batch size optimization docs
+7. `ANALYSIS_UPDATES.md` - This file (comprehensive documentation)
+8. `analyze_sliding_window_train.py` - Added checkpoint saving for each window/fold
+9. `analyze_interval_sweep_train.py` - Added checkpoint saving for each interval/fold
 
 ### Files Unchanged (Legacy):
 1. `analyze_sliding_window.py` - Kept for quick evaluation
@@ -248,12 +293,39 @@ checkpoints/<experiment>/<run_id>/
 3. `shells/analyze_sliding_window.sh` - For legacy script
 4. `shells/analyze_sliding_window.ps1` - For legacy script
 
+## Performance Optimizations
+
+### Larger Batch Size for Evaluation
+Since validation and testing don't require gradient computation, they can use **2-3x larger batch sizes** than training:
+
+**Configuration:**
+```yaml
+data:
+  batch_size: 256                    # Training batch size
+  eval_batch_size_multiplier: 2      # Eval uses 512 (256 * 2)
+```
+
+**Benefits:**
+- ⚡ **Faster validation/testing**: 2-3x speedup on evaluation
+- 💾 **Better GPU utilization**: No gradient tensors means more memory for batches
+- 🔧 **Automatic**: Works for all scripts (train.py, analysis scripts, etc.)
+
+**Memory usage:**
+- Training: `batch_size * (model + gradients + optimizer states)`
+- Evaluation: `eval_batch_size * model` only
+
+**Recommended multipliers:**
+- GPUs with 16+ GB VRAM: `eval_batch_size_multiplier: 3`
+- GPUs with 8-16 GB VRAM: `eval_batch_size_multiplier: 2` (default)
+- GPUs with <8 GB VRAM: `eval_batch_size_multiplier: 1` (same as training)
+
 ## Recommendations
 
 1. **For research/publication**: Use training-based analysis to get definitive results
 2. **For quick checks**: Use evaluation-only analysis with existing checkpoints
 3. **For early detection optimization**: Use sliding window training to find optimal periods
 4. **For understanding temporal information**: Use interval sweep training to see how much data is needed
+5. **For faster experiments**: Increase `eval_batch_size_multiplier` to speed up validation/testing
 
 All scripts support:
 - ✅ K-fold cross-validation
@@ -261,3 +333,5 @@ All scripts support:
 - ✅ Combined and individual plots
 - ✅ JSON data export for further analysis
 - ✅ Detailed logging
+- ✅ **Model checkpoint saving** (NEW)
+- ✅ **Optimized evaluation batch sizes** (NEW)

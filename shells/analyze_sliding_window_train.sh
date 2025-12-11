@@ -5,10 +5,10 @@
 
 # Configuration
 CONFIG="configs/resnet50_baseline.yaml"
-WINDOW_SIZE=5  # Window size in hours (k)
+WINDOW_SIZE=6  # Window size in hours (k)
 START_HOUR=1  # Starting hour for first window
-END_HOUR=30  # Maximum ending hour
-STRIDE=5  # Step size between windows
+END_HOUR=46  # Maximum ending hour
+STRIDE=3  # Step size between windows
           # stride < window_size creates overlap
           # stride = window_size creates adjacent windows (no gap, no overlap)
           # stride > window_size creates gaps between windows
