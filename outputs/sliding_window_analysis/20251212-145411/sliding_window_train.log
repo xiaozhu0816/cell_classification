@@ -560,3 +560,18 @@
 2025-12-12 15:20:23,644 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
 2025-12-12 15:20:23,644 | INFO | test: accuracy:0.9038 | precision:1.0000 | recall:0.8077 | f1:0.8936 | auc:0.9940 | loss:0.2011
 2025-12-12 15:20:26,227 | INFO | Saved checkpoint: outputs/sliding_window_analysis/20251212-145411/checkpoints/window_1-7/fold_03_best.pth
+2025-12-12 15:20:57,448 | INFO | train loss: 0.0223
+2025-12-12 15:21:13,283 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=78
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=78
+  thr=0.20 | P=0.99 | R=0.95 | F1=0.97 | TP=74
+  thr=0.25 | P=0.99 | R=0.94 | F1=0.96 | TP=73
+  thr=0.30 | P=1.00 | R=0.91 | F1=0.95 | TP=71
+  thr=0.50 | P=1.00 | R=0.67 | F1=0.80 | TP=52
+2025-12-12 15:21:13,288 | INFO | val time bin [0.0h, 8.0h): samples=143 | accuracy:0.818 | precision:1.000 | recall:0.667 | f1:0.800 | auc:0.999
+2025-12-12 15:21:13,288 | INFO | val time bin [8.0h, 12.0h): samples=0 | metrics=NA (no data)
+2025-12-12 15:21:13,288 | INFO | val time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
+2025-12-12 15:21:13,289 | INFO | val time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
+2025-12-12 15:21:13,289 | INFO | val time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
+2025-12-12 15:21:13,289 | INFO | val: accuracy:0.8182 | precision:1.0000 | recall:0.6667 | f1:0.8000 | auc:0.9990 | loss:0.2930
+2025-12-12 15:21:43,717 | INFO | train loss: 0.0138
