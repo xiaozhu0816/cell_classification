@@ -15,7 +15,7 @@
 # Output directories
 logs/
 checkpoints/
-outputs/
+# outputs/
 
 # Python cache
 __pycache__/

@@ -1,0 +1,74 @@
+2025-12-05 17:36:14,147 | INFO | train split -> total:2805 | conditions[infected:759, uninfected:2046] | labels[label0:2046, label1:759]
+2025-12-05 17:36:14,148 | INFO | train TIFFs -> total:45 | per-condition[infected:23, uninfected:22] | avg-frames/TIFF[infected:33.0, uninfected:93.0]
+2025-12-05 17:36:14,148 | INFO | val split -> total:723 | conditions[infected:165, uninfected:558] | labels[label0:558, label1:165]
+2025-12-05 17:36:14,148 | INFO | val TIFFs -> total:11 | per-condition[infected:5, uninfected:6] | avg-frames/TIFF[infected:33.0, uninfected:93.0]
+2025-12-05 17:36:14,149 | INFO | test split -> total:1008 | conditions[infected:264, uninfected:744] | labels[label0:744, label1:264]
+2025-12-05 17:36:14,149 | INFO | test TIFFs -> total:16 | per-condition[infected:8, uninfected:8] | avg-frames/TIFF[infected:33.0, uninfected:93.0]
+2025-12-05 17:36:14,610 | INFO | Fold 5/5 - Epoch 1/5
+2025-12-05 17:37:52,805 | INFO | train loss: 0.3413
+2025-12-05 17:38:25,244 | INFO | val threshold sweep:
+  thr=0.05 | P=1.00 | R=0.03 | F1=0.06 | TP=5
+  thr=0.10 | P=1.00 | R=0.01 | F1=0.01 | TP=1
+  thr=0.15 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.20 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.25 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.30 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+2025-12-05 17:38:25,251 | INFO | val time bin [0.0h, 6.0h): samples=723 | accuracy:0.772 | precision:0.000 | recall:0.000 | f1:0.000 | auc:0.970
+2025-12-05 17:38:25,251 | INFO | val: accuracy:0.7718 | precision:0.0000 | recall:0.0000 | f1:0.0000 | auc:0.9697 | loss:1.8849
+2025-12-05 17:38:26,882 | INFO | New best model with auc 0.9697
+2025-12-05 17:38:26,882 | INFO | Fold 5/5 - Epoch 2/5
+2025-12-05 17:40:06,264 | INFO | train loss: 0.0722
+2025-12-05 17:40:38,022 | INFO | val threshold sweep:
+  thr=0.05 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.10 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.15 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.20 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.25 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+  thr=0.30 | P=0.00 | R=0.00 | F1=0.00 | TP=0
+2025-12-05 17:40:38,027 | INFO | val time bin [0.0h, 6.0h): samples=723 | accuracy:0.772 | precision:0.000 | recall:0.000 | f1:0.000 | auc:0.088
+2025-12-05 17:40:38,027 | INFO | val: accuracy:0.7718 | precision:0.0000 | recall:0.0000 | f1:0.0000 | auc:0.0879 | loss:1.8304
+2025-12-05 17:40:38,027 | INFO | Fold 5/5 - Epoch 3/5
+2025-12-05 17:42:13,829 | INFO | train loss: 0.0493
+2025-12-05 17:42:45,467 | INFO | val threshold sweep:
+  thr=0.05 | P=1.00 | R=0.24 | F1=0.39 | TP=40
+  thr=0.10 | P=1.00 | R=0.18 | F1=0.30 | TP=29
+  thr=0.15 | P=1.00 | R=0.13 | F1=0.23 | TP=21
+  thr=0.20 | P=1.00 | R=0.10 | F1=0.19 | TP=17
+  thr=0.25 | P=1.00 | R=0.09 | F1=0.17 | TP=15
+  thr=0.30 | P=1.00 | R=0.07 | F1=0.14 | TP=12
+2025-12-05 17:42:45,472 | INFO | val time bin [0.0h, 6.0h): samples=723 | accuracy:0.784 | precision:1.000 | recall:0.055 | f1:0.103 | auc:0.528
+2025-12-05 17:42:45,472 | INFO | val: accuracy:0.7842 | precision:1.0000 | recall:0.0545 | f1:0.1034 | auc:0.5280 | loss:1.0709
+2025-12-05 17:42:45,472 | INFO | Fold 5/5 - Epoch 4/5
+2025-12-05 17:44:21,345 | INFO | train loss: 0.0230
+2025-12-05 17:44:53,138 | INFO | val threshold sweep:
+  thr=0.05 | P=1.00 | R=0.38 | F1=0.55 | TP=63
+  thr=0.10 | P=1.00 | R=0.31 | F1=0.47 | TP=51
+  thr=0.15 | P=1.00 | R=0.27 | F1=0.42 | TP=44
+  thr=0.20 | P=1.00 | R=0.22 | F1=0.36 | TP=36
+  thr=0.25 | P=1.00 | R=0.19 | F1=0.32 | TP=32
+  thr=0.30 | P=1.00 | R=0.16 | F1=0.27 | TP=26
+2025-12-05 17:44:53,143 | INFO | val time bin [0.0h, 6.0h): samples=723 | accuracy:0.797 | precision:1.000 | recall:0.109 | f1:0.197 | auc:0.980
+2025-12-05 17:44:53,143 | INFO | val: accuracy:0.7967 | precision:1.0000 | recall:0.1091 | f1:0.1967 | auc:0.9804 | loss:1.0405
+2025-12-05 17:44:54,796 | INFO | New best model with auc 0.9804
+2025-12-05 17:44:54,796 | INFO | Fold 5/5 - Epoch 5/5
+2025-12-05 17:46:31,605 | INFO | train loss: 0.0232
+2025-12-05 17:47:03,543 | INFO | val threshold sweep:
+  thr=0.05 | P=1.00 | R=0.53 | F1=0.70 | TP=88
+  thr=0.10 | P=1.00 | R=0.45 | F1=0.62 | TP=75
+  thr=0.15 | P=1.00 | R=0.39 | F1=0.56 | TP=64
+  thr=0.20 | P=1.00 | R=0.36 | F1=0.53 | TP=59
+  thr=0.25 | P=1.00 | R=0.34 | F1=0.51 | TP=56
+  thr=0.30 | P=1.00 | R=0.31 | F1=0.47 | TP=51
+2025-12-05 17:47:03,548 | INFO | val time bin [0.0h, 6.0h): samples=723 | accuracy:0.823 | precision:1.000 | recall:0.224 | f1:0.366 | auc:0.987
+2025-12-05 17:47:03,548 | INFO | val: accuracy:0.8230 | precision:1.0000 | recall:0.2242 | f1:0.3663 | auc:0.9869 | loss:0.7726
+2025-12-05 17:47:05,160 | INFO | New best model with auc 0.9869
+2025-12-05 17:47:05,160 | INFO | Evaluating on test split
+2025-12-05 17:47:41,580 | INFO | test threshold sweep:
+  thr=0.05 | P=1.00 | R=0.44 | F1=0.61 | TP=116
+  thr=0.10 | P=1.00 | R=0.39 | F1=0.56 | TP=102
+  thr=0.15 | P=1.00 | R=0.33 | F1=0.50 | TP=87
+  thr=0.20 | P=1.00 | R=0.30 | F1=0.47 | TP=80
+  thr=0.25 | P=1.00 | R=0.28 | F1=0.44 | TP=75
+  thr=0.30 | P=1.00 | R=0.27 | F1=0.42 | TP=70
+2025-12-05 17:47:41,585 | INFO | test time bin [0.0h, 6.0h): samples=1008 | accuracy:0.787 | precision:1.000 | recall:0.186 | f1:0.313 | auc:0.986
+2025-12-05 17:47:41,585 | INFO | test: accuracy:0.7867 | precision:1.0000 | recall:0.1856 | f1:0.3131 | auc:0.9864 | loss:1.0103

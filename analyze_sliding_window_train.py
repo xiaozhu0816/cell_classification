@@ -139,6 +139,12 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Number of training epochs per window (overrides config if provided)",
     )
+    parser.add_argument(
+        "--match-uninfected-window",
+        action="store_true",
+        help="Apply the same time window to uninfected samples (default: uninfected uses all time points). "
+             "When enabled, both infected and uninfected use the exact same [x, x+k] window.",
+    )
     return parser.parse_args()
 
 
@@ -146,22 +152,35 @@ _SPLIT_OVERRIDE_KEYS = ("train", "val", "test", "default", "eval", "evaluation")
 
 
 def apply_sliding_window(
-    base_frames_cfg: Dict | None, start: float, end: float
+    base_frames_cfg: Dict | None, start: float, end: float, match_uninfected: bool = False
 ) -> Dict:
     """
     Apply sliding window [start, end] to ALL splits (train, val, test).
     Both training and testing use the same time interval.
+    
+    Args:
+        base_frames_cfg: Base frame configuration
+        start: Window start hour
+        end: Window end hour
+        match_uninfected: If True, apply same window to uninfected samples.
+                         If False (default), uninfected uses all time points.
     """
     frames_cfg = copy.deepcopy(base_frames_cfg) if base_frames_cfg else {}
     
     # Set the base infected window
     frames_cfg["infected_window_hours"] = [start, end]
     
+    # Apply window to uninfected if requested
+    if match_uninfected:
+        frames_cfg["uninfected_window_hours"] = [start, end]
+    
     # Override all split-specific configurations to use the same window
     for key in _SPLIT_OVERRIDE_KEYS:
         if key in frames_cfg or key in ("train", "val", "test"):
             section = copy.deepcopy(frames_cfg.get(key, {}))
             section["infected_window_hours"] = [start, end]
+            if match_uninfected:
+                section["uninfected_window_hours"] = [start, end]
             frames_cfg[key] = section
     
     return frames_cfg
@@ -179,6 +198,7 @@ def train_and_evaluate_window(
     device,
     logger,
     output_dir: Path,
+    match_uninfected: bool = False,
 ) -> Dict[str, Tuple[List[float], float | None, float | None]]:
     """
     Train models for one time window across all folds and evaluate.
@@ -187,6 +207,7 @@ def train_and_evaluate_window(
         window_start, window_end: Time interval for this window
         metric_keys: List of metric names to extract
         k_folds: Number of cross-validation folds
+        match_uninfected: Whether to apply same window to uninfected samples
         
     Returns:
         Dictionary mapping metric_key -> (fold_metrics, mean, std)
@@ -194,7 +215,7 @@ def train_and_evaluate_window(
     # Apply window to data config
     data_cfg = copy.deepcopy(base_data_cfg)
     data_cfg["frames"] = apply_sliding_window(
-        base_data_cfg.get("frames"), window_start, window_end
+        base_data_cfg.get("frames"), window_start, window_end, match_uninfected
     )
     
     training_cfg = cfg.get("training", {})
@@ -527,6 +548,12 @@ def main() -> None:
     logger.info(f"Device: {device}")
     logger.info(f"K-folds: {k_folds}")
     
+    # Log uninfected matching mode
+    if args.match_uninfected_window:
+        logger.info("✓ Match uninfected window: ENABLED (infected and uninfected use same time window)")
+    else:
+        logger.info("✗ Match uninfected window: DISABLED (uninfected uses all time points)")
+    
     # Validate window configurations
     window_size = args.window_size
     if window_size <= 0:
@@ -616,6 +643,7 @@ def main() -> None:
             device,
             logger,
             output_dir,
+            args.match_uninfected_window,
         )
         
         # Store results for each metric

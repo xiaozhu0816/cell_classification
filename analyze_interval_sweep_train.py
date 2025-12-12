@@ -122,6 +122,12 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Number of training epochs (overrides config if provided)",
     )
+    parser.add_argument(
+        "--match-uninfected-window",
+        action="store_true",
+        help="Apply the same time interval to uninfected samples (default: uninfected uses all time points). "
+             "When enabled, both infected and uninfected use the exact same [start, x] interval.",
+    )
     return parser.parse_args()
 
 
@@ -129,31 +135,315 @@ _SPLIT_OVERRIDE_KEYS = ("train", "val", "test", "default", "eval", "evaluation")
 
 
 def apply_interval_override(
-    base_frames_cfg: Dict | None, start: float, end: float, mode: str
+    base_frames_cfg: Dict | None, start: float, end: float, mode: str, match_uninfected: bool = False
 ) -> Dict:
     """
     Apply interval [start, end] to dataset splits based on mode.
     
     Args:
         mode: "train-test" (both use [start, end]) or "test-only" (only test uses [start, end])
+        match_uninfected: If True, apply same interval to uninfected samples.
+                         If False (default), uninfected uses all time points.
     """
     frames_cfg = copy.deepcopy(base_frames_cfg) if base_frames_cfg else {}
     
     if mode == "train-test":
         # Both train and test use the restricted interval
         frames_cfg["infected_window_hours"] = [start, end]
+        if match_uninfected:
+            frames_cfg["uninfected_window_hours"] = [start, end]
+        
         for key in _SPLIT_OVERRIDE_KEYS:
             if key in frames_cfg or key in ("train", "val", "test"):
                 section = copy.deepcopy(frames_cfg.get(key, {}))
                 section["infected_window_hours"] = [start, end]
+                if match_uninfected:
+                    section["uninfected_window_hours"] = [start, end]
                 frames_cfg[key] = section
     else:  # test-only
         # Only test uses restricted interval, train uses full range
         test_section = copy.deepcopy(frames_cfg.get("test", {}))
         test_section["infected_window_hours"] = [start, end]
+        if match_uninfected:
+            test_section["uninfected_window_hours"] = [start, end]
         frames_cfg["test"] = test_section
     
     return frames_cfg
+
+
+def train_models_once_for_test_only(
+    cfg: Dict,
+    base_data_cfg: Dict,
+    transforms: Dict[str, Optional[Callable]],
+    start_hour: float,
+    max_hour: float,
+    eval_split: str,
+    k_folds: int,
+    device,
+    logger,
+    output_dir: Path,
+    match_uninfected: bool = False,
+) -> Path:
+    """
+    Train models ONCE on full training data for test-only mode.
+    Saves K checkpoints (one per fold) that can be reused for all test intervals.
+    
+    Args:
+        max_hour: Maximum hour for training data (usually the max of all test intervals)
+        match_uninfected: Whether to apply same interval to uninfected samples
+    
+    Returns:
+        Path to checkpoint directory
+    """
+    logger.info(f"\n{'='*60}")
+    logger.info(f"Training models ONCE for test-only mode")
+    logger.info(f"Training data: infected [{start_hour:.1f}, {max_hour:.1f}]h + all uninfected")
+    logger.info(f"Will train {k_folds} models (one per fold)")
+    logger.info(f"{'='*60}\n")
+    
+    # For test-only mode, train with FULL training data
+    data_cfg = copy.deepcopy(base_data_cfg)
+    data_cfg["frames"] = apply_interval_override(
+        base_data_cfg.get("frames"), start_hour, max_hour, "test-only", match_uninfected
+    )
+    
+    training_cfg = cfg.get("training", {})
+    task_cfg = get_task_config(cfg)
+    analysis_cfg = get_analysis_config(cfg)
+    model_cfg = cfg.get("model", {})
+    optimizer_cfg = cfg.get("optimizer", {"lr": 1e-4})
+    scheduler_cfg = cfg.get("scheduler")
+    
+    epochs = training_cfg.get("epochs", 10)
+    use_amp = training_cfg.get("amp", True)
+    grad_clip = training_cfg.get("grad_clip")
+    amp_device = device.type
+    
+    task_type = task_cfg.get("type", "classification")
+    primary_metric = "auc" if task_type == "classification" else "rmse"
+    greater_is_better = task_type == "classification"
+    
+    # Create checkpoint directory for test-only base models
+    checkpoint_dir = output_dir / "checkpoints" / f"test-only_base_models"
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
+    
+    for fold_idx in range(k_folds):
+        fold_tag = f"fold_{fold_idx + 1:02d}of{k_folds:02d}"
+        logger.info(f"[test-only base] Training {fold_tag} on full data")
+        
+        # Build datasets
+        train_ds, val_ds, test_ds = build_datasets(
+            data_cfg,
+            transforms,
+            fold_index=fold_idx if k_folds > 1 else None,
+            num_folds=k_folds,
+        )
+        
+        train_loader, val_loader, test_loader = create_dataloaders(
+            train_ds, val_ds, test_ds, data_cfg
+        )
+        
+        # Build fresh model for this fold
+        model = build_model(model_cfg).to(device)
+        optimizer = torch.optim.AdamW(model.parameters(), **optimizer_cfg)
+        
+        scheduler = None
+        if scheduler_cfg:
+            scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+                optimizer,
+                T_max=scheduler_cfg.get("t_max", 10),
+                eta_min=scheduler_cfg.get("eta_min", 1e-6),
+            )
+        
+        if task_type == "regression":
+            criterion = nn.SmoothL1Loss()
+        else:
+            criterion = nn.BCEWithLogitsLoss()
+        
+        scaler = amp.GradScaler(amp_device, enabled=use_amp and amp_device == "cuda")
+        
+        best_score = -math.inf if greater_is_better else math.inf
+        best_state_dict = None
+        
+        # Training loop
+        for epoch in range(1, epochs + 1):
+            train_one_epoch(
+                model,
+                train_loader,
+                criterion,
+                optimizer,
+                scaler,
+                device,
+                logger,
+                use_amp=use_amp,
+                grad_clip=grad_clip,
+                progress_desc=f"test-only_base_f{fold_idx+1}_e{epoch}",
+                task_cfg=task_cfg,
+            )
+            
+            # Validate
+            val_metrics = evaluate(
+                model,
+                val_loader,
+                criterion,
+                device,
+                logger,
+                split_name="val",
+                progress_desc=f"val_f{fold_idx + 1}",
+                task_cfg=task_cfg,
+                analysis_cfg=analysis_cfg,
+            )
+            
+            if scheduler:
+                scheduler.step()
+            
+            # Track best model
+            metric_value = val_metrics.get(primary_metric)
+            is_valid = metric_value is not None and not math.isnan(metric_value)
+            
+            if is_valid:
+                is_better = (
+                    (greater_is_better and metric_value > best_score)
+                    or (not greater_is_better and metric_value < best_score)
+                )
+                if is_better:
+                    best_score = metric_value
+                    best_state_dict = copy.deepcopy(model.state_dict())
+        
+        # Save best checkpoint
+        if best_state_dict is not None:
+            checkpoint_path = checkpoint_dir / f"fold_{fold_idx + 1:02d}_best.pth"
+            checkpoint = {
+                'model_state_dict': best_state_dict,
+                'fold': fold_idx + 1,
+                'best_val_score': best_score,
+                'config': cfg,
+                'training_interval': [start_hour, max_hour],
+            }
+            torch.save(checkpoint, checkpoint_path)
+            logger.info(f"Saved base model checkpoint: {checkpoint_path}")
+        
+        # Cleanup
+        del model, optimizer, scheduler
+        if device.type == "cuda":
+            torch.cuda.empty_cache()
+    
+    logger.info(f"\n{'='*60}")
+    logger.info(f"Finished training {k_folds} base models for test-only mode")
+    logger.info(f"{'='*60}\n")
+    
+    return checkpoint_dir
+
+
+def evaluate_with_saved_models(
+    cfg: Dict,
+    base_data_cfg: Dict,
+    transforms: Dict[str, Optional[Callable]],
+    hour: float,
+    start_hour: float,
+    checkpoint_dir: Path,
+    eval_split: str,
+    metric_keys: List[str],
+    k_folds: int,
+    device,
+    logger,
+    match_uninfected: bool = False,
+) -> Dict[str, Tuple[List[float], float | None, float | None]]:
+    """
+    Evaluate saved models on a specific test interval.
+    
+    Args:
+        checkpoint_dir: Directory containing saved model checkpoints
+        hour: Upper bound of test interval
+        match_uninfected: Whether to apply same interval to uninfected samples
+    
+    Returns:
+        Dictionary mapping metric_key -> (fold_metrics, mean, std)
+    """
+    # Apply interval to TEST data only
+    data_cfg = copy.deepcopy(base_data_cfg)
+    data_cfg["frames"] = apply_interval_override(
+        base_data_cfg.get("frames"), start_hour, hour, "test-only", match_uninfected
+    )
+    
+    training_cfg = cfg.get("training", {})
+    task_cfg = get_task_config(cfg)
+    analysis_cfg = get_analysis_config(cfg)
+    model_cfg = cfg.get("model", {})
+    
+    task_type = task_cfg.get("type", "classification")
+    
+    if task_type == "regression":
+        criterion = nn.SmoothL1Loss()
+    else:
+        criterion = nn.BCEWithLogitsLoss()
+    
+    # Initialize storage for each metric
+    fold_metrics_dict: Dict[str, List[float]] = {key: [] for key in metric_keys}
+    
+    for fold_idx in range(k_folds):
+        fold_tag = f"fold_{fold_idx + 1:02d}of{k_folds:02d}"
+        checkpoint_path = checkpoint_dir / f"fold_{fold_idx + 1:02d}_best.pth"
+        
+        if not checkpoint_path.exists():
+            logger.warning(f"Checkpoint not found: {checkpoint_path}, skipping fold {fold_idx + 1}")
+            continue
+        
+        logger.info(f"[Interval [{start_hour:.1f}, {hour:.1f}]h, mode=test-only] Evaluating {fold_tag}")
+        
+        # Build datasets with restricted test interval
+        train_ds, val_ds, test_ds = build_datasets(
+            data_cfg,
+            transforms,
+            fold_index=fold_idx if k_folds > 1 else None,
+            num_folds=k_folds,
+        )
+        
+        train_loader, val_loader, test_loader = create_dataloaders(
+            train_ds, val_ds, test_ds, data_cfg
+        )
+        
+        # Load model from checkpoint
+        model = build_model(model_cfg).to(device)
+        checkpoint = torch.load(checkpoint_path, map_location=device)
+        model.load_state_dict(checkpoint['model_state_dict'])
+        
+        # Evaluate on test data with restricted interval
+        eval_loader = {"val": val_loader, "test": test_loader}[eval_split]
+        eval_metrics = evaluate(
+            model,
+            eval_loader,
+            criterion,
+            device,
+            logger,
+            split_name=eval_split,
+            progress_desc=f"{eval_split}_f{fold_idx + 1}",
+            task_cfg=task_cfg,
+            analysis_cfg=analysis_cfg,
+        )
+        
+        # Collect metrics
+        for metric_key in metric_keys:
+            metric_value = eval_metrics.get(metric_key)
+            if metric_value is not None and not math.isnan(metric_value):
+                fold_metrics_dict[metric_key].append(float(metric_value))
+        
+        # Cleanup
+        del model
+        if device.type == "cuda":
+            torch.cuda.empty_cache()
+    
+    # Compute statistics for each metric
+    results = {}
+    for metric_key in metric_keys:
+        fold_values = fold_metrics_dict[metric_key]
+        if fold_values:
+            values = np.asarray(fold_values, dtype=np.float32)
+            results[metric_key] = (fold_values, float(values.mean()), float(values.std(ddof=0)))
+        else:
+            results[metric_key] = ([], None, None)
+    
+    return results
 
 
 def train_and_evaluate_interval(
@@ -169,9 +459,13 @@ def train_and_evaluate_interval(
     device,
     logger,
     output_dir: Path,
+    match_uninfected: bool = False,
 ) -> Dict[str, Tuple[List[float], float | None, float | None]]:
     """
-    Train models for one interval configuration across all folds.
+    Train models for one interval configuration across all folds (train-test mode only).
+    
+    Args:
+        match_uninfected: Whether to apply same interval to uninfected samples
     
     Returns:
         Dictionary mapping metric_key -> (fold_metrics, mean, std)
@@ -179,7 +473,7 @@ def train_and_evaluate_interval(
     # Apply interval to data config
     data_cfg = copy.deepcopy(base_data_cfg)
     data_cfg["frames"] = apply_interval_override(
-        base_data_cfg.get("frames"), start_hour, hour, mode
+        base_data_cfg.get("frames"), start_hour, hour, mode, match_uninfected
     )
     
     training_cfg = cfg.get("training", {})
@@ -483,6 +777,12 @@ def main() -> None:
     logger.info(f"Device: {device}")
     logger.info(f"K-folds: {k_folds}")
     
+    # Log uninfected matching mode
+    if args.match_uninfected_window:
+        logger.info("✓ Match uninfected window: ENABLED (infected and uninfected use same time interval)")
+    else:
+        logger.info("✗ Match uninfected window: DISABLED (uninfected uses all time points)")
+    
     hours = sorted(args.upper_hours)
     if any(hour < args.start_hour for hour in hours):
         raise ValueError("All upper bound hours must be >= start-hour")
@@ -504,8 +804,20 @@ def main() -> None:
         modes = ("train-test",)
     
     logger.info(f"Running mode(s): {', '.join(modes)}")
-    logger.info(f"Will train {len(hours)} intervals × {len(modes)} mode(s) × {k_folds} folds")
-    logger.info(f"Total training runs: {len(hours) * 2 * k_folds}")
+    
+    # Calculate total training runs
+    total_training_runs = 0
+    if "test-only" in modes:
+        total_training_runs += k_folds  # Train once per fold for test-only
+    if "train-test" in modes:
+        total_training_runs += len(hours) * k_folds  # Train for each interval x fold
+    
+    logger.info(f"Will train:")
+    if "test-only" in modes:
+        logger.info(f"  - test-only: {k_folds} models (trained once, reused for {len(hours)} test intervals)")
+    if "train-test" in modes:
+        logger.info(f"  - train-test: {len(hours)} intervals × {k_folds} folds = {len(hours) * k_folds} models")
+    logger.info(f"Total training runs: {total_training_runs}")
     logger.info("="*60)
     
     # Structure: all_stats[metric][mode] = {"fold_metrics": [...], "mean": [...], "std": [...]}
@@ -516,37 +828,91 @@ def main() -> None:
         for metric_key in metric_keys
     }
     
+    # Process each mode
+    test_only_checkpoint_dir = None
+    
     for mode_idx, mode in enumerate(modes, 1):
-        logger.info(f"\n[Mode {mode_idx}/2] Evaluating mode={mode}")
-        for hour_idx, hour in enumerate(hours, 1):
-            logger.info(f"  [{hour_idx}/{len(hours)}] Interval [{args.start_hour:.1f}, {hour:.1f}]h")
-            
-            interval_results = train_and_evaluate_interval(
+        logger.info(f"\n[Mode {mode_idx}/{len(modes)}] Evaluating mode={mode}")
+        
+        if mode == "test-only":
+            # Train models ONCE for test-only mode
+            test_only_checkpoint_dir = train_models_once_for_test_only(
                 cfg,
                 base_data_cfg,
                 transforms,
-                hour,
                 args.start_hour,
-                mode,
+                max(hours),  # Use maximum hour for training data
                 args.split,
-                metric_keys,
                 k_folds,
                 device,
                 logger,
                 output_dir,
+                args.match_uninfected_window,
             )
             
-            # Store results for each metric
-            for metric_key in metric_keys:
-                fold_values, mean_value, std_value = interval_results[metric_key]
-                all_stats[metric_key][mode]["fold_metrics"].append(fold_values)
-                all_stats[metric_key][mode]["mean"].append(mean_value)
-                all_stats[metric_key][mode]["std"].append(std_value)
+            # Now evaluate on all test intervals using the saved models
+            for hour_idx, hour in enumerate(hours, 1):
+                logger.info(f"  [{hour_idx}/{len(hours)}] Evaluating on test interval [{args.start_hour:.1f}, {hour:.1f}]h")
                 
-                if mean_value is not None:
-                    logger.info(
-                        f"    {metric_key.upper()} = {mean_value:.4f} ± {std_value:.4f}"
-                    )
+                interval_results = evaluate_with_saved_models(
+                    cfg,
+                    base_data_cfg,
+                    transforms,
+                    hour,
+                    args.start_hour,
+                    test_only_checkpoint_dir,
+                    args.split,
+                    metric_keys,
+                    k_folds,
+                    device,
+                    logger,
+                    args.match_uninfected_window,
+                )
+                
+                # Store results for each metric
+                for metric_key in metric_keys:
+                    fold_values, mean_value, std_value = interval_results[metric_key]
+                    all_stats[metric_key][mode]["fold_metrics"].append(fold_values)
+                    all_stats[metric_key][mode]["mean"].append(mean_value)
+                    all_stats[metric_key][mode]["std"].append(std_value)
+                    
+                    if mean_value is not None:
+                        logger.info(
+                            f"    {metric_key.upper()} = {mean_value:.4f} ± {std_value:.4f}"
+                        )
+        
+        else:  # train-test mode
+            # Train separate models for each interval
+            for hour_idx, hour in enumerate(hours, 1):
+                logger.info(f"  [{hour_idx}/{len(hours)}] Training and evaluating interval [{args.start_hour:.1f}, {hour:.1f}]h")
+                
+                interval_results = train_and_evaluate_interval(
+                    cfg,
+                    base_data_cfg,
+                    transforms,
+                    hour,
+                    args.start_hour,
+                    mode,
+                    args.split,
+                    metric_keys,
+                    k_folds,
+                    device,
+                    logger,
+                    output_dir,
+                    args.match_uninfected_window,
+                )
+                
+                # Store results for each metric
+                for metric_key in metric_keys:
+                    fold_values, mean_value, std_value = interval_results[metric_key]
+                    all_stats[metric_key][mode]["fold_metrics"].append(fold_values)
+                    all_stats[metric_key][mode]["mean"].append(mean_value)
+                    all_stats[metric_key][mode]["std"].append(std_value)
+                    
+                    if mean_value is not None:
+                        logger.info(
+                            f"    {metric_key.upper()} = {mean_value:.4f} ± {std_value:.4f}"
+                        )
     
     # Generate plots
     if len(metric_keys) > 1:

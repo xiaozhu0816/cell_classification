@@ -22,6 +22,7 @@ class FrameExtractionPolicy:
 
     frames_per_hour: float = 2.0
     infected_window_hours: Tuple[float, float] = (16.0, 30.0)
+    uninfected_window_hours: Optional[Tuple[float, float]] = None  # NEW: Optional time window for uninfected
     infected_stride: int = 1
     uninfected_stride: int = 1
     uninfected_use_all: bool = True
@@ -32,6 +33,9 @@ class FrameExtractionPolicy:
         filtered = {k: v for k, v in data.items() if k in cls.__dataclass_fields__}
         if "window_hours" in data:  # backwards compatibility
             filtered["infected_window_hours"] = tuple(data["window_hours"])
+        # Handle uninfected_window_hours conversion to tuple
+        if "uninfected_window_hours" in data and data["uninfected_window_hours"] is not None:
+            filtered["uninfected_window_hours"] = tuple(data["uninfected_window_hours"])
         return cls(**filtered)
 
     def infected_indices(self, total_frames: int) -> List[int]:
@@ -47,6 +51,19 @@ class FrameExtractionPolicy:
 
     def uninfected_indices(self, total_frames: int) -> List[int]:
         stride = max(1, self.uninfected_stride)
+        
+        # If uninfected_window_hours is specified, use the same logic as infected
+        if self.uninfected_window_hours is not None:
+            start_h, end_h = self.uninfected_window_hours
+            start_idx = max(0, math.floor(start_h * self.frames_per_hour))
+            end_idx = max(start_idx, math.floor(end_h * self.frames_per_hour))
+            end_idx = min(end_idx, total_frames - 1)
+            indices = list(range(start_idx, end_idx + 1, stride))
+            if not indices:
+                indices = [min(start_idx, total_frames - 1)]
+            return indices
+        
+        # Otherwise, use the old behavior
         if not self.uninfected_use_all:
             return [0]
         return list(range(0, total_frames, stride))
@@ -97,11 +114,18 @@ def resolve_frame_policies(frames_cfg: Optional[Dict]) -> Dict[str, FrameExtract
 
 def format_policy_summary(policy: FrameExtractionPolicy) -> str:
     start, end = policy.infected_window_hours
-    uninfected_mode = "all" if policy.uninfected_use_all else "first-only"
+    
+    # Format uninfected info
+    if policy.uninfected_window_hours is not None:
+        u_start, u_end = policy.uninfected_window_hours
+        uninfected_info = f"[{u_start:.1f},{u_end:.1f}]"
+    else:
+        uninfected_info = "all" if policy.uninfected_use_all else "first-only"
+    
     return (
         f"frames_per_hour={policy.frames_per_hour:.2f} | "
         f"infected=[{start:.1f},{end:.1f}] stride={policy.infected_stride} | "
-        f"uninfected={uninfected_mode} stride={policy.uninfected_stride}"
+        f"uninfected={uninfected_info} stride={policy.uninfected_stride}"
     )
 
 

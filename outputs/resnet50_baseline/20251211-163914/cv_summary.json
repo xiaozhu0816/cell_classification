@@ -1,0 +1,117 @@
+[
+  {
+    "fold": 0,
+    "val": {
+      "accuracy": 0.9986338797814208,
+      "precision": 1.0,
+      "recall": 0.9942528735632183,
+      "f1": 0.9971181556195965,
+      "auc": 1.0,
+      "loss": 0.0016935073689155567
+    },
+    "test": {
+      "accuracy": 0.9989754098360656,
+      "precision": 1.0,
+      "recall": 0.9956896551724138,
+      "f1": 0.9978401727861771,
+      "auc": 1.0,
+      "loss": 0.0014589660945081258
+    },
+    "best_metric": 1.0,
+    "primary_metric": "auc",
+    "checkpoint": "checkpoints/resnet50_baseline/20251211-163914/fold_01of05/best.pt",
+    "log_dir": "outputs/resnet50_baseline/20251211-163914/fold_01of05"
+  },
+  {
+    "fold": 1,
+    "val": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0,
+      "loss": 0.00011817701813125041
+    },
+    "test": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0,
+      "loss": 0.00013089963696805425
+    },
+    "best_metric": 1.0,
+    "primary_metric": "auc",
+    "checkpoint": "checkpoints/resnet50_baseline/20251211-163914/fold_02of05/best.pt",
+    "log_dir": "outputs/resnet50_baseline/20251211-163914/fold_02of05"
+  },
+  {
+    "fold": 2,
+    "val": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0,
+      "loss": 0.00012918448480145266
+    },
+    "test": {
+      "accuracy": 0.9979508196721312,
+      "precision": 1.0,
+      "recall": 0.9913793103448276,
+      "f1": 0.9956709956709957,
+      "auc": 1.0,
+      "loss": 0.0022573407538298168
+    },
+    "best_metric": 1.0,
+    "primary_metric": "auc",
+    "checkpoint": "checkpoints/resnet50_baseline/20251211-163914/fold_03of05/best.pt",
+    "log_dir": "outputs/resnet50_baseline/20251211-163914/fold_03of05"
+  },
+  {
+    "fold": 3,
+    "val": {
+      "accuracy": 0.9985775248933144,
+      "precision": 1.0,
+      "recall": 0.993103448275862,
+      "f1": 0.9965397923875432,
+      "auc": 1.0,
+      "loss": 0.005555884089236609
+    },
+    "test": {
+      "accuracy": 0.9989754098360656,
+      "precision": 1.0,
+      "recall": 0.9956896551724138,
+      "f1": 0.9978401727861771,
+      "auc": 1.0,
+      "loss": 0.0021277343646525864
+    },
+    "best_metric": 1.0,
+    "primary_metric": "auc",
+    "checkpoint": "checkpoints/resnet50_baseline/20251211-163914/fold_04of05/best.pt",
+    "log_dir": "outputs/resnet50_baseline/20251211-163914/fold_04of05"
+  },
+  {
+    "fold": 4,
+    "val": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0,
+      "loss": 0.00013082561098538592
+    },
+    "test": {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "auc": 1.0,
+      "loss": 0.0002145458637358865
+    },
+    "best_metric": 1.0,
+    "primary_metric": "auc",
+    "checkpoint": "checkpoints/resnet50_baseline/20251211-163914/fold_05of05/best.pt",
+    "log_dir": "outputs/resnet50_baseline/20251211-163914/fold_05of05"
+  }
+]

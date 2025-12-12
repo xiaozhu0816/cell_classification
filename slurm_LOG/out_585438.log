@@ -1,0 +1,24 @@
+==================================================
+Running BOTH Experiments (Most Efficient)
+==================================================
+
+Experiment 1 (test-only):
+  Train: infected [1, FULL] + all uninfected
+  Test:  infected [1, x] + all uninfected
+  → Results in LEFT panel of plots
+
+Experiment 2 (train-test):
+  Train: infected [1, x] + all uninfected
+  Test:  infected [1, x] + all uninfected
+  → Results in RIGHT panel of plots
+
+==================================================
+
+Settings:
+  Intervals: [1, x] where x = 7 10 13 16 19 22 25 28 31 34 37 40 43 46
+  K-folds: 5
+  Epochs: 10
+  Metrics: auc accuracy f1
+  Match uninfected interval: true
+==================================================
+

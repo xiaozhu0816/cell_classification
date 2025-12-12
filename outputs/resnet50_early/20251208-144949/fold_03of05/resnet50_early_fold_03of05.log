@@ -1,0 +1,79 @@
+2025-12-08 15:16:09,093 | INFO | train split -> total:2821 | conditions[infected:682, uninfected:2139] | labels[label0:2139, label1:682]
+2025-12-08 15:16:09,094 | INFO | train TIFFs -> total:45 | per-condition[infected:22, uninfected:23] | avg-frames/TIFF[infected:31.0, uninfected:93.0]
+2025-12-08 15:16:09,095 | INFO | train stack membership (45 unique TIFFs): 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p10_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p11_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p14_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p17_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p18_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p19_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p1_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p21_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p22_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p23_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p24_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p25_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p27_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p28_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p29_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p30_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p31_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p33_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p3_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p4_t0-94_ec.tiff, ...
+2025-12-08 15:16:09,101 | INFO | Saved train stack list to outputs/resnet50_early/20251208-144949/fold_03of05/train_stacks.txt
+2025-12-08 15:16:09,102 | INFO | val split -> total:651 | conditions[infected:186, uninfected:465] | labels[label0:465, label1:186]
+2025-12-08 15:16:09,102 | INFO | val TIFFs -> total:11 | per-condition[infected:6, uninfected:5] | avg-frames/TIFF[infected:31.0, uninfected:93.0]
+2025-12-08 15:16:09,102 | INFO | val stack membership (11 unique TIFFs): 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p12_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p16_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p20_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p2_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p32_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p35_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p10_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p12_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p17_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p31_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p3_t0-94_ec.tiff
+2025-12-08 15:16:09,107 | INFO | Saved val stack list to outputs/resnet50_early/20251208-144949/fold_03of05/val_stacks.txt
+2025-12-08 15:16:09,108 | INFO | test split -> total:992 | conditions[infected:248, uninfected:744] | labels[label0:744, label1:248]
+2025-12-08 15:16:09,108 | INFO | test TIFFs -> total:16 | per-condition[infected:8, uninfected:8] | avg-frames/TIFF[infected:31.0, uninfected:93.0]
+2025-12-08 15:16:09,109 | INFO | test stack membership (16 unique TIFFs): 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p13_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p15_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p26_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p34_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p6_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p8_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p9_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p11_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p18_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p24_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p27_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p6_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p8_t0-94_ec.tiff
+2025-12-08 15:16:09,113 | INFO | Saved test stack list to outputs/resnet50_early/20251208-144949/fold_03of05/test_stacks.txt
+2025-12-08 15:16:09,570 | INFO | Fold 3/5 - Epoch 1/5
+2025-12-08 15:17:58,180 | INFO | train loss: 0.3302
+2025-12-08 15:18:31,540 | INFO | val threshold sweep:
+  thr=0.05 | P=0.95 | R=0.98 | F1=0.97 | TP=182
+  thr=0.10 | P=0.99 | R=0.82 | F1=0.90 | TP=153
+  thr=0.15 | P=0.99 | R=0.73 | F1=0.84 | TP=136
+  thr=0.20 | P=0.98 | R=0.63 | F1=0.77 | TP=118
+  thr=0.25 | P=0.98 | R=0.59 | F1=0.73 | TP=109
+  thr=0.30 | P=0.99 | R=0.54 | F1=0.70 | TP=100
+2025-12-08 15:18:31,547 | INFO | val time bin [0.0h, 6.0h): samples=651 | accuracy:0.831 | precision:1.000 | recall:0.409 | f1:0.580 | auc:0.997
+2025-12-08 15:18:31,547 | INFO | val: accuracy:0.8310 | precision:1.0000 | recall:0.4086 | f1:0.5802 | auc:0.9971 | loss:0.3536
+2025-12-08 15:18:33,215 | INFO | New best model with auc 0.9971
+2025-12-08 15:18:33,215 | INFO | Fold 3/5 - Epoch 2/5
+2025-12-08 15:20:15,737 | INFO | train loss: 0.0556
+2025-12-08 15:20:49,587 | INFO | val threshold sweep:
+  thr=0.05 | P=1.00 | R=0.27 | F1=0.42 | TP=50
+  thr=0.10 | P=1.00 | R=0.22 | F1=0.36 | TP=41
+  thr=0.15 | P=1.00 | R=0.17 | F1=0.29 | TP=32
+  thr=0.20 | P=1.00 | R=0.15 | F1=0.26 | TP=28
+  thr=0.25 | P=1.00 | R=0.11 | F1=0.20 | TP=21
+  thr=0.30 | P=1.00 | R=0.10 | F1=0.19 | TP=19
+2025-12-08 15:20:49,593 | INFO | val time bin [0.0h, 6.0h): samples=651 | accuracy:0.730 | precision:1.000 | recall:0.054 | f1:0.102 | auc:0.995
+2025-12-08 15:20:49,593 | INFO | val: accuracy:0.7296 | precision:1.0000 | recall:0.0538 | f1:0.1020 | auc:0.9947 | loss:1.3791
+2025-12-08 15:20:49,593 | INFO | Fold 3/5 - Epoch 3/5
+2025-12-08 15:22:36,327 | INFO | train loss: 0.0336
+2025-12-08 15:23:10,081 | INFO | val threshold sweep:
+  thr=0.05 | P=1.00 | R=0.04 | F1=0.08 | TP=8
+  thr=0.10 | P=1.00 | R=0.02 | F1=0.04 | TP=4
+  thr=0.15 | P=1.00 | R=0.02 | F1=0.03 | TP=3
+  thr=0.20 | P=1.00 | R=0.01 | F1=0.02 | TP=2
+  thr=0.25 | P=1.00 | R=0.01 | F1=0.01 | TP=1
+  thr=0.30 | P=1.00 | R=0.01 | F1=0.01 | TP=1
+2025-12-08 15:23:10,086 | INFO | val time bin [0.0h, 6.0h): samples=651 | accuracy:0.714 | precision:0.000 | recall:0.000 | f1:0.000 | auc:0.984
+2025-12-08 15:23:10,087 | INFO | val: accuracy:0.7143 | precision:0.0000 | recall:0.0000 | f1:0.0000 | auc:0.9841 | loss:1.9474
+2025-12-08 15:23:10,087 | INFO | Fold 3/5 - Epoch 4/5
+2025-12-08 15:24:50,854 | INFO | train loss: 0.0209
+2025-12-08 15:25:22,918 | INFO | val threshold sweep:
+  thr=0.05 | P=0.98 | R=0.25 | F1=0.39 | TP=46
+  thr=0.10 | P=0.97 | R=0.18 | F1=0.30 | TP=33
+  thr=0.15 | P=0.96 | R=0.14 | F1=0.24 | TP=26
+  thr=0.20 | P=0.95 | R=0.11 | F1=0.19 | TP=20
+  thr=0.25 | P=0.95 | R=0.10 | F1=0.18 | TP=19
+  thr=0.30 | P=0.94 | R=0.09 | F1=0.17 | TP=17
+2025-12-08 15:25:22,924 | INFO | val time bin [0.0h, 6.0h): samples=651 | accuracy:0.733 | precision:1.000 | recall:0.065 | f1:0.121 | auc:0.971
+2025-12-08 15:25:22,924 | INFO | val: accuracy:0.7327 | precision:1.0000 | recall:0.0645 | f1:0.1212 | auc:0.9710 | loss:1.2379
+2025-12-08 15:25:22,924 | INFO | Fold 3/5 - Epoch 5/5
+2025-12-08 15:27:07,709 | INFO | train loss: 0.0104
+2025-12-08 15:27:39,711 | INFO | val threshold sweep:
+  thr=0.05 | P=0.95 | R=1.00 | F1=0.97 | TP=186
+  thr=0.10 | P=0.96 | R=1.00 | F1=0.98 | TP=186
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=186
+  thr=0.20 | P=0.98 | R=1.00 | F1=0.99 | TP=186
+  thr=0.25 | P=0.98 | R=1.00 | F1=0.99 | TP=186
+  thr=0.30 | P=0.98 | R=1.00 | F1=0.99 | TP=186
+2025-12-08 15:27:39,716 | INFO | val time bin [0.0h, 6.0h): samples=651 | accuracy:0.989 | precision:0.984 | recall:0.978 | f1:0.981 | auc:0.999
+2025-12-08 15:27:39,716 | INFO | val: accuracy:0.9892 | precision:0.9838 | recall:0.9785 | f1:0.9811 | auc:0.9995 | loss:0.0243
+2025-12-08 15:27:41,391 | INFO | New best model with auc 0.9995
+2025-12-08 15:27:41,391 | INFO | Evaluating on test split
+2025-12-08 15:28:22,399 | INFO | test threshold sweep:
+  thr=0.05 | P=0.95 | R=1.00 | F1=0.97 | TP=248
+  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=246
+  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=245
+  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=245
+  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=243
+  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=242
+2025-12-08 15:28:22,404 | INFO | test time bin [0.0h, 6.0h): samples=992 | accuracy:0.988 | precision:1.000 | recall:0.952 | f1:0.975 | auc:1.000
+2025-12-08 15:28:22,405 | INFO | test: accuracy:0.9879 | precision:1.0000 | recall:0.9516 | f1:0.9752 | auc:0.9999 | loss:0.0279

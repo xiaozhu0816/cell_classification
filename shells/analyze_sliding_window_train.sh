@@ -16,6 +16,7 @@ SPLIT="test"  # Evaluation split (val or test)
 METRICS="auc accuracy f1"  # Multiple metrics for analysis
 K_FOLDS=5  # Number of cross-validation folds
 EPOCHS=10  # Training epochs per window
+MATCH_UNINFECTED=true  # Set to true to apply same window to uninfected samples
 
 # Run sliding window training analysis
 echo "=================================================="
@@ -27,19 +28,29 @@ echo "Range: [$START_HOUR, $END_HOUR] hours"
 echo "K-folds: $K_FOLDS"
 echo "Epochs per window: $EPOCHS"
 echo "Metrics: $METRICS"
+echo "Match uninfected window: $MATCH_UNINFECTED"
 echo "=================================================="
 echo ""
 
-python analyze_sliding_window_train.py \
-    --config "$CONFIG" \
+# Build command with optional flag
+CMD="python analyze_sliding_window_train.py \
+    --config $CONFIG \
     --window-size $WINDOW_SIZE \
     --start-hour $START_HOUR \
     --end-hour $END_HOUR \
     --stride $STRIDE \
-    --split "$SPLIT" \
+    --split $SPLIT \
     --metrics $METRICS \
     --k-folds $K_FOLDS \
-    --epochs $EPOCHS
+    --epochs $EPOCHS"
+
+# Add flag if enabled
+if [ "$MATCH_UNINFECTED" = true ]; then
+    CMD="$CMD --match-uninfected-window"
+fi
+
+# Execute
+eval $CMD
 
 echo ""
 echo "=================================================="

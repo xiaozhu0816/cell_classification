@@ -39,6 +39,7 @@ START_HOUR=1
 K_FOLDS=5
 EPOCHS=10
 METRICS="auc accuracy f1"
+MATCH_UNINFECTED=true  # Set to true to apply same interval to uninfected samples
 
 echo ""
 echo "Settings:"
@@ -46,19 +47,28 @@ echo "  Intervals: [1, x] where x = ${UPPER_HOURS[@]}"
 echo "  K-folds: $K_FOLDS"
 echo "  Epochs: $EPOCHS"
 echo "  Metrics: $METRICS"
+echo "  Match uninfected interval: $MATCH_UNINFECTED"
 echo "=================================================="
 echo ""
 
-# Run the analysis (automatically does BOTH experiments)
-python analyze_interval_sweep_train.py \
-    --config "$CONFIG" \
+# Build command with optional flag
+CMD="python analyze_interval_sweep_train.py \
+    --config $CONFIG \
     --upper-hours ${UPPER_HOURS[@]} \
     --start-hour $START_HOUR \
     --metrics $METRICS \
     --k-folds $K_FOLDS \
     --epochs $EPOCHS \
     --split test \
-    --mode both
+    --mode both"
+
+# Add flag if enabled
+if [ "$MATCH_UNINFECTED" = true ]; then
+    CMD="$CMD --match-uninfected-window"
+fi
+
+# Execute
+eval $CMD
 
 echo ""
 echo "=================================================="
