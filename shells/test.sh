@@ -1,5 +1,5 @@
 python test_folds.py \
    --config configs/resnet50_early.yaml \
-   --run-dir checkpoints/resnet50_early/20251205-164954 \
+   --run-dir /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/checkpoints/resnet50_baseline/20251211-163914 \
    --split test \
    --weights-only

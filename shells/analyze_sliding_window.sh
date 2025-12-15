@@ -8,11 +8,11 @@
 
 # Configuration
 CONFIG="configs/resnet50_baseline.yaml"
-RUN_DIR="checkpoints/resnet50_baseline/20251208-162511"  # Update this to your actual run directory
-WINDOW_SIZE=5  # Window size in hours (k)
+RUN_DIR="checkpoints/resnet50_baseline/20251211-163914"  # Update this to your actual run directory
+WINDOW_SIZE=6  # Window size in hours (k)
 START_HOUR=1  # Starting hour for first window
-END_HOUR=30  # Maximum ending hour
-STRIDE=2  # Step size between windows (default: window size for no overlap)
+END_HOUR=46  # Maximum ending hour
+STRIDE=3  # Step size between windows (default: window size for no overlap)
           # stride < window_size creates overlap
           # stride = window_size creates adjacent windows (no gap, no overlap)
           # stride > window_size creates gaps between windows
@@ -21,7 +21,7 @@ METRICS="auc accuracy f1"  # Multiple metrics for combined plot + individual plo
 
 # Run sliding window analysis with overlap
 echo "Running sliding window analysis with window size = $WINDOW_SIZE hours, stride = $STRIDE hours..."
-python analyze_sliding_window.py \
+python scripts/legacy/analyze_sliding_window.py \
     --config "$CONFIG" \
     --run-dir "$RUN_DIR" \
     --window-size $WINDOW_SIZE \

@@ -17,7 +17,7 @@ echo "=================================================="
 
 # Configuration
 CONFIG="configs/resnet50_baseline.yaml"
-UPPER_HOURS=(8 10 12 14 16 18 20 22 24 26 28 30)
+
 START_HOUR=1
 K_FOLDS=5
 EPOCHS=10

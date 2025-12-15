@@ -23,6 +23,7 @@ import copy
 import json
 import logging
 import math
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional, Callable
@@ -127,6 +128,19 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Apply the same time interval to uninfected samples (default: uninfected uses all time points). "
              "When enabled, both infected and uninfected use the exact same [start, x] interval.",
+    )
+    parser.add_argument(
+        "--eval-only",
+        action="store_true",
+        help="Skip training and only run evaluation + visualization using existing checkpoints. "
+             "Useful when training is already complete and you only want to generate plots or rerun analysis.",
+    )
+    parser.add_argument(
+        "--checkpoint-dir",
+        default=None,
+        help="Path to existing checkpoint directory (required when using --eval-only). "
+             "Should point to the output directory from a previous training run, e.g., "
+             "outputs/interval_sweep_analysis/20251212-145928",
     )
     return parser.parse_args()
 
@@ -405,7 +419,8 @@ def evaluate_with_saved_models(
         
         # Load model from checkpoint
         model = build_model(model_cfg).to(device)
-        checkpoint = torch.load(checkpoint_path, map_location=device)
+        # PyTorch 2.6+ requires weights_only=False for checkpoints with optimizer states
+        checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)
         model.load_state_dict(checkpoint['model_state_dict'])
         
         # Evaluate on test data with restricted interval
@@ -736,12 +751,43 @@ def plot_multi_metric_sweep(
 def main() -> None:
     args = parse_args()
     
-    # Setup logging
-    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
-    if args.output_dir:
-        output_dir = Path(args.output_dir)
+    # Validate --eval-only and --checkpoint-dir
+    if args.eval_only and not args.checkpoint_dir:
+        print("ERROR: --checkpoint-dir is required when using --eval-only")
+        print("Please specify the path to your existing checkpoint directory, e.g.:")
+        print("  --checkpoint-dir outputs/interval_sweep_analysis/20251212-145928")
+        sys.exit(1)
+    
+    if args.checkpoint_dir and not args.eval_only:
+        print("WARNING: --checkpoint-dir specified but --eval-only not set.")
+        print("Did you mean to add --eval-only flag?")
+    
+    # Setup logging and output directory
+    if args.eval_only and args.checkpoint_dir:
+        # Use existing checkpoint directory for evaluation
+        checkpoint_base_dir = Path(args.checkpoint_dir)
+        if not checkpoint_base_dir.exists():
+            print(f"ERROR: Checkpoint directory not found: {checkpoint_base_dir}")
+            sys.exit(1)
+        
+        # Create new output directory for plots/logs but reuse checkpoints
+        timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+        output_dir = checkpoint_base_dir.parent / f"{checkpoint_base_dir.name}_eval_{timestamp}"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Symlink or reference the existing checkpoints
+        existing_checkpoints_dir = checkpoint_base_dir / "checkpoints"
+        if not existing_checkpoints_dir.exists():
+            print(f"ERROR: Checkpoints subdirectory not found: {existing_checkpoints_dir}")
+            sys.exit(1)
     else:
-        output_dir = Path("outputs") / "interval_sweep_analysis" / timestamp
+        # Normal mode: create new output directory
+        timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+        if args.output_dir:
+            output_dir = Path(args.output_dir)
+        else:
+            output_dir = Path("outputs") / "interval_sweep_analysis" / timestamp
+        checkpoint_base_dir = output_dir
     
     output_dir.mkdir(parents=True, exist_ok=True)
     
@@ -805,19 +851,24 @@ def main() -> None:
     
     logger.info(f"Running mode(s): {', '.join(modes)}")
     
-    # Calculate total training runs
-    total_training_runs = 0
-    if "test-only" in modes:
-        total_training_runs += k_folds  # Train once per fold for test-only
-    if "train-test" in modes:
-        total_training_runs += len(hours) * k_folds  # Train for each interval x fold
-    
-    logger.info(f"Will train:")
-    if "test-only" in modes:
-        logger.info(f"  - test-only: {k_folds} models (trained once, reused for {len(hours)} test intervals)")
-    if "train-test" in modes:
-        logger.info(f"  - train-test: {len(hours)} intervals × {k_folds} folds = {len(hours) * k_folds} models")
-    logger.info(f"Total training runs: {total_training_runs}")
+    # Calculate total training runs (skip if eval-only)
+    if args.eval_only:
+        logger.info("=" * 60)
+        logger.info("EVAL-ONLY MODE: Skipping training, using existing checkpoints")
+        logger.info("=" * 60)
+    else:
+        total_training_runs = 0
+        if "test-only" in modes:
+            total_training_runs += k_folds  # Train once per fold for test-only
+        if "train-test" in modes:
+            total_training_runs += len(hours) * k_folds  # Train for each interval x fold
+        
+        logger.info(f"Will train:")
+        if "test-only" in modes:
+            logger.info(f"  - test-only: {k_folds} models (trained once, reused for {len(hours)} test intervals)")
+        if "train-test" in modes:
+            logger.info(f"  - train-test: {len(hours)} intervals × {k_folds} folds = {len(hours) * k_folds} models")
+        logger.info(f"Total training runs: {total_training_runs}")
     logger.info("="*60)
     
     # Structure: all_stats[metric][mode] = {"fold_metrics": [...], "mean": [...], "std": [...]}
@@ -835,12 +886,22 @@ def main() -> None:
         logger.info(f"\n[Mode {mode_idx}/{len(modes)}] Evaluating mode={mode}")
         
         if mode == "test-only":
-            # Train models ONCE for test-only mode
-            test_only_checkpoint_dir = train_models_once_for_test_only(
-                cfg,
-                base_data_cfg,
-                transforms,
-                args.start_hour,
+            # Determine checkpoint directory
+            if args.eval_only:
+                # Skip training, use existing checkpoints from specified directory
+                test_only_checkpoint_dir = checkpoint_base_dir / "checkpoints" / "test-only_base_models"
+                if not test_only_checkpoint_dir.exists():
+                    logger.error(f"--eval-only specified but checkpoint dir not found: {test_only_checkpoint_dir}")
+                    logger.error(f"Please verify the checkpoint directory exists in: {checkpoint_base_dir}")
+                    raise FileNotFoundError(f"Checkpoint directory not found: {test_only_checkpoint_dir}")
+                logger.info(f"Using existing checkpoints from: {test_only_checkpoint_dir}")
+            else:
+                # Train models ONCE for test-only mode
+                test_only_checkpoint_dir = train_models_once_for_test_only(
+                    cfg,
+                    base_data_cfg,
+                    transforms,
+                    args.start_hour,
                 max(hours),  # Use maximum hour for training data
                 args.split,
                 k_folds,
@@ -884,23 +945,51 @@ def main() -> None:
         else:  # train-test mode
             # Train separate models for each interval
             for hour_idx, hour in enumerate(hours, 1):
-                logger.info(f"  [{hour_idx}/{len(hours)}] Training and evaluating interval [{args.start_hour:.1f}, {hour:.1f}]h")
+                logger.info(f"  [{hour_idx}/{len(hours)}] {'Evaluating' if args.eval_only else 'Training and evaluating'} interval [{args.start_hour:.1f}, {hour:.1f}]h")
                 
-                interval_results = train_and_evaluate_interval(
-                    cfg,
-                    base_data_cfg,
-                    transforms,
-                    hour,
-                    args.start_hour,
-                    mode,
-                    args.split,
-                    metric_keys,
-                    k_folds,
-                    device,
-                    logger,
-                    output_dir,
-                    args.match_uninfected_window,
-                )
+                if args.eval_only:
+                    # Skip training, use existing checkpoints from specified directory
+                    # Match the naming format used during training: {mode}_interval_{start:.0f}-{end:.0f}
+                    interval_checkpoint_dir = checkpoint_base_dir / "checkpoints" / f"train-test_interval_{int(args.start_hour)}-{int(hour)}"
+                    if not interval_checkpoint_dir.exists():
+                        logger.error(f"--eval-only specified but checkpoint dir not found: {interval_checkpoint_dir}")
+                        logger.error(f"Please verify the checkpoint directory exists in: {checkpoint_base_dir}")
+                        raise FileNotFoundError(f"Checkpoint directory not found: {interval_checkpoint_dir}")
+                    
+                    logger.info(f"Using existing checkpoints from: {interval_checkpoint_dir}")
+                    
+                    # Evaluate with existing checkpoints
+                    interval_results = evaluate_with_saved_models(
+                        cfg,
+                        base_data_cfg,
+                        transforms,
+                        hour,
+                        args.start_hour,
+                        interval_checkpoint_dir,
+                        args.split,
+                        metric_keys,
+                        k_folds,
+                        device,
+                        logger,
+                        args.match_uninfected_window,
+                    )
+                else:
+                    # Train and evaluate
+                    interval_results = train_and_evaluate_interval(
+                        cfg,
+                        base_data_cfg,
+                        transforms,
+                        hour,
+                        args.start_hour,
+                        mode,
+                        args.split,
+                        metric_keys,
+                        k_folds,
+                        device,
+                        logger,
+                        output_dir,
+                        args.match_uninfected_window,
+                    )
                 
                 # Store results for each metric
                 for metric_key in metric_keys:

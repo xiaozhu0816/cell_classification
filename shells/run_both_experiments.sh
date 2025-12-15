@@ -20,14 +20,17 @@ echo "=================================================="
 echo "Running BOTH Experiments (Most Efficient)"
 echo "=================================================="
 echo ""
+echo "NOTE: With --match-uninfected-window enabled:"
+echo "  Both infected AND uninfected use the SAME interval [1, x]"
+echo ""
 echo "Experiment 1 (test-only):"
-echo "  Train: infected [1, FULL] + all uninfected"
-echo "  Test:  infected [1, x] + all uninfected"
+echo "  Train: infected [1, FULL] + uninfected [1, FULL]"
+echo "  Test:  infected [1, x] + uninfected [1, x]"
 echo "  → Results in LEFT panel of plots"
 echo ""
 echo "Experiment 2 (train-test):"
-echo "  Train: infected [1, x] + all uninfected"
-echo "  Test:  infected [1, x] + all uninfected"
+echo "  Train: infected [1, x] + uninfected [1, x]"
+echo "  Test:  infected [1, x] + uninfected [1, x]"
 echo "  → Results in RIGHT panel of plots"
 echo ""
 echo "=================================================="
@@ -40,6 +43,11 @@ K_FOLDS=5
 EPOCHS=10
 METRICS="auc accuracy f1"
 MATCH_UNINFECTED=true  # Set to true to apply same interval to uninfected samples
+EVAL_ONLY=true  # Set to true to skip training and only evaluate + visualize
+
+# IMPORTANT: When EVAL_ONLY=true, you MUST specify the checkpoint directory
+# Set this to the output directory from your previous training run
+CHECKPOINT_DIR="outputs/interval_sweep_analysis/20251212-145928"
 
 echo ""
 echo "Settings:"
@@ -48,10 +56,14 @@ echo "  K-folds: $K_FOLDS"
 echo "  Epochs: $EPOCHS"
 echo "  Metrics: $METRICS"
 echo "  Match uninfected interval: $MATCH_UNINFECTED"
+echo "  Eval-only mode: $EVAL_ONLY"
+if [ "$EVAL_ONLY" = true ]; then
+    echo "  Checkpoint directory: $CHECKPOINT_DIR"
+fi
 echo "=================================================="
 echo ""
 
-# Build command with optional flag
+# Build command with optional flags
 CMD="python analyze_interval_sweep_train.py \
     --config $CONFIG \
     --upper-hours ${UPPER_HOURS[@]} \
@@ -62,9 +74,16 @@ CMD="python analyze_interval_sweep_train.py \
     --split test \
     --mode both"
 
-# Add flag if enabled
+# Add optional flags
 if [ "$MATCH_UNINFECTED" = true ]; then
     CMD="$CMD --match-uninfected-window"
+fi
+
+if [ "$EVAL_ONLY" = true ]; then
+    CMD="$CMD --eval-only --checkpoint-dir $CHECKPOINT_DIR"
+    echo "⚠️  EVAL-ONLY MODE: Skipping training, using existing checkpoints"
+    echo "   Loading from: $CHECKPOINT_DIR"
+    echo ""
 fi
 
 # Execute
