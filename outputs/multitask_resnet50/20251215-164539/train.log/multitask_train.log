@@ -118,3 +118,71 @@
 2025-12-15 16:57:34,575 | INFO | ✓ New best model! cls_auc=0.9985
 2025-12-15 16:57:34,575 | INFO | ================================================================================
 2025-12-15 16:57:34,575 | INFO | Epoch 5/20
+2025-12-15 17:00:08,194 | INFO | train_e5 - total_loss: 2.0504 | cls_loss: 0.0400 | reg_loss: 2.0104
+2025-12-15 17:00:29,445 | INFO | val: total_loss:1.8629 | cls_loss:0.1108 | reg_loss:1.7521 | cls_accuracy:0.9695 | cls_precision:0.9962 | cls_recall:0.9427 | cls_f1:0.9687 | cls_auc:0.9975 | reg_mae:2.1874 | reg_rmse:3.4009 | reg_mse:11.5660
+2025-12-15 17:00:29,445 | INFO | ================================================================================
+2025-12-15 17:00:29,445 | INFO | Epoch 6/20
+2025-12-15 17:02:59,204 | INFO | train_e6 - total_loss: 1.8835 | cls_loss: 0.0283 | reg_loss: 1.8553
+2025-12-15 17:03:17,972 | INFO | val: total_loss:1.9218 | cls_loss:0.0912 | reg_loss:1.8306 | cls_accuracy:0.9713 | cls_precision:0.9925 | cls_recall:0.9498 | cls_f1:0.9707 | cls_auc:0.9994 | reg_mae:2.2678 | reg_rmse:3.5122 | reg_mse:12.3353
+2025-12-15 17:03:19,766 | INFO | ✓ New best model! cls_auc=0.9994
+2025-12-15 17:03:19,766 | INFO | ================================================================================
+2025-12-15 17:03:19,766 | INFO | Epoch 7/20
+2025-12-15 17:06:05,107 | INFO | train_e7 - total_loss: 1.7785 | cls_loss: 0.0242 | reg_loss: 1.7544
+2025-12-15 17:06:24,400 | INFO | val: total_loss:1.8345 | cls_loss:0.0410 | reg_loss:1.7935 | cls_accuracy:0.9857 | cls_precision:1.0000 | cls_recall:0.9713 | cls_f1:0.9855 | cls_auc:0.9998 | reg_mae:2.2312 | reg_rmse:3.1121 | reg_mse:9.6853
+2025-12-15 17:06:26,089 | INFO | ✓ New best model! cls_auc=0.9998
+2025-12-15 17:06:26,089 | INFO | ================================================================================
+2025-12-15 17:06:26,089 | INFO | Epoch 8/20
+2025-12-15 17:09:09,723 | INFO | train_e8 - total_loss: 1.7387 | cls_loss: 0.0334 | reg_loss: 1.7052
+2025-12-15 17:09:30,323 | INFO | val: total_loss:0.9693 | cls_loss:0.0120 | reg_loss:0.9573 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.3787 | reg_rmse:1.9870 | reg_mse:3.9482
+2025-12-15 17:09:32,024 | INFO | ✓ New best model! cls_auc=1.0000
+2025-12-15 17:09:32,024 | INFO | ================================================================================
+2025-12-15 17:09:32,024 | INFO | Epoch 9/20
+2025-12-15 17:12:19,337 | INFO | train_e9 - total_loss: 1.6233 | cls_loss: 0.0231 | reg_loss: 1.6002
+2025-12-15 17:12:38,786 | INFO | val: total_loss:1.4547 | cls_loss:0.0275 | reg_loss:1.4272 | cls_accuracy:0.9892 | cls_precision:0.9789 | cls_recall:1.0000 | cls_f1:0.9894 | cls_auc:0.9998 | reg_mae:1.8717 | reg_rmse:2.5709 | reg_mse:6.6093
+2025-12-15 17:12:38,786 | INFO | ================================================================================
+2025-12-15 17:12:38,787 | INFO | Epoch 10/20
+2025-12-15 17:15:21,162 | INFO | train_e10 - total_loss: 1.4946 | cls_loss: 0.0165 | reg_loss: 1.4781
+2025-12-15 17:15:40,313 | INFO | val: total_loss:1.9099 | cls_loss:0.0659 | reg_loss:1.8440 | cls_accuracy:0.9749 | cls_precision:0.9926 | cls_recall:0.9570 | cls_f1:0.9745 | cls_auc:0.9996 | reg_mae:2.2906 | reg_rmse:3.4934 | reg_mse:12.2036
+2025-12-15 17:15:40,314 | INFO | ================================================================================
+2025-12-15 17:15:40,314 | INFO | Epoch 11/20
+2025-12-15 17:18:26,843 | INFO | train_e11 - total_loss: 1.4363 | cls_loss: 0.0167 | reg_loss: 1.4196
+2025-12-15 17:18:47,006 | INFO | val: total_loss:1.0197 | cls_loss:0.0048 | reg_loss:1.0149 | cls_accuracy:0.9982 | cls_precision:0.9964 | cls_recall:1.0000 | cls_f1:0.9982 | cls_auc:1.0000 | reg_mae:1.4251 | reg_rmse:2.1230 | reg_mse:4.5073
+2025-12-15 17:18:47,006 | INFO | ================================================================================
+2025-12-15 17:18:47,006 | INFO | Epoch 12/20
+2025-12-15 17:21:33,921 | INFO | train_e12 - total_loss: 1.3377 | cls_loss: 0.0167 | reg_loss: 1.3210
+2025-12-15 17:21:54,016 | INFO | val: total_loss:1.3333 | cls_loss:0.0457 | reg_loss:1.2876 | cls_accuracy:0.9839 | cls_precision:0.9927 | cls_recall:0.9749 | cls_f1:0.9837 | cls_auc:0.9990 | reg_mae:1.7004 | reg_rmse:2.7946 | reg_mse:7.8099
+2025-12-15 17:21:54,016 | INFO | ================================================================================
+2025-12-15 17:21:54,016 | INFO | Epoch 13/20
+2025-12-15 17:24:29,558 | INFO | train_e13 - total_loss: 1.1582 | cls_loss: 0.0116 | reg_loss: 1.1466
+2025-12-15 17:24:49,054 | INFO | val: total_loss:1.0742 | cls_loss:0.0084 | reg_loss:1.0658 | cls_accuracy:0.9964 | cls_precision:0.9964 | cls_recall:0.9964 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.4882 | reg_rmse:2.1795 | reg_mse:4.7504
+2025-12-15 17:24:49,054 | INFO | ================================================================================
+2025-12-15 17:24:49,054 | INFO | Epoch 14/20
+2025-12-15 17:27:28,587 | INFO | train_e14 - total_loss: 1.1242 | cls_loss: 0.0113 | reg_loss: 1.1129
+2025-12-15 17:27:48,580 | INFO | val: total_loss:1.1341 | cls_loss:0.0185 | reg_loss:1.1155 | cls_accuracy:0.9928 | cls_precision:0.9893 | cls_recall:0.9964 | cls_f1:0.9929 | cls_auc:0.9998 | reg_mae:1.5324 | reg_rmse:2.3255 | reg_mse:5.4077
+2025-12-15 17:27:48,580 | INFO | ================================================================================
+2025-12-15 17:27:48,580 | INFO | Epoch 15/20
+2025-12-15 17:30:22,501 | INFO | train_e15 - total_loss: 1.0982 | cls_loss: 0.0097 | reg_loss: 1.0885
+2025-12-15 17:30:42,035 | INFO | val: total_loss:0.7472 | cls_loss:0.0049 | reg_loss:0.7423 | cls_accuracy:1.0000 | cls_precision:1.0000 | cls_recall:1.0000 | cls_f1:1.0000 | cls_auc:1.0000 | reg_mae:1.1282 | reg_rmse:1.8493 | reg_mse:3.4197
+2025-12-15 17:30:42,035 | INFO | ================================================================================
+2025-12-15 17:30:42,035 | INFO | Epoch 16/20
+2025-12-15 17:33:17,707 | INFO | train_e16 - total_loss: 0.9948 | cls_loss: 0.0094 | reg_loss: 0.9854
+2025-12-15 17:33:37,746 | INFO | val: total_loss:0.8693 | cls_loss:0.0059 | reg_loss:0.8634 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.2807 | reg_rmse:1.9452 | reg_mse:3.7840
+2025-12-15 17:33:37,747 | INFO | ================================================================================
+2025-12-15 17:33:37,747 | INFO | Epoch 17/20
+2025-12-15 17:36:12,989 | INFO | train_e17 - total_loss: 1.0096 | cls_loss: 0.0063 | reg_loss: 1.0034
+2025-12-15 17:36:32,384 | INFO | val: total_loss:0.8165 | cls_loss:0.0056 | reg_loss:0.8108 | cls_accuracy:0.9982 | cls_precision:1.0000 | cls_recall:0.9964 | cls_f1:0.9982 | cls_auc:1.0000 | reg_mae:1.2121 | reg_rmse:1.8811 | reg_mse:3.5386
+2025-12-15 17:36:32,385 | INFO | ================================================================================
+2025-12-15 17:36:32,385 | INFO | Epoch 18/20
+2025-12-15 17:39:07,866 | INFO | train_e18 - total_loss: 0.9663 | cls_loss: 0.0113 | reg_loss: 0.9550
+2025-12-15 17:39:27,625 | INFO | val: total_loss:0.8167 | cls_loss:0.0056 | reg_loss:0.8111 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.2199 | reg_rmse:1.8132 | reg_mse:3.2878
+2025-12-15 17:39:27,625 | INFO | ================================================================================
+2025-12-15 17:39:27,625 | INFO | Epoch 19/20
+2025-12-15 17:42:09,687 | INFO | train_e19 - total_loss: 0.9359 | cls_loss: 0.0059 | reg_loss: 0.9300
+2025-12-15 17:42:30,436 | INFO | val: total_loss:0.8098 | cls_loss:0.0070 | reg_loss:0.8027 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.2057 | reg_rmse:1.8999 | reg_mse:3.6096
+2025-12-15 17:42:30,437 | INFO | ================================================================================
+2025-12-15 17:42:30,437 | INFO | Epoch 20/20
+2025-12-15 17:45:14,084 | INFO | train_e20 - total_loss: 0.9349 | cls_loss: 0.0073 | reg_loss: 0.9276
+2025-12-15 17:45:33,342 | INFO | val: total_loss:0.9060 | cls_loss:0.0087 | reg_loss:0.8973 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.3145 | reg_rmse:1.9619 | reg_mse:3.8492
+2025-12-15 17:45:33,342 | INFO | ================================================================================
+2025-12-15 17:45:33,342 | INFO | Final evaluation on test set
+2025-12-15 17:46:24,951 | INFO | test: total_loss:0.7674 | cls_loss:0.0197 | reg_loss:0.7477 | cls_accuracy:0.9940 | cls_precision:1.0000 | cls_recall:0.9879 | cls_f1:0.9939 | cls_auc:0.9999 | reg_mae:1.1519 | reg_rmse:1.4698 | reg_mse:2.1604
