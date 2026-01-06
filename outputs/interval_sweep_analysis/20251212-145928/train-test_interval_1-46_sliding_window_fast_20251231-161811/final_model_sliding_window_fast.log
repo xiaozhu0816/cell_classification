@@ -1,0 +1,219 @@
+2025-12-31 16:18:11,840 | INFO | ============================================================
+2025-12-31 16:18:11,840 | INFO | Final Model Sliding Window Evaluation (OPTIMIZED)
+2025-12-31 16:18:11,840 | INFO | ============================================================
+2025-12-31 16:18:11,840 | INFO | Checkpoint directory: outputs/interval_sweep_analysis/20251212-145928/checkpoints/train-test_interval_1-46
+2025-12-31 16:18:11,840 | INFO | Number of folds: 5
+2025-12-31 16:18:11,840 | INFO | Optimization: Evaluate once per fold, group by window
+2025-12-31 16:18:11,862 | INFO | Overriding data config to use infected_window_hours: [0.0, 46.0]
+2025-12-31 16:18:11,863 | INFO | This ensures test set contains infected samples from ALL timepoints
+2025-12-31 16:18:11,863 | INFO | Device: cuda
+2025-12-31 16:18:11,863 | INFO | K-folds: 5
+2025-12-31 16:18:11,863 | INFO | Time field: hours_since_start
+2025-12-31 16:18:11,863 | INFO | Auto-generated 14 windows: start=1.0h, end=46.0h, size=6.0h, stride=3.0h
+2025-12-31 16:18:11,863 | INFO | Evaluating metrics: auc, accuracy, f1
+2025-12-31 16:18:11,863 | INFO | Will evaluate on 14 windows (5 folds)
+2025-12-31 16:18:11,863 | INFO | Total evaluations: 5 (not 70 - OPTIMIZED!)
+2025-12-31 16:18:11,863 | INFO | ============================================================
+2025-12-31 16:18:11,863 | INFO | 
+[Fold 1/5] Loading checkpoint: fold_01_best.pth
+2025-12-31 16:18:13,582 | INFO | [fold_01of05] Evaluating on ALL test data...
+2025-12-31 16:19:25,609 | INFO |   Total samples evaluated: 1488
+2025-12-31 16:19:25,611 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 16:19:25,615 | INFO |   Window [1.0, 7.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9950, accuracy=0.9231, f1=0.9167
+2025-12-31 16:19:25,618 | INFO |   Window [4.0, 10.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9991, accuracy=0.9375, f1=0.9333
+2025-12-31 16:19:25,620 | INFO |   Window [7.0, 13.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=0.9712, f1=0.9703
+2025-12-31 16:19:25,623 | INFO |   Window [10.0, 16.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,625 | INFO |   Window [13.0, 19.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,628 | INFO |   Window [16.0, 22.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,630 | INFO |   Window [19.0, 25.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,632 | INFO |   Window [22.0, 28.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,635 | INFO |   Window [25.0, 31.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,637 | INFO |   Window [28.0, 34.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,640 | INFO |   Window [31.0, 37.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,642 | INFO |   Window [34.0, 40.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,645 | INFO |   Window [37.0, 43.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,647 | INFO |   Window [40.0, 46.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:19:25,668 | INFO | 
+[Fold 2/5] Loading checkpoint: fold_02_best.pth
+2025-12-31 16:19:28,549 | INFO | [fold_02of05] Evaluating on ALL test data...
+2025-12-31 16:20:46,551 | INFO |   Total samples evaluated: 1488
+2025-12-31 16:20:46,553 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 16:20:46,556 | INFO |   Window [1.0, 7.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9968, accuracy=0.9712, f1=0.9703
+2025-12-31 16:20:46,558 | INFO |   Window [4.0, 10.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9981, accuracy=0.9808, f1=0.9804
+2025-12-31 16:20:46,561 | INFO |   Window [7.0, 13.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,563 | INFO |   Window [10.0, 16.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,566 | INFO |   Window [13.0, 19.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=0.9952, f1=0.9952
+2025-12-31 16:20:46,568 | INFO |   Window [16.0, 22.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=0.9952, f1=0.9952
+2025-12-31 16:20:46,570 | INFO |   Window [19.0, 25.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,573 | INFO |   Window [22.0, 28.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,575 | INFO |   Window [25.0, 31.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,578 | INFO |   Window [28.0, 34.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,580 | INFO |   Window [31.0, 37.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,583 | INFO |   Window [34.0, 40.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,585 | INFO |   Window [37.0, 43.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,587 | INFO |   Window [40.0, 46.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:20:46,612 | INFO | 
+[Fold 3/5] Loading checkpoint: fold_03_best.pth
+2025-12-31 16:20:48,362 | INFO | [fold_03of05] Evaluating on ALL test data...
+2025-12-31 16:21:57,112 | INFO |   Total samples evaluated: 1488
+2025-12-31 16:21:57,113 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 16:21:57,117 | INFO |   Window [1.0, 7.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9971, accuracy=0.9471, f1=0.9442
+2025-12-31 16:21:57,119 | INFO |   Window [4.0, 10.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9993, accuracy=0.9808, f1=0.9804
+2025-12-31 16:21:57,122 | INFO |   Window [7.0, 13.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,124 | INFO |   Window [10.0, 16.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,127 | INFO |   Window [13.0, 19.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,129 | INFO |   Window [16.0, 22.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,131 | INFO |   Window [19.0, 25.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,134 | INFO |   Window [22.0, 28.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,136 | INFO |   Window [25.0, 31.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,139 | INFO |   Window [28.0, 34.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,141 | INFO |   Window [31.0, 37.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,144 | INFO |   Window [34.0, 40.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,146 | INFO |   Window [37.0, 43.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,148 | INFO |   Window [40.0, 46.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:21:57,173 | INFO | 
+[Fold 4/5] Loading checkpoint: fold_04_best.pth
+2025-12-31 16:21:58,508 | INFO | [fold_04of05] Evaluating on ALL test data...
+2025-12-31 16:23:09,351 | INFO |   Total samples evaluated: 1488
+2025-12-31 16:23:09,353 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 16:23:09,357 | INFO |   Window [1.0, 7.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9969, accuracy=0.8798, f1=0.8634
+2025-12-31 16:23:09,359 | INFO |   Window [4.0, 10.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9995, accuracy=0.9567, f1=0.9548
+2025-12-31 16:23:09,362 | INFO |   Window [7.0, 13.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=0.9952, f1=0.9952
+2025-12-31 16:23:09,364 | INFO |   Window [10.0, 16.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,366 | INFO |   Window [13.0, 19.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,369 | INFO |   Window [16.0, 22.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,371 | INFO |   Window [19.0, 25.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,374 | INFO |   Window [22.0, 28.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,376 | INFO |   Window [25.0, 31.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,379 | INFO |   Window [28.0, 34.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,381 | INFO |   Window [31.0, 37.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,383 | INFO |   Window [34.0, 40.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,386 | INFO |   Window [37.0, 43.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,388 | INFO |   Window [40.0, 46.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:23:09,412 | INFO | 
+[Fold 5/5] Loading checkpoint: fold_05_best.pth
+2025-12-31 16:23:10,847 | INFO | [fold_05of05] Evaluating on ALL test data...
+2025-12-31 16:24:24,667 | INFO |   Total samples evaluated: 1488
+2025-12-31 16:24:24,668 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 16:24:24,672 | INFO |   Window [1.0, 7.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9982, accuracy=0.9087, f1=0.8995
+2025-12-31 16:24:24,674 | INFO |   Window [4.0, 10.0]h: 208 samples (104 infected, 104 uninfected), auc=0.9995, accuracy=0.9423, f1=0.9388
+2025-12-31 16:24:24,677 | INFO |   Window [7.0, 13.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=0.9808, f1=0.9804
+2025-12-31 16:24:24,679 | INFO |   Window [10.0, 16.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,681 | INFO |   Window [13.0, 19.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,684 | INFO |   Window [16.0, 22.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,686 | INFO |   Window [19.0, 25.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,689 | INFO |   Window [22.0, 28.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,691 | INFO |   Window [25.0, 31.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,693 | INFO |   Window [28.0, 34.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,696 | INFO |   Window [31.0, 37.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,698 | INFO |   Window [34.0, 40.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,701 | INFO |   Window [37.0, 43.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,703 | INFO |   Window [40.0, 46.0]h: 208 samples (104 infected, 104 uninfected), auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 16:24:24,722 | INFO | 
+============================================================
+2025-12-31 16:24:24,722 | INFO | Aggregating results across folds...
+2025-12-31 16:24:24,722 | INFO | ============================================================
+2025-12-31 16:24:24,722 | INFO | 
+Window [1.0, 7.0]h (center=4.0):
+2025-12-31 16:24:24,722 | INFO |   AUC: 0.9968 ± 0.0010 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   ACCURACY: 0.9260 ± 0.0314 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   F1: 0.9188 ± 0.0367 (5 folds)
+2025-12-31 16:24:24,723 | INFO | 
+Window [4.0, 10.0]h (center=7.0):
+2025-12-31 16:24:24,723 | INFO |   AUC: 0.9991 ± 0.0005 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   ACCURACY: 0.9596 ± 0.0184 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   F1: 0.9575 ± 0.0200 (5 folds)
+2025-12-31 16:24:24,723 | INFO | 
+Window [7.0, 13.0]h (center=10.0):
+2025-12-31 16:24:24,723 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   ACCURACY: 0.9894 ± 0.0115 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   F1: 0.9892 ± 0.0119 (5 folds)
+2025-12-31 16:24:24,723 | INFO | 
+Window [10.0, 16.0]h (center=13.0):
+2025-12-31 16:24:24,723 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,723 | INFO | 
+Window [13.0, 19.0]h (center=16.0):
+2025-12-31 16:24:24,723 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,723 | INFO |   ACCURACY: 0.9990 ± 0.0019 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   F1: 0.9990 ± 0.0019 (5 folds)
+2025-12-31 16:24:24,724 | INFO | 
+Window [16.0, 22.0]h (center=19.0):
+2025-12-31 16:24:24,724 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   ACCURACY: 0.9990 ± 0.0019 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   F1: 0.9990 ± 0.0019 (5 folds)
+2025-12-31 16:24:24,724 | INFO | 
+Window [19.0, 25.0]h (center=22.0):
+2025-12-31 16:24:24,724 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO | 
+Window [22.0, 28.0]h (center=25.0):
+2025-12-31 16:24:24,724 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO | 
+Window [25.0, 31.0]h (center=28.0):
+2025-12-31 16:24:24,724 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,724 | INFO | 
+Window [28.0, 34.0]h (center=31.0):
+2025-12-31 16:24:24,724 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO | 
+Window [31.0, 37.0]h (center=34.0):
+2025-12-31 16:24:24,725 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO | 
+Window [34.0, 40.0]h (center=37.0):
+2025-12-31 16:24:24,725 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO | 
+Window [37.0, 43.0]h (center=40.0):
+2025-12-31 16:24:24,725 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO | 
+Window [40.0, 46.0]h (center=43.0):
+2025-12-31 16:24:24,725 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 16:24:24,725 | INFO | 
+Creating combined plot for all metrics...
+2025-12-31 16:24:26,468 | INFO | 
+Saved data to outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-161811/final_model_sliding_w6_s3_data.json
+2025-12-31 16:24:26,469 | INFO | 
+============================================================
+2025-12-31 16:24:26,469 | INFO | Summary Statistics:
+2025-12-31 16:24:26,469 | INFO | ============================================================
+2025-12-31 16:24:26,469 | INFO | 
+AUC:
+2025-12-31 16:24:26,469 | INFO |   Best window: [7.0, 13.0]h with value=1.0000
+2025-12-31 16:24:26,469 | INFO |   Worst window: [1.0, 7.0]h with value=0.9968
+2025-12-31 16:24:26,470 | INFO |   Overall mean: 0.9997 ± 0.0009
+2025-12-31 16:24:26,470 | INFO |   Performance range: 0.0032 (0.32% relative variation)
+2025-12-31 16:24:26,470 | INFO | 
+ACCURACY:
+2025-12-31 16:24:26,470 | INFO |   Best window: [10.0, 16.0]h with value=1.0000
+2025-12-31 16:24:26,470 | INFO |   Worst window: [1.0, 7.0]h with value=0.9260
+2025-12-31 16:24:26,470 | INFO |   Overall mean: 0.9909 ± 0.0216
+2025-12-31 16:24:26,470 | INFO |   Performance range: 0.0740 (7.47% relative variation)
+2025-12-31 16:24:26,470 | INFO | 
+F1:
+2025-12-31 16:24:26,470 | INFO |   Best window: [10.0, 16.0]h with value=1.0000
+2025-12-31 16:24:26,470 | INFO |   Worst window: [1.0, 7.0]h with value=0.9188
+2025-12-31 16:24:26,470 | INFO |   Overall mean: 0.9903 ± 0.0235
+2025-12-31 16:24:26,470 | INFO |   Performance range: 0.0812 (8.20% relative variation)
+2025-12-31 16:24:26,470 | INFO | ============================================================
+2025-12-31 16:24:26,470 | INFO | Analysis complete! Results saved to: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-161811
+2025-12-31 16:24:26,470 | INFO | 
+Outputs:
+2025-12-31 16:24:26,470 | INFO |   - Plots: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-161811/*.png
+2025-12-31 16:24:26,470 | INFO |   - Data: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-161811/final_model_sliding_w6_s3_data.json
+2025-12-31 16:24:26,470 | INFO |   - Log: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-161811/final_model_sliding_window_fast.log
+2025-12-31 16:24:26,470 | INFO | ============================================================

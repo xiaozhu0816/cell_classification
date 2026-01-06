@@ -1,0 +1,66 @@
+================================================================================
+MULTI-TASK CELL CLASSIFICATION - TRAINING SUMMARY
+================================================================================
+Experiment: multitask_resnet50
+Run ID: 20260102-163144
+
+--------------------------------------------------------------------------------
+CONFIGURATION
+--------------------------------------------------------------------------------
+Model: resnet50
+Pretrained: True
+Hidden Dim: 256
+Dropout: 0.2
+
+Epochs: 30
+Learning Rate: 0.0001
+Batch Size: 128
+Mixed Precision: True
+
+Infection Onset Hour: 1.0
+Classification Weight: 1.0
+Regression Weight: 1.0
+
+--------------------------------------------------------------------------------
+TRAINING PROGRESS
+--------------------------------------------------------------------------------
+Best Validation AUC: 1.0000 (Epoch 11)
+Final Training Loss: 0.8091
+Final Validation Loss: 0.8816
+✓ Training converged successfully
+
+--------------------------------------------------------------------------------
+FINAL TEST SET RESULTS
+--------------------------------------------------------------------------------
+Classification Task:
+  Accuracy:  0.9913
+  Precision: 1.0000
+  Recall:    0.9825
+  F1 Score:  0.9912
+  AUC:       0.9999
+
+Time Regression Task:
+  MAE:       1.0906 hours
+  RMSE:      1.4092 hours
+  MSE:       1.9857 hours²
+
+Combined Losses:
+  Total Loss:          0.7232
+  Classification Loss: 0.0295
+  Regression Loss:     0.6937
+
+--------------------------------------------------------------------------------
+INTERPRETATION
+--------------------------------------------------------------------------------
+✓ EXCELLENT classification performance (AUC ≥ 0.95)
+✓ GOOD time prediction (MAE < 2 hours)
+
+The model successfully learns BOTH tasks:
+  1. Distinguishes infected vs uninfected cells with high accuracy
+  2. Predicts temporal information (time since infection / experiment time)
+
+This dual capability enables:
+  - Early infection detection
+  - Infection progression tracking
+  - Temporal pattern analysis
+================================================================================

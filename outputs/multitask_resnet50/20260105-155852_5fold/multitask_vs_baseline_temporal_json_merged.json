@@ -1,0 +1,40 @@
+{
+  "baseline_source": {
+    "model_name": "train-test_interval_1-46",
+    "window_size": 6.0,
+    "stride": 3.0,
+    "time_field": "hours_since_start"
+  },
+  "multitask_source": {
+    "num_folds": 5
+  },
+  "common_window_centers": [],
+  "baseline": {
+    "auc": {
+      "mean": [],
+      "std": []
+    },
+    "accuracy": {
+      "mean": [],
+      "std": []
+    },
+    "f1": {
+      "mean": [],
+      "std": []
+    }
+  },
+  "multitask": {
+    "auc": {
+      "mean": [],
+      "std": []
+    },
+    "accuracy": {
+      "mean": [],
+      "std": []
+    },
+    "f1": {
+      "mean": [],
+      "std": []
+    }
+  }
+}

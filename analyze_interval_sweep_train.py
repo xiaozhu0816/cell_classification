@@ -12,8 +12,10 @@ For each interval configuration:
 4. Record metrics across K-folds
 
 Two modes:
-- train-test: Both train and test use [start, x]
-- test-only: Train uses full range, test uses [start, x]
+- train-test: Both train and test use [start, x] - trains separate model for each interval
+- test-only: Train on [start, MAX], test on [start, x] - uses FINAL model from train-test, tests on restricted data
+  
+At x=MAX (final point), both modes should show IDENTICAL performance since they use the same model and test data.
 """
 
 from __future__ import annotations
@@ -79,9 +81,10 @@ def parse_args() -> argparse.Namespace:
         choices=["both", "test-only", "train-test"],
         default="both",
         help="Which experiment mode to run: "
-             "'test-only' (train on ALL, test on [1,x]), "
-             "'train-test' (train on [1,x], test on [1,x]), "
-             "or 'both' (run both modes for comparison)",
+             "'test-only' (train on [1,MAX], test on [1,x] - reuses final train-test model), "
+             "'train-test' (train on [1,x], test on [1,x] - separate model per interval), "
+             "or 'both' (run both modes for comparison). "
+             "At x=MAX, both modes use identical model and test data.",
     )
     parser.add_argument(
         "--metrics",
@@ -661,7 +664,7 @@ def plot_single_metric_sweep(
 ) -> None:
     """Plot error bars for a single metric across both modes."""
     modes = ["train-test", "test-only"]
-    labels = ["Train=[start,x], Test=[start,x]", "Train=full, Test=[start,x]"]
+    labels = ["Train=[start,x], Test=[start,x]", "Train=[start,MAX], Test=[start,x]"]
     
     fig, axes = plt.subplots(1, 2, figsize=(14, 5), sharey=True)
     
@@ -700,7 +703,7 @@ def plot_multi_metric_sweep(
 ) -> None:
     """Plot combined error bars for multiple metrics."""
     modes = ["train-test", "test-only"]
-    labels = ["Train=[start,x], Test=[start,x]", "Train=full, Test=[start,x]"]
+    labels = ["Train=[start,x], Test=[start,x]", "Train=[start,MAX], Test=[start,x]"]
     
     fig, axes = plt.subplots(1, 2, figsize=(15, 6), sharey=False)
     colors = plt.cm.tab10(np.linspace(0, 1, len(all_stats)))
@@ -886,30 +889,41 @@ def main() -> None:
         logger.info(f"\n[Mode {mode_idx}/{len(modes)}] Evaluating mode={mode}")
         
         if mode == "test-only":
-            # Determine checkpoint directory
+            # Determine checkpoint directory for the FINAL model (max hour from train-test)
+            max_hour = max(hours)
+            
             if args.eval_only:
-                # Skip training, use existing checkpoints from specified directory
-                test_only_checkpoint_dir = checkpoint_base_dir / "checkpoints" / "test-only_base_models"
+                # Use existing final checkpoint from train-test mode
+                test_only_checkpoint_dir = checkpoint_base_dir / "checkpoints" / f"train-test_interval_{int(args.start_hour)}-{int(max_hour)}"
                 if not test_only_checkpoint_dir.exists():
-                    logger.error(f"--eval-only specified but checkpoint dir not found: {test_only_checkpoint_dir}")
-                    logger.error(f"Please verify the checkpoint directory exists in: {checkpoint_base_dir}")
+                    logger.error(f"--eval-only specified but final train-test checkpoint not found: {test_only_checkpoint_dir}")
+                    logger.error(f"For test-only mode, we need the final [1-{max_hour}h] model from train-test mode")
                     raise FileNotFoundError(f"Checkpoint directory not found: {test_only_checkpoint_dir}")
-                logger.info(f"Using existing checkpoints from: {test_only_checkpoint_dir}")
+                logger.info(f"Using final train-test model from: {test_only_checkpoint_dir}")
             else:
-                # Train models ONCE for test-only mode
-                test_only_checkpoint_dir = train_models_once_for_test_only(
-                    cfg,
-                    base_data_cfg,
-                    transforms,
-                    args.start_hour,
-                max(hours),  # Use maximum hour for training data
-                args.split,
-                k_folds,
-                device,
-                logger,
-                output_dir,
-                args.match_uninfected_window,
-            )
+                # Check if train-test has already been run and has the final model
+                potential_checkpoint_dir = output_dir / "checkpoints" / f"train-test_interval_{int(args.start_hour)}-{int(max_hour)}"
+                
+                if "train-test" in modes and potential_checkpoint_dir.exists():
+                    # Reuse the checkpoint from train-test mode (already trained in this run)
+                    test_only_checkpoint_dir = potential_checkpoint_dir
+                    logger.info(f"Reusing final model from train-test mode: {test_only_checkpoint_dir}")
+                else:
+                    # Need to train the final model specifically for test-only
+                    logger.warning(f"Train-test mode not run or checkpoint not found. Training final model [{args.start_hour:.1f}, {max_hour:.1f}]h")
+                    test_only_checkpoint_dir = train_models_once_for_test_only(
+                        cfg,
+                        base_data_cfg,
+                        transforms,
+                        args.start_hour,
+                        max_hour,
+                        args.split,
+                        k_folds,
+                        device,
+                        logger,
+                        output_dir,
+                        args.match_uninfected_window,
+                    )
             
             # Now evaluate on all test intervals using the saved models
             for hour_idx, hour in enumerate(hours, 1):

@@ -1,0 +1,42 @@
+Loading checkpoint from outputs/multitask_resnet50/20251215-164539/checkpoints/best.pt
+✓ Loaded model: resnet50
+✓ Device: cuda
+
+Multitask config:
+  Infection onset: 2.0h
+  Clamp range: (0.0, 48.0)
+
+Building datasets...
+✓ Test set: 1488 samples
+Collecting predictions on test set...
+✓ Collected 1488 predictions
+✓ Saved predictions to outputs/multitask_resnet50/20251215-164539/test_predictions.npz
+
+✓ Saved scatter plot to outputs/multitask_resnet50/20251215-164539/prediction_scatter_regression.png
+
+================================================================================
+PREDICTION ANALYSIS SUMMARY
+================================================================================
+Overall (n=1488):
+  R² Score:  0.9787
+  Pearson R: 0.9922
+  MAE:       1.53 hours
+  RMSE:      1.96 hours
+  Regression: y = 1.055x + -0.815
+
+Infected Cells (n=744):
+  R² Score:  0.9871
+  Pearson R: 0.9951
+  MAE:       1.22 hours
+  RMSE:      1.52 hours
+  Regression: y = 1.029x + -0.094
+
+Uninfected Cells (n=744):
+  R² Score:  0.9703
+  Pearson R: 0.9904
+  MAE:       1.85 hours
+  RMSE:      2.31 hours
+  Regression: y = 1.081x + -1.624
+================================================================================
+
+✓ Done! Check outputs/multitask_resnet50/20251215-164539/prediction_scatter_regression.png

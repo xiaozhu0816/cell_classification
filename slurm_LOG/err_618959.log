@@ -1,0 +1,25 @@
+2025-12-31 15:45:58,359 | INFO | ============================================================
+2025-12-31 15:45:58,359 | INFO | Final Model Sliding Window Evaluation (OPTIMIZED)
+2025-12-31 15:45:58,359 | INFO | ============================================================
+2025-12-31 15:45:58,359 | INFO | Checkpoint directory: outputs/interval_sweep_analysis/20251212-145928/checkpoints/train-test_interval_1-46
+2025-12-31 15:45:58,359 | INFO | Number of folds: 5
+2025-12-31 15:45:58,359 | INFO | Optimization: Evaluate once per fold, group by window
+2025-12-31 15:45:58,374 | INFO | Device: cuda
+2025-12-31 15:45:58,374 | INFO | K-folds: 5
+2025-12-31 15:45:58,374 | INFO | Time field: time_hours
+2025-12-31 15:45:58,374 | INFO | Auto-generated 14 windows: start=1.0h, end=46.0h, size=6.0h, stride=3.0h
+2025-12-31 15:45:58,374 | INFO | Evaluating metrics: auc, accuracy, f1
+2025-12-31 15:45:58,374 | INFO | Will evaluate on 14 windows (5 folds)
+2025-12-31 15:45:58,374 | INFO | Total evaluations: 5 (not 70 - OPTIMIZED!)
+2025-12-31 15:45:58,374 | INFO | ============================================================
+2025-12-31 15:45:58,374 | INFO | 
+[Fold 1/5] Loading checkpoint: fold_01_best.pth
+2025-12-31 15:46:00,420 | INFO | [fold_01of05] Evaluating on ALL test data...
+Traceback (most recent call last):
+  File "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/analyze_final_model_sliding_window_fast.py", line 753, in <module>
+    main()
+  File "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/analyze_final_model_sliding_window_fast.py", line 604, in main
+    window_metrics = evaluate_full_and_group_by_window(
+  File "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/analyze_final_model_sliding_window_fast.py", line 174, in evaluate_full_and_group_by_window
+    images = batch["image"].to(device)
+TypeError: list indices must be integers or slices, not str

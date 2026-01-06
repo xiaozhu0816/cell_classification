@@ -1,0 +1,284 @@
+2025-12-31 15:50:31,717 | INFO | ============================================================
+2025-12-31 15:50:31,717 | INFO | Final Model Sliding Window Evaluation (OPTIMIZED)
+2025-12-31 15:50:31,717 | INFO | ============================================================
+2025-12-31 15:50:31,717 | INFO | Checkpoint directory: outputs/interval_sweep_analysis/20251212-145928/checkpoints/train-test_interval_1-46
+2025-12-31 15:50:31,717 | INFO | Number of folds: 5
+2025-12-31 15:50:31,717 | INFO | Optimization: Evaluate once per fold, group by window
+2025-12-31 15:50:31,730 | INFO | Device: cuda
+2025-12-31 15:50:31,730 | INFO | K-folds: 5
+2025-12-31 15:50:31,730 | INFO | Time field: hours_since_start
+2025-12-31 15:50:31,730 | INFO | Auto-generated 14 windows: start=1.0h, end=46.0h, size=6.0h, stride=3.0h
+2025-12-31 15:50:31,730 | INFO | Evaluating metrics: auc, accuracy, f1
+2025-12-31 15:50:31,730 | INFO | Will evaluate on 14 windows (5 folds)
+2025-12-31 15:50:31,730 | INFO | Total evaluations: 5 (not 70 - OPTIMIZED!)
+2025-12-31 15:50:31,730 | INFO | ============================================================
+2025-12-31 15:50:31,730 | INFO | 
+[Fold 1/5] Loading checkpoint: fold_01_best.pth
+2025-12-31 15:50:39,326 | INFO | [fold_01of05] Evaluating on ALL test data...
+2025-12-31 15:51:51,189 | INFO |   Total samples evaluated: 976
+2025-12-31 15:51:51,191 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 15:51:51,192 | WARNING |   Window [1.0, 7.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:51:51,199 | INFO |   Window [1.0, 7.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:51:51,199 | WARNING |   Window [4.0, 10.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:51:51,204 | INFO |   Window [4.0, 10.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:51:51,204 | WARNING |   Window [7.0, 13.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:51:51,209 | INFO |   Window [7.0, 13.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:51:51,216 | INFO |   Window [10.0, 16.0]h: 112 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:51:51,223 | INFO |   Window [13.0, 19.0]h: 160 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:51:51,230 | INFO |   Window [16.0, 22.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:51:51,237 | INFO |   Window [19.0, 25.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:51:51,244 | INFO |   Window [22.0, 28.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:51:51,251 | INFO |   Window [25.0, 31.0]h: 192 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:51:51,258 | INFO |   Window [28.0, 34.0]h: 144 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:51:51,258 | WARNING |   Window [31.0, 37.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:51:51,262 | INFO |   Window [31.0, 37.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:51:51,262 | WARNING |   Window [34.0, 40.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:51:51,267 | INFO |   Window [34.0, 40.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:51:51,267 | WARNING |   Window [37.0, 43.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:51:51,271 | INFO |   Window [37.0, 43.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:51:51,271 | WARNING |   Window [40.0, 46.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:51:51,276 | INFO |   Window [40.0, 46.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:51:51,308 | INFO | 
+[Fold 2/5] Loading checkpoint: fold_02_best.pth
+2025-12-31 15:51:54,370 | INFO | [fold_02of05] Evaluating on ALL test data...
+2025-12-31 15:55:39,318 | INFO |   Total samples evaluated: 976
+2025-12-31 15:55:39,320 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 15:55:39,321 | WARNING |   Window [1.0, 7.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:55:39,327 | INFO |   Window [1.0, 7.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:55:39,327 | WARNING |   Window [4.0, 10.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:55:39,332 | INFO |   Window [4.0, 10.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:55:39,332 | WARNING |   Window [7.0, 13.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:55:39,337 | INFO |   Window [7.0, 13.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:55:39,344 | INFO |   Window [10.0, 16.0]h: 112 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:55:39,351 | INFO |   Window [13.0, 19.0]h: 160 samples, auc=1.0000, accuracy=0.9938, f1=0.9912
+2025-12-31 15:55:39,358 | INFO |   Window [16.0, 22.0]h: 208 samples, auc=1.0000, accuracy=0.9952, f1=0.9952
+2025-12-31 15:55:39,364 | INFO |   Window [19.0, 25.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:55:39,371 | INFO |   Window [22.0, 28.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:55:39,378 | INFO |   Window [25.0, 31.0]h: 192 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:55:39,385 | INFO |   Window [28.0, 34.0]h: 144 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:55:39,385 | WARNING |   Window [31.0, 37.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:55:39,389 | INFO |   Window [31.0, 37.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:55:39,390 | WARNING |   Window [34.0, 40.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:55:39,394 | INFO |   Window [34.0, 40.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:55:39,394 | WARNING |   Window [37.0, 43.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:55:39,398 | INFO |   Window [37.0, 43.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:55:39,399 | WARNING |   Window [40.0, 46.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:55:39,403 | INFO |   Window [40.0, 46.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:55:39,440 | INFO | 
+[Fold 3/5] Loading checkpoint: fold_03_best.pth
+2025-12-31 15:55:43,822 | INFO | [fold_03of05] Evaluating on ALL test data...
+2025-12-31 15:56:51,901 | INFO |   Total samples evaluated: 976
+2025-12-31 15:56:51,903 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 15:56:51,903 | WARNING |   Window [1.0, 7.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:56:51,905 | INFO |   Window [1.0, 7.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:56:51,905 | WARNING |   Window [4.0, 10.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:56:51,907 | INFO |   Window [4.0, 10.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:56:51,907 | WARNING |   Window [7.0, 13.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:56:51,908 | INFO |   Window [7.0, 13.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:56:51,911 | INFO |   Window [10.0, 16.0]h: 112 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:56:51,913 | INFO |   Window [13.0, 19.0]h: 160 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:56:51,916 | INFO |   Window [16.0, 22.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:56:51,918 | INFO |   Window [19.0, 25.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:56:51,920 | INFO |   Window [22.0, 28.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:56:51,923 | INFO |   Window [25.0, 31.0]h: 192 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:56:51,925 | INFO |   Window [28.0, 34.0]h: 144 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:56:51,925 | WARNING |   Window [31.0, 37.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:56:51,927 | INFO |   Window [31.0, 37.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:56:51,927 | WARNING |   Window [34.0, 40.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:56:51,928 | INFO |   Window [34.0, 40.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:56:51,928 | WARNING |   Window [37.0, 43.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:56:51,930 | INFO |   Window [37.0, 43.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:56:51,930 | WARNING |   Window [40.0, 46.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:56:51,932 | INFO |   Window [40.0, 46.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:56:51,964 | INFO | 
+[Fold 4/5] Loading checkpoint: fold_04_best.pth
+2025-12-31 15:56:54,227 | INFO | [fold_04of05] Evaluating on ALL test data...
+2025-12-31 15:58:03,182 | INFO |   Total samples evaluated: 976
+2025-12-31 15:58:03,185 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 15:58:03,185 | WARNING |   Window [1.0, 7.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:58:03,187 | INFO |   Window [1.0, 7.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:58:03,188 | WARNING |   Window [4.0, 10.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:58:03,189 | INFO |   Window [4.0, 10.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:58:03,189 | WARNING |   Window [7.0, 13.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:58:03,191 | INFO |   Window [7.0, 13.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:58:03,193 | INFO |   Window [10.0, 16.0]h: 112 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:58:03,196 | INFO |   Window [13.0, 19.0]h: 160 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:58:03,198 | INFO |   Window [16.0, 22.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:58:03,201 | INFO |   Window [19.0, 25.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:58:03,203 | INFO |   Window [22.0, 28.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:58:03,205 | INFO |   Window [25.0, 31.0]h: 192 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:58:03,208 | INFO |   Window [28.0, 34.0]h: 144 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:58:03,208 | WARNING |   Window [31.0, 37.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:58:03,209 | INFO |   Window [31.0, 37.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:58:03,209 | WARNING |   Window [34.0, 40.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:58:03,211 | INFO |   Window [34.0, 40.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:58:03,211 | WARNING |   Window [37.0, 43.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:58:03,213 | INFO |   Window [37.0, 43.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:58:03,213 | WARNING |   Window [40.0, 46.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:58:03,214 | INFO |   Window [40.0, 46.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:58:03,247 | INFO | 
+[Fold 5/5] Loading checkpoint: fold_05_best.pth
+2025-12-31 15:58:05,556 | INFO | [fold_05of05] Evaluating on ALL test data...
+2025-12-31 15:59:13,435 | INFO |   Total samples evaluated: 976
+2025-12-31 15:59:13,437 | INFO |   Time range: [0.00, 46.00]h
+2025-12-31 15:59:13,437 | WARNING |   Window [1.0, 7.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:59:13,443 | INFO |   Window [1.0, 7.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:59:13,443 | WARNING |   Window [4.0, 10.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:59:13,448 | INFO |   Window [4.0, 10.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:59:13,448 | WARNING |   Window [7.0, 13.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:59:13,452 | INFO |   Window [7.0, 13.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:59:13,459 | INFO |   Window [10.0, 16.0]h: 112 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:59:13,465 | INFO |   Window [13.0, 19.0]h: 160 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:59:13,472 | INFO |   Window [16.0, 22.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:59:13,478 | INFO |   Window [19.0, 25.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:59:13,485 | INFO |   Window [22.0, 28.0]h: 208 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:59:13,491 | INFO |   Window [25.0, 31.0]h: 192 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:59:13,498 | INFO |   Window [28.0, 34.0]h: 144 samples, auc=1.0000, accuracy=1.0000, f1=1.0000
+2025-12-31 15:59:13,498 | WARNING |   Window [31.0, 37.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:59:13,502 | INFO |   Window [31.0, 37.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:59:13,503 | WARNING |   Window [34.0, 40.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:59:13,507 | INFO |   Window [34.0, 40.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:59:13,507 | WARNING |   Window [37.0, 43.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:59:13,511 | INFO |   Window [37.0, 43.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:59:13,511 | WARNING |   Window [40.0, 46.0]h: Cannot compute AUC (only one class present)
+2025-12-31 15:59:13,516 | INFO |   Window [40.0, 46.0]h: 104 samples, auc=N/A, accuracy=1.0000, f1=0.0000
+2025-12-31 15:59:13,550 | INFO | 
+============================================================
+2025-12-31 15:59:13,550 | INFO | Aggregating results across folds...
+2025-12-31 15:59:13,550 | INFO | ============================================================
+2025-12-31 15:59:13,550 | INFO | 
+Window [1.0, 7.0]h (center=4.0):
+2025-12-31 15:59:13,550 | WARNING |   AUC: No valid data
+2025-12-31 15:59:13,551 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,551 | INFO |   F1: 0.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,551 | INFO | 
+Window [4.0, 10.0]h (center=7.0):
+2025-12-31 15:59:13,551 | WARNING |   AUC: No valid data
+2025-12-31 15:59:13,551 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,552 | INFO |   F1: 0.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,552 | INFO | 
+Window [7.0, 13.0]h (center=10.0):
+2025-12-31 15:59:13,552 | WARNING |   AUC: No valid data
+2025-12-31 15:59:13,552 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,552 | INFO |   F1: 0.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,552 | INFO | 
+Window [10.0, 16.0]h (center=13.0):
+2025-12-31 15:59:13,552 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,553 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,553 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,553 | INFO | 
+Window [13.0, 19.0]h (center=16.0):
+2025-12-31 15:59:13,553 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,553 | INFO |   ACCURACY: 0.9988 ± 0.0025 (5 folds)
+2025-12-31 15:59:13,553 | INFO |   F1: 0.9982 ± 0.0035 (5 folds)
+2025-12-31 15:59:13,553 | INFO | 
+Window [16.0, 22.0]h (center=19.0):
+2025-12-31 15:59:13,553 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,554 | INFO |   ACCURACY: 0.9990 ± 0.0019 (5 folds)
+2025-12-31 15:59:13,554 | INFO |   F1: 0.9990 ± 0.0019 (5 folds)
+2025-12-31 15:59:13,554 | INFO | 
+Window [19.0, 25.0]h (center=22.0):
+2025-12-31 15:59:13,554 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,554 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,554 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,555 | INFO | 
+Window [22.0, 28.0]h (center=25.0):
+2025-12-31 15:59:13,555 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,555 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,555 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,555 | INFO | 
+Window [25.0, 31.0]h (center=28.0):
+2025-12-31 15:59:13,555 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,555 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,556 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,556 | INFO | 
+Window [28.0, 34.0]h (center=31.0):
+2025-12-31 15:59:13,556 | INFO |   AUC: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,556 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,556 | INFO |   F1: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,556 | INFO | 
+Window [31.0, 37.0]h (center=34.0):
+2025-12-31 15:59:13,556 | WARNING |   AUC: No valid data
+2025-12-31 15:59:13,557 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,557 | INFO |   F1: 0.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,557 | INFO | 
+Window [34.0, 40.0]h (center=37.0):
+2025-12-31 15:59:13,557 | WARNING |   AUC: No valid data
+2025-12-31 15:59:13,557 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,557 | INFO |   F1: 0.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,557 | INFO | 
+Window [37.0, 43.0]h (center=40.0):
+2025-12-31 15:59:13,557 | WARNING |   AUC: No valid data
+2025-12-31 15:59:13,558 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,558 | INFO |   F1: 0.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,558 | INFO | 
+Window [40.0, 46.0]h (center=43.0):
+2025-12-31 15:59:13,558 | WARNING |   AUC: No valid data
+2025-12-31 15:59:13,558 | INFO |   ACCURACY: 1.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,558 | INFO |   F1: 0.0000 ± 0.0000 (5 folds)
+2025-12-31 15:59:13,558 | INFO | 
+Creating combined plot for all metrics...
+2025-12-31 15:59:18,011 | INFO | 
+Saved data to outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/final_model_sliding_w6_s3_data.json
+INFO:final_model_sliding_window_fast:
+Saved data to outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/final_model_sliding_w6_s3_data.json
+2025-12-31 15:59:18,011 | INFO | 
+============================================================
+INFO:final_model_sliding_window_fast:
+============================================================
+2025-12-31 15:59:18,012 | INFO | Summary Statistics:
+INFO:final_model_sliding_window_fast:Summary Statistics:
+2025-12-31 15:59:18,012 | INFO | ============================================================
+INFO:final_model_sliding_window_fast:============================================================
+2025-12-31 15:59:18,012 | INFO | 
+AUC:
+INFO:final_model_sliding_window_fast:
+AUC:
+2025-12-31 15:59:18,012 | INFO |   Best window: [10.0, 16.0]h with value=1.0000
+INFO:final_model_sliding_window_fast:  Best window: [10.0, 16.0]h with value=1.0000
+2025-12-31 15:59:18,012 | INFO |   Worst window: [10.0, 16.0]h with value=1.0000
+INFO:final_model_sliding_window_fast:  Worst window: [10.0, 16.0]h with value=1.0000
+2025-12-31 15:59:18,012 | INFO |   Overall mean: 1.0000 ± 0.0000
+INFO:final_model_sliding_window_fast:  Overall mean: 1.0000 ± 0.0000
+2025-12-31 15:59:18,012 | INFO |   Performance range: 0.0000 (0.00% relative variation)
+INFO:final_model_sliding_window_fast:  Performance range: 0.0000 (0.00% relative variation)
+2025-12-31 15:59:18,012 | INFO | 
+ACCURACY:
+INFO:final_model_sliding_window_fast:
+ACCURACY:
+2025-12-31 15:59:18,013 | INFO |   Best window: [1.0, 7.0]h with value=1.0000
+INFO:final_model_sliding_window_fast:  Best window: [1.0, 7.0]h with value=1.0000
+2025-12-31 15:59:18,013 | INFO |   Worst window: [13.0, 19.0]h with value=0.9988
+INFO:final_model_sliding_window_fast:  Worst window: [13.0, 19.0]h with value=0.9988
+2025-12-31 15:59:18,013 | INFO |   Overall mean: 0.9998 ± 0.0004
+INFO:final_model_sliding_window_fast:  Overall mean: 0.9998 ± 0.0004
+2025-12-31 15:59:18,013 | INFO |   Performance range: 0.0012 (0.13% relative variation)
+INFO:final_model_sliding_window_fast:  Performance range: 0.0012 (0.13% relative variation)
+2025-12-31 15:59:18,013 | INFO | 
+F1:
+INFO:final_model_sliding_window_fast:
+F1:
+2025-12-31 15:59:18,013 | INFO |   Best window: [10.0, 16.0]h with value=1.0000
+INFO:final_model_sliding_window_fast:  Best window: [10.0, 16.0]h with value=1.0000
+2025-12-31 15:59:18,013 | INFO |   Worst window: [1.0, 7.0]h with value=0.0000
+INFO:final_model_sliding_window_fast:  Worst window: [1.0, 7.0]h with value=0.0000
+2025-12-31 15:59:18,013 | INFO |   Overall mean: 0.4998 ± 0.5187
+INFO:final_model_sliding_window_fast:  Overall mean: 0.4998 ± 0.5187
+2025-12-31 15:59:18,014 | INFO |   Performance range: 1.0000 (200.08% relative variation)
+INFO:final_model_sliding_window_fast:  Performance range: 1.0000 (200.08% relative variation)
+2025-12-31 15:59:18,014 | INFO | ============================================================
+INFO:final_model_sliding_window_fast:============================================================
+2025-12-31 15:59:18,014 | INFO | Analysis complete! Results saved to: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031
+INFO:final_model_sliding_window_fast:Analysis complete! Results saved to: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031
+2025-12-31 15:59:18,014 | INFO | 
+Outputs:
+INFO:final_model_sliding_window_fast:
+Outputs:
+2025-12-31 15:59:18,014 | INFO |   - Plots: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/*.png
+INFO:final_model_sliding_window_fast:  - Plots: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/*.png
+2025-12-31 15:59:18,014 | INFO |   - Data: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/final_model_sliding_w6_s3_data.json
+INFO:final_model_sliding_window_fast:  - Data: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/final_model_sliding_w6_s3_data.json
+2025-12-31 15:59:18,014 | INFO |   - Log: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/final_model_sliding_window_fast.log
+INFO:final_model_sliding_window_fast:  - Log: outputs/interval_sweep_analysis/20251212-145928/train-test_interval_1-46_sliding_window_fast_20251231-155031/final_model_sliding_window_fast.log
+2025-12-31 15:59:18,014 | INFO | ============================================================
+INFO:final_model_sliding_window_fast:============================================================

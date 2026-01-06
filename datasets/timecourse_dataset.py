@@ -211,6 +211,24 @@ class TimeCourseTiffDataset(Dataset):
             frame = np.repeat(frame, 3, axis=-1)
         return Image.fromarray(frame)
 
+    def get_metadata(self, idx: int) -> dict:
+        """
+        Get metadata for a sample without loading the image.
+        Used for temporal generalization analysis.
+        """
+        sample = self.samples[idx]
+        hours = getattr(sample, "hours_since_start", None)
+        if hours is None:
+            hours = sample.frame_index / self.frames_per_hour
+        return {
+            "path": str(sample.path),
+            "condition": sample.condition,
+            "position": sample.position,
+            "frame_index": sample.frame_index,
+            "hours_since_start": float(hours),
+            "label": sample.label,
+        }
+
 
 def _scan_condition(condition_dir: Path, label: int, condition_name: str) -> List[DataItem]:
     condition_dir = Path(condition_dir)

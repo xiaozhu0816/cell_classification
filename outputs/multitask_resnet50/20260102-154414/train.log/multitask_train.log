@@ -1,0 +1,229 @@
+2026-01-02 15:44:14,875 | INFO | Experiment: multitask_resnet50
+2026-01-02 15:44:14,875 | INFO | Run ID: 20260102-154414
+2026-01-02 15:44:14,875 | INFO | Device: cuda
+2026-01-02 15:44:14,875 | INFO | Config: {
+  "experiment_name": "multitask_resnet50",
+  "seed": 42,
+  "data": {
+    "infected_dir": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels",
+    "uninfected_dir": "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels",
+    "infected_label": 1,
+    "uninfected_label": 0,
+    "split_ratios": [
+      0.7,
+      0.1,
+      0.2
+    ],
+    "split_seed": 123,
+    "batch_size": 128,
+    "eval_batch_size_multiplier": 2,
+    "num_workers": 4,
+    "drop_last": false,
+    "balance_sampler": false,
+    "transforms": {
+      "image_size": 512,
+      "random_flip": true,
+      "random_rotation": true,
+      "color_jitter": false,
+      "mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "std": [
+        0.25,
+        0.25,
+        0.25
+      ]
+    },
+    "frames": {
+      "frames_per_hour": 2.0,
+      "infected_window_hours": [
+        0,
+        48
+      ],
+      "uninfected_window_hours": [
+        0,
+        48
+      ],
+      "infected_stride": 1,
+      "uninfected_stride": 1,
+      "uninfected_use_all": true
+    }
+  },
+  "multitask": {
+    "infection_onset_hour": 1.0,
+    "clamp_range": [
+      0.0,
+      48.0
+    ],
+    "classification_weight": 1.0,
+    "regression_weight": 1.0
+  },
+  "model": {
+    "name": "resnet50",
+    "pretrained": true,
+    "num_classes": 2,
+    "dropout": 0.2,
+    "train_backbone": true,
+    "hidden_dim": 256
+  },
+  "training": {
+    "epochs": 30,
+    "amp": true,
+    "grad_clip": 1.0,
+    "checkpoint_dir": "checkpoints"
+  },
+  "optimizer": {
+    "lr": 0.0001,
+    "weight_decay": 0.0001
+  },
+  "scheduler": {
+    "t_max": 30,
+    "eta_min": 1e-06
+  }
+}
+2026-01-02 15:44:14,875 | INFO | Multi-task config:
+2026-01-02 15:44:14,875 | INFO |   - Infection onset: 1.0h
+2026-01-02 15:44:14,875 | INFO |   - Clamp range: (0.0, 48.0)
+2026-01-02 15:44:14,875 | INFO |   - Loss weights: cls=1.0, reg=1.0
+2026-01-02 15:44:14,875 | INFO | Building datasets...
+2026-01-02 15:44:16,519 | INFO | Train samples: 4650
+2026-01-02 15:44:16,519 | INFO | Val samples: 558
+2026-01-02 15:44:16,519 | INFO | Test samples: 1488
+2026-01-02 15:44:17,295 | INFO | Model: MultiTaskResNet
+2026-01-02 15:44:17,295 | INFO | Total parameters: 24,557,891
+2026-01-02 15:44:17,296 | INFO | Optimizer: AdamW with lr=0.0001
+2026-01-02 15:44:17,296 | INFO | Scheduler: CosineAnnealingLR
+2026-01-02 15:44:17,298 | INFO | Training for 30 epochs...
+2026-01-02 15:44:17,298 | INFO | Primary metric: cls_auc
+2026-01-02 15:44:17,298 | INFO | ================================================================================
+2026-01-02 15:44:17,298 | INFO | Epoch 1/30
+2026-01-02 15:47:07,675 | INFO | train_e1 - total_loss: 6.2359 | cls_loss: 0.1946 | reg_loss: 6.0413
+2026-01-02 15:47:29,810 | INFO | val: total_loss:4.0693 | cls_loss:0.1438 | reg_loss:3.9255 | cls_accuracy:0.9606 | cls_precision:0.9673 | cls_recall:0.9534 | cls_f1:0.9603 | cls_auc:0.9917 | reg_mae:4.4067 | reg_rmse:5.9030 | reg_mse:34.8456
+2026-01-02 15:47:31,493 | INFO | ✓ New best model! cls_auc=0.9917
+2026-01-02 15:47:31,493 | INFO | ================================================================================
+2026-01-02 15:47:31,493 | INFO | Epoch 2/30
+2026-01-02 15:50:08,170 | INFO | train_e2 - total_loss: 2.6815 | cls_loss: 0.1031 | reg_loss: 2.5784
+2026-01-02 15:50:26,256 | INFO | val: total_loss:1.9767 | cls_loss:0.0411 | reg_loss:1.9356 | cls_accuracy:0.9928 | cls_precision:0.9893 | cls_recall:0.9964 | cls_f1:0.9929 | cls_auc:0.9996 | reg_mae:2.3912 | reg_rmse:3.4418 | reg_mse:11.8459
+2026-01-02 15:50:28,103 | INFO | ✓ New best model! cls_auc=0.9996
+2026-01-02 15:50:28,103 | INFO | ================================================================================
+2026-01-02 15:50:28,103 | INFO | Epoch 3/30
+2026-01-02 15:52:47,438 | INFO | train_e3 - total_loss: 2.3194 | cls_loss: 0.0591 | reg_loss: 2.2603
+2026-01-02 15:53:05,551 | INFO | val: total_loss:1.9589 | cls_loss:0.2083 | reg_loss:1.7506 | cls_accuracy:0.9570 | cls_precision:1.0000 | cls_recall:0.9140 | cls_f1:0.9551 | cls_auc:0.9912 | reg_mae:2.1922 | reg_rmse:3.5350 | reg_mse:12.4960
+2026-01-02 15:53:05,551 | INFO | ================================================================================
+2026-01-02 15:53:05,552 | INFO | Epoch 4/30
+2026-01-02 15:55:26,202 | INFO | train_e4 - total_loss: 2.1597 | cls_loss: 0.0481 | reg_loss: 2.1116
+2026-01-02 15:55:44,344 | INFO | val: total_loss:1.7732 | cls_loss:0.1242 | reg_loss:1.6491 | cls_accuracy:0.9624 | cls_precision:0.9886 | cls_recall:0.9355 | cls_f1:0.9613 | cls_auc:0.9980 | reg_mae:2.0885 | reg_rmse:3.2850 | reg_mse:10.7911
+2026-01-02 15:55:44,345 | INFO | ================================================================================
+2026-01-02 15:55:44,345 | INFO | Epoch 5/30
+2026-01-02 15:58:03,142 | INFO | train_e5 - total_loss: 2.0413 | cls_loss: 0.0453 | reg_loss: 1.9960
+2026-01-02 15:58:21,625 | INFO | val: total_loss:2.1443 | cls_loss:0.1404 | reg_loss:2.0040 | cls_accuracy:0.9659 | cls_precision:0.9962 | cls_recall:0.9355 | cls_f1:0.9649 | cls_auc:0.9973 | reg_mae:2.4459 | reg_rmse:3.8591 | reg_mse:14.8929
+2026-01-02 15:58:21,625 | INFO | ================================================================================
+2026-01-02 15:58:21,625 | INFO | Epoch 6/30
+2026-01-02 16:00:42,699 | INFO | train_e6 - total_loss: 1.8799 | cls_loss: 0.0309 | reg_loss: 1.8490
+2026-01-02 16:01:00,596 | INFO | val: total_loss:2.4232 | cls_loss:0.1783 | reg_loss:2.2449 | cls_accuracy:0.9606 | cls_precision:0.9923 | cls_recall:0.9283 | cls_f1:0.9593 | cls_auc:0.9980 | reg_mae:2.6899 | reg_rmse:4.0391 | reg_mse:16.3144
+2026-01-02 16:01:00,596 | INFO | ================================================================================
+2026-01-02 16:01:00,596 | INFO | Epoch 7/30
+2026-01-02 16:03:25,796 | INFO | train_e7 - total_loss: 1.8424 | cls_loss: 0.0251 | reg_loss: 1.8173
+2026-01-02 16:03:44,578 | INFO | val: total_loss:2.0447 | cls_loss:0.0909 | reg_loss:1.9538 | cls_accuracy:0.9767 | cls_precision:1.0000 | cls_recall:0.9534 | cls_f1:0.9761 | cls_auc:0.9991 | reg_mae:2.3967 | reg_rmse:3.4001 | reg_mse:11.5607
+2026-01-02 16:03:44,579 | INFO | ================================================================================
+2026-01-02 16:03:44,579 | INFO | Epoch 8/30
+2026-01-02 16:06:07,385 | INFO | train_e8 - total_loss: 1.7798 | cls_loss: 0.0363 | reg_loss: 1.7435
+2026-01-02 16:06:25,219 | INFO | val: total_loss:1.2576 | cls_loss:0.0123 | reg_loss:1.2453 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9999 | reg_mae:1.6697 | reg_rmse:2.4130 | reg_mse:5.8225
+2026-01-02 16:06:26,878 | INFO | ✓ New best model! cls_auc=0.9999
+2026-01-02 16:06:26,878 | INFO | ================================================================================
+2026-01-02 16:06:26,878 | INFO | Epoch 9/30
+2026-01-02 16:08:57,924 | INFO | train_e9 - total_loss: 1.6829 | cls_loss: 0.0306 | reg_loss: 1.6523
+2026-01-02 16:09:15,988 | INFO | val: total_loss:1.1458 | cls_loss:0.0335 | reg_loss:1.1123 | cls_accuracy:0.9892 | cls_precision:0.9928 | cls_recall:0.9857 | cls_f1:0.9892 | cls_auc:0.9995 | reg_mae:1.5387 | reg_rmse:2.3292 | reg_mse:5.4251
+2026-01-02 16:09:15,988 | INFO | ================================================================================
+2026-01-02 16:09:15,988 | INFO | Epoch 10/30
+2026-01-02 16:11:40,848 | INFO | train_e10 - total_loss: 1.5525 | cls_loss: 0.0215 | reg_loss: 1.5310
+2026-01-02 16:11:59,182 | INFO | val: total_loss:1.6955 | cls_loss:0.0348 | reg_loss:1.6607 | cls_accuracy:0.9875 | cls_precision:0.9928 | cls_recall:0.9821 | cls_f1:0.9874 | cls_auc:0.9994 | reg_mae:2.0895 | reg_rmse:3.1558 | reg_mse:9.9593
+2026-01-02 16:11:59,182 | INFO | ================================================================================
+2026-01-02 16:11:59,182 | INFO | Epoch 11/30
+2026-01-02 16:14:36,643 | INFO | train_e11 - total_loss: 1.5027 | cls_loss: 0.0183 | reg_loss: 1.4844
+2026-01-02 16:14:54,676 | INFO | val: total_loss:1.3403 | cls_loss:0.0149 | reg_loss:1.3254 | cls_accuracy:0.9946 | cls_precision:0.9894 | cls_recall:1.0000 | cls_f1:0.9947 | cls_auc:1.0000 | reg_mae:1.7686 | reg_rmse:2.3541 | reg_mse:5.5418
+2026-01-02 16:14:56,452 | INFO | ✓ New best model! cls_auc=1.0000
+2026-01-02 16:14:56,452 | INFO | ================================================================================
+2026-01-02 16:14:56,452 | INFO | Epoch 12/30
+2026-01-02 16:17:22,915 | INFO | train_e12 - total_loss: 1.4261 | cls_loss: 0.0179 | reg_loss: 1.4082
+2026-01-02 16:17:41,469 | INFO | val: total_loss:1.5685 | cls_loss:0.0267 | reg_loss:1.5417 | cls_accuracy:0.9892 | cls_precision:0.9928 | cls_recall:0.9857 | cls_f1:0.9892 | cls_auc:0.9994 | reg_mae:1.9880 | reg_rmse:2.8974 | reg_mse:8.3950
+2026-01-02 16:17:41,470 | INFO | ================================================================================
+2026-01-02 16:17:41,470 | INFO | Epoch 13/30
+2026-01-02 16:20:02,641 | INFO | train_e13 - total_loss: 1.2520 | cls_loss: 0.0151 | reg_loss: 1.2369
+2026-01-02 16:20:20,970 | INFO | val: total_loss:0.8514 | cls_loss:0.0083 | reg_loss:0.8431 | cls_accuracy:0.9964 | cls_precision:1.0000 | cls_recall:0.9928 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.2385 | reg_rmse:1.8413 | reg_mse:3.3906
+2026-01-02 16:20:22,766 | INFO | ✓ New best model! cls_auc=1.0000
+2026-01-02 16:20:22,766 | INFO | ================================================================================
+2026-01-02 16:20:22,766 | INFO | Epoch 14/30
+2026-01-02 16:22:44,313 | INFO | train_e14 - total_loss: 1.3011 | cls_loss: 0.0126 | reg_loss: 1.2885
+2026-01-02 16:23:02,583 | INFO | val: total_loss:1.0895 | cls_loss:0.0183 | reg_loss:1.0712 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9998 | reg_mae:1.5073 | reg_rmse:2.2360 | reg_mse:4.9999
+2026-01-02 16:23:02,583 | INFO | ================================================================================
+2026-01-02 16:23:02,583 | INFO | Epoch 15/30
+2026-01-02 16:25:20,237 | INFO | train_e15 - total_loss: 1.2507 | cls_loss: 0.0174 | reg_loss: 1.2332
+2026-01-02 16:25:37,882 | INFO | val: total_loss:1.2519 | cls_loss:0.0235 | reg_loss:1.2284 | cls_accuracy:0.9910 | cls_precision:0.9824 | cls_recall:1.0000 | cls_f1:0.9911 | cls_auc:0.9999 | reg_mae:1.6557 | reg_rmse:2.3465 | reg_mse:5.5059
+2026-01-02 16:25:37,883 | INFO | ================================================================================
+2026-01-02 16:25:37,883 | INFO | Epoch 16/30
+2026-01-02 16:27:54,100 | INFO | train_e16 - total_loss: 1.1493 | cls_loss: 0.0115 | reg_loss: 1.1377
+2026-01-02 16:28:11,996 | INFO | val: total_loss:1.2572 | cls_loss:0.0147 | reg_loss:1.2424 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.6752 | reg_rmse:2.3228 | reg_mse:5.3952
+2026-01-02 16:28:11,996 | INFO | ================================================================================
+2026-01-02 16:28:11,996 | INFO | Epoch 17/30
+2026-01-02 16:30:29,541 | INFO | train_e17 - total_loss: 1.1971 | cls_loss: 0.0076 | reg_loss: 1.1895
+2026-01-02 16:30:47,898 | INFO | val: total_loss:0.8821 | cls_loss:0.0333 | reg_loss:0.8487 | cls_accuracy:0.9857 | cls_precision:0.9927 | cls_recall:0.9785 | cls_f1:0.9856 | cls_auc:0.9993 | reg_mae:1.2430 | reg_rmse:2.1065 | reg_mse:4.4372
+2026-01-02 16:30:47,898 | INFO | ================================================================================
+2026-01-02 16:30:47,898 | INFO | Epoch 18/30
+2026-01-02 16:33:08,881 | INFO | train_e18 - total_loss: 1.0936 | cls_loss: 0.0151 | reg_loss: 1.0785
+2026-01-02 16:33:27,124 | INFO | val: total_loss:0.7533 | cls_loss:0.0082 | reg_loss:0.7451 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.1418 | reg_rmse:1.7192 | reg_mse:2.9555
+2026-01-02 16:33:27,124 | INFO | ================================================================================
+2026-01-02 16:33:27,125 | INFO | Epoch 19/30
+2026-01-02 16:35:49,079 | INFO | train_e19 - total_loss: 1.0375 | cls_loss: 0.0087 | reg_loss: 1.0288
+2026-01-02 16:36:07,420 | INFO | val: total_loss:0.9074 | cls_loss:0.0231 | reg_loss:0.8843 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:0.9997 | reg_mae:1.2929 | reg_rmse:2.1798 | reg_mse:4.7516
+2026-01-02 16:36:07,420 | INFO | ================================================================================
+2026-01-02 16:36:07,420 | INFO | Epoch 20/30
+2026-01-02 16:38:38,225 | INFO | train_e20 - total_loss: 1.0036 | cls_loss: 0.0094 | reg_loss: 0.9942
+2026-01-02 16:38:56,509 | INFO | val: total_loss:0.7758 | cls_loss:0.0131 | reg_loss:0.7627 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:0.9999 | reg_mae:1.1447 | reg_rmse:1.9540 | reg_mse:3.8183
+2026-01-02 16:38:56,509 | INFO | ================================================================================
+2026-01-02 16:38:56,509 | INFO | Epoch 21/30
+2026-01-02 16:41:21,639 | INFO | train_e21 - total_loss: 0.9573 | cls_loss: 0.0099 | reg_loss: 0.9474
+2026-01-02 16:41:39,731 | INFO | val: total_loss:0.8041 | cls_loss:0.0159 | reg_loss:0.7883 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:0.9998 | reg_mae:1.1776 | reg_rmse:2.0125 | reg_mse:4.0502
+2026-01-02 16:41:39,731 | INFO | ================================================================================
+2026-01-02 16:41:39,731 | INFO | Epoch 22/30
+2026-01-02 16:44:08,759 | INFO | train_e22 - total_loss: 0.9182 | cls_loss: 0.0090 | reg_loss: 0.9092
+2026-01-02 16:44:27,150 | INFO | val: total_loss:0.8388 | cls_loss:0.0035 | reg_loss:0.8353 | cls_accuracy:1.0000 | cls_precision:1.0000 | cls_recall:1.0000 | cls_f1:1.0000 | cls_auc:1.0000 | reg_mae:1.2355 | reg_rmse:1.7749 | reg_mse:3.1501
+2026-01-02 16:44:28,842 | INFO | ✓ New best model! cls_auc=1.0000
+2026-01-02 16:44:28,842 | INFO | ================================================================================
+2026-01-02 16:44:28,842 | INFO | Epoch 23/30
+2026-01-02 16:46:58,388 | INFO | train_e23 - total_loss: 0.9071 | cls_loss: 0.0085 | reg_loss: 0.8986
+2026-01-02 16:47:16,203 | INFO | val: total_loss:0.8049 | cls_loss:0.0068 | reg_loss:0.7981 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:1.0000 | reg_mae:1.2017 | reg_rmse:1.8378 | reg_mse:3.3773
+2026-01-02 16:47:16,203 | INFO | ================================================================================
+2026-01-02 16:47:16,203 | INFO | Epoch 24/30
+2026-01-02 16:49:36,243 | INFO | train_e24 - total_loss: 0.8737 | cls_loss: 0.0045 | reg_loss: 0.8691
+2026-01-02 16:49:54,114 | INFO | val: total_loss:0.8530 | cls_loss:0.0094 | reg_loss:0.8436 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9999 | reg_mae:1.2477 | reg_rmse:1.9599 | reg_mse:3.8412
+2026-01-02 16:49:54,114 | INFO | ================================================================================
+2026-01-02 16:49:54,114 | INFO | Epoch 25/30
+2026-01-02 16:52:16,595 | INFO | train_e25 - total_loss: 0.8504 | cls_loss: 0.0041 | reg_loss: 0.8463
+2026-01-02 16:52:34,821 | INFO | val: total_loss:0.8957 | cls_loss:0.0201 | reg_loss:0.8757 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9998 | reg_mae:1.2750 | reg_rmse:2.1608 | reg_mse:4.6689
+2026-01-02 16:52:34,822 | INFO | ================================================================================
+2026-01-02 16:52:34,822 | INFO | Epoch 26/30
+2026-01-02 16:54:49,717 | INFO | train_e26 - total_loss: 0.8535 | cls_loss: 0.0053 | reg_loss: 0.8483
+2026-01-02 16:55:07,876 | INFO | val: total_loss:0.8266 | cls_loss:0.0189 | reg_loss:0.8077 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9998 | reg_mae:1.2065 | reg_rmse:1.9996 | reg_mse:3.9983
+2026-01-02 16:55:07,876 | INFO | ================================================================================
+2026-01-02 16:55:07,876 | INFO | Epoch 27/30
+2026-01-02 16:57:25,186 | INFO | train_e27 - total_loss: 0.8305 | cls_loss: 0.0045 | reg_loss: 0.8260
+2026-01-02 16:57:43,264 | INFO | val: total_loss:0.8509 | cls_loss:0.0203 | reg_loss:0.8306 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9998 | reg_mae:1.2280 | reg_rmse:2.0436 | reg_mse:4.1762
+2026-01-02 16:57:43,264 | INFO | ================================================================================
+2026-01-02 16:57:43,264 | INFO | Epoch 28/30
+2026-01-02 17:00:10,053 | INFO | train_e28 - total_loss: 0.8449 | cls_loss: 0.0058 | reg_loss: 0.8391
+2026-01-02 17:00:28,466 | INFO | val: total_loss:0.7947 | cls_loss:0.0148 | reg_loss:0.7799 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9999 | reg_mae:1.1779 | reg_rmse:1.9567 | reg_mse:3.8288
+2026-01-02 17:00:28,466 | INFO | ================================================================================
+2026-01-02 17:00:28,466 | INFO | Epoch 29/30
+2026-01-02 17:02:55,207 | INFO | train_e29 - total_loss: 0.8102 | cls_loss: 0.0046 | reg_loss: 0.8056
+2026-01-02 17:03:13,567 | INFO | val: total_loss:1.0869 | cls_loss:0.0170 | reg_loss:1.0699 | cls_accuracy:0.9946 | cls_precision:0.9929 | cls_recall:0.9964 | cls_f1:0.9946 | cls_auc:0.9998 | reg_mae:1.4996 | reg_rmse:2.1919 | reg_mse:4.8042
+2026-01-02 17:03:13,567 | INFO | ================================================================================
+2026-01-02 17:03:13,567 | INFO | Epoch 30/30
+2026-01-02 17:05:39,407 | INFO | train_e30 - total_loss: 0.8091 | cls_loss: 0.0039 | reg_loss: 0.8051
+2026-01-02 17:05:57,647 | INFO | val: total_loss:0.8816 | cls_loss:0.0131 | reg_loss:0.8684 | cls_accuracy:0.9964 | cls_precision:0.9929 | cls_recall:1.0000 | cls_f1:0.9964 | cls_auc:0.9998 | reg_mae:1.2806 | reg_rmse:1.9661 | reg_mse:3.8656
+2026-01-02 17:05:57,648 | INFO | ================================================================================
+2026-01-02 17:05:57,648 | INFO | Final evaluation on test set
+2026-01-02 17:06:45,894 | INFO | test: total_loss:0.7232 | cls_loss:0.0295 | reg_loss:0.6937 | cls_accuracy:0.9913 | cls_precision:1.0000 | cls_recall:0.9825 | cls_f1:0.9912 | cls_auc:0.9999 | reg_mae:1.0906 | reg_rmse:1.4092 | reg_mse:1.9857
+2026-01-02 17:06:45,904 | INFO | Test predictions saved to outputs/multitask_resnet50/20260102-154414/test_predictions.npz

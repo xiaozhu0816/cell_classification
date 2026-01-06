@@ -31,6 +31,8 @@ from datasets import build_datasets, resolve_frame_policies, format_policy_summa
 from models import build_multitask_model
 from utils import AverageMeter, binary_metrics, build_transforms, get_logger, load_config, set_seed
 from rich import print
+from sklearn.metrics import roc_auc_score, accuracy_score, precision_recall_fscore_support
+import matplotlib.pyplot as plt
 
 
 def meta_batch_to_list(meta_batch: Any) -> List[Dict[str, Any]]:
@@ -295,11 +297,211 @@ def evaluate(
     for k, v in reg_metrics.items():
         metrics[f"reg_{k}"] = v
     
+    # Compute combined metric for model selection
+    # Balances classification F1 and regression MAE
+    cls_f1 = metrics.get("cls_f1", 0.0)
+    reg_mae = metrics.get("reg_mae", clamp_range[1])
+    max_time = clamp_range[1]
+    
+    # Normalize regression: 0 MAE → 1.0, max_time MAE → 0.0
+    reg_score = max(0.0, 1.0 - (reg_mae / max_time))
+    
+    # Weighted combination: 60% classification, 40% regression
+    combined_metric = 0.6 * cls_f1 + 0.4 * reg_score
+    metrics["combined"] = combined_metric
+    
     # Log summary
     summary = " | ".join(f"{k}:{v:.4f}" for k, v in metrics.items())
     logger.info(f"{split_name}: {summary}")
     
-    return metrics
+    # Return metrics along with predictions for visualization
+    return metrics, {
+        "time_preds": all_time_preds,
+        "time_targets": all_time_targets,
+        "cls_preds": all_cls_probs,
+        "cls_targets": all_cls_targets,
+    }
+
+
+def evaluate_temporal_generalization(
+    predictions: Dict[str, np.ndarray],
+    metadata_list: List[Dict[str, Any]],
+    window_size: float = 6.0,
+    stride: float = 3.0,
+    start_hour: float = 0.0,
+    end_hour: float = 48.0,
+    time_field: str = "hours_since_start",
+    logger = None,
+) -> Tuple[List[float], Dict[str, List[float]]]:
+    """
+    Compute classification metrics across sliding time windows.
+    
+    Args:
+        predictions: Dict with 'cls_preds', 'cls_targets' from evaluate()
+        metadata_list: List of metadata dicts with time information
+        window_size: Size of each window in hours
+        stride: Step between windows in hours
+        start_hour: Start of first window
+        end_hour: End of last window
+        time_field: Field name for time in metadata
+        logger: Logger for info messages
+        
+    Returns:
+        window_centers: List of window center times
+        metrics_by_window: Dict mapping metric_name -> list of values per window
+    """
+    cls_probs = predictions["cls_preds"]
+    cls_targets = predictions["cls_targets"]
+    
+    # Extract times from metadata
+    times = np.array([float(m.get(time_field, m.get("hours_since_start", 0.0))) 
+                      for m in metadata_list])
+    
+    # Generate windows
+    windows = []
+    current = start_hour
+    while current + window_size <= end_hour:
+        start = current
+        end = current + window_size
+        center = current + window_size / 2.0
+        windows.append((start, end, center))
+        current += stride
+    
+    if logger:
+        logger.info(f"\nTemporal Generalization Analysis:")
+        logger.info(f"  Window size: {window_size}h, Stride: {stride}h")
+        logger.info(f"  Number of windows: {len(windows)}")
+        logger.info(f"  Time range: [{times.min():.1f}, {times.max():.1f}]h")
+    
+    # Compute metrics for each window
+    window_centers = []
+    metrics_by_window = {
+        "auc": [],
+        "accuracy": [],
+        "f1": [],
+        "precision": [],
+        "recall": [],
+    }
+    
+    for start, end, center in windows:
+        # Find samples in this window
+        mask = (times >= start) & (times <= end)
+        n_samples = mask.sum()
+        
+        if n_samples == 0:
+            if logger:
+                logger.info(f"  Window [{start:.1f}, {end:.1f}]h: No samples, skipping")
+            continue
+        
+        window_probs = cls_probs[mask]
+        window_labels = cls_targets[mask]
+        window_pred_binary = (window_probs >= 0.5).astype(int)
+        
+        # Check if we have both classes
+        unique_labels = np.unique(window_labels)
+        n_infected = np.sum(window_labels == 1)
+        n_uninfected = np.sum(window_labels == 0)
+        
+        # Compute metrics
+        try:
+            # AUC (need both classes)
+            if len(unique_labels) > 1:
+                auc = roc_auc_score(window_labels, window_probs)
+            else:
+                auc = None
+            
+            # Other metrics
+            acc = accuracy_score(window_labels, window_pred_binary)
+            prec, rec, f1, _ = precision_recall_fscore_support(
+                window_labels, window_pred_binary, average="binary", zero_division=0
+            )
+            
+            window_centers.append(center)
+            metrics_by_window["auc"].append(auc)
+            metrics_by_window["accuracy"].append(acc)
+            metrics_by_window["f1"].append(f1)
+            metrics_by_window["precision"].append(prec)
+            metrics_by_window["recall"].append(rec)
+            
+            # Log
+            if logger:
+                auc_str = f"{auc:.4f}" if auc is not None else "N/A"
+                logger.info(
+                    f"  Window [{start:.1f}, {end:.1f}]h: n={n_samples} "
+                    f"(inf={n_infected}, uninf={n_uninfected}), "
+                    f"AUC={auc_str}, Acc={acc:.4f}, F1={f1:.4f}"
+                )
+        
+        except Exception as e:
+            if logger:
+                logger.warning(f"  Window [{start:.1f}, {end:.1f}]h: Error computing metrics: {e}")
+    
+    return window_centers, metrics_by_window
+
+
+def plot_temporal_generalization(
+    window_centers: List[float],
+    metrics_by_window: Dict[str, List[float]],
+    window_size: float,
+    output_path: Path,
+    model_name: str = "Multitask Model",
+) -> None:
+    """Create temporal generalization plot."""
+    fig, ax = plt.subplots(figsize=(14, 7))
+    
+    colors = plt.cm.tab10(np.linspace(0, 1, 5))
+    markers = ['o', 's', '^', 'D', 'v']
+    
+    metric_labels = {
+        "auc": "AUC",
+        "accuracy": "Accuracy",
+        "f1": "F1 Score",
+        "precision": "Precision",
+        "recall": "Recall",
+    }
+    
+    for idx, (metric, values) in enumerate(metrics_by_window.items()):
+        # Filter out None values
+        valid_points = [(c, v) for c, v in zip(window_centers, values) if v is not None]
+        
+        if not valid_points:
+            continue
+        
+        centers, vals = zip(*valid_points)
+        
+        ax.plot(
+            centers,
+            vals,
+            f"-{markers[idx]}",
+            linewidth=2,
+            markersize=8,
+            color=colors[idx],
+            label=metric_labels.get(metric, metric),
+            alpha=0.85,
+        )
+    
+    ax.set_xlabel("Window Center (hours)", fontsize=13, fontweight='bold')
+    ax.set_ylabel("Metric Value", fontsize=13, fontweight='bold')
+    ax.set_title(
+        f"{model_name}: Temporal Generalization (Classification Performance)\n"
+        f"Sliding Window Size: {window_size:.1f}h",
+        fontsize=14,
+        fontweight='bold',
+    )
+    ax.grid(True, linestyle="--", alpha=0.3)
+    ax.legend(fontsize=11, loc="best", framealpha=0.9)
+    ax.set_ylim([0, 1.05])
+    
+    # Secondary x-axis
+    ax2 = ax.twiny()
+    ax2.set_xlim(ax.get_xlim())
+    ax2.set_xlabel("Window Start Hour", fontsize=11, color="gray")
+    ax2.tick_params(axis="x", labelcolor="gray")
+    
+    fig.tight_layout()
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, dpi=200, bbox_inches='tight')
+    plt.close(fig)
 
 
 def parse_args() -> argparse.Namespace:
@@ -428,12 +630,16 @@ def main() -> None:
     checkpoint_dir.mkdir(exist_ok=True)
     best_checkpoint = checkpoint_dir / "best.pt"
     
-    # Primary metric for model selection (use classification AUC)
-    primary_metric = "cls_auc"
+    # Primary metric for model selection
+    # Use combined metric to balance classification and regression performance
+    # This prevents saturation issues when AUC reaches 1.0
+    primary_metric = "combined"
     best_score = -math.inf
     
     logger.info(f"Training for {epochs} epochs...")
-    logger.info(f"Primary metric: {primary_metric}")
+    logger.info(f"Primary metric: {primary_metric} (0.6*F1 + 0.4*(1-MAE/{clamp_range[1]}))")
+    logger.info(f"  - Balances classification F1 and regression MAE")
+    logger.info(f"  - Prevents AUC saturation at 1.0")
     
     # Training loop
     for epoch in range(1, epochs + 1):
@@ -460,7 +666,7 @@ def main() -> None:
         )
         
         # Validate
-        val_metrics = evaluate(
+        val_metrics, _ = evaluate(
             model=model,
             loader=val_loader,
             cls_criterion=cls_criterion,
@@ -500,7 +706,7 @@ def main() -> None:
     # Final evaluation on test set
     logger.info("=" * 80)
     logger.info("Final evaluation on test set")
-    test_metrics = evaluate(
+    test_metrics, test_predictions = evaluate(
         model=model,
         loader=test_loader,
         cls_criterion=cls_criterion,
@@ -515,21 +721,147 @@ def main() -> None:
         progress_desc="test_final",
     )
     
+    # Save predictions for visualization
+    predictions_file = output_base / "test_predictions.npz"
+    np.savez(
+        predictions_file,
+        time_preds=test_predictions["time_preds"],
+        time_targets=test_predictions["time_targets"],
+        cls_preds=test_predictions["cls_preds"],
+        cls_targets=test_predictions["cls_targets"],
+    )
+    logger.info(f"Test predictions saved to {predictions_file}")
+    
+    # Temporal generalization analysis
+    logger.info("\n" + "=" * 80)
+    logger.info("Temporal Generalization Analysis")
+    logger.info("=" * 80)
+    
+    try:
+        # Collect metadata from test dataset
+        test_metadata = []
+        for i in range(len(test_ds)):
+            meta = test_ds.get_metadata(i)
+            test_metadata.append(meta)
+        
+        # Run temporal analysis with sliding windows
+        window_size = 6.0  # 6 hour windows
+        stride = 3.0       # 3 hour stride
+        
+        window_centers, metrics_by_window = evaluate_temporal_generalization(
+            predictions=test_predictions,
+            metadata_list=test_metadata,
+            window_size=window_size,
+            stride=stride,
+            start_hour=0.0,
+            end_hour=48.0,
+            logger=logger,
+        )
+        
+        # Plot temporal generalization
+        temporal_plot_path = output_base / "temporal_generalization.png"
+        plot_temporal_generalization(
+            window_centers=window_centers,
+            metrics_by_window=metrics_by_window,
+            window_size=window_size,
+            output_path=temporal_plot_path,
+            model_name=experiment_name,
+        )
+        logger.info(f"✓ Temporal generalization plot saved to {temporal_plot_path}")
+        
+        # Save temporal metrics
+        temporal_metrics = {
+            "window_size_hours": window_size,
+            "stride_hours": stride,
+            "window_centers": window_centers,
+            "metrics_by_window": metrics_by_window,
+        }
+        temporal_metrics_file = output_base / "temporal_metrics.json"
+        with open(temporal_metrics_file, "w") as f:
+            json.dump(temporal_metrics, f, indent=2)
+        logger.info(f"✓ Temporal metrics saved to {temporal_metrics_file}")
+        
+    except Exception as e:
+        logger.warning(f"Failed to run temporal generalization analysis: {e}")
+        logger.warning("Skipping temporal analysis, but training results are still saved.")
+    
     # Save final results
+    # Convert numpy types to Python native types for JSON serialization
+    def convert_to_serializable(obj):
+        """Convert numpy/torch types to JSON-serializable Python types."""
+        if isinstance(obj, (np.integer, np.floating)):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, dict):
+            return {k: convert_to_serializable(v) for k, v in obj.items()}
+        elif isinstance(obj, (list, tuple)):
+            return [convert_to_serializable(item) for item in obj]
+        return obj
+    
     results = {
         "experiment_name": experiment_name,
         "run_id": run_id,
         "config": cfg,
-        "best_val_metric": best_score,
-        "test_metrics": test_metrics,
+        "best_val_metric": float(best_score) if best_score is not None else None,
+        "test_metrics": convert_to_serializable(test_metrics),
     }
     
     results_file = output_base / "results.json"
-    with open(results_file, "w") as f:
-        json.dump(results, f, indent=2)
-    
-    logger.info(f"Results saved to {results_file}")
+    try:
+        with open(results_file, "w") as f:
+            json.dump(results, f, indent=2)
+        logger.info(f"✓ Results saved to {results_file}")
+    except Exception as e:
+        logger.error(f"Failed to save results.json: {e}")
+        # Try saving minimal version
+        try:
+            minimal_results = {
+                "experiment_name": experiment_name,
+                "run_id": run_id,
+                "best_val_metric": float(best_score) if best_score is not None else None,
+            }
+            with open(results_file, "w") as f:
+                json.dump(minimal_results, f, indent=2)
+            logger.warning(f"Saved minimal results.json (without full metrics)")
+        except:
+            logger.error(f"Could not save results.json at all!")
     logger.info("Training complete!")
+    
+    # Automatically generate visualizations and summary
+    logger.info("=" * 80)
+    logger.info("Generating analysis plots and summary...")
+    try:
+        import subprocess
+        import sys
+        
+        analysis_cmd = [
+            sys.executable,  # Use same Python interpreter
+            "analyze_multitask_results.py",
+            "--result-dir", str(output_base),
+        ]
+        
+        result = subprocess.run(
+            analysis_cmd, 
+            check=True,
+            capture_output=True,
+            text=True,
+            cwd=Path(__file__).parent  # Run from script directory
+        )
+        
+        logger.info("✓ Analysis complete! Check output directory for plots and summary.")
+        
+    except subprocess.CalledProcessError as e:
+        logger.warning(f"Failed to generate analysis (exit code {e.returncode}):")
+        if e.stdout:
+            logger.warning(f"  stdout: {e.stdout[:200]}")
+        if e.stderr:
+            logger.warning(f"  stderr: {e.stderr[:200]}")
+        logger.warning(f"You can manually run: python analyze_multitask_results.py --result-dir {output_base}")
+        
+    except Exception as e:
+        logger.warning(f"Failed to generate analysis: {e}")
+        logger.warning(f"You can manually run: python analyze_multitask_results.py --result-dir {output_base}")
 
 
 if __name__ == "__main__":
