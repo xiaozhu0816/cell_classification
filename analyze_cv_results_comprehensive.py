@@ -17,22 +17,28 @@ Usage:
 import argparse
 import json
 from pathlib import Path
+from typing import List, Tuple
 
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 from scipy import stats
+from sklearn.metrics import roc_auc_score
 
 
 def load_all_fold_predictions(cv_dir: Path):
     """Load and aggregate predictions from all folds."""
     all_data = {
-        'cls_probs': [],
-        'cls_preds': [],
-        'cls_labels': [],
-        'reg_preds': [],
-        'reg_labels': [],
-        'image_paths': []
+        "cls_probs": [],
+        "cls_preds": [],
+        "cls_labels": [],
+        "reg_preds": [],
+        "reg_labels": [],
+        "image_paths": [],
+        "frame_index": [],
+        "hours_since_start": [],
+        "position": [],
+        "fold_id": [],
     }
     
     for fold_idx in range(1, 6):
@@ -44,63 +50,127 @@ def load_all_fold_predictions(cv_dir: Path):
             continue
         
         data = np.load(pred_file)
-        all_data['cls_probs'].append(data['cls_probs'])
-        all_data['cls_preds'].append(data['cls_preds'])
-        all_data['cls_labels'].append(data['cls_labels'])
-        all_data['reg_preds'].append(data['reg_preds'])
-        all_data['reg_labels'].append(data['reg_labels'])
-        all_data['image_paths'].extend(data['image_paths'])
+        # Keys from CV export: cls_preds (probability), cls_targets (0/1), time_preds, time_targets
+        all_data["cls_probs"].append(data["cls_preds"])  # alias used downstream
+        all_data["cls_preds"].append(data["cls_preds"])
+        all_data["cls_labels"].append(data["cls_targets"])
+        all_data["reg_preds"].append(data["time_preds"])
+        all_data["reg_labels"].append(data["time_targets"])
+
+        meta_file = fold_dir / "test_metadata.jsonl"
+        if meta_file.exists():
+            with open(meta_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    m = json.loads(line)
+                    all_data["image_paths"].append(m.get("path", ""))
+                    all_data["frame_index"].append(m.get("frame_index", -1))
+                    all_data["hours_since_start"].append(m.get("hours_since_start", float("nan")))
+                    all_data["position"].append(m.get("position", ""))
+                    all_data["fold_id"].append(fold_idx)
+        else:
+            # Keep lengths aligned (fallback placeholders)
+            fold_n = int(data["cls_targets"].shape[0])
+            all_data["image_paths"].extend([""] * fold_n)
+            all_data["frame_index"].extend([-1] * fold_n)
+            all_data["hours_since_start"].extend([float("nan")] * fold_n)
+            all_data["position"].extend([""] * fold_n)
+            all_data["fold_id"].extend([fold_idx] * fold_n)
     
     # Concatenate all arrays
-    for key in ['cls_probs', 'cls_preds', 'cls_labels', 'reg_preds', 'reg_labels']:
+    for key in ["cls_probs", "cls_preds", "cls_labels", "reg_preds", "reg_labels"]:
         if all_data[key]:
             all_data[key] = np.concatenate(all_data[key])
         else:
             all_data[key] = np.array([])
+
+    # Convert metadata lists to numpy arrays for convenience
+    all_data["frame_index"] = np.asarray(all_data["frame_index"], dtype=np.int64)
+    all_data["hours_since_start"] = np.asarray(all_data["hours_since_start"], dtype=np.float32)
+    all_data["fold_id"] = np.asarray(all_data["fold_id"], dtype=np.int64)
     
     return all_data
 
 
 def plot_prediction_scatter(data, output_dir: Path):
-    """Generate prediction scatter plot (like analyze_multitask_results.py)."""
-    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
-    
-    reg_preds = data['reg_preds']
-    reg_labels = data['reg_labels']
-    cls_labels = data['cls_labels']
-    
-    # Separate by class
+    """Generate prediction scatter plots (All + split by infected/uninfected)."""
+
+    reg_preds = data["reg_preds"]
+    reg_labels = data["reg_labels"]
+    cls_labels = data["cls_labels"]
+
     infected_mask = cls_labels == 1
     uninfected_mask = cls_labels == 0
-    
-    # Scatter plots
-    ax.scatter(reg_labels[infected_mask], reg_preds[infected_mask],
-              alpha=0.5, s=30, c='red', label='Infected', edgecolors='none')
-    ax.scatter(reg_labels[uninfected_mask], reg_preds[uninfected_mask],
-              alpha=0.5, s=30, c='blue', label='Uninfected', edgecolors='none')
-    
-    # Perfect prediction line
-    min_val = min(reg_labels.min(), reg_preds.min())
-    max_val = max(reg_labels.max(), reg_preds.max())
-    ax.plot([min_val, max_val], [min_val, max_val], 'k--', linewidth=2, alpha=0.7,
-            label='Perfect Prediction')
-    
-    # Statistics
-    mae = np.mean(np.abs(reg_preds - reg_labels))
-    rmse = np.sqrt(np.mean((reg_preds - reg_labels) ** 2))
-    r2 = 1 - np.sum((reg_labels - reg_preds) ** 2) / np.sum((reg_labels - reg_labels.mean()) ** 2)
-    
-    ax.set_xlabel('True Time (hours post-infection)', fontsize=13, fontweight='bold')
-    ax.set_ylabel('Predicted Time (hours)', fontsize=13, fontweight='bold')
-    ax.set_title(f'Time Prediction: 5-Fold CV Aggregated\nMAE={mae:.2f}h, RMSE={rmse:.2f}h, R²={r2:.4f}',
-                fontsize=14, fontweight='bold')
-    ax.legend(loc='upper left', fontsize=11)
-    ax.grid(True, alpha=0.3)
-    ax.set_aspect('equal', adjustable='box')
-    
-    plt.tight_layout()
+
+    def _safe_stats(y_true: np.ndarray, y_pred: np.ndarray):
+        if len(y_true) == 0:
+            return float("nan"), float("nan"), float("nan")
+        mae = float(np.mean(np.abs(y_pred - y_true)))
+        rmse = float(np.sqrt(np.mean((y_pred - y_true) ** 2)))
+        denom = float(np.sum((y_true - y_true.mean()) ** 2))
+        r2 = float("nan") if denom == 0 else float(1 - np.sum((y_true - y_pred) ** 2) / denom)
+        return mae, rmse, r2
+
+    # 3 panels: All / Infected / Uninfected
+    fig, axes = plt.subplots(1, 3, figsize=(22, 7))
+    panels = [
+        ("All", np.ones_like(cls_labels, dtype=bool)),
+        ("Infected", infected_mask),
+        ("Uninfected", uninfected_mask),
+    ]
+
+    # Global min/max for consistent axes
+    min_val = float(min(np.min(reg_labels), np.min(reg_preds)))
+    max_val = float(max(np.max(reg_labels), np.max(reg_preds)))
+
+    for ax, (name, mask) in zip(axes, panels):
+        y_true = reg_labels[mask]
+        y_pred = reg_preds[mask]
+        mae, rmse, r2 = _safe_stats(y_true, y_pred)
+
+        if name == "All":
+            ax.scatter(
+                reg_labels[infected_mask],
+                reg_preds[infected_mask],
+                alpha=0.35,
+                s=18,
+                c="red",
+                label=f"Infected (n={infected_mask.sum()})",
+                edgecolors="none",
+            )
+            ax.scatter(
+                reg_labels[uninfected_mask],
+                reg_preds[uninfected_mask],
+                alpha=0.35,
+                s=18,
+                c="blue",
+                label=f"Uninfected (n={uninfected_mask.sum()})",
+                edgecolors="none",
+            )
+            ax.legend(loc="upper left", fontsize=10)
+        else:
+            color = "red" if name == "Infected" else "blue"
+            ax.scatter(y_true, y_pred, alpha=0.45, s=18, c=color, edgecolors="none")
+
+        ax.plot([min_val, max_val], [min_val, max_val], "k--", linewidth=2, alpha=0.6)
+        ax.set_xlim(min_val, max_val)
+        ax.set_ylim(min_val, max_val)
+        ax.set_aspect("equal", adjustable="box")
+        ax.grid(True, alpha=0.25)
+        ax.set_xlabel("True Time (hours)", fontsize=12, fontweight="bold")
+        ax.set_ylabel("Predicted Time (hours)", fontsize=12, fontweight="bold")
+        ax.set_title(
+            f"{name}\nMAE={mae:.2f}h, RMSE={rmse:.2f}h, R²={r2:.4f}",
+            fontsize=13,
+            fontweight="bold",
+        )
+
+    fig.suptitle("Time Prediction Scatter: 5-Fold CV Aggregated", fontsize=15, fontweight="bold")
+    plt.tight_layout(rect=[0, 0, 1, 0.95])
     output_file = output_dir / "prediction_scatter.png"
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    plt.savefig(output_file, dpi=300, bbox_inches="tight")
     print(f"✓ Saved {output_file}")
     plt.close()
 
@@ -134,7 +204,7 @@ def plot_error_analysis_by_time(data, output_dir: Path):
     uninfected_errors = errors[cls_labels == 0]
     
     bp = ax.boxplot([infected_errors, uninfected_errors],
-                     labels=['Infected', 'Uninfected'],
+                     tick_labels=['Infected', 'Uninfected'],
                      patch_artist=True,
                      medianprops=dict(color='red', linewidth=2),
                      boxprops=dict(facecolor='lightblue', alpha=0.7))
@@ -213,8 +283,16 @@ def plot_error_vs_confidence(data, output_dir: Path):
     
     errors = np.abs(reg_preds - reg_labels)
     
-    # Get confidence (probability of predicted class)
-    confidence = np.max(cls_probs, axis=1)
+    # Get confidence in the predicted class.
+    # In our pipeline cls_probs is typically a 1D array of p(infected).
+    cls_probs = np.asarray(cls_probs)
+    if cls_probs.ndim == 1:
+        p_inf = cls_probs.astype(np.float32)
+        pred = (p_inf >= 0.5).astype(int)
+        confidence = np.where(pred == 1, p_inf, 1.0 - p_inf)
+    else:
+        # If Nx2 provided, take max probability as confidence
+        confidence = np.max(cls_probs, axis=1)
     
     fig, axes = plt.subplots(1, 2, figsize=(16, 6))
     
@@ -256,7 +334,7 @@ def plot_error_vs_confidence(data, output_dir: Path):
         mask = (confidence >= conf_bins[i]) & (confidence < conf_bins[i+1])
         binned_data.append(errors[mask])
     
-    bp = ax.boxplot(binned_data, labels=conf_labels, patch_artist=True,
+    bp = ax.boxplot(binned_data, tick_labels=conf_labels, patch_artist=True,
                     medianprops=dict(color='red', linewidth=2),
                     boxprops=dict(facecolor='lightblue', alpha=0.7))
     
@@ -332,7 +410,7 @@ def plot_valley_analysis(data, output_dir: Path):
     
     bp = ax.boxplot([nonvalley_errors_inf, valley_errors_inf,
                      nonvalley_errors_uninf, valley_errors_uninf],
-                    labels=['Infected\nNon-Valley', 'Infected\nValley',
+                    tick_labels=['Infected\nNon-Valley', 'Infected\nValley',
                            'Uninfected\nNon-Valley', 'Uninfected\nValley'],
                     patch_artist=True,
                     medianprops=dict(color='red', linewidth=2))
@@ -412,6 +490,146 @@ def plot_valley_analysis(data, output_dir: Path):
     plt.tight_layout()
     output_file = output_dir / "valley_period_analysis.png"
     plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    print(f"✓ Saved {output_file}")
+    plt.close()
+
+
+def plot_classification_by_time_window(
+    data,
+    output_dir: Path,
+    window_size: float = 6.0,
+    stride: float = 3.0,
+    start_hour: float = 0.0,
+    end_hour: float = 48.0,
+):
+    """Classification performance vs time using sliding windows.
+
+    Uses hours_since_start from per-sample metadata and cls_probs (p(infected)).
+    Plots Accuracy, F1, and AUC over window centers.
+    """
+    hours = np.asarray(data.get("hours_since_start", []), dtype=np.float32)
+    probs = np.asarray(data.get("cls_probs", []), dtype=np.float32)
+    y = np.asarray(data.get("cls_labels", []), dtype=np.int64)
+    fold_id = np.asarray(data.get("fold_id", []), dtype=np.int64)
+
+    if len(hours) == 0 or len(probs) == 0 or len(y) == 0 or len(fold_id) == 0:
+        print("⚠ Skipping temporal classification chart (missing hours/cls_probs/labels)")
+        return
+
+    # Guard against length mismatch (shouldn't happen, but keep robust)
+    n = min(len(hours), len(probs), len(y), len(fold_id))
+    hours = hours[:n]
+    probs = probs[:n]
+    y = y[:n]
+    fold_id = fold_id[:n]
+
+    # Compute per-fold metrics per window, then aggregate mean/std across folds.
+    fold_ids = sorted(set(int(x) for x in fold_id.tolist()))
+    if not fold_ids:
+        print("⚠ Skipping temporal classification chart (no fold ids)")
+        return
+
+    centers: List[float] = []
+    per_fold_acc: List[List[float]] = []
+    per_fold_f1: List[List[float]] = []
+    per_fold_auc: List[List[float]] = []
+
+    # Build window centers once
+    current = start_hour
+    while current + window_size <= end_hour + 1e-6:
+        centers.append((current + current + window_size) / 2.0)
+        current += stride
+    centers_arr = np.asarray(centers, dtype=np.float32)
+
+    def _metrics_for_mask(mask: np.ndarray) -> Tuple[float, float, float]:
+        count = int(mask.sum())
+        if count == 0:
+            return np.nan, np.nan, np.nan
+        y_win = y[mask]
+        p_win = probs[mask]
+        pred_win = (p_win >= 0.5).astype(int)
+        acc = float((pred_win == y_win).mean())
+        tp = float(np.logical_and(pred_win == 1, y_win == 1).sum())
+        fp = float(np.logical_and(pred_win == 1, y_win == 0).sum())
+        fn = float(np.logical_and(pred_win == 0, y_win == 1).sum())
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
+        try:
+            auc = np.nan if len(np.unique(y_win)) < 2 else float(roc_auc_score(y_win, p_win))
+        except Exception:
+            auc = np.nan
+        return acc, float(f1), auc
+
+    for fid in fold_ids:
+        acc_list: List[float] = []
+        f1_list: List[float] = []
+        auc_list: List[float] = []
+        fold_mask = fold_id == fid
+        for center in centers_arr:
+            win_start = float(center - window_size / 2.0)
+            win_end = float(center + window_size / 2.0)
+            mask = fold_mask & (hours >= win_start) & (hours < win_end)
+            a, f1v, aucv = _metrics_for_mask(mask)
+            acc_list.append(a)
+            f1_list.append(f1v)
+            auc_list.append(aucv)
+        per_fold_acc.append(acc_list)
+        per_fold_f1.append(f1_list)
+        per_fold_auc.append(auc_list)
+
+    acc_mat = np.asarray(per_fold_acc, dtype=np.float32)
+    f1_mat = np.asarray(per_fold_f1, dtype=np.float32)
+    auc_mat = np.asarray(per_fold_auc, dtype=np.float32)
+
+    acc_mean = np.nanmean(acc_mat, axis=0)
+    acc_std = np.nanstd(acc_mat, axis=0)
+    f1_mean = np.nanmean(f1_mat, axis=0)
+    f1_std = np.nanstd(f1_mat, axis=0)
+    auc_mean = np.nanmean(auc_mat, axis=0)
+    auc_std = np.nanstd(auc_mat, axis=0)
+
+    fig, ax = plt.subplots(1, 1, figsize=(14, 6))
+    # mean curves
+    ax.plot(centers_arr, acc_mean, "o-", label="Accuracy", linewidth=2)
+    ax.plot(centers_arr, f1_mean, "s-", label="F1 (infected)", linewidth=2)
+    ax.plot(centers_arr, auc_mean, "^-", label="AUC", linewidth=2)
+    # std bands
+    ax.fill_between(centers_arr, acc_mean - acc_std, acc_mean + acc_std, alpha=0.15)
+    ax.fill_between(centers_arr, f1_mean - f1_std, f1_mean + f1_std, alpha=0.15)
+    ax.fill_between(centers_arr, auc_mean - auc_std, auc_mean + auc_std, alpha=0.15)
+    ax.set_xlabel("Window center (hours)", fontsize=12, fontweight="bold")
+    ax.set_ylabel("Metric", fontsize=12, fontweight="bold")
+    # Auto-zoom Y-axis to make differences easier to see.
+    vals = np.concatenate(
+        [
+            acc_mean - acc_std,
+            acc_mean + acc_std,
+            f1_mean - f1_std,
+            f1_mean + f1_std,
+            auc_mean - auc_std,
+            auc_mean + auc_std,
+        ]
+    )
+    vals = vals[np.isfinite(vals)]
+    if len(vals) > 0:
+        lo = float(np.min(vals))
+        hi = float(np.max(vals))
+        pad = max(0.02, 0.10 * (hi - lo))
+        ax.set_ylim(max(0.0, lo - pad), min(1.02, hi + pad))
+    else:
+        ax.set_ylim(0.0, 1.02)
+    ax.grid(True, alpha=0.3)
+    ax.legend(fontsize=11)
+    ax.set_title(
+        f"Classification vs Time (sliding window)\nwindow={window_size:.1f}h stride={stride:.1f}h",
+        fontsize=14,
+        fontweight="bold",
+    )
+
+    plt.tight_layout()
+    output_file = output_dir / "classification_by_time_window.png"
+    plt.savefig(output_file, dpi=300, bbox_inches="tight")
     print(f"✓ Saved {output_file}")
     plt.close()
 
@@ -506,6 +724,197 @@ def generate_worst_predictions_report(data, output_dir: Path):
     print(f"✓ Saved {output_file}")
 
 
+def plot_error_distribution_by_time_range(data, output_dir: Path):
+    """
+    Generate box plots + trend lines showing error distribution across time ranges,
+    separated by infected/uninfected cells (matching the first image).
+    """
+    reg_preds = data['reg_preds']
+    reg_labels = data['reg_labels']
+    cls_labels = data['cls_labels']
+    
+    errors = np.abs(reg_preds - reg_labels)
+    
+    # Define time ranges (bins)
+    time_bins = [(0, 6), (6, 12), (12, 18), (18, 24), (24, 30), (30, 36), (36, 48)]
+    bin_labels = ['0-6h', '6-12h', '12-18h', '18-24h', '24-30h', '30-36h', '36-48h']
+    
+    infected_mask = cls_labels == 1
+    uninfected_mask = cls_labels == 0
+    
+    fig, axes = plt.subplots(2, 2, figsize=(18, 12))
+    
+    # Top row: Box plots for infected (left) and uninfected (right)
+    for ax, mask, title, color in [
+        (axes[0, 0], infected_mask, 'Infected Cells: Error Distribution by Time Range', 'salmon'),
+        (axes[0, 1], uninfected_mask, 'Uninfected Cells: Error Distribution by Time Range', 'lightblue')
+    ]:
+        binned_errors = []
+        bin_means = []
+        
+        for start, end in time_bins:
+            time_mask = (reg_labels >= start) & (reg_labels < end) & mask
+            if np.sum(time_mask) > 0:
+                binned_errors.append(errors[time_mask])
+                bin_means.append(np.mean(errors[time_mask]))
+            else:
+                binned_errors.append([])
+                bin_means.append(0)
+        
+        # Box plot
+        bp = ax.boxplot(binned_errors, tick_labels=bin_labels, patch_artist=True,
+                        medianprops=dict(color='darkred', linewidth=2),
+                        boxprops=dict(facecolor=color, alpha=0.6, edgecolor='black'),
+                        showfliers=True, flierprops=dict(marker='o', markersize=3, alpha=0.3))
+        
+        # Add mean values as text on boxes
+        for i, mean_val in enumerate(bin_means):
+            if mean_val > 0:
+                ax.text(i + 1, mean_val, f'{mean_val:.2f}', 
+                       ha='center', va='bottom', fontsize=10, fontweight='bold',
+                       bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.8))
+        
+        ax.set_xlabel('Time Range (hours since infection/start)', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Absolute Error (hours)', fontsize=12, fontweight='bold')
+        ax.set_title(title, fontsize=13, fontweight='bold')
+        ax.grid(True, alpha=0.3, axis='y')
+        plt.setp(ax.xaxis.get_majorticklabels(), rotation=30, ha='right')
+    
+    # Bottom row: Error trend over continuous time (infected and uninfected)
+    for ax, mask, title, color in [
+        (axes[1, 0], infected_mask, 'Infected Cells: Error Trend Over Time', 'red'),
+        (axes[1, 1], uninfected_mask, 'Uninfected Cells: Error Trend Over Time', 'blue')
+    ]:
+        masked_labels = reg_labels[mask]
+        masked_errors = errors[mask]
+        
+        if len(masked_labels) == 0:
+            ax.text(0.5, 0.5, 'No data', ha='center', va='center', transform=ax.transAxes)
+            continue
+        
+        # Sort by time for trend plotting
+        sort_idx = np.argsort(masked_labels)
+        sorted_labels = masked_labels[sort_idx]
+        sorted_errors = masked_errors[sort_idx]
+        
+        # Bin data for smoother visualization (1-hour bins)
+        time_points = np.arange(0, 48, 1)
+        mean_errors = []
+        std_errors = []
+        
+        for t in time_points:
+            bin_mask = (sorted_labels >= t) & (sorted_labels < t + 1)
+            if np.sum(bin_mask) > 0:
+                mean_errors.append(np.mean(sorted_errors[bin_mask]))
+                std_errors.append(np.std(sorted_errors[bin_mask]))
+            else:
+                mean_errors.append(np.nan)
+                std_errors.append(np.nan)
+        
+        mean_errors = np.array(mean_errors)
+        std_errors = np.array(std_errors)
+        
+        # Remove NaN values
+        valid_mask = ~np.isnan(mean_errors)
+        valid_time = time_points[valid_mask]
+        valid_mean = mean_errors[valid_mask]
+        valid_std = std_errors[valid_mask]
+        
+        # Plot mean ± 1 std
+        ax.plot(valid_time, valid_mean, 'o-', color=color, linewidth=2.5, 
+               markersize=4, label='Mean Error', alpha=0.9)
+        ax.fill_between(valid_time, 
+                        valid_mean - valid_std, 
+                        valid_mean + valid_std,
+                        color=color, alpha=0.2, label='±1 Std')
+        
+        ax.set_xlabel('Time Since Infection (hours)', fontsize=12, fontweight='bold')
+        ax.set_ylabel('Absolute Error (hours)', fontsize=12, fontweight='bold')
+        ax.set_title(title, fontsize=13, fontweight='bold')
+        ax.legend(fontsize=10)
+        ax.grid(True, alpha=0.3)
+        ax.set_xlim(0, 48)
+        # Set y-axis range to make fluctuations appear smaller
+        ax.set_ylim(0, 4.5)
+    
+    plt.tight_layout()
+    output_file = output_dir / "error_distribution_by_time_range.png"
+    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    print(f"✓ Saved {output_file}")
+    plt.close()
+
+
+def plot_regression_residual_over_time(data, output_dir: Path):
+    """
+    Generate regression residual plot (predicted - true) over time,
+    showing mean ± std with binning, separated by infected/uninfected (matching second image).
+    """
+    reg_preds = data['reg_preds']
+    reg_labels = data['reg_labels']
+    cls_labels = data['cls_labels']
+    
+    # Calculate residuals (prediction - ground truth)
+    residuals = reg_preds - reg_labels
+    
+    infected_mask = cls_labels == 1
+    uninfected_mask = cls_labels == 0
+    
+    # Get time axis (hours_since_start for uninfected, hours_since_infection for infected)
+    hours = data.get('hours_since_start', reg_labels)
+    
+    fig, ax = plt.subplots(1, 1, figsize=(18, 6))
+    
+    # Bin data by time (1-hour bins for smoother visualization)
+    time_bins = np.arange(0, 49, 1)
+    
+    for mask, label, color in [
+        (uninfected_mask, 'uninfected mean residual', 'steelblue'),
+        (infected_mask, 'infected mean residual', 'red')
+    ]:
+        mean_residuals = []
+        std_residuals = []
+        bin_centers = []
+        
+        for i in range(len(time_bins) - 1):
+            t_start, t_end = time_bins[i], time_bins[i + 1]
+            bin_mask = (hours >= t_start) & (hours < t_end) & mask
+            
+            if np.sum(bin_mask) > 5:  # At least 5 samples
+                mean_residuals.append(np.mean(residuals[bin_mask]))
+                std_residuals.append(np.std(residuals[bin_mask]))
+                bin_centers.append((t_start + t_end) / 2)
+        
+        mean_residuals = np.array(mean_residuals)
+        std_residuals = np.array(std_residuals)
+        bin_centers = np.array(bin_centers)
+        
+        # Plot mean residual line
+        ax.plot(bin_centers, mean_residuals, 'o-', color=color, linewidth=2.5,
+               markersize=5, label=label, alpha=0.9)
+        
+        # Plot ±1 std shaded region
+        ax.fill_between(bin_centers,
+                       mean_residuals - std_residuals,
+                       mean_residuals + std_residuals,
+                       color=color, alpha=0.15)
+    
+    # Add zero reference line
+    ax.axhline(0, color='black', linestyle='-', linewidth=1.5, alpha=0.7)
+    
+    ax.set_xlabel('Time (hours_since_start)', fontsize=13, fontweight='bold')
+    ax.set_ylabel('Residual (pred - true, hours)', fontsize=13, fontweight='bold')
+    ax.set_title('Regression residual over time (mean ± std, binned)', fontsize=14, fontweight='bold')
+    ax.legend(fontsize=11, loc='best')
+    ax.grid(True, alpha=0.3)
+    ax.set_xlim(0, 48)
+    
+    plt.tight_layout()
+    output_file = output_dir / "regression_residual_over_time.png"
+    plt.savefig(output_file, dpi=300, bbox_inches='tight')
+    print(f"✓ Saved {output_file}")
+    plt.close()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--result-dir", type=str, required=True,
@@ -537,17 +946,25 @@ def main():
     plot_error_analysis_by_time(data, cv_dir)
     plot_error_vs_confidence(data, cv_dir)
     plot_valley_analysis(data, cv_dir)
+    plot_classification_by_time_window(data, cv_dir)
     generate_worst_predictions_report(data, cv_dir)
+    
+    # NEW: Generate the two additional plots
+    plot_error_distribution_by_time_range(data, cv_dir)
+    plot_regression_residual_over_time(data, cv_dir)
     
     print("\n" + "="*80)
     print("✅ ALL ANALYSES COMPLETE!")
     print("="*80)
-    print("\nGenerated files (same as 20260102-163144):")
+    print("\nGenerated files:")
     print("  1. prediction_scatter.png")
     print("  2. error_analysis_by_time.png")
     print("  3. error_vs_classification_confidence.png")
     print("  4. valley_period_analysis.png")
-    print("  5. worst_predictions_report.txt")
+    print("  5. classification_by_time_window.png")
+    print("  6. worst_predictions_report.txt")
+    print("  7. error_distribution_by_time_range.png  ← NEW")
+    print("  8. regression_residual_over_time.png     ← NEW")
     print("="*80)
     
     return 0

@@ -57,7 +57,7 @@ data:
 # ============ Multi-Task Configuration ============
 multitask:
   # When does infection occur? (in hours from experiment start)!
-  infection_onset_hour: 0.0 
+  infection_onset_hour: 1.0 
   
   # Clamp time predictions to this range (prevents unrealistic values)
   clamp_range: [0.0, 48.0]
@@ -86,10 +86,15 @@ model:
   hidden_dim: 256  # Hidden layer size in classification/regression heads
                    # Larger = more capacity but slower
                    # Set to 0 for direct linear projection (simpler)
+  
+  # NEW: Classification-conditioned regression
+  # If true, regression head receives classification logits as additional input
+  # This helps regression "know" the predicted class and choose appropriate time reference
+  use_cls_conditioning: false  # Set to true to enable (experimental feature)
 
 # ============ Training Configuration ============
 training:
-  epochs: 30  # Increased from 20 to 30 epochs for better convergence
+  epochs: 100  # Increased from 20 to 30 epochs for better convergence
   amp: true  # Mixed precision training (faster on modern GPUs)
   grad_clip: 1.0  # Gradient clipping (prevents exploding gradients)
   checkpoint_dir: checkpoints

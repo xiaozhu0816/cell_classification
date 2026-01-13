@@ -1,0 +1,105 @@
+# Regression-Only Training: UNINFECTED samples only
+#
+# Goal: Train a pure regression model on uninfected samples to predict
+# "elapsed time from experiment start" and compare against multitask performance.
+#
+# This is one of two single-task baselines for comparison.
+
+experiment_name: regression_uninfected
+seed: 42
+
+# ============ Data Configuration ============
+data:
+  infected_dir: "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels"
+  uninfected_dir: "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels"
+  
+  infected_label: 1
+  uninfected_label: 0
+  
+  split_ratios: [0.7, 0.1, 0.2]
+  split_seed: 123
+  
+  batch_size: 128
+  eval_batch_size_multiplier: 2
+  num_workers: 4
+  drop_last: false
+  
+  transforms:
+    image_size: 512
+    random_flip: true
+    random_rotation: true
+    color_jitter: false
+    mean: [0.5, 0.5, 0.5]
+    std: [0.25, 0.25, 0.25]
+  
+  # UNINFECTED ONLY: Use frames from [0, 48] hours
+  # (Uninfected cells are present from the beginning)
+  frames:
+    frames_per_hour: 2.0
+    infected_window_hours: [1, 48]  # Loaded but filtered by target_class
+    infected_stride: 1
+    uninfected_window_hours: [0, 48]
+    uninfected_stride: 1
+    uninfected_use_all: true
+
+# ============ Regression Configuration ============
+regression:
+  # Filter to uninfected samples only during training/eval
+  target_class: 0  # 1 = infected, 0 = uninfected, null = all
+  
+  # Infection onset (not used for uninfected, but kept for consistency)
+  infection_onset_hour: 1.0
+  
+  # Regression target for uninfected: hours_since_start
+  # Example: sample at 10h → target = 10h (10 hours into experiment)
+  
+  # Clamp predictions to valid range
+  clamp_range: [0.0, 48.0]
+
+# ============ Model Configuration ============
+model:
+  name: resnet50
+  pretrained: true
+  dropout: 0.2
+  train_backbone: true
+  hidden_dim: 256  # Same as multitask for fair comparison
+
+# ============ Training Configuration ============
+training:
+  epochs: 100
+  amp: true
+  grad_clip: 1.0
+
+# ============ Optimizer Configuration ============
+optimizer:
+  lr: 0.0001
+  weight_decay: 0.0001
+
+# ============ Scheduler Configuration ============
+scheduler:
+  t_max: 30
+  eta_min: 0.000001
+
+# ============ How to Run ============
+#
+# python train_regression_cv.py --config configs/regression_uninfected.yaml --num-folds 5
+#
+# Expected output structure:
+#   outputs/regression_uninfected/YYYYMMDD-HHMMSS_5fold/
+#     fold_1/
+#       checkpoints/best.pt
+#       test_predictions.npz  # Compatible with multitask analysis
+#       test_metadata.jsonl
+#       results.json
+#     fold_2/ ...
+#     cv_summary.json
+#
+# Key metrics tracked:
+#   - reg_mae (Mean Absolute Error in hours)
+#   - reg_rmse (Root Mean Squared Error in hours)
+#   - reg_mse (Mean Squared Error)
+#
+# Compare with multitask:
+#   python compare_regression_performance.py \
+#     --multitask outputs/multitask_resnet50/TIMESTAMP_5fold \
+#     --regression outputs/regression_uninfected/TIMESTAMP_5fold

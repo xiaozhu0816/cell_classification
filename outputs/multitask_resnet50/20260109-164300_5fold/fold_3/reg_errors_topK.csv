@@ -1,0 +1,6 @@
+index,path,frame_index,hours_since_start,label,cls_prob,cls_pred,time_target,time_pred
+1044,/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff,37,18.5,0,0.00023329573741648346,0,18.5,11.900370597839355
+1048,/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff,41,20.5,0,8.897318912204355e-05,0,20.5,14.49345588684082
+1380,/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff,1,0.5,0,0.0007507216650992632,0,0.5,6.120737552642822
+1092,/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff,85,42.5,0,1.0000000116860974e-07,0,42.5,37.358489990234375
+1379,/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff,0,0.0,0,0.0005394932813942432,0,0.0,4.9684038162231445

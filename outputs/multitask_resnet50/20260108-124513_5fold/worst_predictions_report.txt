@@ -1,0 +1,69 @@
+================================================================================
+WORST PREDICTIONS REPORT - 5-FOLD CV AGGREGATED
+================================================================================
+
+TOP 20 WORST REGRESSION ERRORS:
+--------------------------------------------------------------------------------
+Rank   True Time    Pred Time    Error      Class        Confidence   Image Path
+--------------------------------------------------------------------------------
+1      18.50        9.96         8.54       Uninfected   0.0058       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+2      17.50        10.32        7.18       Uninfected   0.0002       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+3      0.50         7.63         7.13       Uninfected   0.0006       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff
+4      0.50         7.34         6.84       Uninfected   0.0015       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff
+5      18.50        12.00        6.50       Uninfected   0.0004       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+6      19.50        13.02        6.48       Uninfected   0.0001       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+7      0.00         6.41         6.41       Uninfected   0.0006       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff
+8      42.50        36.18        6.32       Uninfected   0.0000       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+9      25.00        18.69        6.31       Uninfected   0.0001       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+10     4.00         10.17        6.17       Infected     0.0002       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p6_t0-94_ec.tiff
+11     20.00        13.86        6.14       Uninfected   0.0002       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+12     0.00         6.08         6.08       Uninfected   0.0038       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff
+13     4.50         10.52        6.02       Infected     0.0007       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p6_t0-94_ec.tiff
+14     39.50        33.52        5.98       Uninfected   0.0000       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+15     4.50         10.45        5.95       Infected     0.0009       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p6_t0-94_ec.tiff
+16     20.50        14.56        5.94       Uninfected   0.0026       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p11_t0-94_ec.tiff
+17     18.50        12.60        5.90       Uninfected   0.0001       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff
+18     0.50         6.39         5.89       Uninfected   0.0046       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff
+19     0.50         6.25         5.75       Uninfected   0.0004       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Uninfected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff
+20     4.00         9.73         5.73       Infected     0.0017       /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p6_t0-94_ec.tiff
+
+================================================================================
+CLASSIFICATION ERRORS: 7360 total misclassifications
+--------------------------------------------------------------------------------
+Type                 True Class      Pred Class      Confidence   True Time    Image Path
+--------------------------------------------------------------------------------
+Infected→Uninfected  Infected        Uninfected      0.9976       0.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9991       0.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9988       1.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9993       1.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9995       2.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9987       2.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9997       3.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9991       3.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9998       4.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9999       4.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9999       5.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9999       5.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9990       6.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9999       6.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9999       7.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9999       7.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      0.9999       8.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      1.0000       8.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      1.0000       9.00         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+Infected→Uninfected  Infected        Uninfected      1.0000       9.50         /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/DATA/GMU_cell_1023/HBMVEC/Infected_well/no_labels/20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff
+
+================================================================================
+SUMMARY STATISTICS:
+--------------------------------------------------------------------------------
+Total samples: 7360
+Mean absolute error: 1.185 hours
+Median absolute error: 0.956 hours
+Std absolute error: 0.965 hours
+Max error: 8.538 hours
+90th percentile error: 2.479 hours
+95th percentile error: 3.008 hours
+
+Classification accuracy: 0.00%
+Misclassifications: 7360 / 7360
+================================================================================

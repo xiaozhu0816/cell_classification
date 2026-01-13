@@ -38,8 +38,12 @@ class MultiTaskResNet(nn.Module):
         dropout: float = 0.2,
         train_backbone: bool = True,
         hidden_dim: int = 256,  # Hidden layer size for task heads
+        use_cls_conditioning: bool = False,  # NEW: Use classification info in regression head
     ) -> None:
         super().__init__()
+        
+        self.use_cls_conditioning = use_cls_conditioning
+        self.num_classes = num_classes
         
         # Build ResNet backbone (feature extractor)
         builder = {
@@ -95,6 +99,13 @@ class MultiTaskResNet(nn.Module):
         # Predicts: time (hours)
         #   - For infected: time since infection onset
         #   - For uninfected: elapsed time from experiment start
+        #
+        # NEW: Can optionally use classification logits as additional input
+        reg_input_dim = in_features
+        if use_cls_conditioning:
+            # Add num_classes dimensions for classification logits
+            reg_input_dim += num_classes
+        
         reg_layers = []
         if dropout > 0:
             reg_layers.append(nn.Dropout(dropout))
@@ -102,14 +113,14 @@ class MultiTaskResNet(nn.Module):
         if hidden_dim > 0:
             # Two-layer head with ReLU activation
             reg_layers.extend([
-                nn.Linear(in_features, hidden_dim),
+                nn.Linear(reg_input_dim, hidden_dim),
                 nn.ReLU(inplace=True),
                 nn.Dropout(dropout) if dropout > 0 else nn.Identity(),
                 nn.Linear(hidden_dim, 1)  # Single output: time
             ])
         else:
             # Single linear layer
-            reg_layers.append(nn.Linear(in_features, 1))
+            reg_layers.append(nn.Linear(reg_input_dim, 1))
         
         self.regressor = nn.Sequential(*reg_layers)
         
@@ -132,9 +143,18 @@ class MultiTaskResNet(nn.Module):
         # Shared feature extraction
         features = self.backbone(x)
         
-        # Task-specific predictions
+        # Classification prediction (always computed first)
         cls_logits = self.classifier(features)  # [B, 2] for binary classification
-        time_pred = self.regressor(features)     # [B, 1] for time prediction
+        
+        # Regression prediction
+        if self.use_cls_conditioning:
+            # Concatenate features with classification logits
+            # This allows regression head to "know" the predicted class
+            reg_input = torch.cat([features, cls_logits], dim=1)  # [B, in_features + num_classes]
+            time_pred = self.regressor(reg_input)
+        else:
+            # Standard: only use features
+            time_pred = self.regressor(features)  # [B, 1] for time prediction
         
         return cls_logits, time_pred
     
@@ -154,6 +174,7 @@ def build_multitask_model(cfg: dict) -> nn.Module:
         dropout: Dropout rate
         train_backbone: Whether to fine-tune backbone
         hidden_dim: Hidden layer size for task heads (0 = no hidden layer)
+        use_cls_conditioning: Whether regression head receives classification logits (default: False)
     
     Example config:
         model:
@@ -163,6 +184,7 @@ def build_multitask_model(cfg: dict) -> nn.Module:
           dropout: 0.2
           train_backbone: true
           hidden_dim: 256
+          use_cls_conditioning: true  # NEW: Enable classification conditioning
     """
     return MultiTaskResNet(
         backbone=cfg.get("name", "resnet50"),
@@ -171,4 +193,5 @@ def build_multitask_model(cfg: dict) -> nn.Module:
         dropout=cfg.get("dropout", 0.2),
         train_backbone=cfg.get("train_backbone", True),
         hidden_dim=cfg.get("hidden_dim", 256),
+        use_cls_conditioning=cfg.get("use_cls_conditioning", False),
     )

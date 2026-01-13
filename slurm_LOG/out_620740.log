@@ -1,6 +1,0 @@
-================================================================================
-MULTITASK CV - TEMPORAL GENERALIZATION ANALYSIS
-================================================================================
-Result directory: outputs/multitask_resnet50/20260105-154010_5fold
-Found 1 folds
-Error: results.json not found in outputs/multitask_resnet50/20260105-154010_5fold/fold_1

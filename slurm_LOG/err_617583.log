@@ -1,1047 +1,0 @@
-slurmstepd: error: Unable to create TMPDIR [/scratch/zzhu/tmp]: No such file or directory
-slurmstepd: error: Setting TMPDIR to /tmp
-2025-12-22 16:05:46,291 | INFO | ============================================================
-2025-12-22 16:05:46,292 | INFO | Interval Sweep Training Analysis
-2025-12-22 16:05:46,292 | INFO | ============================================================
-2025-12-22 16:05:46,306 | INFO | Device: cuda
-2025-12-22 16:05:46,306 | INFO | K-folds: 5
-2025-12-22 16:05:46,306 | INFO | ✓ Match uninfected window: ENABLED (infected and uninfected use same time interval)
-2025-12-22 16:05:46,306 | INFO | Evaluating single metric: auc
-2025-12-22 16:05:46,306 | INFO | Running mode(s): test-only
-2025-12-22 16:05:46,306 | INFO | ============================================================
-2025-12-22 16:05:46,306 | INFO | EVAL-ONLY MODE: Skipping training, using existing checkpoints
-2025-12-22 16:05:46,306 | INFO | ============================================================
-2025-12-22 16:05:46,306 | INFO | ============================================================
-2025-12-22 16:05:46,306 | INFO | 
-[Mode 1/1] Evaluating mode=test-only
-2025-12-22 16:05:46,308 | INFO | Using final train-test model from: outputs/interval_sweep_analysis/20251212-145928/checkpoints/train-test_interval_1-46
-2025-12-22 16:05:46,308 | INFO |   [1/14] Evaluating on test interval [1.0, 7.0]h
-2025-12-22 16:05:46,310 | INFO | [Interval [1.0, 7.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/1 [00:00<?, ?it/s]test_f1: 100%|██████████| 1/1 [00:30<00:00, 30.56s/it]                                                      2025-12-22 16:06:38,349 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.88 | F1=0.94 | TP=92
-  thr=0.15 | P=1.00 | R=0.88 | F1=0.93 | TP=91
-  thr=0.20 | P=1.00 | R=0.86 | F1=0.92 | TP=89
-  thr=0.25 | P=1.00 | R=0.86 | F1=0.92 | TP=89
-  thr=0.30 | P=1.00 | R=0.86 | F1=0.92 | TP=89
-  thr=0.50 | P=1.00 | R=0.85 | F1=0.92 | TP=88
-2025-12-22 16:06:38,355 | INFO | test time bin [0.0h, 8.0h): samples=208 | accuracy:0.923 | precision:1.000 | recall:0.846 | f1:0.917 | auc:0.995
-2025-12-22 16:06:38,355 | INFO | test time bin [8.0h, 12.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:06:38,355 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:06:38,355 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:06:38,355 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:06:38,355 | INFO | test: accuracy:0.9231 | precision:1.0000 | recall:0.8462 | f1:0.9167 | auc:0.9950 | loss:0.3257
-2025-12-22 16:06:38,370 | INFO | [Interval [1.0, 7.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/1 [00:00<?, ?it/s]test_f2: 100%|██████████| 1/1 [00:25<00:00, 25.61s/it]                                                      2025-12-22 16:07:06,933 | INFO | test threshold sweep:
-  thr=0.10 | P=0.97 | R=0.97 | F1=0.97 | TP=101
-  thr=0.15 | P=0.97 | R=0.97 | F1=0.97 | TP=101
-  thr=0.20 | P=0.98 | R=0.96 | F1=0.97 | TP=100
-  thr=0.25 | P=0.99 | R=0.96 | F1=0.98 | TP=100
-  thr=0.30 | P=0.99 | R=0.96 | F1=0.98 | TP=100
-  thr=0.50 | P=1.00 | R=0.94 | F1=0.97 | TP=98
-2025-12-22 16:07:06,938 | INFO | test time bin [0.0h, 8.0h): samples=208 | accuracy:0.971 | precision:1.000 | recall:0.942 | f1:0.970 | auc:0.997
-2025-12-22 16:07:06,938 | INFO | test time bin [8.0h, 12.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:07:06,938 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:07:06,938 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:07:06,938 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:07:06,938 | INFO | test: accuracy:0.9712 | precision:1.0000 | recall:0.9423 | f1:0.9703 | auc:0.9968 | loss:0.0907
-2025-12-22 16:07:06,954 | INFO | [Interval [1.0, 7.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/1 [00:00<?, ?it/s]test_f3: 100%|██████████| 1/1 [02:44<00:00, 164.52s/it]                                                       2025-12-22 16:09:53,663 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.96 | F1=0.97 | TP=100
-  thr=0.15 | P=0.98 | R=0.95 | F1=0.97 | TP=99
-  thr=0.20 | P=0.99 | R=0.95 | F1=0.97 | TP=99
-  thr=0.25 | P=0.99 | R=0.94 | F1=0.97 | TP=98
-  thr=0.30 | P=1.00 | R=0.94 | F1=0.97 | TP=98
-  thr=0.50 | P=1.00 | R=0.89 | F1=0.94 | TP=93
-2025-12-22 16:09:53,675 | INFO | test time bin [0.0h, 8.0h): samples=208 | accuracy:0.947 | precision:1.000 | recall:0.894 | f1:0.944 | auc:0.997
-2025-12-22 16:09:53,675 | INFO | test time bin [8.0h, 12.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:09:53,675 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:09:53,676 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:09:53,676 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:09:53,676 | INFO | test: accuracy:0.9471 | precision:1.0000 | recall:0.8942 | f1:0.9442 | auc:0.9971 | loss:0.1352
-2025-12-22 16:09:53,697 | INFO | [Interval [1.0, 7.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/1 [00:00<?, ?it/s]test_f4: 100%|██████████| 1/1 [00:26<00:00, 26.31s/it]                                                      2025-12-22 16:10:23,083 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.83 | F1=0.91 | TP=86
-  thr=0.15 | P=1.00 | R=0.80 | F1=0.89 | TP=83
-  thr=0.20 | P=1.00 | R=0.80 | F1=0.89 | TP=83
-  thr=0.25 | P=1.00 | R=0.79 | F1=0.88 | TP=82
-  thr=0.30 | P=1.00 | R=0.77 | F1=0.87 | TP=80
-  thr=0.50 | P=1.00 | R=0.76 | F1=0.86 | TP=79
-2025-12-22 16:10:23,088 | INFO | test time bin [0.0h, 8.0h): samples=208 | accuracy:0.880 | precision:1.000 | recall:0.760 | f1:0.863 | auc:0.997
-2025-12-22 16:10:23,088 | INFO | test time bin [8.0h, 12.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:23,088 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:23,088 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:23,088 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:23,088 | INFO | test: accuracy:0.8798 | precision:1.0000 | recall:0.7596 | f1:0.8634 | auc:0.9969 | loss:0.4734
-2025-12-22 16:10:23,105 | INFO | [Interval [1.0, 7.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/1 [00:00<?, ?it/s]test_f5: 100%|██████████| 1/1 [00:25<00:00, 25.86s/it]                                                      2025-12-22 16:10:51,514 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.88 | F1=0.93 | TP=91
-  thr=0.15 | P=1.00 | R=0.87 | F1=0.93 | TP=90
-  thr=0.20 | P=1.00 | R=0.87 | F1=0.93 | TP=90
-  thr=0.25 | P=1.00 | R=0.86 | F1=0.92 | TP=89
-  thr=0.30 | P=1.00 | R=0.86 | F1=0.92 | TP=89
-  thr=0.50 | P=1.00 | R=0.82 | F1=0.90 | TP=85
-2025-12-22 16:10:51,528 | INFO | test time bin [0.0h, 8.0h): samples=208 | accuracy:0.909 | precision:1.000 | recall:0.817 | f1:0.899 | auc:0.998
-2025-12-22 16:10:51,528 | INFO | test time bin [8.0h, 12.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:51,528 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:51,528 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:51,528 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:10:51,529 | INFO | test: accuracy:0.9087 | precision:1.0000 | recall:0.8173 | f1:0.8995 | auc:0.9982 | loss:0.3088
-2025-12-22 16:10:51,554 | INFO |     AUC = 0.9968 ± 0.0010
-2025-12-22 16:10:51,555 | INFO |   [2/14] Evaluating on test interval [1.0, 10.0]h
-2025-12-22 16:10:51,556 | INFO | [Interval [1.0, 10.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/1 [00:00<?, ?it/s]test_f1: 100%|██████████| 1/1 [00:39<00:00, 39.49s/it]                                                      2025-12-22 16:11:32,753 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.92 | F1=0.96 | TP=140
-  thr=0.15 | P=1.00 | R=0.91 | F1=0.96 | TP=139
-  thr=0.20 | P=1.00 | R=0.89 | F1=0.94 | TP=135
-  thr=0.25 | P=1.00 | R=0.89 | F1=0.94 | TP=135
-  thr=0.30 | P=1.00 | R=0.88 | F1=0.94 | TP=134
-  thr=0.50 | P=1.00 | R=0.86 | F1=0.93 | TP=131
-2025-12-22 16:11:32,758 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:11:32,763 | INFO | test time bin [8.0h, 12.0h): samples=80 | accuracy:0.950 | precision:1.000 | recall:0.900 | f1:0.947 | auc:1.000
-2025-12-22 16:11:32,763 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:11:32,763 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:11:32,763 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:11:32,763 | INFO | test: accuracy:0.9309 | precision:1.0000 | recall:0.8618 | f1:0.9258 | auc:0.9973 | loss:0.2475
-2025-12-22 16:11:32,783 | INFO | [Interval [1.0, 10.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/1 [00:00<?, ?it/s]test_f2: 100%|██████████| 1/1 [00:41<00:00, 41.79s/it]                                                      2025-12-22 16:12:16,203 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.98 | F1=0.98 | TP=149
-  thr=0.15 | P=0.98 | R=0.98 | F1=0.98 | TP=149
-  thr=0.20 | P=0.99 | R=0.97 | F1=0.98 | TP=148
-  thr=0.25 | P=0.99 | R=0.97 | F1=0.98 | TP=148
-  thr=0.30 | P=0.99 | R=0.97 | F1=0.98 | TP=148
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=146
-2025-12-22 16:12:16,208 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:12:16,213 | INFO | test time bin [8.0h, 12.0h): samples=80 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:12:16,213 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:12:16,213 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:12:16,213 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:12:16,213 | INFO | test: accuracy:0.9803 | precision:1.0000 | recall:0.9605 | f1:0.9799 | auc:0.9979 | loss:0.0631
-2025-12-22 16:12:16,233 | INFO | [Interval [1.0, 10.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/1 [00:00<?, ?it/s]test_f3: 100%|██████████| 1/1 [00:38<00:00, 38.13s/it]                                                      2025-12-22 16:12:55,615 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.97 | F1=0.98 | TP=148
-  thr=0.15 | P=0.99 | R=0.97 | F1=0.98 | TP=147
-  thr=0.20 | P=0.99 | R=0.97 | F1=0.98 | TP=147
-  thr=0.25 | P=0.99 | R=0.96 | F1=0.98 | TP=146
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=146
-  thr=0.50 | P=1.00 | R=0.93 | F1=0.96 | TP=141
-2025-12-22 16:12:55,620 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:12:55,624 | INFO | test time bin [8.0h, 12.0h): samples=80 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:12:55,624 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:12:55,624 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:12:55,625 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:12:55,625 | INFO | test: accuracy:0.9638 | precision:1.0000 | recall:0.9276 | f1:0.9625 | auc:0.9984 | loss:0.0929
-2025-12-22 16:12:55,653 | INFO | [Interval [1.0, 10.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/1 [00:00<?, ?it/s]test_f4: 100%|██████████| 1/1 [00:38<00:00, 38.15s/it]                                                      2025-12-22 16:13:35,106 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.88 | F1=0.94 | TP=134
-  thr=0.15 | P=1.00 | R=0.86 | F1=0.93 | TP=131
-  thr=0.20 | P=1.00 | R=0.86 | F1=0.93 | TP=131
-  thr=0.25 | P=1.00 | R=0.86 | F1=0.92 | TP=130
-  thr=0.30 | P=1.00 | R=0.84 | F1=0.91 | TP=128
-  thr=0.50 | P=1.00 | R=0.84 | F1=0.91 | TP=127
-2025-12-22 16:13:35,111 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:13:35,116 | INFO | test time bin [8.0h, 12.0h): samples=80 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:13:35,116 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:13:35,116 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:13:35,116 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:13:35,116 | INFO | test: accuracy:0.9178 | precision:1.0000 | recall:0.8355 | f1:0.9104 | auc:0.9977 | loss:0.3310
-2025-12-22 16:13:35,135 | INFO | [Interval [1.0, 10.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/1 [00:00<?, ?it/s]test_f5: 100%|██████████| 1/1 [00:38<00:00, 38.10s/it]                                                      2025-12-22 16:14:14,498 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.91 | F1=0.96 | TP=139
-  thr=0.15 | P=1.00 | R=0.91 | F1=0.95 | TP=138
-  thr=0.20 | P=1.00 | R=0.89 | F1=0.94 | TP=136
-  thr=0.25 | P=1.00 | R=0.89 | F1=0.94 | TP=135
-  thr=0.30 | P=1.00 | R=0.89 | F1=0.94 | TP=135
-  thr=0.50 | P=1.00 | R=0.86 | F1=0.93 | TP=131
-2025-12-22 16:14:14,503 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:14:14,508 | INFO | test time bin [8.0h, 12.0h): samples=80 | accuracy:0.975 | precision:1.000 | recall:0.950 | f1:0.974 | auc:1.000
-2025-12-22 16:14:14,508 | INFO | test time bin [12.0h, 16.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:14:14,508 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:14:14,508 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:14:14,508 | INFO | test: accuracy:0.9309 | precision:1.0000 | recall:0.8618 | f1:0.9258 | auc:0.9990 | loss:0.2364
-2025-12-22 16:14:14,530 | INFO |     AUC = 0.9981 ± 0.0006
-2025-12-22 16:14:14,531 | INFO |   [3/14] Evaluating on test interval [1.0, 13.0]h
-2025-12-22 16:14:14,533 | INFO | [Interval [1.0, 13.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/1 [00:00<?, ?it/s]test_f1: 100%|██████████| 1/1 [00:52<00:00, 53.00s/it]                                                      2025-12-22 16:15:08,723 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.94 | F1=0.97 | TP=188
-  thr=0.15 | P=1.00 | R=0.94 | F1=0.97 | TP=187
-  thr=0.20 | P=1.00 | R=0.92 | F1=0.96 | TP=183
-  thr=0.25 | P=1.00 | R=0.92 | F1=0.96 | TP=183
-  thr=0.30 | P=1.00 | R=0.91 | F1=0.95 | TP=182
-  thr=0.50 | P=1.00 | R=0.90 | F1=0.94 | TP=179
-2025-12-22 16:15:08,737 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:15:08,751 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:15:08,764 | INFO | test time bin [12.0h, 16.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:15:08,764 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:15:08,764 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:15:08,765 | INFO | test: accuracy:0.9475 | precision:1.0000 | recall:0.8950 | f1:0.9446 | auc:0.9979 | loss:0.1885
-2025-12-22 16:15:08,790 | INFO | [Interval [1.0, 13.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/1 [00:00<?, ?it/s]test_f2: 100%|██████████| 1/1 [00:51<00:00, 51.28s/it]                                                      2025-12-22 16:16:03,393 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.98 | F1=0.98 | TP=197
-  thr=0.15 | P=0.98 | R=0.98 | F1=0.98 | TP=197
-  thr=0.20 | P=0.99 | R=0.98 | F1=0.98 | TP=196
-  thr=0.25 | P=0.99 | R=0.98 | F1=0.99 | TP=196
-  thr=0.30 | P=0.99 | R=0.98 | F1=0.99 | TP=196
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.98 | TP=194
-2025-12-22 16:16:03,407 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:16:03,420 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:16:03,434 | INFO | test time bin [12.0h, 16.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:16:03,434 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:16:03,434 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:16:03,434 | INFO | test: accuracy:0.9850 | precision:1.0000 | recall:0.9700 | f1:0.9848 | auc:0.9985 | loss:0.0489
-2025-12-22 16:16:03,465 | INFO | [Interval [1.0, 13.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/1 [00:00<?, ?it/s]test_f3: 100%|██████████| 1/1 [00:54<00:00, 54.57s/it]                                                      2025-12-22 16:17:00,569 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.98 | F1=0.98 | TP=196
-  thr=0.15 | P=0.99 | R=0.97 | F1=0.98 | TP=195
-  thr=0.20 | P=0.99 | R=0.97 | F1=0.98 | TP=195
-  thr=0.25 | P=0.99 | R=0.97 | F1=0.98 | TP=194
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.98 | TP=194
-  thr=0.50 | P=1.00 | R=0.94 | F1=0.97 | TP=189
-2025-12-22 16:17:00,583 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:17:00,597 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:17:00,610 | INFO | test time bin [12.0h, 16.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:17:00,611 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:17:00,611 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:17:00,611 | INFO | test: accuracy:0.9725 | precision:1.0000 | recall:0.9450 | f1:0.9717 | auc:0.9988 | loss:0.0708
-2025-12-22 16:17:00,640 | INFO | [Interval [1.0, 13.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/1 [00:00<?, ?it/s]test_f4: 100%|██████████| 1/1 [00:51<00:00, 51.76s/it]                                                      2025-12-22 16:17:54,759 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.91 | F1=0.95 | TP=182
-  thr=0.15 | P=1.00 | R=0.90 | F1=0.94 | TP=179
-  thr=0.20 | P=1.00 | R=0.90 | F1=0.94 | TP=179
-  thr=0.25 | P=1.00 | R=0.89 | F1=0.94 | TP=178
-  thr=0.30 | P=1.00 | R=0.88 | F1=0.94 | TP=176
-  thr=0.50 | P=1.00 | R=0.88 | F1=0.93 | TP=175
-2025-12-22 16:17:54,764 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:17:54,769 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:17:54,773 | INFO | test time bin [12.0h, 16.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:17:54,773 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:17:54,773 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:17:54,773 | INFO | test: accuracy:0.9375 | precision:1.0000 | recall:0.8750 | f1:0.9333 | auc:0.9979 | loss:0.2534
-2025-12-22 16:17:54,799 | INFO | [Interval [1.0, 13.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/1 [00:00<?, ?it/s]test_f5: 100%|██████████| 1/1 [00:52<00:00, 52.06s/it]                                                      2025-12-22 16:18:48,047 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.94 | F1=0.97 | TP=187
-  thr=0.15 | P=1.00 | R=0.93 | F1=0.96 | TP=186
-  thr=0.20 | P=1.00 | R=0.92 | F1=0.96 | TP=184
-  thr=0.25 | P=1.00 | R=0.92 | F1=0.96 | TP=183
-  thr=0.30 | P=1.00 | R=0.92 | F1=0.96 | TP=183
-  thr=0.50 | P=1.00 | R=0.90 | F1=0.94 | TP=179
-2025-12-22 16:18:48,052 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:18:48,057 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:18:48,062 | INFO | test time bin [12.0h, 16.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:18:48,062 | INFO | test time bin [16.0h, 24.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:18:48,062 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:18:48,062 | INFO | test: accuracy:0.9475 | precision:1.0000 | recall:0.8950 | f1:0.9446 | auc:0.9993 | loss:0.1805
-2025-12-22 16:18:48,088 | INFO |     AUC = 0.9985 ± 0.0006
-2025-12-22 16:18:48,088 | INFO |   [4/14] Evaluating on test interval [1.0, 16.0]h
-2025-12-22 16:18:48,089 | INFO | [Interval [1.0, 16.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/1 [00:00<?, ?it/s]test_f1: 100%|██████████| 1/1 [02:16<00:00, 136.32s/it]                                                       2025-12-22 16:21:05,590 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.95 | F1=0.98 | TP=236
-  thr=0.15 | P=1.00 | R=0.95 | F1=0.97 | TP=235
-  thr=0.20 | P=1.00 | R=0.93 | F1=0.96 | TP=231
-  thr=0.25 | P=1.00 | R=0.93 | F1=0.96 | TP=231
-  thr=0.30 | P=1.00 | R=0.93 | F1=0.96 | TP=230
-  thr=0.50 | P=1.00 | R=0.92 | F1=0.96 | TP=227
-2025-12-22 16:21:05,604 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:21:05,618 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:21:05,631 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:21:05,644 | INFO | test time bin [16.0h, 24.0h): samples=16 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:21:05,644 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:21:05,644 | INFO | test: accuracy:0.9577 | precision:1.0000 | recall:0.9153 | f1:0.9558 | auc:0.9982 | loss:0.1523
-2025-12-22 16:21:05,677 | INFO | [Interval [1.0, 16.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/1 [00:00<?, ?it/s]test_f2: 100%|██████████| 1/1 [01:00<00:00, 60.37s/it]                                                      2025-12-22 16:22:08,229 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=245
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=245
-  thr=0.20 | P=0.99 | R=0.98 | F1=0.99 | TP=244
-  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=244
-  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=244
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=242
-2025-12-22 16:22:08,233 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:22:08,238 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:22:08,243 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:22:08,248 | INFO | test time bin [16.0h, 24.0h): samples=16 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:22:08,248 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:22:08,248 | INFO | test: accuracy:0.9879 | precision:1.0000 | recall:0.9758 | f1:0.9878 | auc:0.9989 | loss:0.0399
-2025-12-22 16:22:08,279 | INFO | [Interval [1.0, 16.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/1 [00:00<?, ?it/s]test_f3: 100%|██████████| 1/1 [00:59<00:00, 59.22s/it]                                                      2025-12-22 16:23:08,814 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.98 | F1=0.99 | TP=244
-  thr=0.15 | P=0.99 | R=0.98 | F1=0.99 | TP=243
-  thr=0.20 | P=1.00 | R=0.98 | F1=0.99 | TP=243
-  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=242
-  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=242
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=237
-2025-12-22 16:23:08,819 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:23:08,823 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:23:08,828 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:23:08,833 | INFO | test time bin [16.0h, 24.0h): samples=16 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:23:08,833 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:23:08,833 | INFO | test: accuracy:0.9778 | precision:1.0000 | recall:0.9556 | f1:0.9773 | auc:0.9990 | loss:0.0575
-2025-12-22 16:23:08,866 | INFO | [Interval [1.0, 16.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/1 [00:00<?, ?it/s]test_f4: 100%|██████████| 1/1 [00:59<00:00, 59.41s/it]                                                      2025-12-22 16:24:09,703 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.93 | F1=0.96 | TP=230
-  thr=0.15 | P=1.00 | R=0.92 | F1=0.96 | TP=227
-  thr=0.20 | P=1.00 | R=0.92 | F1=0.96 | TP=227
-  thr=0.25 | P=1.00 | R=0.91 | F1=0.95 | TP=226
-  thr=0.30 | P=1.00 | R=0.90 | F1=0.95 | TP=224
-  thr=0.50 | P=1.00 | R=0.90 | F1=0.95 | TP=223
-2025-12-22 16:24:09,708 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:24:09,712 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:24:09,717 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:24:09,722 | INFO | test time bin [16.0h, 24.0h): samples=16 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:24:09,722 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:24:09,722 | INFO | test: accuracy:0.9496 | precision:1.0000 | recall:0.8992 | f1:0.9469 | auc:0.9978 | loss:0.2064
-2025-12-22 16:24:09,753 | INFO | [Interval [1.0, 16.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/1 [00:00<?, ?it/s]test_f5: 100%|██████████| 1/1 [01:00<00:00, 60.14s/it]                                                      2025-12-22 16:25:11,189 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.95 | F1=0.97 | TP=235
-  thr=0.15 | P=1.00 | R=0.94 | F1=0.97 | TP=234
-  thr=0.20 | P=1.00 | R=0.94 | F1=0.97 | TP=232
-  thr=0.25 | P=1.00 | R=0.93 | F1=0.96 | TP=231
-  thr=0.30 | P=1.00 | R=0.93 | F1=0.96 | TP=231
-  thr=0.50 | P=1.00 | R=0.92 | F1=0.96 | TP=227
-2025-12-22 16:25:11,194 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:25:11,199 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:25:11,204 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:25:11,208 | INFO | test time bin [16.0h, 24.0h): samples=16 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:25:11,208 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:25:11,208 | INFO | test: accuracy:0.9577 | precision:1.0000 | recall:0.9153 | f1:0.9558 | auc:0.9995 | loss:0.1466
-2025-12-22 16:25:11,241 | INFO |     AUC = 0.9987 ± 0.0006
-2025-12-22 16:25:11,242 | INFO |   [5/14] Evaluating on test interval [1.0, 19.0]h
-2025-12-22 16:25:11,245 | INFO | [Interval [1.0, 19.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/2 [00:00<?, ?it/s]test_f1:  50%|█████     | 1/2 [01:02<01:02, 62.58s/it]test_f1: 100%|██████████| 2/2 [01:02<00:00, 25.84s/it]                                                      2025-12-22 16:26:15,243 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.96 | F1=0.98 | TP=284
-  thr=0.15 | P=1.00 | R=0.96 | F1=0.98 | TP=283
-  thr=0.20 | P=1.00 | R=0.94 | F1=0.97 | TP=279
-  thr=0.25 | P=1.00 | R=0.94 | F1=0.97 | TP=279
-  thr=0.30 | P=1.00 | R=0.94 | F1=0.97 | TP=278
-  thr=0.50 | P=1.00 | R=0.93 | F1=0.96 | TP=275
-2025-12-22 16:26:15,248 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:26:15,253 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:26:15,257 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:26:15,262 | INFO | test time bin [16.0h, 24.0h): samples=112 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:26:15,262 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:26:15,262 | INFO | test: accuracy:0.9645 | precision:1.0000 | recall:0.9291 | f1:0.9632 | auc:0.9985 | loss:0.1277
-2025-12-22 16:26:15,293 | INFO | [Interval [1.0, 19.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/2 [00:00<?, ?it/s]test_f2:  50%|█████     | 1/2 [01:36<01:36, 96.51s/it]test_f2: 100%|██████████| 2/2 [01:36<00:00, 39.81s/it]                                                      2025-12-22 16:27:53,449 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.99 | F1=0.99 | TP=293
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=293
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=292
-  thr=0.25 | P=0.99 | R=0.99 | F1=0.99 | TP=292
-  thr=0.30 | P=0.99 | R=0.99 | F1=0.99 | TP=292
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=290
-2025-12-22 16:27:53,456 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:27:53,460 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:27:53,465 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:27:53,470 | INFO | test time bin [16.0h, 24.0h): samples=112 | accuracy:0.991 | precision:0.982 | recall:1.000 | f1:0.991 | auc:1.000
-2025-12-22 16:27:53,470 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:27:53,470 | INFO | test: accuracy:0.9882 | precision:0.9966 | recall:0.9797 | f1:0.9881 | auc:0.9989 | loss:0.0370
-2025-12-22 16:27:53,511 | INFO | [Interval [1.0, 19.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/2 [00:00<?, ?it/s]test_f3:  50%|█████     | 1/2 [01:03<01:03, 63.41s/it]test_f3: 100%|██████████| 2/2 [01:03<00:00, 26.19s/it]                                                      2025-12-22 16:28:58,376 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=292
-  thr=0.15 | P=0.99 | R=0.98 | F1=0.99 | TP=291
-  thr=0.20 | P=0.99 | R=0.98 | F1=0.99 | TP=291
-  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=290
-  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=290
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=285
-2025-12-22 16:28:58,381 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:28:58,386 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:28:58,390 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:28:58,395 | INFO | test time bin [16.0h, 24.0h): samples=112 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:28:58,395 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:28:58,395 | INFO | test: accuracy:0.9814 | precision:1.0000 | recall:0.9628 | f1:0.9811 | auc:0.9990 | loss:0.0489
-2025-12-22 16:28:58,428 | INFO | [Interval [1.0, 19.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/2 [00:00<?, ?it/s]test_f4:  50%|█████     | 1/2 [01:04<01:04, 64.15s/it]test_f4: 100%|██████████| 2/2 [01:04<00:00, 26.49s/it]                                                      2025-12-22 16:30:04,036 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.94 | F1=0.97 | TP=278
-  thr=0.15 | P=1.00 | R=0.93 | F1=0.96 | TP=275
-  thr=0.20 | P=1.00 | R=0.93 | F1=0.96 | TP=275
-  thr=0.25 | P=1.00 | R=0.93 | F1=0.96 | TP=274
-  thr=0.30 | P=1.00 | R=0.92 | F1=0.96 | TP=272
-  thr=0.50 | P=1.00 | R=0.92 | F1=0.96 | TP=271
-2025-12-22 16:30:04,042 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:30:04,047 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:30:04,051 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:30:04,056 | INFO | test time bin [16.0h, 24.0h): samples=112 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:30:04,056 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:30:04,056 | INFO | test: accuracy:0.9578 | precision:1.0000 | recall:0.9155 | f1:0.9559 | auc:0.9978 | loss:0.1736
-2025-12-22 16:30:04,088 | INFO | [Interval [1.0, 19.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/2 [00:00<?, ?it/s]test_f5:  50%|█████     | 1/2 [01:02<01:02, 62.65s/it]test_f5: 100%|██████████| 2/2 [01:02<00:00, 25.87s/it]                                                      2025-12-22 16:31:08,200 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.96 | F1=0.98 | TP=283
-  thr=0.15 | P=1.00 | R=0.95 | F1=0.98 | TP=282
-  thr=0.20 | P=1.00 | R=0.95 | F1=0.97 | TP=280
-  thr=0.25 | P=1.00 | R=0.94 | F1=0.97 | TP=279
-  thr=0.30 | P=1.00 | R=0.94 | F1=0.97 | TP=279
-  thr=0.50 | P=1.00 | R=0.93 | F1=0.96 | TP=275
-2025-12-22 16:31:08,205 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:31:08,209 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:31:08,214 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:31:08,219 | INFO | test time bin [16.0h, 24.0h): samples=112 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:31:08,219 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:31:08,219 | INFO | test: accuracy:0.9645 | precision:1.0000 | recall:0.9291 | f1:0.9632 | auc:0.9995 | loss:0.1232
-2025-12-22 16:31:08,251 | INFO |     AUC = 0.9987 ± 0.0006
-2025-12-22 16:31:08,251 | INFO |   [6/14] Evaluating on test interval [1.0, 22.0]h
-2025-12-22 16:31:08,255 | INFO | [Interval [1.0, 22.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/2 [00:00<?, ?it/s]test_f1:  50%|█████     | 1/2 [01:03<01:03, 63.75s/it]test_f1: 100%|██████████| 2/2 [01:04<00:00, 26.41s/it]                                                      2025-12-22 16:32:13,631 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.98 | TP=332
-  thr=0.15 | P=1.00 | R=0.96 | F1=0.98 | TP=331
-  thr=0.20 | P=1.00 | R=0.95 | F1=0.97 | TP=327
-  thr=0.25 | P=1.00 | R=0.95 | F1=0.97 | TP=327
-  thr=0.30 | P=1.00 | R=0.95 | F1=0.97 | TP=326
-  thr=0.50 | P=1.00 | R=0.94 | F1=0.97 | TP=323
-2025-12-22 16:32:13,637 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:32:13,642 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:32:13,647 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:32:13,651 | INFO | test time bin [16.0h, 24.0h): samples=208 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:32:13,651 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:32:13,651 | INFO | test: accuracy:0.9695 | precision:1.0000 | recall:0.9390 | f1:0.9685 | auc:0.9988 | loss:0.1100
-2025-12-22 16:32:13,685 | INFO | [Interval [1.0, 22.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/2 [00:00<?, ?it/s]test_f2:  50%|█████     | 1/2 [01:03<01:03, 63.11s/it]test_f2: 100%|██████████| 2/2 [01:03<00:00, 26.15s/it]                                                      2025-12-22 16:33:18,433 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=341
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=341
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=340
-  thr=0.25 | P=0.99 | R=0.99 | F1=0.99 | TP=340
-  thr=0.30 | P=0.99 | R=0.99 | F1=0.99 | TP=340
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=338
-2025-12-22 16:33:18,438 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:33:18,443 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:33:18,448 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:33:18,453 | INFO | test time bin [16.0h, 24.0h): samples=208 | accuracy:0.995 | precision:0.990 | recall:1.000 | f1:0.995 | auc:1.000
-2025-12-22 16:33:18,453 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:33:18,453 | INFO | test: accuracy:0.9898 | precision:0.9971 | recall:0.9826 | f1:0.9898 | auc:0.9992 | loss:0.0319
-2025-12-22 16:33:18,485 | INFO | [Interval [1.0, 22.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/2 [00:00<?, ?it/s]test_f3:  50%|█████     | 1/2 [01:06<01:06, 66.30s/it]test_f3: 100%|██████████| 2/2 [01:06<00:00, 27.46s/it]                                                      2025-12-22 16:34:26,371 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=340
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=339
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=339
-  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=338
-  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=338
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.98 | TP=333
-2025-12-22 16:34:26,377 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:34:26,382 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:34:26,386 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:34:26,391 | INFO | test time bin [16.0h, 24.0h): samples=208 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:34:26,391 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:34:26,391 | INFO | test: accuracy:0.9840 | precision:1.0000 | recall:0.9680 | f1:0.9838 | auc:0.9990 | loss:0.0428
-2025-12-22 16:34:26,424 | INFO | [Interval [1.0, 22.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/2 [00:00<?, ?it/s]test_f4:  50%|█████     | 1/2 [01:07<01:07, 67.09s/it]test_f4: 100%|██████████| 2/2 [01:07<00:00, 27.79s/it]                                                      2025-12-22 16:35:35,292 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.95 | F1=0.97 | TP=326
-  thr=0.15 | P=1.00 | R=0.94 | F1=0.97 | TP=323
-  thr=0.20 | P=1.00 | R=0.94 | F1=0.97 | TP=323
-  thr=0.25 | P=1.00 | R=0.94 | F1=0.97 | TP=322
-  thr=0.30 | P=1.00 | R=0.93 | F1=0.96 | TP=320
-  thr=0.50 | P=1.00 | R=0.93 | F1=0.96 | TP=319
-2025-12-22 16:35:35,298 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:35:35,303 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:35:35,308 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:35:35,312 | INFO | test time bin [16.0h, 24.0h): samples=208 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:35:35,312 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:35:35,312 | INFO | test: accuracy:0.9637 | precision:1.0000 | recall:0.9273 | f1:0.9623 | auc:0.9980 | loss:0.1495
-2025-12-22 16:35:35,344 | INFO | [Interval [1.0, 22.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/2 [00:00<?, ?it/s]test_f5:  50%|█████     | 1/2 [01:03<01:03, 63.79s/it]test_f5: 100%|██████████| 2/2 [01:04<00:00, 26.43s/it]                                                      2025-12-22 16:36:40,831 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.96 | F1=0.98 | TP=331
-  thr=0.15 | P=1.00 | R=0.96 | F1=0.98 | TP=330
-  thr=0.20 | P=1.00 | R=0.95 | F1=0.98 | TP=328
-  thr=0.25 | P=1.00 | R=0.95 | F1=0.97 | TP=327
-  thr=0.30 | P=1.00 | R=0.95 | F1=0.97 | TP=327
-  thr=0.50 | P=1.00 | R=0.94 | F1=0.97 | TP=323
-2025-12-22 16:36:40,837 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:36:40,842 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:36:40,846 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:36:40,851 | INFO | test time bin [16.0h, 24.0h): samples=208 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:36:40,851 | INFO | test time bin [24.0h, 32.0h): samples=0 | metrics=NA (no data)
-2025-12-22 16:36:40,851 | INFO | test: accuracy:0.9695 | precision:1.0000 | recall:0.9390 | f1:0.9685 | auc:0.9996 | loss:0.1061
-2025-12-22 16:36:40,885 | INFO |     AUC = 0.9989 ± 0.0005
-2025-12-22 16:36:40,885 | INFO |   [7/14] Evaluating on test interval [1.0, 25.0]h
-2025-12-22 16:36:40,888 | INFO | [Interval [1.0, 25.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/2 [00:00<?, ?it/s]test_f1:  50%|█████     | 1/2 [01:03<01:03, 63.24s/it]test_f1: 100%|██████████| 2/2 [01:03<00:00, 26.29s/it]                                                      2025-12-22 16:37:45,870 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.98 | TP=380
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.98 | TP=379
-  thr=0.20 | P=1.00 | R=0.96 | F1=0.98 | TP=375
-  thr=0.25 | P=1.00 | R=0.96 | F1=0.98 | TP=375
-  thr=0.30 | P=1.00 | R=0.95 | F1=0.98 | TP=374
-  thr=0.50 | P=1.00 | R=0.95 | F1=0.97 | TP=371
-2025-12-22 16:37:45,876 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:37:45,881 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:37:45,885 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:37:45,890 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:37:45,895 | INFO | test time bin [24.0h, 32.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:37:45,895 | INFO | test: accuracy:0.9732 | precision:1.0000 | recall:0.9464 | f1:0.9725 | auc:0.9990 | loss:0.0965
-2025-12-22 16:37:45,925 | INFO | [Interval [1.0, 25.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/2 [00:00<?, ?it/s]test_f2:  50%|█████     | 1/2 [01:01<01:01, 61.84s/it]test_f2: 100%|██████████| 2/2 [01:02<00:00, 25.71s/it]                                                      2025-12-22 16:38:49,606 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=389
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=389
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=388
-  thr=0.25 | P=0.99 | R=0.99 | F1=0.99 | TP=388
-  thr=0.30 | P=0.99 | R=0.99 | F1=0.99 | TP=388
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=386
-2025-12-22 16:38:49,611 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:38:49,615 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:38:49,620 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:38:49,625 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 16:38:49,629 | INFO | test time bin [24.0h, 32.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:38:49,629 | INFO | test: accuracy:0.9911 | precision:0.9974 | recall:0.9847 | f1:0.9910 | auc:0.9994 | loss:0.0281
-2025-12-22 16:38:49,662 | INFO | [Interval [1.0, 25.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/2 [00:00<?, ?it/s]test_f3:  50%|█████     | 1/2 [01:02<01:02, 62.14s/it]test_f3: 100%|██████████| 2/2 [01:02<00:00, 25.84s/it]                                                      2025-12-22 16:39:53,561 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=388
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=387
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=387
-  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=386
-  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=386
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.99 | TP=381
-2025-12-22 16:39:53,566 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:39:53,571 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:39:53,576 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:39:53,580 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:39:53,585 | INFO | test time bin [24.0h, 32.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:39:53,585 | INFO | test: accuracy:0.9860 | precision:1.0000 | recall:0.9719 | f1:0.9858 | auc:0.9991 | loss:0.0378
-2025-12-22 16:39:53,617 | INFO | [Interval [1.0, 25.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/2 [00:00<?, ?it/s]test_f4:  50%|█████     | 1/2 [01:02<01:02, 62.04s/it]test_f4: 100%|██████████| 2/2 [01:02<00:00, 25.80s/it]                                                      2025-12-22 16:40:57,432 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.95 | F1=0.98 | TP=374
-  thr=0.15 | P=1.00 | R=0.95 | F1=0.97 | TP=371
-  thr=0.20 | P=1.00 | R=0.95 | F1=0.97 | TP=371
-  thr=0.25 | P=1.00 | R=0.94 | F1=0.97 | TP=370
-  thr=0.30 | P=1.00 | R=0.94 | F1=0.97 | TP=368
-  thr=0.50 | P=1.00 | R=0.94 | F1=0.97 | TP=367
-2025-12-22 16:40:57,437 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:40:57,442 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:40:57,446 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:40:57,451 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:40:57,456 | INFO | test time bin [24.0h, 32.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:40:57,456 | INFO | test: accuracy:0.9681 | precision:1.0000 | recall:0.9362 | f1:0.9671 | auc:0.9982 | loss:0.1312
-2025-12-22 16:40:57,488 | INFO | [Interval [1.0, 25.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/2 [00:00<?, ?it/s]test_f5:  50%|█████     | 1/2 [01:01<01:01, 62.00s/it]test_f5: 100%|██████████| 2/2 [01:02<00:00, 25.78s/it]                                                      2025-12-22 16:42:01,241 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.98 | TP=379
-  thr=0.15 | P=1.00 | R=0.96 | F1=0.98 | TP=378
-  thr=0.20 | P=1.00 | R=0.96 | F1=0.98 | TP=376
-  thr=0.25 | P=1.00 | R=0.96 | F1=0.98 | TP=375
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=375
-  thr=0.50 | P=1.00 | R=0.95 | F1=0.97 | TP=371
-2025-12-22 16:42:01,246 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:42:01,250 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:42:01,255 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:42:01,260 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:42:01,264 | INFO | test time bin [24.0h, 32.0h): samples=48 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:42:01,265 | INFO | test: accuracy:0.9732 | precision:1.0000 | recall:0.9464 | f1:0.9725 | auc:0.9997 | loss:0.0931
-2025-12-22 16:42:01,297 | INFO |     AUC = 0.9991 ± 0.0005
-2025-12-22 16:42:01,297 | INFO |   [8/14] Evaluating on test interval [1.0, 28.0]h
-2025-12-22 16:42:01,303 | INFO | [Interval [1.0, 28.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/2 [00:00<?, ?it/s]test_f1:  50%|█████     | 1/2 [01:02<01:02, 62.69s/it]test_f1: 100%|██████████| 2/2 [01:03<00:00, 26.15s/it]                                                      2025-12-22 16:43:05,915 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.99 | TP=428
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.99 | TP=427
-  thr=0.20 | P=1.00 | R=0.96 | F1=0.98 | TP=423
-  thr=0.25 | P=1.00 | R=0.96 | F1=0.98 | TP=423
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=422
-  thr=0.50 | P=1.00 | R=0.95 | F1=0.98 | TP=419
-2025-12-22 16:43:05,929 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:43:05,942 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:43:05,955 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:43:05,968 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:43:05,981 | INFO | test time bin [24.0h, 32.0h): samples=144 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:43:05,982 | INFO | test: accuracy:0.9761 | precision:1.0000 | recall:0.9523 | f1:0.9756 | auc:0.9992 | loss:0.0860
-2025-12-22 16:43:06,016 | INFO | [Interval [1.0, 28.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/2 [00:00<?, ?it/s]test_f2:  50%|█████     | 1/2 [01:15<01:15, 75.79s/it]test_f2: 100%|██████████| 2/2 [01:16<00:00, 31.55s/it]                                                      2025-12-22 16:44:25,846 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=437
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=437
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=436
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=436
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=436
-  thr=0.50 | P=1.00 | R=0.99 | F1=0.99 | TP=434
-2025-12-22 16:44:25,852 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:44:25,856 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:44:25,861 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:44:25,866 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 16:44:25,870 | INFO | test time bin [24.0h, 32.0h): samples=144 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:44:25,870 | INFO | test: accuracy:0.9920 | precision:0.9977 | recall:0.9864 | f1:0.9920 | auc:0.9995 | loss:0.0251
-2025-12-22 16:44:25,903 | INFO | [Interval [1.0, 28.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/2 [00:00<?, ?it/s]test_f3:  50%|█████     | 1/2 [01:05<01:05, 65.75s/it]test_f3: 100%|██████████| 2/2 [01:06<00:00, 27.41s/it]                                                      2025-12-22 16:45:33,611 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.99 | F1=0.99 | TP=436
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=435
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=435
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=434
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=434
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.99 | TP=429
-2025-12-22 16:45:33,617 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:45:33,622 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:45:33,626 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:45:33,631 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:45:33,636 | INFO | test time bin [24.0h, 32.0h): samples=144 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:45:33,636 | INFO | test: accuracy:0.9875 | precision:1.0000 | recall:0.9750 | f1:0.9873 | auc:0.9991 | loss:0.0341
-2025-12-22 16:45:33,668 | INFO | [Interval [1.0, 28.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/2 [00:00<?, ?it/s]test_f4:  50%|█████     | 1/2 [01:07<01:07, 67.02s/it]test_f4: 100%|██████████| 2/2 [01:07<00:00, 27.93s/it]                                                      2025-12-22 16:46:42,583 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.96 | F1=0.98 | TP=422
-  thr=0.15 | P=1.00 | R=0.95 | F1=0.98 | TP=419
-  thr=0.20 | P=1.00 | R=0.95 | F1=0.98 | TP=419
-  thr=0.25 | P=1.00 | R=0.95 | F1=0.97 | TP=418
-  thr=0.30 | P=1.00 | R=0.95 | F1=0.97 | TP=416
-  thr=0.50 | P=1.00 | R=0.94 | F1=0.97 | TP=415
-2025-12-22 16:46:42,588 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:46:42,593 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:46:42,598 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:46:42,603 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:46:42,607 | INFO | test time bin [24.0h, 32.0h): samples=144 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:46:42,608 | INFO | test: accuracy:0.9716 | precision:1.0000 | recall:0.9432 | f1:0.9708 | auc:0.9984 | loss:0.1169
-2025-12-22 16:46:42,648 | INFO | [Interval [1.0, 28.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/2 [00:00<?, ?it/s]test_f5:  50%|█████     | 1/2 [01:13<01:13, 73.90s/it]test_f5: 100%|██████████| 2/2 [01:14<00:00, 30.77s/it]                                                      2025-12-22 16:47:58,462 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.99 | TP=427
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.98 | TP=426
-  thr=0.20 | P=1.00 | R=0.96 | F1=0.98 | TP=424
-  thr=0.25 | P=1.00 | R=0.96 | F1=0.98 | TP=423
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=423
-  thr=0.50 | P=1.00 | R=0.95 | F1=0.98 | TP=419
-2025-12-22 16:47:58,468 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:47:58,473 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:47:58,477 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:47:58,482 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:47:58,487 | INFO | test time bin [24.0h, 32.0h): samples=144 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:47:58,487 | INFO | test: accuracy:0.9761 | precision:1.0000 | recall:0.9523 | f1:0.9756 | auc:0.9998 | loss:0.0830
-2025-12-22 16:47:58,519 | INFO |     AUC = 0.9992 ± 0.0005
-2025-12-22 16:47:58,519 | INFO |   [9/14] Evaluating on test interval [1.0, 31.0]h
-2025-12-22 16:47:58,522 | INFO | [Interval [1.0, 31.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/2 [00:00<?, ?it/s]test_f1:  50%|█████     | 1/2 [01:07<01:07, 67.09s/it]test_f1: 100%|██████████| 2/2 [01:07<00:00, 28.05s/it]                                                      2025-12-22 16:49:07,852 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=476
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.99 | TP=475
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.98 | TP=471
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.98 | TP=471
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=470
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=467
-2025-12-22 16:49:07,858 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:49:07,862 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:49:07,867 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:49:07,872 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:49:07,876 | INFO | test time bin [24.0h, 32.0h): samples=240 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:49:07,876 | INFO | test: accuracy:0.9785 | precision:1.0000 | recall:0.9570 | f1:0.9780 | auc:0.9993 | loss:0.0775
-2025-12-22 16:49:07,908 | INFO | [Interval [1.0, 31.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/2 [00:00<?, ?it/s]test_f2:  50%|█████     | 1/2 [01:06<01:06, 66.63s/it]test_f2: 100%|██████████| 2/2 [01:07<00:00, 27.86s/it]                                                      2025-12-22 16:50:16,595 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=485
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=485
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=484
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=484
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=484
-  thr=0.50 | P=1.00 | R=0.99 | F1=0.99 | TP=482
-2025-12-22 16:50:16,600 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:50:16,605 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:50:16,609 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:50:16,614 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 16:50:16,619 | INFO | test time bin [24.0h, 32.0h): samples=240 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:50:16,619 | INFO | test: accuracy:0.9928 | precision:0.9979 | recall:0.9877 | f1:0.9928 | auc:0.9996 | loss:0.0227
-2025-12-22 16:50:16,651 | INFO | [Interval [1.0, 31.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/2 [00:00<?, ?it/s]test_f3:  50%|█████     | 1/2 [01:07<01:07, 67.12s/it]test_f3: 100%|██████████| 2/2 [01:07<00:00, 28.06s/it]                                                      2025-12-22 16:51:25,821 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.99 | F1=0.99 | TP=484
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=483
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=483
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=482
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=482
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=477
-2025-12-22 16:51:25,827 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:51:25,832 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:51:25,836 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:51:25,841 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:51:25,846 | INFO | test time bin [24.0h, 32.0h): samples=240 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:51:25,846 | INFO | test: accuracy:0.9887 | precision:1.0000 | recall:0.9775 | f1:0.9886 | auc:0.9991 | loss:0.0312
-2025-12-22 16:51:25,878 | INFO | [Interval [1.0, 31.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/2 [00:00<?, ?it/s]test_f4:  50%|█████     | 1/2 [01:07<01:07, 67.29s/it]test_f4: 100%|██████████| 2/2 [01:08<00:00, 28.13s/it]                                                      2025-12-22 16:52:35,305 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.96 | F1=0.98 | TP=470
-  thr=0.15 | P=1.00 | R=0.96 | F1=0.98 | TP=467
-  thr=0.20 | P=1.00 | R=0.96 | F1=0.98 | TP=467
-  thr=0.25 | P=1.00 | R=0.95 | F1=0.98 | TP=466
-  thr=0.30 | P=1.00 | R=0.95 | F1=0.97 | TP=464
-  thr=0.50 | P=1.00 | R=0.95 | F1=0.97 | TP=463
-2025-12-22 16:52:35,312 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:52:35,317 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:52:35,322 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:52:35,326 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:52:35,331 | INFO | test time bin [24.0h, 32.0h): samples=240 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:52:35,331 | INFO | test: accuracy:0.9744 | precision:1.0000 | recall:0.9488 | f1:0.9737 | auc:0.9985 | loss:0.1054
-2025-12-22 16:52:35,364 | INFO | [Interval [1.0, 31.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/2 [00:00<?, ?it/s]test_f5:  50%|█████     | 1/2 [01:07<01:07, 67.27s/it]test_f5: 100%|██████████| 2/2 [01:07<00:00, 28.13s/it]                                                      2025-12-22 16:53:44,720 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.99 | TP=475
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.99 | TP=474
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.98 | TP=472
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.98 | TP=471
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.98 | TP=471
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=467
-2025-12-22 16:53:44,726 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:53:44,731 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:53:44,735 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:53:44,740 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:53:44,745 | INFO | test time bin [24.0h, 32.0h): samples=240 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:53:44,745 | INFO | test: accuracy:0.9785 | precision:1.0000 | recall:0.9570 | f1:0.9780 | auc:0.9998 | loss:0.0748
-2025-12-22 16:53:44,777 | INFO |     AUC = 0.9993 ± 0.0004
-2025-12-22 16:53:44,777 | INFO |   [10/14] Evaluating on test interval [1.0, 34.0]h
-2025-12-22 16:53:44,782 | INFO | [Interval [1.0, 34.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/3 [00:00<?, ?it/s]test_f1:  33%|███▎      | 1/3 [01:15<02:31, 75.73s/it]test_f1:  67%|██████▋   | 2/3 [01:16<00:31, 31.67s/it]                                                      2025-12-22 16:55:02,748 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=524
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=523
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.98 | TP=519
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.98 | TP=519
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.98 | TP=518
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=515
-2025-12-22 16:55:02,754 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 16:55:02,758 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 16:55:02,763 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:55:02,768 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:55:02,772 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:55:02,773 | INFO | test: accuracy:0.9804 | precision:1.0000 | recall:0.9608 | f1:0.9800 | auc:0.9994 | loss:0.0706
-2025-12-22 16:55:02,803 | INFO | [Interval [1.0, 34.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/3 [00:00<?, ?it/s]test_f2:  33%|███▎      | 1/3 [01:07<02:15, 67.50s/it]test_f2:  67%|██████▋   | 2/3 [01:08<00:28, 28.29s/it]                                                      2025-12-22 16:56:12,790 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=533
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=533
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=532
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=532
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=532
-  thr=0.50 | P=1.00 | R=0.99 | F1=0.99 | TP=530
-2025-12-22 16:56:12,796 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 16:56:12,801 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:56:12,806 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:56:12,810 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 16:56:12,815 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:56:12,815 | INFO | test: accuracy:0.9935 | precision:0.9981 | recall:0.9888 | f1:0.9934 | auc:0.9997 | loss:0.0207
-2025-12-22 16:56:12,848 | INFO | [Interval [1.0, 34.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/3 [00:00<?, ?it/s]test_f3:  33%|███▎      | 1/3 [01:15<02:30, 75.38s/it]test_f3:  67%|██████▋   | 2/3 [01:16<00:31, 31.53s/it]                                                      2025-12-22 16:57:30,474 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.99 | F1=0.99 | TP=532
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=531
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=531
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=530
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=530
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=525
-2025-12-22 16:57:30,481 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 16:57:30,486 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:57:30,491 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:57:30,495 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:57:30,500 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:57:30,500 | INFO | test: accuracy:0.9897 | precision:1.0000 | recall:0.9795 | f1:0.9896 | auc:0.9992 | loss:0.0286
-2025-12-22 16:57:30,547 | INFO | [Interval [1.0, 34.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/3 [00:00<?, ?it/s]test_f4:  33%|███▎      | 1/3 [01:08<02:16, 68.23s/it]test_f4:  67%|██████▋   | 2/3 [01:09<00:28, 28.58s/it]                                                      2025-12-22 16:58:41,283 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.98 | TP=518
-  thr=0.15 | P=1.00 | R=0.96 | F1=0.98 | TP=515
-  thr=0.20 | P=1.00 | R=0.96 | F1=0.98 | TP=515
-  thr=0.25 | P=1.00 | R=0.96 | F1=0.98 | TP=514
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=512
-  thr=0.50 | P=1.00 | R=0.95 | F1=0.98 | TP=511
-2025-12-22 16:58:41,289 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 16:58:41,293 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:58:41,298 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:58:41,303 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:58:41,308 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:58:41,308 | INFO | test: accuracy:0.9767 | precision:1.0000 | recall:0.9534 | f1:0.9761 | auc:0.9986 | loss:0.0960
-2025-12-22 16:58:41,340 | INFO | [Interval [1.0, 34.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/3 [00:00<?, ?it/s]test_f5:  33%|███▎      | 1/3 [01:15<02:30, 75.12s/it]test_f5:  67%|██████▋   | 2/3 [01:15<00:31, 31.42s/it]                                                      2025-12-22 16:59:59,679 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=523
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.99 | TP=522
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.98 | TP=520
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.98 | TP=519
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.98 | TP=519
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=515
-2025-12-22 16:59:59,685 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 16:59:59,690 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 16:59:59,694 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:59:59,699 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:59:59,704 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 16:59:59,704 | INFO | test: accuracy:0.9804 | precision:1.0000 | recall:0.9608 | f1:0.9800 | auc:0.9998 | loss:0.0681
-2025-12-22 16:59:59,736 | INFO |     AUC = 0.9993 ± 0.0004
-2025-12-22 16:59:59,736 | INFO |   [11/14] Evaluating on test interval [1.0, 37.0]h
-2025-12-22 16:59:59,739 | INFO | [Interval [1.0, 37.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/3 [00:00<?, ?it/s]test_f1:  33%|███▎      | 1/3 [01:09<02:19, 69.55s/it]test_f1:  67%|██████▋   | 2/3 [01:10<00:29, 29.13s/it]test_f1: 100%|██████████| 3/3 [01:10<00:00, 15.93s/it]                                                      2025-12-22 17:01:11,662 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=572
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=571
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.99 | TP=567
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.99 | TP=567
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.98 | TP=566
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=563
-2025-12-22 17:01:11,668 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 17:01:11,673 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 17:01:11,678 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:01:11,682 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:01:11,687 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:01:11,687 | INFO | test: accuracy:0.9820 | precision:1.0000 | recall:0.9640 | f1:0.9817 | auc:0.9995 | loss:0.0648
-2025-12-22 17:01:11,718 | INFO | [Interval [1.0, 37.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/3 [00:00<?, ?it/s]test_f2:  33%|███▎      | 1/3 [01:08<02:17, 68.50s/it]test_f2:  67%|██████▋   | 2/3 [01:09<00:28, 28.70s/it]test_f2: 100%|██████████| 3/3 [01:09<00:00, 15.70s/it]                                                      2025-12-22 17:02:22,622 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=581
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=581
-  thr=0.20 | P=0.99 | R=0.99 | F1=0.99 | TP=580
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=580
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=580
-  thr=0.50 | P=1.00 | R=0.99 | F1=0.99 | TP=578
-2025-12-22 17:02:22,628 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 17:02:22,633 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:02:22,637 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:02:22,642 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 17:02:22,647 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:02:22,647 | INFO | test: accuracy:0.9940 | precision:0.9983 | recall:0.9897 | f1:0.9940 | auc:0.9997 | loss:0.0190
-2025-12-22 17:02:22,685 | INFO | [Interval [1.0, 37.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/3 [00:00<?, ?it/s]test_f3:  33%|███▎      | 1/3 [01:07<02:15, 67.72s/it]test_f3:  67%|██████▋   | 2/3 [01:15<00:32, 32.24s/it]test_f3: 100%|██████████| 3/3 [01:15<00:00, 17.62s/it]                                                      2025-12-22 17:03:39,359 | INFO | test threshold sweep:
-  thr=0.10 | P=0.98 | R=0.99 | F1=0.99 | TP=580
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=579
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=579
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=578
-  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=578
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=573
-2025-12-22 17:03:39,365 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 17:03:39,370 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:03:39,375 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:03:39,379 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:03:39,384 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:03:39,384 | INFO | test: accuracy:0.9906 | precision:1.0000 | recall:0.9812 | f1:0.9905 | auc:0.9993 | loss:0.0264
-2025-12-22 17:03:39,417 | INFO | [Interval [1.0, 37.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/3 [00:00<?, ?it/s]test_f4:  33%|███▎      | 1/3 [01:08<02:16, 68.49s/it]test_f4:  67%|██████▋   | 2/3 [01:09<00:28, 28.69s/it]test_f4: 100%|██████████| 3/3 [01:09<00:00, 15.69s/it]                                                      2025-12-22 17:04:50,415 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.98 | TP=566
-  thr=0.15 | P=1.00 | R=0.96 | F1=0.98 | TP=563
-  thr=0.20 | P=1.00 | R=0.96 | F1=0.98 | TP=563
-  thr=0.25 | P=1.00 | R=0.96 | F1=0.98 | TP=562
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=560
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=559
-2025-12-22 17:04:50,421 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 17:04:50,425 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:04:50,430 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:04:50,435 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:04:50,439 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:04:50,439 | INFO | test: accuracy:0.9786 | precision:1.0000 | recall:0.9572 | f1:0.9781 | auc:0.9987 | loss:0.0881
-2025-12-22 17:04:50,471 | INFO | [Interval [1.0, 37.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/3 [00:00<?, ?it/s]test_f5:  33%|███▎      | 1/3 [01:07<02:15, 67.52s/it]test_f5:  67%|██████▋   | 2/3 [01:08<00:28, 28.29s/it]test_f5: 100%|██████████| 3/3 [01:08<00:00, 15.48s/it]                                                      2025-12-22 17:06:00,413 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=571
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=570
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.99 | TP=568
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.99 | TP=567
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.99 | TP=567
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=563
-2025-12-22 17:06:00,419 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 17:06:00,423 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 17:06:00,428 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:06:00,433 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:06:00,437 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:06:00,438 | INFO | test: accuracy:0.9820 | precision:1.0000 | recall:0.9640 | f1:0.9817 | auc:0.9999 | loss:0.0625
-2025-12-22 17:06:00,469 | INFO |     AUC = 0.9994 ± 0.0004
-2025-12-22 17:06:00,469 | INFO |   [12/14] Evaluating on test interval [1.0, 40.0]h
-2025-12-22 17:06:00,472 | INFO | [Interval [1.0, 40.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/3 [00:00<?, ?it/s]test_f1:  33%|███▎      | 1/3 [01:08<02:16, 68.10s/it]test_f1:  67%|██████▋   | 2/3 [01:17<00:33, 33.56s/it]test_f1: 100%|██████████| 3/3 [01:17<00:00, 18.41s/it]                                                      2025-12-22 17:07:19,707 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=620
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=619
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.99 | TP=615
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.99 | TP=615
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.99 | TP=614
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.98 | TP=611
-2025-12-22 17:07:19,713 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 17:07:19,718 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 17:07:19,723 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:07:19,727 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:07:19,732 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:07:19,732 | INFO | test: accuracy:0.9834 | precision:1.0000 | recall:0.9668 | f1:0.9831 | auc:0.9995 | loss:0.0599
-2025-12-22 17:07:19,762 | INFO | [Interval [1.0, 40.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/3 [00:00<?, ?it/s]test_f2:  33%|███▎      | 1/3 [01:14<02:29, 74.51s/it]test_f2:  67%|██████▋   | 2/3 [01:15<00:31, 31.17s/it]test_f2: 100%|██████████| 3/3 [01:15<00:00, 17.11s/it]                                                      2025-12-22 17:08:36,897 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=629
-  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=629
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=628
-  thr=0.25 | P=1.00 | R=0.99 | F1=1.00 | TP=628
-  thr=0.30 | P=1.00 | R=0.99 | F1=1.00 | TP=628
-  thr=0.50 | P=1.00 | R=0.99 | F1=0.99 | TP=626
-2025-12-22 17:08:36,903 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 17:08:36,908 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:08:36,912 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:08:36,917 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 17:08:36,922 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:08:36,922 | INFO | test: accuracy:0.9945 | precision:0.9984 | recall:0.9905 | f1:0.9944 | auc:0.9997 | loss:0.0176
-2025-12-22 17:08:36,954 | INFO | [Interval [1.0, 40.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/3 [00:00<?, ?it/s]test_f3:  33%|███▎      | 1/3 [01:08<02:17, 68.50s/it]test_f3:  67%|██████▋   | 2/3 [01:09<00:28, 28.70s/it]test_f3: 100%|██████████| 3/3 [01:09<00:00, 15.77s/it]                                                      2025-12-22 17:09:48,449 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=628
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=627
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=627
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=626
-  thr=0.30 | P=1.00 | R=0.99 | F1=1.00 | TP=626
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=621
-2025-12-22 17:09:48,455 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 17:09:48,460 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:09:48,464 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:09:48,469 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:09:48,474 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:09:48,474 | INFO | test: accuracy:0.9913 | precision:1.0000 | recall:0.9826 | f1:0.9912 | auc:0.9994 | loss:0.0244
-2025-12-22 17:09:48,506 | INFO | [Interval [1.0, 40.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/3 [00:00<?, ?it/s]test_f4:  33%|███▎      | 1/3 [01:14<02:29, 74.81s/it]test_f4:  67%|██████▋   | 2/3 [01:15<00:31, 31.29s/it]test_f4: 100%|██████████| 3/3 [01:16<00:00, 17.18s/it]                                                      2025-12-22 17:11:05,849 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.99 | TP=614
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.98 | TP=611
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.98 | TP=611
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.98 | TP=610
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=608
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=607
-2025-12-22 17:11:05,864 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 17:11:05,877 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:11:05,890 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:11:05,903 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:11:05,916 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:11:05,916 | INFO | test: accuracy:0.9802 | precision:1.0000 | recall:0.9604 | f1:0.9798 | auc:0.9988 | loss:0.0814
-2025-12-22 17:11:05,954 | INFO | [Interval [1.0, 40.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/3 [00:00<?, ?it/s]test_f5:  33%|███▎      | 1/3 [01:06<02:13, 66.68s/it]test_f5:  67%|██████▋   | 2/3 [01:07<00:27, 27.95s/it]test_f5: 100%|██████████| 3/3 [01:07<00:00, 15.36s/it]                                                      2025-12-22 17:12:16,632 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=619
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=618
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.99 | TP=616
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.99 | TP=615
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.99 | TP=615
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.98 | TP=611
-2025-12-22 17:12:16,638 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 17:12:16,643 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 17:12:16,648 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:12:16,652 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:12:16,657 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:12:16,657 | INFO | test: accuracy:0.9834 | precision:1.0000 | recall:0.9668 | f1:0.9831 | auc:0.9999 | loss:0.0578
-2025-12-22 17:12:16,690 | INFO |     AUC = 0.9995 ± 0.0004
-2025-12-22 17:12:16,690 | INFO |   [13/14] Evaluating on test interval [1.0, 43.0]h
-2025-12-22 17:12:16,693 | INFO | [Interval [1.0, 43.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/3 [00:00<?, ?it/s]test_f1:  33%|███▎      | 1/3 [01:07<02:15, 67.63s/it]test_f1:  67%|██████▋   | 2/3 [01:08<00:28, 28.34s/it]test_f1: 100%|██████████| 3/3 [01:08<00:00, 15.64s/it]                                                      2025-12-22 17:13:27,083 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=668
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=667
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.99 | TP=663
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.99 | TP=663
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.99 | TP=662
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.98 | TP=659
-2025-12-22 17:13:27,089 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 17:13:27,094 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 17:13:27,099 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:13:27,104 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:13:27,108 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:13:27,108 | INFO | test: accuracy:0.9846 | precision:1.0000 | recall:0.9691 | f1:0.9843 | auc:0.9996 | loss:0.0557
-2025-12-22 17:13:27,138 | INFO | [Interval [1.0, 43.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/3 [00:00<?, ?it/s]test_f2:  33%|███▎      | 1/3 [01:16<02:32, 76.11s/it]test_f2:  67%|██████▋   | 2/3 [01:16<00:31, 31.83s/it]test_f2: 100%|██████████| 3/3 [01:17<00:00, 17.53s/it]                                                      2025-12-22 17:14:46,210 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=677
-  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=677
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=676
-  thr=0.25 | P=1.00 | R=0.99 | F1=1.00 | TP=676
-  thr=0.30 | P=1.00 | R=0.99 | F1=1.00 | TP=676
-  thr=0.50 | P=1.00 | R=0.99 | F1=0.99 | TP=674
-2025-12-22 17:14:46,216 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 17:14:46,221 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:14:46,226 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:14:46,231 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 17:14:46,235 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:14:46,235 | INFO | test: accuracy:0.9949 | precision:0.9985 | recall:0.9912 | f1:0.9948 | auc:0.9998 | loss:0.0165
-2025-12-22 17:14:46,268 | INFO | [Interval [1.0, 43.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/3 [00:00<?, ?it/s]test_f3:  33%|███▎      | 1/3 [01:06<02:12, 66.36s/it]test_f3:  67%|██████▋   | 2/3 [01:12<00:30, 30.99s/it]test_f3: 100%|██████████| 3/3 [01:13<00:00, 17.08s/it]                                                      2025-12-22 17:16:01,261 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=676
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=675
-  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=675
-  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=674
-  thr=0.30 | P=1.00 | R=0.99 | F1=1.00 | TP=674
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=669
-2025-12-22 17:16:01,266 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 17:16:01,271 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:16:01,276 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:16:01,280 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:16:01,285 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:16:01,285 | INFO | test: accuracy:0.9919 | precision:1.0000 | recall:0.9838 | f1:0.9918 | auc:0.9994 | loss:0.0228
-2025-12-22 17:16:01,317 | INFO | [Interval [1.0, 43.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/3 [00:00<?, ?it/s]test_f4:  33%|███▎      | 1/3 [01:06<02:13, 66.65s/it]test_f4:  67%|██████▋   | 2/3 [01:07<00:27, 27.94s/it]test_f4: 100%|██████████| 3/3 [01:08<00:00, 15.42s/it]                                                      2025-12-22 17:17:10,675 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.97 | F1=0.99 | TP=662
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.98 | TP=659
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.98 | TP=659
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.98 | TP=658
-  thr=0.30 | P=1.00 | R=0.96 | F1=0.98 | TP=656
-  thr=0.50 | P=1.00 | R=0.96 | F1=0.98 | TP=655
-2025-12-22 17:17:10,680 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 17:17:10,685 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:17:10,690 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:17:10,694 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:17:10,699 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:17:10,699 | INFO | test: accuracy:0.9816 | precision:1.0000 | recall:0.9632 | f1:0.9813 | auc:0.9988 | loss:0.0757
-2025-12-22 17:17:10,745 | INFO | [Interval [1.0, 43.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/3 [00:00<?, ?it/s]test_f5:  33%|███▎      | 1/3 [01:12<02:24, 72.13s/it]test_f5:  67%|██████▋   | 2/3 [01:12<00:30, 30.19s/it]test_f5: 100%|██████████| 3/3 [01:13<00:00, 16.64s/it]                                                      2025-12-22 17:18:25,559 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=667
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=666
-  thr=0.20 | P=1.00 | R=0.98 | F1=0.99 | TP=664
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.99 | TP=663
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.99 | TP=663
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.98 | TP=659
-2025-12-22 17:18:25,565 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 17:18:25,570 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 17:18:25,574 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:18:25,579 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:18:25,584 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:18:25,584 | INFO | test: accuracy:0.9846 | precision:1.0000 | recall:0.9691 | f1:0.9843 | auc:0.9999 | loss:0.0537
-2025-12-22 17:18:25,616 | INFO |     AUC = 0.9995 ± 0.0004
-2025-12-22 17:18:25,617 | INFO |   [14/14] Evaluating on test interval [1.0, 46.0]h
-2025-12-22 17:18:25,620 | INFO | [Interval [1.0, 46.0]h, mode=test-only] Evaluating fold_01of05
-test_f1:   0%|          | 0/3 [00:00<?, ?it/s]test_f1:  33%|███▎      | 1/3 [01:05<02:11, 65.73s/it]test_f1:  67%|██████▋   | 2/3 [01:07<00:27, 27.82s/it]test_f1: 100%|██████████| 3/3 [01:07<00:00, 15.42s/it]                                                      2025-12-22 17:19:34,719 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=716
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=715
-  thr=0.20 | P=1.00 | R=0.98 | F1=0.99 | TP=711
-  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=711
-  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=710
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.99 | TP=707
-2025-12-22 17:19:34,725 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.924 | precision:1.000 | recall:0.848 | f1:0.918 | auc:0.996
-2025-12-22 17:19:34,730 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.969 | precision:1.000 | recall:0.938 | f1:0.968 | auc:1.000
-2025-12-22 17:19:34,734 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:19:34,739 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:19:34,743 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:19:34,743 | INFO | test: accuracy:0.9856 | precision:1.0000 | recall:0.9712 | f1:0.9854 | auc:0.9996 | loss:0.0520
-2025-12-22 17:19:34,774 | INFO | [Interval [1.0, 46.0]h, mode=test-only] Evaluating fold_02of05
-test_f2:   0%|          | 0/3 [00:00<?, ?it/s]test_f2:  33%|███▎      | 1/3 [01:27<02:55, 87.85s/it]test_f2:  67%|██████▋   | 2/3 [01:28<00:36, 36.82s/it]test_f2: 100%|██████████| 3/3 [01:29<00:00, 20.32s/it]                                                      2025-12-22 17:21:06,547 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=725
-  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=725
-  thr=0.20 | P=1.00 | R=0.99 | F1=1.00 | TP=724
-  thr=0.25 | P=1.00 | R=0.99 | F1=1.00 | TP=724
-  thr=0.30 | P=1.00 | R=0.99 | F1=1.00 | TP=724
-  thr=0.50 | P=1.00 | R=0.99 | F1=1.00 | TP=722
-2025-12-22 17:21:06,561 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.973 | precision:1.000 | recall:0.946 | f1:0.972 | auc:0.997
-2025-12-22 17:21:06,574 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:21:06,588 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:21:06,601 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:0.996 | precision:0.992 | recall:1.000 | f1:0.996 | auc:1.000
-2025-12-22 17:21:06,615 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:21:06,615 | INFO | test: accuracy:0.9952 | precision:0.9986 | recall:0.9918 | f1:0.9952 | auc:0.9998 | loss:0.0155
-2025-12-22 17:21:06,662 | INFO | [Interval [1.0, 46.0]h, mode=test-only] Evaluating fold_03of05
-test_f3:   0%|          | 0/3 [00:00<?, ?it/s]test_f3:  33%|███▎      | 1/3 [01:06<02:13, 66.55s/it]test_f3:  67%|██████▋   | 2/3 [01:13<00:31, 31.31s/it]test_f3: 100%|██████████| 3/3 [01:13<00:00, 17.32s/it]                                                      2025-12-22 17:22:24,348 | INFO | test threshold sweep:
-  thr=0.10 | P=0.99 | R=0.99 | F1=0.99 | TP=724
-  thr=0.15 | P=0.99 | R=0.99 | F1=0.99 | TP=723
-  thr=0.20 | P=1.00 | R=0.99 | F1=1.00 | TP=723
-  thr=0.25 | P=1.00 | R=0.99 | F1=1.00 | TP=722
-  thr=0.30 | P=1.00 | R=0.99 | F1=1.00 | TP=722
-  thr=0.50 | P=1.00 | R=0.98 | F1=0.99 | TP=717
-2025-12-22 17:22:24,353 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.951 | precision:1.000 | recall:0.902 | f1:0.948 | auc:0.998
-2025-12-22 17:22:24,358 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:22:24,363 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:22:24,367 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:22:24,372 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:22:24,372 | INFO | test: accuracy:0.9924 | precision:1.0000 | recall:0.9849 | f1:0.9924 | auc:0.9995 | loss:0.0214
-2025-12-22 17:22:24,405 | INFO | [Interval [1.0, 46.0]h, mode=test-only] Evaluating fold_04of05
-test_f4:   0%|          | 0/3 [00:00<?, ?it/s]test_f4:  33%|███▎      | 1/3 [01:07<02:15, 67.61s/it]test_f4:  67%|██████▋   | 2/3 [01:08<00:28, 28.33s/it]test_f4: 100%|██████████| 3/3 [01:09<00:00, 15.70s/it]                                                      2025-12-22 17:23:35,401 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=710
-  thr=0.15 | P=1.00 | R=0.97 | F1=0.99 | TP=707
-  thr=0.20 | P=1.00 | R=0.97 | F1=0.99 | TP=707
-  thr=0.25 | P=1.00 | R=0.97 | F1=0.98 | TP=706
-  thr=0.30 | P=1.00 | R=0.97 | F1=0.98 | TP=704
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.98 | TP=703
-2025-12-22 17:23:35,407 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.888 | precision:1.000 | recall:0.777 | f1:0.874 | auc:0.997
-2025-12-22 17:23:35,412 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:23:35,417 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:23:35,421 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:23:35,426 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:23:35,426 | INFO | test: accuracy:0.9828 | precision:1.0000 | recall:0.9657 | f1:0.9825 | auc:0.9989 | loss:0.0707
-2025-12-22 17:23:35,458 | INFO | [Interval [1.0, 46.0]h, mode=test-only] Evaluating fold_05of05
-test_f5:   0%|          | 0/3 [00:00<?, ?it/s]test_f5:  33%|███▎      | 1/3 [01:07<02:15, 67.82s/it]test_f5:  67%|██████▋   | 2/3 [01:08<00:28, 28.42s/it]test_f5: 100%|██████████| 3/3 [01:09<00:00, 15.75s/it]                                                      2025-12-22 17:24:46,894 | INFO | test threshold sweep:
-  thr=0.10 | P=1.00 | R=0.98 | F1=0.99 | TP=715
-  thr=0.15 | P=1.00 | R=0.98 | F1=0.99 | TP=714
-  thr=0.20 | P=1.00 | R=0.98 | F1=0.99 | TP=712
-  thr=0.25 | P=1.00 | R=0.98 | F1=0.99 | TP=711
-  thr=0.30 | P=1.00 | R=0.98 | F1=0.99 | TP=711
-  thr=0.50 | P=1.00 | R=0.97 | F1=0.99 | TP=707
-2025-12-22 17:24:46,901 | INFO | test time bin [0.0h, 8.0h): samples=224 | accuracy:0.915 | precision:1.000 | recall:0.830 | f1:0.907 | auc:0.998
-2025-12-22 17:24:46,905 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:0.984 | precision:1.000 | recall:0.969 | f1:0.984 | auc:1.000
-2025-12-22 17:24:46,910 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:24:46,915 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:24:46,919 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
-2025-12-22 17:24:46,919 | INFO | test: accuracy:0.9856 | precision:1.0000 | recall:0.9712 | f1:0.9854 | auc:0.9999 | loss:0.0502
-2025-12-22 17:24:46,951 | INFO |     AUC = 0.9995 ± 0.0004
-2025-12-22 17:24:47,351 | INFO | 
-Saved data to outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/interval_sweep_data.json
-INFO:interval_sweep_train:
-Saved data to outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/interval_sweep_data.json
-2025-12-22 17:24:47,352 | INFO | ============================================================
-INFO:interval_sweep_train:============================================================
-2025-12-22 17:24:47,352 | INFO | Analysis complete! Results saved to: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546
-INFO:interval_sweep_train:Analysis complete! Results saved to: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546
-2025-12-22 17:24:47,352 | INFO | 
-Outputs:
-INFO:interval_sweep_train:
-Outputs:
-2025-12-22 17:24:47,352 | INFO |   - Plots: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/*.png
-INFO:interval_sweep_train:  - Plots: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/*.png
-2025-12-22 17:24:47,352 | INFO |   - Data: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/interval_sweep_data.json
-INFO:interval_sweep_train:  - Data: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/interval_sweep_data.json
-2025-12-22 17:24:47,352 | INFO |   - Checkpoints: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/checkpoints/*/fold_*_best.pth
-INFO:interval_sweep_train:  - Checkpoints: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/checkpoints/*/fold_*_best.pth
-2025-12-22 17:24:47,352 | INFO |   - Log: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/interval_sweep_train.log
-INFO:interval_sweep_train:  - Log: outputs/interval_sweep_analysis/20251212-145928_eval_20251222-160546/interval_sweep_train.log
-2025-12-22 17:24:47,352 | INFO | ============================================================
-INFO:interval_sweep_train:============================================================

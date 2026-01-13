@@ -1,33 +1,0 @@
-2026-01-05 15:53:03,052 | INFO | ================================================================================
-2026-01-05 15:53:03,052 | INFO | MULTI-TASK MODEL - CROSS-VALIDATION TRAINING
-2026-01-05 15:53:03,052 | INFO | ================================================================================
-2026-01-05 15:53:03,052 | INFO | Number of folds: 5
-2026-01-05 15:53:03,052 | INFO | Output directory: outputs/multitask_resnet50/20260105-155303_5fold
-2026-01-05 15:53:03,078 | INFO | Random seed: 42
-2026-01-05 15:53:03,078 | INFO | 
-================================================================================
-2026-01-05 15:53:03,078 | INFO | FOLD 1/5
-2026-01-05 15:53:03,078 | INFO | ================================================================================
-
-2026-01-05 15:53:03,186 | INFO | Device: cuda
-2026-01-05 15:53:03,186 | INFO | Building datasets for fold 1...
-2026-01-05 15:53:04,113 | INFO | Fold 1 - Train: 4092, Val: 1116, Test: 1488
-/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/train_multitask_cv.py:346: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
-  scaler = amp.GradScaler(device.type, enabled=use_amp and device.type == "cuda")
-2026-01-05 15:53:04,929 | INFO | Training fold 1 for 30 epochs...
-2026-01-05 15:53:04,929 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
-2026-01-05 15:53:04,929 | INFO | Fold 1, Epoch 1/30
-F1_E1_train:   0%|          | 0/32 [00:00<?, ?it/s]/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/train_multitask_cv.py:133: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
-  with amp.autocast(amp_device, enabled=autocast_enabled):
-                                                   Traceback (most recent call last):
-  File "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/train_multitask_cv.py", line 920, in <module>
-    sys.exit(main())
-  File "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/train_multitask_cv.py", line 896, in main
-    fold_result = train_single_fold(
-  File "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/train_multitask_cv.py", line 364, in train_single_fold
-    train_metrics = train_one_epoch(
-  File "/isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/train_multitask_cv.py", line 133, in train_one_epoch
-    with amp.autocast(amp_device, enabled=autocast_enabled):
-  File "/home/zzhu/.local/lib/python3.9/site-packages/typing_extensions.py", line 3004, in wrapper
-    return arg(*args, **kwargs)
-TypeError: __init__() got multiple values for argument 'enabled'

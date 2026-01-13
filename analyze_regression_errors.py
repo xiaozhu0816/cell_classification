@@ -426,13 +426,66 @@ def analyze_high_confidence_misclassifications(
     ax.grid(True, alpha=0.3, axis="y")
     ax.tick_params(axis="x", rotation=15)
 
+    # annotate counts / medians for each group on the overall plot
+    for i, grp in enumerate(order):
+        sub = df_overall[df_overall["Group"] == grp]["AbsError"].values
+        if sub.size:
+            ax.text(
+                i,
+                np.nanmedian(sub),
+                f"n={sub.size}\nmed={np.nanmedian(sub):.2f}",
+                ha="center",
+                va="bottom",
+                fontsize=10,
+            )
+
     ax = axes[1]
     if df_byclass is not None and len(df_byclass) > 0:
-        sns.boxplot(data=df_byclass, x="True Class", y="AbsError", hue="Group", ax=ax)
+        # Put each group box at a deterministic x-offset so annotations can target the correct box
+        sns.boxplot(data=df_byclass, x="True Class", y="AbsError", hue="Group", ax=ax, hue_order=order)
         ax.set_title("High-Confidence Misclassifications (by True Class)", fontsize=14, fontweight="bold")
         ax.set_xlabel("")
         ax.grid(True, alpha=0.3, axis="y")
-        ax.legend(title="Group", loc="best")
+
+        # annotate counts / medians per (True Class, Group)
+        # seaborn places hue categories at offsets around each x category.
+        # We'll compute those offsets so the label sits above the correct colored box.
+        x_labels = [t.get_text() for t in ax.get_xticklabels()]
+        n_hue = max(1, len(order))
+        width = 0.8  # seaborn's nominal categorical width
+        if n_hue == 1:
+            offsets = {order[0]: 0.0}
+        else:
+            step = width / n_hue
+            start = -width / 2 + step / 2
+            offsets = {grp: (start + i * step) for i, grp in enumerate(order)}
+
+        for x_i, cls_name in enumerate(x_labels):
+            for grp in order:
+                sub = df_byclass[(df_byclass["True Class"] == cls_name) & (df_byclass["Group"] == grp)][
+                    "AbsError"
+                ].values
+                if sub.size == 0:
+                    continue
+
+                med = float(np.nanmedian(sub))
+                # nudge label slightly above the median to reduce overlap with the box/points
+                y = med + 0.02 * max(1e-6, float(np.nanmax(df_byclass["AbsError"].values)))
+                ax.text(
+                    x_i + offsets.get(grp, 0.0),
+                    y,
+                    f"n={sub.size}\nmed={med:.2f}",
+                    ha="center",
+                    va="bottom",
+                    fontsize=9,
+                    clip_on=True,
+                    bbox=dict(boxstyle="round,pad=0.2", facecolor="white", alpha=0.75, edgecolor="none"),
+                )
+
+        # keep legend consistent order
+        handles, labels = ax.get_legend_handles_labels()
+        if handles:
+            ax.legend(handles, labels, title="Group", loc="best")
     else:
         ax.axis("off")
         ax.text(0.5, 0.5, "No by-class samples", ha="center", va="center")
@@ -442,6 +495,82 @@ def analyze_high_confidence_misclassifications(
     plt.savefig(out, dpi=300, bbox_inches="tight")
     plt.close()
     print(f"✓ Saved high-confidence misclassification plot to {out}")
+
+
+def analyze_confidence_diagnostics(time_preds, time_targets, cls_preds, cls_targets, output_dir):
+    """Confidence-focused diagnostics.
+
+    Produces a single figure with:
+      (A) confidence distributions for correct vs wrong classification
+      (B) regression absolute error vs predicted-class confidence
+    """
+
+    errors = np.abs(time_preds - time_targets)
+    y_true = cls_targets.astype(int)
+    y_pred = (cls_preds >= 0.5).astype(int)
+    correct = y_pred == y_true
+    wrong = ~correct
+    pred_conf = np.where(y_pred == 1, cls_preds, 1 - cls_preds)
+
+    # Build dataframe
+    rows = []
+    for name, mask in [("Correct", correct), ("Wrong", wrong)]:
+        if mask.sum() == 0:
+            continue
+        for c, e in zip(pred_conf[mask], errors[mask]):
+            rows.append({"Classification": name, "PredConf": float(c), "AbsError": float(e)})
+
+    if not rows:
+        print("⚠ No samples available for confidence diagnostics")
+        return
+
+    df = pd.DataFrame(rows)
+
+    fig, axes = plt.subplots(1, 2, figsize=(18, 6))
+
+    # (A) confidence distribution
+    ax = axes[0]
+    sns.violinplot(data=df, x="Classification", y="PredConf", ax=ax, inner="quartile", cut=0, palette="Set2")
+    sns.stripplot(data=df, x="Classification", y="PredConf", ax=ax, color="black", alpha=0.25, size=2, jitter=0.25)
+    ax.set_title("Predicted-Class Confidence Distribution", fontsize=14, fontweight="bold")
+    ax.set_xlabel("")
+    ax.set_ylabel("Predicted-Class Confidence", fontsize=12, fontweight="bold")
+    ax.grid(True, alpha=0.3, axis="y")
+
+    for i, grp in enumerate(["Correct", "Wrong"]):
+        sub = df[df["Classification"] == grp]["PredConf"].values
+        if sub.size:
+            ax.text(i, np.nanmedian(sub), f"n={sub.size}\nmed={np.nanmedian(sub):.2f}", ha="center", va="bottom", fontsize=10)
+
+    # (B) error vs confidence
+    ax = axes[1]
+    scatter = ax.scatter(df["PredConf"], df["AbsError"], alpha=0.35, s=18, c=(df["Classification"] == "Wrong"), cmap="coolwarm", edgecolors="none")
+
+    # binned mean trend
+    conf_bins = np.linspace(0, 1, 11)
+    bin_centers = []
+    bin_mean = []
+    for i in range(len(conf_bins) - 1):
+        m = (df["PredConf"] >= conf_bins[i]) & (df["PredConf"] < conf_bins[i + 1])
+        if m.sum() == 0:
+            continue
+        bin_centers.append((conf_bins[i] + conf_bins[i + 1]) / 2)
+        bin_mean.append(df.loc[m, "AbsError"].mean())
+    if bin_centers:
+        ax.plot(bin_centers, bin_mean, "k-", linewidth=2, label="Mean AbsError per Conf-bin")
+
+    ax.set_title("Regression Abs Error vs Predicted-Class Confidence", fontsize=14, fontweight="bold")
+    ax.set_xlabel("Predicted-Class Confidence", fontsize=12, fontweight="bold")
+    ax.set_ylabel("Regression Absolute Error (hours)", fontsize=12, fontweight="bold")
+    ax.grid(True, alpha=0.3)
+    if bin_centers:
+        ax.legend(loc="best")
+
+    plt.tight_layout()
+    out = Path(output_dir) / "confidence_diagnostics.png"
+    plt.savefig(out, dpi=300, bbox_inches="tight")
+    plt.close()
+    print(f"✓ Saved confidence diagnostics to {out}")
 
 
 def find_worst_predictions(time_preds, time_targets, cls_preds, cls_targets, output_dir, top_k=20):
@@ -563,6 +692,9 @@ def main():
     
     print("\n2. Analyzing classification vs regression errors...")
     analyze_classification_vs_regression_errors(time_preds, time_targets, cls_preds, cls_targets, result_dir)
+
+    print("\n2a. Confidence diagnostics...")
+    analyze_confidence_diagnostics(time_preds, time_targets, cls_preds, cls_targets, result_dir)
 
     print("\n2b. Analyzing regression error on misclassified samples...")
     analyze_regression_error_on_misclassifications(time_preds, time_targets, cls_preds, cls_targets, result_dir)

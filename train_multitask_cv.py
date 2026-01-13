@@ -437,6 +437,39 @@ def train_single_fold(
         split_name="test",
         progress_desc=f"F{fold_idx+1}_test",
     )
+
+    # Save per-sample predictions for downstream analysis
+    # Many analysis scripts expect: <result-dir>/fold_*/test_predictions.npz
+    fold_dir = output_base / f"fold_{fold_idx + 1}"
+    fold_dir.mkdir(parents=True, exist_ok=True)
+    predictions_file = fold_dir / "test_predictions.npz"
+
+    try:
+        np.savez(
+            predictions_file,
+            time_preds=test_predictions.get("time_preds"),
+            time_targets=test_predictions.get("time_targets"),
+            cls_preds=test_predictions.get("cls_preds"),
+            cls_targets=test_predictions.get("cls_targets"),
+        )
+        logger.info(f"✓ Saved test predictions to {predictions_file}")
+    except Exception as e:
+        logger.warning(f"Failed to save {predictions_file}: {e}")
+
+    # Also save lightweight per-sample metadata (time/position/tif/etc) if available.
+    # This helps analysis scripts that stratify by time/position without reloading the dataset.
+    metadata_file = fold_dir / "test_metadata.jsonl"
+    try:
+        if hasattr(test_ds, "get_metadata"):
+            with open(metadata_file, "w", encoding="utf-8") as f:
+                for i in range(len(test_ds)):
+                    meta = test_ds.get_metadata(i)
+                    if not isinstance(meta, dict):
+                        meta = {"meta": meta}
+                    f.write(json.dumps(meta) + "\n")
+            logger.info(f"✓ Saved test metadata to {metadata_file}")
+    except Exception as e:
+        logger.warning(f"Failed to save {metadata_file}: {e}")
     
     # Log test results
     summary = " | ".join(f"{k}:{v:.4f}" for k, v in test_metrics.items())
@@ -450,7 +483,7 @@ def train_single_fold(
                         for k, v in test_metrics.items()},
     }
     
-    fold_results_file = output_base / f"fold_{fold_idx + 1}" / "results.json"
+    fold_results_file = fold_dir / "results.json"
     with open(fold_results_file, "w") as f:
         json.dump(fold_results, f, indent=2)
     

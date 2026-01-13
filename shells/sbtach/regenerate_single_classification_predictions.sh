@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --job-name=interval_sweep_both
+#SBATCH --partition=ciaq             # 你自己在用 ciaq 分区 → 只能 1 GPU
+#SBATCH --gres=gpu:1                 # ciaq 上最多 1 块 GPU
+#SBATCH --cpus-per-task=16           # 数据加载够用
+#SBATCH --mem=40G                    # 按教程 (你可以调大也可以调小)
+#SBATCH --time=7-00:00:00            # 你的实验应该比较久
+#SBATCH --output=./slurm_LOG/out_%j.log          # 输出日志
+#SBATCH --error=./slurm_LOG/err_%j.log           # 错误日志
+
+# ---- Optional: Load conda or modules ----
+# module load anaconda                 # 你的集群普遍有这个
+# source activate my_env               # 换成你自己的 conda 环境
+
+# ---- 进入你项目所在路径（非常重要） ----
+cd /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/
+
+# ---- 最关键：运行你的 experiment 脚本 ----
+python generate_single_cls_predictions.py --config configs/resnet50_baseline.yaml --checkpoint-dir "outputs/interval_sweep_analysis/20251212-145928/checkpoints/train-test_interval_1-46" --output-dir "outputs/single_classification_interval_1-46" --num-folds 5 --batch-size 64 --num-workers 8

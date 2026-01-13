@@ -35,6 +35,13 @@ from sklearn.metrics import roc_auc_score, accuracy_score, precision_recall_fsco
 import matplotlib.pyplot as plt
 
 
+def write_jsonl(path: Path, rows: List[Dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        for row in rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+
 def meta_batch_to_list(meta_batch: Any) -> List[Dict[str, Any]]:
     """Convert batch metadata to list of dictionaries."""
     if isinstance(meta_batch, list):
@@ -731,6 +738,22 @@ def main() -> None:
         cls_targets=test_predictions["cls_targets"],
     )
     logger.info(f"Test predictions saved to {predictions_file}")
+
+    # Save per-sample metadata aligned to the test_predictions ordering.
+    # This is required for downstream error analysis (e.g., montage extraction).
+    try:
+        test_metadata_jsonl = output_base / "test_metadata.jsonl"
+        test_metadata_rows: List[Dict[str, Any]] = []
+        for i in range(len(test_ds)):
+            meta = test_ds.get_metadata(i)
+            # Ensure label exists in metadata (some callers expect it)
+            if "label" not in meta:
+                meta = {**meta, "label": int(test_predictions["cls_targets"][i])}
+            test_metadata_rows.append(meta)
+        write_jsonl(test_metadata_jsonl, test_metadata_rows)
+        logger.info(f"Test metadata saved to {test_metadata_jsonl}")
+    except Exception as e:
+        logger.warning(f"Failed to save test_metadata.jsonl: {e}")
     
     # Temporal generalization analysis
     logger.info("\n" + "=" * 80)

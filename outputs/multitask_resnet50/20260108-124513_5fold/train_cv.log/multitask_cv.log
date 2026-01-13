@@ -1,0 +1,329 @@
+2026-01-08 12:45:13,477 | INFO | ================================================================================
+2026-01-08 12:45:13,477 | INFO | MULTI-TASK MODEL - CROSS-VALIDATION TRAINING
+2026-01-08 12:45:13,477 | INFO | ================================================================================
+2026-01-08 12:45:13,477 | INFO | Number of folds: 5
+2026-01-08 12:45:13,477 | INFO | Output directory: outputs/multitask_resnet50/20260108-124513_5fold
+2026-01-08 12:45:13,507 | INFO | Random seed: 42
+2026-01-08 12:45:13,507 | INFO | 
+================================================================================
+2026-01-08 12:45:13,507 | INFO | FOLD 1/5
+2026-01-08 12:45:13,507 | INFO | ================================================================================
+
+2026-01-08 12:45:13,618 | INFO | Device: cuda
+2026-01-08 12:45:13,618 | INFO | Building datasets for fold 1...
+2026-01-08 12:45:32,642 | INFO | Fold 1 - Train: 4048, Val: 1104, Test: 1472
+2026-01-08 12:45:33,504 | INFO | Training fold 1 for 30 epochs...
+2026-01-08 12:45:33,505 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-08 12:45:33,505 | INFO | Fold 1, Epoch 1/30
+2026-01-08 12:48:48,467 | INFO | ✓ Fold 1: New best model! combined=0.7362
+2026-01-08 12:48:48,468 | INFO | Fold 1, Epoch 2/30
+2026-01-08 12:51:57,632 | INFO | ✓ Fold 1: New best model! combined=0.8716
+2026-01-08 12:51:57,633 | INFO | Fold 1, Epoch 3/30
+2026-01-08 12:55:08,154 | INFO | ✓ Fold 1: New best model! combined=0.9639
+2026-01-08 12:55:08,155 | INFO | Fold 1, Epoch 4/30
+2026-01-08 12:58:14,309 | INFO | Fold 1, Epoch 5/30
+2026-01-08 13:01:22,405 | INFO | ✓ Fold 1: New best model! combined=0.9704
+2026-01-08 13:01:22,406 | INFO | Fold 1, Epoch 6/30
+2026-01-08 13:04:21,680 | INFO | Fold 1, Epoch 7/30
+2026-01-08 13:07:18,853 | INFO | Fold 1, Epoch 8/30
+2026-01-08 13:10:16,129 | INFO | ✓ Fold 1: New best model! combined=0.9769
+2026-01-08 13:10:16,130 | INFO | Fold 1, Epoch 9/30
+2026-01-08 13:13:20,924 | INFO | ✓ Fold 1: New best model! combined=0.9801
+2026-01-08 13:13:20,925 | INFO | Fold 1, Epoch 10/30
+2026-01-08 13:16:05,732 | INFO | Fold 1, Epoch 11/30
+2026-01-08 13:18:50,924 | INFO | ✓ Fold 1: New best model! combined=0.9849
+2026-01-08 13:18:50,926 | INFO | Fold 1, Epoch 12/30
+2026-01-08 13:21:35,150 | INFO | Fold 1, Epoch 13/30
+2026-01-08 13:24:18,120 | INFO | Fold 1, Epoch 14/30
+2026-01-08 13:27:07,189 | INFO | Fold 1, Epoch 15/30
+2026-01-08 13:29:55,984 | INFO | Fold 1, Epoch 16/30
+2026-01-08 13:32:40,893 | INFO | Fold 1, Epoch 17/30
+2026-01-08 13:35:31,627 | INFO | Fold 1, Epoch 18/30
+2026-01-08 13:38:19,771 | INFO | ✓ Fold 1: New best model! combined=0.9870
+2026-01-08 13:38:19,772 | INFO | Fold 1, Epoch 19/30
+2026-01-08 13:41:02,658 | INFO | Fold 1, Epoch 20/30
+2026-01-08 13:43:46,973 | INFO | Fold 1, Epoch 21/30
+2026-01-08 13:46:26,275 | INFO | Fold 1, Epoch 22/30
+2026-01-08 13:49:11,836 | INFO | Fold 1, Epoch 23/30
+2026-01-08 13:51:53,142 | INFO | Fold 1, Epoch 24/30
+2026-01-08 13:54:36,078 | INFO | Fold 1, Epoch 25/30
+2026-01-08 13:57:20,936 | INFO | Fold 1, Epoch 26/30
+2026-01-08 14:00:05,424 | INFO | Fold 1, Epoch 27/30
+2026-01-08 14:02:48,891 | INFO | ✓ Fold 1: New best model! combined=0.9871
+2026-01-08 14:02:48,892 | INFO | Fold 1, Epoch 28/30
+2026-01-08 14:05:37,055 | INFO | Fold 1, Epoch 29/30
+2026-01-08 14:08:17,840 | INFO | Fold 1, Epoch 30/30
+2026-01-08 14:11:02,174 | INFO | Loading best model for fold 1...
+2026-01-08 14:11:03,820 | INFO | Fold 1: Final evaluation on test set
+2026-01-08 14:12:22,540 | INFO | ✓ Saved test predictions to outputs/multitask_resnet50/20260108-124513_5fold/fold_1/test_predictions.npz
+2026-01-08 14:12:22,556 | INFO | ✓ Saved test metadata to outputs/multitask_resnet50/20260108-124513_5fold/fold_1/test_metadata.jsonl
+2026-01-08 14:12:22,556 | INFO | Fold 1 test results: total_loss:0.7476 | cls_loss:0.0276 | reg_loss:0.7200 | cls_accuracy:0.9932 | cls_precision:1.0000 | cls_recall:0.9863 | cls_f1:0.9931 | cls_auc:0.9998 | reg_mae:1.1206 | reg_rmse:1.4631 | reg_mse:2.1407 | combined:0.9865
+2026-01-08 14:12:22,559 | INFO | ✓ Fold 1 complete!
+2026-01-08 14:12:22,563 | INFO | 
+================================================================================
+2026-01-08 14:12:22,564 | INFO | FOLD 2/5
+2026-01-08 14:12:22,564 | INFO | ================================================================================
+
+2026-01-08 14:12:22,564 | INFO | Device: cuda
+2026-01-08 14:12:22,564 | INFO | Building datasets for fold 2...
+2026-01-08 14:12:23,228 | INFO | Fold 2 - Train: 4141, Val: 1011, Test: 1472
+2026-01-08 14:12:23,671 | INFO | Training fold 2 for 30 epochs...
+2026-01-08 14:12:23,671 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-08 14:12:23,671 | INFO | Fold 2, Epoch 1/30
+2026-01-08 14:15:08,448 | INFO | ✓ Fold 2: New best model! combined=0.7817
+2026-01-08 14:15:08,449 | INFO | Fold 2, Epoch 2/30
+2026-01-08 14:17:53,034 | INFO | ✓ Fold 2: New best model! combined=0.8814
+2026-01-08 14:17:53,036 | INFO | Fold 2, Epoch 3/30
+2026-01-08 14:20:38,798 | INFO | ✓ Fold 2: New best model! combined=0.9485
+2026-01-08 14:20:38,799 | INFO | Fold 2, Epoch 4/30
+2026-01-08 14:23:21,696 | INFO | ✓ Fold 2: New best model! combined=0.9703
+2026-01-08 14:23:21,698 | INFO | Fold 2, Epoch 5/30
+2026-01-08 14:26:02,289 | INFO | Fold 2, Epoch 6/30
+2026-01-08 14:28:41,768 | INFO | ✓ Fold 2: New best model! combined=0.9729
+2026-01-08 14:28:41,769 | INFO | Fold 2, Epoch 7/30
+2026-01-08 14:31:22,234 | INFO | Fold 2, Epoch 8/30
+2026-01-08 14:34:04,520 | INFO | Fold 2, Epoch 9/30
+2026-01-08 14:36:45,322 | INFO | ✓ Fold 2: New best model! combined=0.9793
+2026-01-08 14:36:45,323 | INFO | Fold 2, Epoch 10/30
+2026-01-08 14:39:25,255 | INFO | Fold 2, Epoch 11/30
+2026-01-08 14:42:08,471 | INFO | ✓ Fold 2: New best model! combined=0.9798
+2026-01-08 14:42:08,472 | INFO | Fold 2, Epoch 12/30
+2026-01-08 14:44:47,302 | INFO | Fold 2, Epoch 13/30
+2026-01-08 14:47:24,076 | INFO | ✓ Fold 2: New best model! combined=0.9853
+2026-01-08 14:47:24,078 | INFO | Fold 2, Epoch 14/30
+2026-01-08 14:50:00,770 | INFO | Fold 2, Epoch 15/30
+2026-01-08 14:52:41,209 | INFO | Fold 2, Epoch 16/30
+2026-01-08 14:55:21,200 | INFO | Fold 2, Epoch 17/30
+2026-01-08 14:57:58,337 | INFO | Fold 2, Epoch 18/30
+2026-01-08 15:00:40,113 | INFO | ✓ Fold 2: New best model! combined=0.9864
+2026-01-08 15:00:40,115 | INFO | Fold 2, Epoch 19/30
+2026-01-08 15:03:20,488 | INFO | Fold 2, Epoch 20/30
+2026-01-08 15:05:56,747 | INFO | Fold 2, Epoch 21/30
+2026-01-08 15:08:39,476 | INFO | ✓ Fold 2: New best model! combined=0.9864
+2026-01-08 15:08:39,477 | INFO | Fold 2, Epoch 22/30
+2026-01-08 15:11:18,135 | INFO | Fold 2, Epoch 23/30
+2026-01-08 15:13:56,344 | INFO | Fold 2, Epoch 24/30
+2026-01-08 15:16:35,731 | INFO | Fold 2, Epoch 25/30
+2026-01-08 15:19:16,031 | INFO | Fold 2, Epoch 26/30
+2026-01-08 15:21:54,846 | INFO | Fold 2, Epoch 27/30
+2026-01-08 15:24:34,913 | INFO | Fold 2, Epoch 28/30
+2026-01-08 15:27:17,811 | INFO | Fold 2, Epoch 29/30
+2026-01-08 15:29:57,520 | INFO | Fold 2, Epoch 30/30
+2026-01-08 15:32:39,847 | INFO | ✓ Fold 2: New best model! combined=0.9874
+2026-01-08 15:32:39,848 | INFO | Loading best model for fold 2...
+2026-01-08 15:32:41,503 | INFO | Fold 2: Final evaluation on test set
+2026-01-08 15:33:43,694 | INFO | ✓ Saved test predictions to outputs/multitask_resnet50/20260108-124513_5fold/fold_2/test_predictions.npz
+2026-01-08 15:33:43,709 | INFO | ✓ Saved test metadata to outputs/multitask_resnet50/20260108-124513_5fold/fold_2/test_metadata.jsonl
+2026-01-08 15:33:43,710 | INFO | Fold 2 test results: total_loss:0.7841 | cls_loss:0.0430 | reg_loss:0.7411 | cls_accuracy:0.9891 | cls_precision:1.0000 | cls_recall:0.9780 | cls_f1:0.9889 | cls_auc:0.9993 | reg_mae:1.1477 | reg_rmse:1.4737 | reg_mse:2.1718 | combined:0.9838
+2026-01-08 15:33:43,713 | INFO | ✓ Fold 2 complete!
+2026-01-08 15:33:43,717 | INFO | 
+================================================================================
+2026-01-08 15:33:43,718 | INFO | FOLD 3/5
+2026-01-08 15:33:43,718 | INFO | ================================================================================
+
+2026-01-08 15:33:43,718 | INFO | Device: cuda
+2026-01-08 15:33:43,718 | INFO | Building datasets for fold 3...
+2026-01-08 15:33:44,368 | INFO | Fold 3 - Train: 4141, Val: 1011, Test: 1472
+2026-01-08 15:33:44,798 | INFO | Training fold 3 for 30 epochs...
+2026-01-08 15:33:44,798 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-08 15:33:44,798 | INFO | Fold 3, Epoch 1/30
+2026-01-08 15:36:22,436 | INFO | ✓ Fold 3: New best model! combined=0.8239
+2026-01-08 15:36:22,437 | INFO | Fold 3, Epoch 2/30
+2026-01-08 15:38:59,947 | INFO | ✓ Fold 3: New best model! combined=0.9111
+2026-01-08 15:38:59,948 | INFO | Fold 3, Epoch 3/30
+2026-01-08 15:41:42,450 | INFO | ✓ Fold 3: New best model! combined=0.9473
+2026-01-08 15:41:42,451 | INFO | Fold 3, Epoch 4/30
+2026-01-08 15:44:28,463 | INFO | ✓ Fold 3: New best model! combined=0.9642
+2026-01-08 15:44:28,464 | INFO | Fold 3, Epoch 5/30
+2026-01-08 15:47:08,643 | INFO | ✓ Fold 3: New best model! combined=0.9651
+2026-01-08 15:47:08,645 | INFO | Fold 3, Epoch 6/30
+2026-01-08 15:49:50,506 | INFO | Fold 3, Epoch 7/30
+2026-01-08 15:52:31,323 | INFO | ✓ Fold 3: New best model! combined=0.9783
+2026-01-08 15:52:31,325 | INFO | Fold 3, Epoch 8/30
+2026-01-08 15:55:12,155 | INFO | ✓ Fold 3: New best model! combined=0.9863
+2026-01-08 15:55:12,156 | INFO | Fold 3, Epoch 9/30
+2026-01-08 15:57:48,102 | INFO | Fold 3, Epoch 10/30
+2026-01-08 16:00:24,289 | INFO | Fold 3, Epoch 11/30
+2026-01-08 16:03:04,344 | INFO | Fold 3, Epoch 12/30
+2026-01-08 16:05:43,872 | INFO | Fold 3, Epoch 13/30
+2026-01-08 16:08:24,178 | INFO | Fold 3, Epoch 14/30
+2026-01-08 16:11:06,762 | INFO | Fold 3, Epoch 15/30
+2026-01-08 16:13:49,206 | INFO | ✓ Fold 3: New best model! combined=0.9865
+2026-01-08 16:13:49,208 | INFO | Fold 3, Epoch 16/30
+2026-01-08 16:16:25,580 | INFO | Fold 3, Epoch 17/30
+2026-01-08 16:19:04,556 | INFO | ✓ Fold 3: New best model! combined=0.9889
+2026-01-08 16:19:04,557 | INFO | Fold 3, Epoch 18/30
+2026-01-08 16:21:42,202 | INFO | Fold 3, Epoch 19/30
+2026-01-08 16:24:21,129 | INFO | Fold 3, Epoch 20/30
+2026-01-08 16:26:59,061 | INFO | Fold 3, Epoch 21/30
+2026-01-08 16:29:41,011 | INFO | Fold 3, Epoch 22/30
+2026-01-08 16:32:22,982 | INFO | Fold 3, Epoch 23/30
+2026-01-08 16:35:04,569 | INFO | Fold 3, Epoch 24/30
+2026-01-08 16:37:42,401 | INFO | ✓ Fold 3: New best model! combined=0.9896
+2026-01-08 16:37:42,402 | INFO | Fold 3, Epoch 25/30
+2026-01-08 16:40:21,074 | INFO | Fold 3, Epoch 26/30
+2026-01-08 16:42:59,622 | INFO | Fold 3, Epoch 27/30
+2026-01-08 16:45:37,909 | INFO | Fold 3, Epoch 28/30
+2026-01-08 16:48:13,506 | INFO | Fold 3, Epoch 29/30
+2026-01-08 16:50:55,353 | INFO | Fold 3, Epoch 30/30
+2026-01-08 16:53:33,057 | INFO | Loading best model for fold 3...
+2026-01-08 16:53:35,179 | INFO | Fold 3: Final evaluation on test set
+2026-01-08 16:54:41,587 | INFO | ✓ Saved test predictions to outputs/multitask_resnet50/20260108-124513_5fold/fold_3/test_predictions.npz
+2026-01-08 16:54:41,638 | INFO | ✓ Saved test metadata to outputs/multitask_resnet50/20260108-124513_5fold/fold_3/test_metadata.jsonl
+2026-01-08 16:54:41,638 | INFO | Fold 3 test results: total_loss:0.8034 | cls_loss:0.0301 | reg_loss:0.7733 | cls_accuracy:0.9912 | cls_precision:1.0000 | cls_recall:0.9821 | cls_f1:0.9910 | cls_auc:0.9997 | reg_mae:1.1861 | reg_rmse:1.5219 | reg_mse:2.3161 | combined:0.9847
+2026-01-08 16:54:41,643 | INFO | ✓ Fold 3 complete!
+2026-01-08 16:54:41,647 | INFO | 
+================================================================================
+2026-01-08 16:54:41,648 | INFO | FOLD 4/5
+2026-01-08 16:54:41,648 | INFO | ================================================================================
+
+2026-01-08 16:54:41,648 | INFO | Device: cuda
+2026-01-08 16:54:41,648 | INFO | Building datasets for fold 4...
+2026-01-08 16:54:42,299 | INFO | Fold 4 - Train: 4139, Val: 1013, Test: 1472
+2026-01-08 16:54:42,731 | INFO | Training fold 4 for 30 epochs...
+2026-01-08 16:54:42,731 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-08 16:54:42,731 | INFO | Fold 4, Epoch 1/30
+2026-01-08 16:57:23,510 | INFO | ✓ Fold 4: New best model! combined=0.8052
+2026-01-08 16:57:23,512 | INFO | Fold 4, Epoch 2/30
+2026-01-08 17:00:03,148 | INFO | ✓ Fold 4: New best model! combined=0.9143
+2026-01-08 17:00:03,149 | INFO | Fold 4, Epoch 3/30
+2026-01-08 17:02:42,688 | INFO | ✓ Fold 4: New best model! combined=0.9607
+2026-01-08 17:02:42,689 | INFO | Fold 4, Epoch 4/30
+2026-01-08 17:05:24,805 | INFO | ✓ Fold 4: New best model! combined=0.9770
+2026-01-08 17:05:24,806 | INFO | Fold 4, Epoch 5/30
+2026-01-08 17:08:02,210 | INFO | Fold 4, Epoch 6/30
+2026-01-08 17:10:42,354 | INFO | Fold 4, Epoch 7/30
+2026-01-08 17:13:20,727 | INFO | ✓ Fold 4: New best model! combined=0.9826
+2026-01-08 17:13:20,728 | INFO | Fold 4, Epoch 8/30
+2026-01-08 17:16:02,547 | INFO | ✓ Fold 4: New best model! combined=0.9855
+2026-01-08 17:16:02,549 | INFO | Fold 4, Epoch 9/30
+2026-01-08 17:18:39,162 | INFO | Fold 4, Epoch 10/30
+2026-01-08 17:21:20,926 | INFO | Fold 4, Epoch 11/30
+2026-01-08 17:23:59,903 | INFO | Fold 4, Epoch 12/30
+2026-01-08 17:26:36,527 | INFO | Fold 4, Epoch 13/30
+2026-01-08 17:29:17,550 | INFO | Fold 4, Epoch 14/30
+2026-01-08 17:31:57,143 | INFO | Fold 4, Epoch 15/30
+2026-01-08 17:34:36,661 | INFO | Fold 4, Epoch 16/30
+2026-01-08 17:37:16,561 | INFO | Fold 4, Epoch 17/30
+2026-01-08 17:39:53,397 | INFO | Fold 4, Epoch 18/30
+2026-01-08 17:42:38,686 | INFO | ✓ Fold 4: New best model! combined=0.9863
+2026-01-08 17:42:38,687 | INFO | Fold 4, Epoch 19/30
+2026-01-08 17:45:17,298 | INFO | Fold 4, Epoch 20/30
+2026-01-08 17:47:52,995 | INFO | Fold 4, Epoch 21/30
+2026-01-08 17:50:28,866 | INFO | Fold 4, Epoch 22/30
+2026-01-08 17:53:03,836 | INFO | ✓ Fold 4: New best model! combined=0.9871
+2026-01-08 17:53:03,837 | INFO | Fold 4, Epoch 23/30
+2026-01-08 17:55:42,478 | INFO | Fold 4, Epoch 24/30
+2026-01-08 17:58:22,316 | INFO | ✓ Fold 4: New best model! combined=0.9882
+2026-01-08 17:58:22,317 | INFO | Fold 4, Epoch 25/30
+2026-01-08 18:00:57,545 | INFO | Fold 4, Epoch 26/30
+2026-01-08 18:03:32,677 | INFO | Fold 4, Epoch 27/30
+2026-01-08 18:06:10,392 | INFO | Fold 4, Epoch 28/30
+2026-01-08 18:08:50,045 | INFO | Fold 4, Epoch 29/30
+2026-01-08 18:11:29,781 | INFO | ✓ Fold 4: New best model! combined=0.9885
+2026-01-08 18:11:29,782 | INFO | Fold 4, Epoch 30/30
+2026-01-08 18:14:13,337 | INFO | Loading best model for fold 4...
+2026-01-08 18:14:14,938 | INFO | Fold 4: Final evaluation on test set
+2026-01-08 18:15:16,810 | INFO | ✓ Saved test predictions to outputs/multitask_resnet50/20260108-124513_5fold/fold_4/test_predictions.npz
+2026-01-08 18:15:16,824 | INFO | ✓ Saved test metadata to outputs/multitask_resnet50/20260108-124513_5fold/fold_4/test_metadata.jsonl
+2026-01-08 18:15:16,824 | INFO | Fold 4 test results: total_loss:0.8446 | cls_loss:0.0305 | reg_loss:0.8140 | cls_accuracy:0.9925 | cls_precision:1.0000 | cls_recall:0.9849 | cls_f1:0.9924 | cls_auc:0.9995 | reg_mae:1.2260 | reg_rmse:1.5979 | reg_mse:2.5532 | combined:0.9852
+2026-01-08 18:15:16,828 | INFO | ✓ Fold 4 complete!
+2026-01-08 18:15:16,833 | INFO | 
+================================================================================
+2026-01-08 18:15:16,834 | INFO | FOLD 5/5
+2026-01-08 18:15:16,834 | INFO | ================================================================================
+
+2026-01-08 18:15:16,834 | INFO | Device: cuda
+2026-01-08 18:15:16,834 | INFO | Building datasets for fold 5...
+2026-01-08 18:15:17,592 | INFO | Fold 5 - Train: 4139, Val: 1013, Test: 1472
+2026-01-08 18:15:18,030 | INFO | Training fold 5 for 30 epochs...
+2026-01-08 18:15:18,031 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-08 18:15:18,031 | INFO | Fold 5, Epoch 1/30
+2026-01-08 18:17:58,117 | INFO | ✓ Fold 5: New best model! combined=0.8161
+2026-01-08 18:17:58,118 | INFO | Fold 5, Epoch 2/30
+2026-01-08 18:20:35,858 | INFO | ✓ Fold 5: New best model! combined=0.9071
+2026-01-08 18:20:35,859 | INFO | Fold 5, Epoch 3/30
+2026-01-08 18:23:16,589 | INFO | ✓ Fold 5: New best model! combined=0.9502
+2026-01-08 18:23:16,590 | INFO | Fold 5, Epoch 4/30
+2026-01-08 18:25:56,698 | INFO | Fold 5, Epoch 5/30
+2026-01-08 18:28:34,742 | INFO | ✓ Fold 5: New best model! combined=0.9653
+2026-01-08 18:28:34,743 | INFO | Fold 5, Epoch 6/30
+2026-01-08 18:31:18,715 | INFO | ✓ Fold 5: New best model! combined=0.9794
+2026-01-08 18:31:18,717 | INFO | Fold 5, Epoch 7/30
+2026-01-08 18:33:58,330 | INFO | Fold 5, Epoch 8/30
+2026-01-08 18:36:34,924 | INFO | Fold 5, Epoch 9/30
+2026-01-08 18:39:10,427 | INFO | ✓ Fold 5: New best model! combined=0.9827
+2026-01-08 18:39:10,428 | INFO | Fold 5, Epoch 10/30
+2026-01-08 18:41:49,282 | INFO | ✓ Fold 5: New best model! combined=0.9841
+2026-01-08 18:41:49,283 | INFO | Fold 5, Epoch 11/30
+2026-01-08 18:44:30,967 | INFO | Fold 5, Epoch 12/30
+2026-01-08 18:47:10,488 | INFO | Fold 5, Epoch 13/30
+2026-01-08 18:49:52,964 | INFO | ✓ Fold 5: New best model! combined=0.9868
+2026-01-08 18:49:52,965 | INFO | Fold 5, Epoch 14/30
+2026-01-08 18:52:33,299 | INFO | Fold 5, Epoch 15/30
+2026-01-08 18:55:14,381 | INFO | Fold 5, Epoch 16/30
+2026-01-08 18:57:52,039 | INFO | Fold 5, Epoch 17/30
+2026-01-08 19:00:33,862 | INFO | Fold 5, Epoch 18/30
+2026-01-08 19:03:14,779 | INFO | Fold 5, Epoch 19/30
+2026-01-08 19:05:51,914 | INFO | Fold 5, Epoch 20/30
+2026-01-08 19:08:29,585 | INFO | Fold 5, Epoch 21/30
+2026-01-08 19:11:09,633 | INFO | Fold 5, Epoch 22/30
+2026-01-08 19:13:48,768 | INFO | ✓ Fold 5: New best model! combined=0.9901
+2026-01-08 19:13:48,769 | INFO | Fold 5, Epoch 23/30
+2026-01-08 19:16:26,564 | INFO | Fold 5, Epoch 24/30
+2026-01-08 19:19:06,841 | INFO | Fold 5, Epoch 25/30
+2026-01-08 19:21:43,705 | INFO | Fold 5, Epoch 26/30
+2026-01-08 19:24:20,989 | INFO | Fold 5, Epoch 27/30
+2026-01-08 19:27:02,053 | INFO | Fold 5, Epoch 28/30
+2026-01-08 19:29:36,941 | INFO | Fold 5, Epoch 29/30
+2026-01-08 19:32:19,374 | INFO | ✓ Fold 5: New best model! combined=0.9902
+2026-01-08 19:32:19,376 | INFO | Fold 5, Epoch 30/30
+2026-01-08 19:34:58,856 | INFO | Loading best model for fold 5...
+2026-01-08 19:35:01,933 | INFO | Fold 5: Final evaluation on test set
+2026-01-08 19:36:03,033 | INFO | ✓ Saved test predictions to outputs/multitask_resnet50/20260108-124513_5fold/fold_5/test_predictions.npz
+2026-01-08 19:36:03,058 | INFO | ✓ Saved test metadata to outputs/multitask_resnet50/20260108-124513_5fold/fold_5/test_metadata.jsonl
+2026-01-08 19:36:03,059 | INFO | Fold 5 test results: total_loss:0.8608 | cls_loss:0.0290 | reg_loss:0.8318 | cls_accuracy:0.9905 | cls_precision:1.0000 | cls_recall:0.9808 | cls_f1:0.9903 | cls_auc:0.9997 | reg_mae:1.2453 | reg_rmse:1.5791 | reg_mse:2.4937 | combined:0.9838
+2026-01-08 19:36:03,062 | INFO | ✓ Fold 5 complete!
+2026-01-08 19:36:03,067 | INFO | 
+================================================================================
+2026-01-08 19:36:03,067 | INFO | CROSS-VALIDATION SUMMARY
+2026-01-08 19:36:03,067 | INFO | ================================================================================
+
+2026-01-08 19:36:03,068 | INFO | Mean ± Std across folds:
+2026-01-08 19:36:03,068 | INFO |   total_loss: 0.8081 ± 0.0409
+2026-01-08 19:36:03,068 | INFO |   cls_loss: 0.0320 ± 0.0056
+2026-01-08 19:36:03,068 | INFO |   reg_loss: 0.7761 ± 0.0422
+2026-01-08 19:36:03,068 | INFO |   cls_accuracy: 0.9913 ± 0.0015
+2026-01-08 19:36:03,068 | INFO |   cls_precision: 1.0000 ± 0.0000
+2026-01-08 19:36:03,068 | INFO |   cls_recall: 0.9824 ± 0.0029
+2026-01-08 19:36:03,068 | INFO |   cls_f1: 0.9911 ± 0.0015
+2026-01-08 19:36:03,068 | INFO |   cls_auc: 0.9996 ± 0.0002
+2026-01-08 19:36:03,068 | INFO |   reg_mae: 1.1851 ± 0.0466
+2026-01-08 19:36:03,068 | INFO |   reg_rmse: 1.5271 ± 0.0542
+2026-01-08 19:36:03,068 | INFO |   reg_mse: 2.3351 ± 0.1658
+2026-01-08 19:36:03,068 | INFO |   combined: 0.9848 ± 0.0010
+2026-01-08 19:36:03,072 | INFO | 
+✓ CV summary saved to outputs/multitask_resnet50/20260108-124513_5fold/cv_summary.json
+2026-01-08 19:36:03,072 | INFO | 
+================================================================================
+2026-01-08 19:36:03,073 | INFO | GENERATING TEMPORAL GENERALIZATION ANALYSIS
+2026-01-08 19:36:03,073 | INFO | ================================================================================
+2026-01-08 19:36:03,076 | INFO | Processing fold 1/5...
+2026-01-08 19:37:06,763 | INFO |   ✓ Saved fold 1 temporal metrics
+2026-01-08 19:37:06,767 | INFO | Processing fold 2/5...
+2026-01-08 19:38:10,215 | INFO |   ✓ Saved fold 2 temporal metrics
+2026-01-08 19:38:10,220 | INFO | Processing fold 3/5...
+2026-01-08 19:39:13,159 | INFO |   ✓ Saved fold 3 temporal metrics
+2026-01-08 19:39:13,165 | INFO | Processing fold 4/5...
+2026-01-08 19:40:16,365 | INFO |   ✓ Saved fold 4 temporal metrics
+2026-01-08 19:40:16,369 | INFO | Processing fold 5/5...
+2026-01-08 19:41:20,037 | INFO |   ✓ Saved fold 5 temporal metrics
+2026-01-08 19:41:20,038 | INFO | Aggregating temporal results across 5 folds...
+2026-01-08 19:41:20,043 | INFO | ✓ Saved CV temporal metrics to outputs/multitask_resnet50/20260108-124513_5fold/cv_temporal_metrics.json
+2026-01-08 19:41:20,043 | INFO | Generating CV temporal generalization plot...
+2026-01-08 19:41:20,763 | INFO | ✓ Temporal generalization analysis complete!
+2026-01-08 19:41:20,767 | INFO | 
+================================================================================
+2026-01-08 19:41:20,767 | INFO | CROSS-VALIDATION COMPLETE!
+2026-01-08 19:41:20,767 | INFO | ================================================================================
+2026-01-08 19:41:20,767 | INFO | Results saved to: outputs/multitask_resnet50/20260108-124513_5fold

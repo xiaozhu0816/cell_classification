@@ -1,0 +1,714 @@
+2026-01-09 16:43:08,585 | INFO | ================================================================================
+2026-01-09 16:43:08,585 | INFO | MULTI-TASK MODEL - CROSS-VALIDATION TRAINING
+2026-01-09 16:43:08,585 | INFO | ================================================================================
+2026-01-09 16:43:08,585 | INFO | Number of folds: 5
+2026-01-09 16:43:08,585 | INFO | Output directory: outputs/multitask_cls_conditioned/20260109-164308_5fold
+2026-01-09 16:43:08,589 | INFO | Random seed: 42
+2026-01-09 16:43:08,589 | INFO | 
+================================================================================
+2026-01-09 16:43:08,589 | INFO | FOLD 1/5
+2026-01-09 16:43:08,589 | INFO | ================================================================================
+
+2026-01-09 16:43:08,633 | INFO | Device: cuda
+2026-01-09 16:43:08,633 | INFO | Building datasets for fold 1...
+2026-01-09 16:43:09,309 | INFO | Fold 1 - Train: 4048, Val: 1104, Test: 1472
+2026-01-09 16:43:09,869 | INFO | Training fold 1 for 100 epochs...
+2026-01-09 16:43:09,869 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-09 16:43:09,869 | INFO | Fold 1, Epoch 1/100
+2026-01-09 16:45:50,929 | INFO | ✓ Fold 1: New best model! combined=0.8087
+2026-01-09 16:45:50,930 | INFO | Fold 1, Epoch 2/100
+2026-01-09 16:48:28,742 | INFO | ✓ Fold 1: New best model! combined=0.8599
+2026-01-09 16:48:28,743 | INFO | Fold 1, Epoch 3/100
+2026-01-09 16:51:04,966 | INFO | ✓ Fold 1: New best model! combined=0.9573
+2026-01-09 16:51:04,968 | INFO | Fold 1, Epoch 4/100
+2026-01-09 16:53:39,131 | INFO | Fold 1, Epoch 5/100
+2026-01-09 16:56:14,650 | INFO | ✓ Fold 1: New best model! combined=0.9613
+2026-01-09 16:56:14,650 | INFO | Fold 1, Epoch 6/100
+2026-01-09 16:58:52,628 | INFO | ✓ Fold 1: New best model! combined=0.9647
+2026-01-09 16:58:52,630 | INFO | Fold 1, Epoch 7/100
+2026-01-09 17:01:30,190 | INFO | ✓ Fold 1: New best model! combined=0.9746
+2026-01-09 17:01:30,192 | INFO | Fold 1, Epoch 8/100
+2026-01-09 17:04:06,507 | INFO | Fold 1, Epoch 9/100
+2026-01-09 17:06:43,580 | INFO | Fold 1, Epoch 10/100
+2026-01-09 17:09:18,131 | INFO | Fold 1, Epoch 11/100
+2026-01-09 17:11:54,733 | INFO | Fold 1, Epoch 12/100
+2026-01-09 17:14:34,125 | INFO | Fold 1, Epoch 13/100
+2026-01-09 17:17:12,845 | INFO | ✓ Fold 1: New best model! combined=0.9751
+2026-01-09 17:17:12,846 | INFO | Fold 1, Epoch 14/100
+2026-01-09 17:19:48,964 | INFO | Fold 1, Epoch 15/100
+2026-01-09 17:22:27,146 | INFO | Fold 1, Epoch 16/100
+2026-01-09 17:25:04,798 | INFO | ✓ Fold 1: New best model! combined=0.9807
+2026-01-09 17:25:04,799 | INFO | Fold 1, Epoch 17/100
+2026-01-09 17:27:37,462 | INFO | Fold 1, Epoch 18/100
+2026-01-09 17:30:12,844 | INFO | Fold 1, Epoch 19/100
+2026-01-09 17:32:48,584 | INFO | Fold 1, Epoch 20/100
+2026-01-09 17:35:25,387 | INFO | ✓ Fold 1: New best model! combined=0.9810
+2026-01-09 17:35:25,387 | INFO | Fold 1, Epoch 21/100
+2026-01-09 17:38:04,937 | INFO | ✓ Fold 1: New best model! combined=0.9827
+2026-01-09 17:38:04,939 | INFO | Fold 1, Epoch 22/100
+2026-01-09 17:40:36,270 | INFO | Fold 1, Epoch 23/100
+2026-01-09 17:43:09,269 | INFO | Fold 1, Epoch 24/100
+2026-01-09 17:45:42,882 | INFO | Fold 1, Epoch 25/100
+2026-01-09 17:48:18,562 | INFO | Fold 1, Epoch 26/100
+2026-01-09 17:50:53,178 | INFO | Fold 1, Epoch 27/100
+2026-01-09 17:53:26,029 | INFO | Fold 1, Epoch 28/100
+2026-01-09 17:56:00,820 | INFO | Fold 1, Epoch 29/100
+2026-01-09 17:58:37,686 | INFO | ✓ Fold 1: New best model! combined=0.9829
+2026-01-09 17:58:37,688 | INFO | Fold 1, Epoch 30/100
+2026-01-09 18:01:12,282 | INFO | Fold 1, Epoch 31/100
+2026-01-09 18:03:50,612 | INFO | Fold 1, Epoch 32/100
+2026-01-09 18:06:24,370 | INFO | Fold 1, Epoch 33/100
+2026-01-09 18:09:02,827 | INFO | ✓ Fold 1: New best model! combined=0.9833
+2026-01-09 18:09:02,828 | INFO | Fold 1, Epoch 34/100
+2026-01-09 18:11:37,152 | INFO | Fold 1, Epoch 35/100
+2026-01-09 18:14:12,658 | INFO | Fold 1, Epoch 36/100
+2026-01-09 18:16:49,522 | INFO | ✓ Fold 1: New best model! combined=0.9835
+2026-01-09 18:16:49,522 | INFO | Fold 1, Epoch 37/100
+2026-01-09 18:19:21,756 | INFO | Fold 1, Epoch 38/100
+2026-01-09 18:21:57,303 | INFO | Fold 1, Epoch 39/100
+2026-01-09 18:24:34,224 | INFO | ✓ Fold 1: New best model! combined=0.9843
+2026-01-09 18:24:34,226 | INFO | Fold 1, Epoch 40/100
+2026-01-09 18:27:09,236 | INFO | Fold 1, Epoch 41/100
+2026-01-09 18:29:42,845 | INFO | Fold 1, Epoch 42/100
+2026-01-09 18:32:17,326 | INFO | Fold 1, Epoch 43/100
+2026-01-09 18:34:51,689 | INFO | Fold 1, Epoch 44/100
+2026-01-09 18:37:27,398 | INFO | ✓ Fold 1: New best model! combined=0.9852
+2026-01-09 18:37:27,399 | INFO | Fold 1, Epoch 45/100
+2026-01-09 18:40:04,231 | INFO | ✓ Fold 1: New best model! combined=0.9859
+2026-01-09 18:40:04,232 | INFO | Fold 1, Epoch 46/100
+2026-01-09 18:42:38,052 | INFO | Fold 1, Epoch 47/100
+2026-01-09 18:45:10,010 | INFO | Fold 1, Epoch 48/100
+2026-01-09 18:47:46,816 | INFO | Fold 1, Epoch 49/100
+2026-01-09 18:50:24,183 | INFO | Fold 1, Epoch 50/100
+2026-01-09 18:53:00,185 | INFO | Fold 1, Epoch 51/100
+2026-01-09 18:55:34,892 | INFO | Fold 1, Epoch 52/100
+2026-01-09 18:58:10,639 | INFO | Fold 1, Epoch 53/100
+2026-01-09 19:00:48,231 | INFO | Fold 1, Epoch 54/100
+2026-01-09 19:03:24,005 | INFO | Fold 1, Epoch 55/100
+2026-01-09 19:06:01,025 | INFO | ✓ Fold 1: New best model! combined=0.9871
+2026-01-09 19:06:01,026 | INFO | Fold 1, Epoch 56/100
+2026-01-09 19:08:39,658 | INFO | Fold 1, Epoch 57/100
+2026-01-09 19:11:14,601 | INFO | Fold 1, Epoch 58/100
+2026-01-09 19:13:47,589 | INFO | Fold 1, Epoch 59/100
+2026-01-09 19:16:24,103 | INFO | Fold 1, Epoch 60/100
+2026-01-09 19:19:02,279 | INFO | ✓ Fold 1: New best model! combined=0.9893
+2026-01-09 19:19:02,279 | INFO | Fold 1, Epoch 61/100
+2026-01-09 19:21:38,002 | INFO | Fold 1, Epoch 62/100
+2026-01-09 19:24:13,664 | INFO | Fold 1, Epoch 63/100
+2026-01-09 19:26:49,730 | INFO | Fold 1, Epoch 64/100
+2026-01-09 19:29:25,285 | INFO | Fold 1, Epoch 65/100
+2026-01-09 19:31:59,476 | INFO | Fold 1, Epoch 66/100
+2026-01-09 19:34:35,039 | INFO | Fold 1, Epoch 67/100
+2026-01-09 19:37:14,353 | INFO | Fold 1, Epoch 68/100
+2026-01-09 19:39:49,106 | INFO | Fold 1, Epoch 69/100
+2026-01-09 19:42:24,486 | INFO | Fold 1, Epoch 70/100
+2026-01-09 19:45:02,702 | INFO | Fold 1, Epoch 71/100
+2026-01-09 19:47:39,708 | INFO | Fold 1, Epoch 72/100
+2026-01-09 19:50:15,877 | INFO | Fold 1, Epoch 73/100
+2026-01-09 19:52:48,388 | INFO | Fold 1, Epoch 74/100
+2026-01-09 19:55:24,831 | INFO | Fold 1, Epoch 75/100
+2026-01-09 19:57:58,389 | INFO | Fold 1, Epoch 76/100
+2026-01-09 20:00:33,720 | INFO | Fold 1, Epoch 77/100
+2026-01-09 20:03:11,181 | INFO | ✓ Fold 1: New best model! combined=0.9897
+2026-01-09 20:03:11,182 | INFO | Fold 1, Epoch 78/100
+2026-01-09 20:05:49,492 | INFO | Fold 1, Epoch 79/100
+2026-01-09 20:08:26,889 | INFO | Fold 1, Epoch 80/100
+2026-01-09 20:11:07,718 | INFO | Fold 1, Epoch 81/100
+2026-01-09 20:13:47,323 | INFO | Fold 1, Epoch 82/100
+2026-01-09 20:16:27,229 | INFO | Fold 1, Epoch 83/100
+2026-01-09 20:19:08,720 | INFO | ✓ Fold 1: New best model! combined=0.9903
+2026-01-09 20:19:08,720 | INFO | Fold 1, Epoch 84/100
+2026-01-09 20:21:44,440 | INFO | Fold 1, Epoch 85/100
+2026-01-09 20:24:23,543 | INFO | ✓ Fold 1: New best model! combined=0.9913
+2026-01-09 20:24:23,545 | INFO | Fold 1, Epoch 86/100
+2026-01-09 20:27:03,021 | INFO | Fold 1, Epoch 87/100
+2026-01-09 20:29:43,155 | INFO | Fold 1, Epoch 88/100
+2026-01-09 20:32:20,107 | INFO | Fold 1, Epoch 89/100
+2026-01-09 20:34:57,432 | INFO | Fold 1, Epoch 90/100
+2026-01-09 20:37:32,187 | INFO | Fold 1, Epoch 91/100
+2026-01-09 20:40:03,929 | INFO | Fold 1, Epoch 92/100
+2026-01-09 20:42:42,459 | INFO | Fold 1, Epoch 93/100
+2026-01-09 20:45:23,173 | INFO | Fold 1, Epoch 94/100
+2026-01-09 20:48:04,728 | INFO | Fold 1, Epoch 95/100
+2026-01-09 20:50:39,189 | INFO | Fold 1, Epoch 96/100
+2026-01-09 20:53:13,517 | INFO | Fold 1, Epoch 97/100
+2026-01-09 20:55:48,912 | INFO | Fold 1, Epoch 98/100
+2026-01-09 20:58:25,095 | INFO | Fold 1, Epoch 99/100
+2026-01-09 21:01:02,210 | INFO | Fold 1, Epoch 100/100
+2026-01-09 21:03:40,337 | INFO | Loading best model for fold 1...
+2026-01-09 21:03:41,451 | INFO | Fold 1: Final evaluation on test set
+2026-01-09 21:04:39,557 | INFO | ✓ Saved test predictions to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_1/test_predictions.npz
+2026-01-09 21:04:39,569 | INFO | ✓ Saved test metadata to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_1/test_metadata.jsonl
+2026-01-09 21:04:39,569 | INFO | Fold 1 test results: total_loss:0.7353 | cls_loss:0.0483 | reg_loss:0.6870 | cls_accuracy:0.9891 | cls_precision:0.9986 | cls_recall:0.9794 | cls_f1:0.9889 | cls_auc:0.9997 | reg_mae:1.0908 | reg_rmse:1.3980 | reg_mse:1.9545 | combined:0.9843
+2026-01-09 21:04:39,573 | INFO | ✓ Fold 1 complete!
+2026-01-09 21:04:39,577 | INFO | 
+================================================================================
+2026-01-09 21:04:39,577 | INFO | FOLD 2/5
+2026-01-09 21:04:39,577 | INFO | ================================================================================
+
+2026-01-09 21:04:39,577 | INFO | Device: cuda
+2026-01-09 21:04:39,578 | INFO | Building datasets for fold 2...
+2026-01-09 21:04:40,206 | INFO | Fold 2 - Train: 4141, Val: 1011, Test: 1472
+2026-01-09 21:04:40,690 | INFO | Training fold 2 for 100 epochs...
+2026-01-09 21:04:40,690 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-09 21:04:40,690 | INFO | Fold 2, Epoch 1/100
+2026-01-09 21:07:15,307 | INFO | ✓ Fold 2: New best model! combined=0.8124
+2026-01-09 21:07:15,308 | INFO | Fold 2, Epoch 2/100
+2026-01-09 21:09:46,912 | INFO | ✓ Fold 2: New best model! combined=0.8735
+2026-01-09 21:09:46,913 | INFO | Fold 2, Epoch 3/100
+2026-01-09 21:12:21,253 | INFO | ✓ Fold 2: New best model! combined=0.9270
+2026-01-09 21:12:21,254 | INFO | Fold 2, Epoch 4/100
+2026-01-09 21:14:55,471 | INFO | ✓ Fold 2: New best model! combined=0.9476
+2026-01-09 21:14:55,471 | INFO | Fold 2, Epoch 5/100
+2026-01-09 21:17:25,852 | INFO | Fold 2, Epoch 6/100
+2026-01-09 21:19:57,288 | INFO | ✓ Fold 2: New best model! combined=0.9673
+2026-01-09 21:19:57,290 | INFO | Fold 2, Epoch 7/100
+2026-01-09 21:22:28,176 | INFO | ✓ Fold 2: New best model! combined=0.9715
+2026-01-09 21:22:28,178 | INFO | Fold 2, Epoch 8/100
+2026-01-09 21:24:58,691 | INFO | Fold 2, Epoch 9/100
+2026-01-09 21:27:31,872 | INFO | Fold 2, Epoch 10/100
+2026-01-09 21:30:03,846 | INFO | ✓ Fold 2: New best model! combined=0.9796
+2026-01-09 21:30:03,848 | INFO | Fold 2, Epoch 11/100
+2026-01-09 21:32:35,893 | INFO | Fold 2, Epoch 12/100
+2026-01-09 21:35:05,688 | INFO | ✓ Fold 2: New best model! combined=0.9846
+2026-01-09 21:35:05,689 | INFO | Fold 2, Epoch 13/100
+2026-01-09 21:37:38,016 | INFO | Fold 2, Epoch 14/100
+2026-01-09 21:40:07,433 | INFO | Fold 2, Epoch 15/100
+2026-01-09 21:42:40,037 | INFO | Fold 2, Epoch 16/100
+2026-01-09 21:45:14,427 | INFO | ✓ Fold 2: New best model! combined=0.9874
+2026-01-09 21:45:14,428 | INFO | Fold 2, Epoch 17/100
+2026-01-09 21:47:46,247 | INFO | ✓ Fold 2: New best model! combined=0.9876
+2026-01-09 21:47:46,248 | INFO | Fold 2, Epoch 18/100
+2026-01-09 21:50:14,433 | INFO | Fold 2, Epoch 19/100
+2026-01-09 21:52:44,599 | INFO | Fold 2, Epoch 20/100
+2026-01-09 21:55:15,316 | INFO | Fold 2, Epoch 21/100
+2026-01-09 21:57:44,527 | INFO | Fold 2, Epoch 22/100
+2026-01-09 22:00:14,600 | INFO | Fold 2, Epoch 23/100
+2026-01-09 22:02:46,328 | INFO | Fold 2, Epoch 24/100
+2026-01-09 22:05:17,380 | INFO | Fold 2, Epoch 25/100
+2026-01-09 22:07:46,716 | INFO | Fold 2, Epoch 26/100
+2026-01-09 22:10:20,229 | INFO | Fold 2, Epoch 27/100
+2026-01-09 22:12:51,642 | INFO | Fold 2, Epoch 28/100
+2026-01-09 22:15:22,437 | INFO | Fold 2, Epoch 29/100
+2026-01-09 22:17:55,917 | INFO | Fold 2, Epoch 30/100
+2026-01-09 22:20:27,486 | INFO | Fold 2, Epoch 31/100
+2026-01-09 22:22:57,375 | INFO | Fold 2, Epoch 32/100
+2026-01-09 22:25:28,392 | INFO | Fold 2, Epoch 33/100
+2026-01-09 22:28:01,101 | INFO | Fold 2, Epoch 34/100
+2026-01-09 22:30:32,453 | INFO | Fold 2, Epoch 35/100
+2026-01-09 22:33:03,449 | INFO | Fold 2, Epoch 36/100
+2026-01-09 22:35:36,576 | INFO | Fold 2, Epoch 37/100
+2026-01-09 22:38:05,208 | INFO | Fold 2, Epoch 38/100
+2026-01-09 22:40:37,803 | INFO | Fold 2, Epoch 39/100
+2026-01-09 22:43:09,664 | INFO | Fold 2, Epoch 40/100
+2026-01-09 22:45:38,093 | INFO | Fold 2, Epoch 41/100
+2026-01-09 22:48:12,840 | INFO | ✓ Fold 2: New best model! combined=0.9885
+2026-01-09 22:48:12,840 | INFO | Fold 2, Epoch 42/100
+2026-01-09 22:50:43,880 | INFO | Fold 2, Epoch 43/100
+2026-01-09 22:53:13,793 | INFO | Fold 2, Epoch 44/100
+2026-01-09 22:55:43,697 | INFO | Fold 2, Epoch 45/100
+2026-01-09 22:58:12,433 | INFO | Fold 2, Epoch 46/100
+2026-01-09 23:00:42,672 | INFO | Fold 2, Epoch 47/100
+2026-01-09 23:03:13,816 | INFO | Fold 2, Epoch 48/100
+2026-01-09 23:05:43,932 | INFO | Fold 2, Epoch 49/100
+2026-01-09 23:08:13,255 | INFO | Fold 2, Epoch 50/100
+2026-01-09 23:10:46,888 | INFO | Fold 2, Epoch 51/100
+2026-01-09 23:13:18,816 | INFO | Fold 2, Epoch 52/100
+2026-01-09 23:15:53,778 | INFO | ✓ Fold 2: New best model! combined=0.9886
+2026-01-09 23:15:53,779 | INFO | Fold 2, Epoch 53/100
+2026-01-09 23:18:24,950 | INFO | Fold 2, Epoch 54/100
+2026-01-09 23:20:53,216 | INFO | Fold 2, Epoch 55/100
+2026-01-09 23:23:27,262 | INFO | Fold 2, Epoch 56/100
+2026-01-09 23:25:58,382 | INFO | Fold 2, Epoch 57/100
+2026-01-09 23:28:29,901 | INFO | Fold 2, Epoch 58/100
+2026-01-09 23:31:00,476 | INFO | Fold 2, Epoch 59/100
+2026-01-09 23:33:28,694 | INFO | Fold 2, Epoch 60/100
+2026-01-09 23:36:01,210 | INFO | Fold 2, Epoch 61/100
+2026-01-09 23:38:31,632 | INFO | Fold 2, Epoch 62/100
+2026-01-09 23:41:03,830 | INFO | Fold 2, Epoch 63/100
+2026-01-09 23:43:34,765 | INFO | Fold 2, Epoch 64/100
+2026-01-09 23:46:04,525 | INFO | Fold 2, Epoch 65/100
+2026-01-09 23:48:35,086 | INFO | Fold 2, Epoch 66/100
+2026-01-09 23:51:07,494 | INFO | Fold 2, Epoch 67/100
+2026-01-09 23:53:39,339 | INFO | Fold 2, Epoch 68/100
+2026-01-09 23:56:09,384 | INFO | Fold 2, Epoch 69/100
+2026-01-09 23:58:42,676 | INFO | Fold 2, Epoch 70/100
+2026-01-10 00:01:15,611 | INFO | Fold 2, Epoch 71/100
+2026-01-10 00:03:48,926 | INFO | Fold 2, Epoch 72/100
+2026-01-10 00:06:20,640 | INFO | Fold 2, Epoch 73/100
+2026-01-10 00:08:53,284 | INFO | ✓ Fold 2: New best model! combined=0.9898
+2026-01-10 00:08:53,285 | INFO | Fold 2, Epoch 74/100
+2026-01-10 00:11:23,203 | INFO | Fold 2, Epoch 75/100
+2026-01-10 00:13:57,878 | INFO | Fold 2, Epoch 76/100
+2026-01-10 00:16:31,138 | INFO | Fold 2, Epoch 77/100
+2026-01-10 00:18:57,868 | INFO | Fold 2, Epoch 78/100
+2026-01-10 00:21:29,124 | INFO | Fold 2, Epoch 79/100
+2026-01-10 00:24:00,090 | INFO | Fold 2, Epoch 80/100
+2026-01-10 00:26:34,373 | INFO | Fold 2, Epoch 81/100
+2026-01-10 00:29:05,929 | INFO | Fold 2, Epoch 82/100
+2026-01-10 00:31:37,329 | INFO | Fold 2, Epoch 83/100
+2026-01-10 00:34:07,945 | INFO | ✓ Fold 2: New best model! combined=0.9903
+2026-01-10 00:34:07,946 | INFO | Fold 2, Epoch 84/100
+2026-01-10 00:36:40,055 | INFO | Fold 2, Epoch 85/100
+2026-01-10 00:39:11,903 | INFO | Fold 2, Epoch 86/100
+2026-01-10 00:41:40,553 | INFO | Fold 2, Epoch 87/100
+2026-01-10 00:44:09,775 | INFO | Fold 2, Epoch 88/100
+2026-01-10 00:46:38,683 | INFO | Fold 2, Epoch 89/100
+2026-01-10 00:49:08,369 | INFO | Fold 2, Epoch 90/100
+2026-01-10 00:51:41,246 | INFO | Fold 2, Epoch 91/100
+2026-01-10 00:54:13,245 | INFO | Fold 2, Epoch 92/100
+2026-01-10 00:56:44,697 | INFO | Fold 2, Epoch 93/100
+2026-01-10 00:59:15,080 | INFO | Fold 2, Epoch 94/100
+2026-01-10 01:01:46,227 | INFO | Fold 2, Epoch 95/100
+2026-01-10 01:04:16,452 | INFO | Fold 2, Epoch 96/100
+2026-01-10 01:06:49,126 | INFO | ✓ Fold 2: New best model! combined=0.9904
+2026-01-10 01:06:49,126 | INFO | Fold 2, Epoch 97/100
+2026-01-10 01:09:18,983 | INFO | Fold 2, Epoch 98/100
+2026-01-10 01:11:48,955 | INFO | Fold 2, Epoch 99/100
+2026-01-10 01:14:22,107 | INFO | Fold 2, Epoch 100/100
+2026-01-10 01:16:53,540 | INFO | Loading best model for fold 2...
+2026-01-10 01:16:54,712 | INFO | Fold 2: Final evaluation on test set
+2026-01-10 01:17:52,767 | INFO | ✓ Saved test predictions to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_2/test_predictions.npz
+2026-01-10 01:17:52,780 | INFO | ✓ Saved test metadata to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_2/test_metadata.jsonl
+2026-01-10 01:17:52,780 | INFO | Fold 2 test results: total_loss:0.6841 | cls_loss:0.0243 | reg_loss:0.6598 | cls_accuracy:0.9925 | cls_precision:1.0000 | cls_recall:0.9849 | cls_f1:0.9924 | cls_auc:0.9998 | reg_mae:1.0509 | reg_rmse:1.3517 | reg_mse:1.8272 | combined:0.9867
+2026-01-10 01:17:52,783 | INFO | ✓ Fold 2 complete!
+2026-01-10 01:17:52,789 | INFO | 
+================================================================================
+2026-01-10 01:17:52,789 | INFO | FOLD 3/5
+2026-01-10 01:17:52,789 | INFO | ================================================================================
+
+2026-01-10 01:17:52,789 | INFO | Device: cuda
+2026-01-10 01:17:52,790 | INFO | Building datasets for fold 3...
+2026-01-10 01:17:53,418 | INFO | Fold 3 - Train: 4141, Val: 1011, Test: 1472
+2026-01-10 01:17:53,860 | INFO | Training fold 3 for 100 epochs...
+2026-01-10 01:17:53,860 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-10 01:17:53,861 | INFO | Fold 3, Epoch 1/100
+2026-01-10 01:20:35,279 | INFO | ✓ Fold 3: New best model! combined=0.8280
+2026-01-10 01:20:35,280 | INFO | Fold 3, Epoch 2/100
+2026-01-10 01:23:13,465 | INFO | ✓ Fold 3: New best model! combined=0.8850
+2026-01-10 01:23:13,465 | INFO | Fold 3, Epoch 3/100
+2026-01-10 01:25:45,760 | INFO | ✓ Fold 3: New best model! combined=0.9604
+2026-01-10 01:25:45,761 | INFO | Fold 3, Epoch 4/100
+2026-01-10 01:28:26,483 | INFO | Fold 3, Epoch 5/100
+2026-01-10 01:31:07,586 | INFO | Fold 3, Epoch 6/100
+2026-01-10 01:33:43,051 | INFO | ✓ Fold 3: New best model! combined=0.9831
+2026-01-10 01:33:43,051 | INFO | Fold 3, Epoch 7/100
+2026-01-10 01:36:14,205 | INFO | Fold 3, Epoch 8/100
+2026-01-10 01:38:47,686 | INFO | Fold 3, Epoch 9/100
+2026-01-10 01:41:24,230 | INFO | Fold 3, Epoch 10/100
+2026-01-10 01:44:01,491 | INFO | ✓ Fold 3: New best model! combined=0.9855
+2026-01-10 01:44:01,492 | INFO | Fold 3, Epoch 11/100
+2026-01-10 01:46:36,937 | INFO | Fold 3, Epoch 12/100
+2026-01-10 01:49:14,326 | INFO | Fold 3, Epoch 13/100
+2026-01-10 01:51:49,042 | INFO | Fold 3, Epoch 14/100
+2026-01-10 01:54:19,260 | INFO | Fold 3, Epoch 15/100
+2026-01-10 01:56:54,727 | INFO | Fold 3, Epoch 16/100
+2026-01-10 01:59:27,694 | INFO | Fold 3, Epoch 17/100
+2026-01-10 02:01:59,501 | INFO | Fold 3, Epoch 18/100
+2026-01-10 02:04:39,576 | INFO | Fold 3, Epoch 19/100
+2026-01-10 02:07:20,404 | INFO | ✓ Fold 3: New best model! combined=0.9862
+2026-01-10 02:07:20,405 | INFO | Fold 3, Epoch 20/100
+2026-01-10 02:10:00,779 | INFO | ✓ Fold 3: New best model! combined=0.9868
+2026-01-10 02:10:00,779 | INFO | Fold 3, Epoch 21/100
+2026-01-10 02:12:35,389 | INFO | ✓ Fold 3: New best model! combined=0.9874
+2026-01-10 02:12:35,389 | INFO | Fold 3, Epoch 22/100
+2026-01-10 02:15:13,441 | INFO | Fold 3, Epoch 23/100
+2026-01-10 02:17:46,545 | INFO | Fold 3, Epoch 24/100
+2026-01-10 02:20:24,426 | INFO | Fold 3, Epoch 25/100
+2026-01-10 02:23:01,060 | INFO | ✓ Fold 3: New best model! combined=0.9886
+2026-01-10 02:23:01,061 | INFO | Fold 3, Epoch 26/100
+2026-01-10 02:25:35,332 | INFO | Fold 3, Epoch 27/100
+2026-01-10 02:28:13,238 | INFO | Fold 3, Epoch 28/100
+2026-01-10 02:30:50,879 | INFO | Fold 3, Epoch 29/100
+2026-01-10 02:33:27,499 | INFO | ✓ Fold 3: New best model! combined=0.9889
+2026-01-10 02:33:27,501 | INFO | Fold 3, Epoch 30/100
+2026-01-10 02:36:01,247 | INFO | Fold 3, Epoch 31/100
+2026-01-10 02:38:34,867 | INFO | Fold 3, Epoch 32/100
+2026-01-10 02:41:07,398 | INFO | Fold 3, Epoch 33/100
+2026-01-10 02:43:42,610 | INFO | Fold 3, Epoch 34/100
+2026-01-10 02:46:19,336 | INFO | Fold 3, Epoch 35/100
+2026-01-10 02:48:58,995 | INFO | ✓ Fold 3: New best model! combined=0.9902
+2026-01-10 02:48:58,996 | INFO | Fold 3, Epoch 36/100
+2026-01-10 02:51:29,564 | INFO | Fold 3, Epoch 37/100
+2026-01-10 02:54:02,819 | INFO | Fold 3, Epoch 38/100
+2026-01-10 02:56:38,573 | INFO | Fold 3, Epoch 39/100
+2026-01-10 02:59:13,607 | INFO | Fold 3, Epoch 40/100
+2026-01-10 03:01:47,487 | INFO | Fold 3, Epoch 41/100
+2026-01-10 03:04:22,618 | INFO | ✓ Fold 3: New best model! combined=0.9907
+2026-01-10 03:04:22,618 | INFO | Fold 3, Epoch 42/100
+2026-01-10 03:06:57,869 | INFO | Fold 3, Epoch 43/100
+2026-01-10 03:09:34,541 | INFO | Fold 3, Epoch 44/100
+2026-01-10 03:12:07,838 | INFO | Fold 3, Epoch 45/100
+2026-01-10 03:14:44,432 | INFO | ✓ Fold 3: New best model! combined=0.9913
+2026-01-10 03:14:44,434 | INFO | Fold 3, Epoch 46/100
+2026-01-10 03:17:21,191 | INFO | Fold 3, Epoch 47/100
+2026-01-10 03:19:55,396 | INFO | Fold 3, Epoch 48/100
+2026-01-10 03:22:29,785 | INFO | Fold 3, Epoch 49/100
+2026-01-10 03:25:09,045 | INFO | Fold 3, Epoch 50/100
+2026-01-10 03:27:40,696 | INFO | Fold 3, Epoch 51/100
+2026-01-10 03:30:15,928 | INFO | Fold 3, Epoch 52/100
+2026-01-10 03:32:50,180 | INFO | Fold 3, Epoch 53/100
+2026-01-10 03:35:22,183 | INFO | Fold 3, Epoch 54/100
+2026-01-10 03:37:55,387 | INFO | Fold 3, Epoch 55/100
+2026-01-10 03:40:32,769 | INFO | Fold 3, Epoch 56/100
+2026-01-10 03:43:06,513 | INFO | Fold 3, Epoch 57/100
+2026-01-10 03:45:39,597 | INFO | Fold 3, Epoch 58/100
+2026-01-10 03:48:14,228 | INFO | Fold 3, Epoch 59/100
+2026-01-10 03:50:49,289 | INFO | Fold 3, Epoch 60/100
+2026-01-10 03:53:23,794 | INFO | Fold 3, Epoch 61/100
+2026-01-10 03:55:53,322 | INFO | Fold 3, Epoch 62/100
+2026-01-10 03:58:25,905 | INFO | Fold 3, Epoch 63/100
+2026-01-10 04:01:01,728 | INFO | Fold 3, Epoch 64/100
+2026-01-10 04:03:36,661 | INFO | Fold 3, Epoch 65/100
+2026-01-10 04:06:15,373 | INFO | Fold 3, Epoch 66/100
+2026-01-10 04:08:51,377 | INFO | Fold 3, Epoch 67/100
+2026-01-10 04:11:22,715 | INFO | Fold 3, Epoch 68/100
+2026-01-10 04:13:59,696 | INFO | Fold 3, Epoch 69/100
+2026-01-10 04:16:32,672 | INFO | Fold 3, Epoch 70/100
+2026-01-10 04:19:08,300 | INFO | Fold 3, Epoch 71/100
+2026-01-10 04:21:42,468 | INFO | Fold 3, Epoch 72/100
+2026-01-10 04:24:12,495 | INFO | Fold 3, Epoch 73/100
+2026-01-10 04:26:46,579 | INFO | Fold 3, Epoch 74/100
+2026-01-10 04:29:19,648 | INFO | Fold 3, Epoch 75/100
+2026-01-10 04:31:49,490 | INFO | Fold 3, Epoch 76/100
+2026-01-10 04:34:25,270 | INFO | Fold 3, Epoch 77/100
+2026-01-10 04:37:03,040 | INFO | Fold 3, Epoch 78/100
+2026-01-10 04:39:37,560 | INFO | Fold 3, Epoch 79/100
+2026-01-10 04:42:11,160 | INFO | Fold 3, Epoch 80/100
+2026-01-10 04:44:45,469 | INFO | Fold 3, Epoch 81/100
+2026-01-10 04:47:19,822 | INFO | Fold 3, Epoch 82/100
+2026-01-10 04:49:52,256 | INFO | Fold 3, Epoch 83/100
+2026-01-10 04:52:26,457 | INFO | Fold 3, Epoch 84/100
+2026-01-10 04:54:57,806 | INFO | Fold 3, Epoch 85/100
+2026-01-10 04:57:34,367 | INFO | ✓ Fold 3: New best model! combined=0.9915
+2026-01-10 04:57:34,368 | INFO | Fold 3, Epoch 86/100
+2026-01-10 05:00:07,190 | INFO | Fold 3, Epoch 87/100
+2026-01-10 05:02:41,898 | INFO | Fold 3, Epoch 88/100
+2026-01-10 05:05:14,483 | INFO | Fold 3, Epoch 89/100
+2026-01-10 05:07:52,634 | INFO | Fold 3, Epoch 90/100
+2026-01-10 05:10:32,431 | INFO | Fold 3, Epoch 91/100
+2026-01-10 05:13:10,021 | INFO | Fold 3, Epoch 92/100
+2026-01-10 05:15:45,757 | INFO | Fold 3, Epoch 93/100
+2026-01-10 05:18:24,236 | INFO | Fold 3, Epoch 94/100
+2026-01-10 05:21:02,673 | INFO | Fold 3, Epoch 95/100
+2026-01-10 05:23:39,241 | INFO | Fold 3, Epoch 96/100
+2026-01-10 05:26:17,463 | INFO | Fold 3, Epoch 97/100
+2026-01-10 05:28:51,308 | INFO | Fold 3, Epoch 98/100
+2026-01-10 05:31:28,074 | INFO | Fold 3, Epoch 99/100
+2026-01-10 05:34:00,850 | INFO | Fold 3, Epoch 100/100
+2026-01-10 05:36:37,007 | INFO | Loading best model for fold 3...
+2026-01-10 05:36:38,210 | INFO | Fold 3: Final evaluation on test set
+2026-01-10 05:37:38,747 | INFO | ✓ Saved test predictions to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_3/test_predictions.npz
+2026-01-10 05:37:38,760 | INFO | ✓ Saved test metadata to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_3/test_metadata.jsonl
+2026-01-10 05:37:38,760 | INFO | Fold 3 test results: total_loss:0.6684 | cls_loss:0.0225 | reg_loss:0.6459 | cls_accuracy:0.9932 | cls_precision:1.0000 | cls_recall:0.9863 | cls_f1:0.9931 | cls_auc:1.0000 | reg_mae:1.0404 | reg_rmse:1.3516 | reg_mse:1.8269 | combined:0.9872
+2026-01-10 05:37:38,764 | INFO | ✓ Fold 3 complete!
+2026-01-10 05:37:38,769 | INFO | 
+================================================================================
+2026-01-10 05:37:38,770 | INFO | FOLD 4/5
+2026-01-10 05:37:38,770 | INFO | ================================================================================
+
+2026-01-10 05:37:38,770 | INFO | Device: cuda
+2026-01-10 05:37:38,770 | INFO | Building datasets for fold 4...
+2026-01-10 05:37:39,384 | INFO | Fold 4 - Train: 4139, Val: 1013, Test: 1472
+2026-01-10 05:37:39,817 | INFO | Training fold 4 for 100 epochs...
+2026-01-10 05:37:39,817 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-10 05:37:39,817 | INFO | Fold 4, Epoch 1/100
+2026-01-10 05:40:14,974 | INFO | ✓ Fold 4: New best model! combined=0.7994
+2026-01-10 05:40:14,976 | INFO | Fold 4, Epoch 2/100
+2026-01-10 05:42:48,334 | INFO | ✓ Fold 4: New best model! combined=0.8669
+2026-01-10 05:42:48,335 | INFO | Fold 4, Epoch 3/100
+2026-01-10 05:45:24,197 | INFO | ✓ Fold 4: New best model! combined=0.9665
+2026-01-10 05:45:24,198 | INFO | Fold 4, Epoch 4/100
+2026-01-10 05:48:00,187 | INFO | ✓ Fold 4: New best model! combined=0.9677
+2026-01-10 05:48:00,188 | INFO | Fold 4, Epoch 5/100
+2026-01-10 05:50:36,797 | INFO | Fold 4, Epoch 6/100
+2026-01-10 05:53:11,466 | INFO | ✓ Fold 4: New best model! combined=0.9791
+2026-01-10 05:53:11,466 | INFO | Fold 4, Epoch 7/100
+2026-01-10 05:55:46,880 | INFO | ✓ Fold 4: New best model! combined=0.9845
+2026-01-10 05:55:46,881 | INFO | Fold 4, Epoch 8/100
+2026-01-10 05:58:20,436 | INFO | ✓ Fold 4: New best model! combined=0.9849
+2026-01-10 05:58:20,436 | INFO | Fold 4, Epoch 9/100
+2026-01-10 06:00:52,245 | INFO | Fold 4, Epoch 10/100
+2026-01-10 06:03:25,880 | INFO | Fold 4, Epoch 11/100
+2026-01-10 06:05:57,371 | INFO | Fold 4, Epoch 12/100
+2026-01-10 06:08:33,114 | INFO | Fold 4, Epoch 13/100
+2026-01-10 06:11:07,494 | INFO | Fold 4, Epoch 14/100
+2026-01-10 06:13:41,287 | INFO | Fold 4, Epoch 15/100
+2026-01-10 06:16:14,605 | INFO | Fold 4, Epoch 16/100
+2026-01-10 06:18:47,356 | INFO | Fold 4, Epoch 17/100
+2026-01-10 06:21:18,504 | INFO | Fold 4, Epoch 18/100
+2026-01-10 06:23:48,713 | INFO | ✓ Fold 4: New best model! combined=0.9850
+2026-01-10 06:23:48,714 | INFO | Fold 4, Epoch 19/100
+2026-01-10 06:26:20,072 | INFO | ✓ Fold 4: New best model! combined=0.9867
+2026-01-10 06:26:20,073 | INFO | Fold 4, Epoch 20/100
+2026-01-10 06:28:53,642 | INFO | Fold 4, Epoch 21/100
+2026-01-10 06:31:30,410 | INFO | ✓ Fold 4: New best model! combined=0.9875
+2026-01-10 06:31:30,410 | INFO | Fold 4, Epoch 22/100
+2026-01-10 06:34:05,181 | INFO | ✓ Fold 4: New best model! combined=0.9879
+2026-01-10 06:34:05,182 | INFO | Fold 4, Epoch 23/100
+2026-01-10 06:36:39,670 | INFO | Fold 4, Epoch 24/100
+2026-01-10 06:39:11,191 | INFO | Fold 4, Epoch 25/100
+2026-01-10 06:41:45,165 | INFO | Fold 4, Epoch 26/100
+2026-01-10 06:44:18,732 | INFO | Fold 4, Epoch 27/100
+2026-01-10 06:46:49,625 | INFO | Fold 4, Epoch 28/100
+2026-01-10 06:49:21,763 | INFO | Fold 4, Epoch 29/100
+2026-01-10 06:51:52,718 | INFO | Fold 4, Epoch 30/100
+2026-01-10 06:54:21,471 | INFO | Fold 4, Epoch 31/100
+2026-01-10 06:56:50,604 | INFO | Fold 4, Epoch 32/100
+2026-01-10 06:59:23,528 | INFO | Fold 4, Epoch 33/100
+2026-01-10 07:01:53,501 | INFO | Fold 4, Epoch 34/100
+2026-01-10 07:04:26,634 | INFO | Fold 4, Epoch 35/100
+2026-01-10 07:06:57,995 | INFO | Fold 4, Epoch 36/100
+2026-01-10 07:09:27,430 | INFO | Fold 4, Epoch 37/100
+2026-01-10 07:12:02,750 | INFO | Fold 4, Epoch 38/100
+2026-01-10 07:14:31,983 | INFO | ✓ Fold 4: New best model! combined=0.9882
+2026-01-10 07:14:31,984 | INFO | Fold 4, Epoch 39/100
+2026-01-10 07:17:05,648 | INFO | Fold 4, Epoch 40/100
+2026-01-10 07:19:37,744 | INFO | Fold 4, Epoch 41/100
+2026-01-10 07:22:09,054 | INFO | Fold 4, Epoch 42/100
+2026-01-10 07:24:37,903 | INFO | Fold 4, Epoch 43/100
+2026-01-10 07:27:09,441 | INFO | Fold 4, Epoch 44/100
+2026-01-10 07:29:43,171 | INFO | ✓ Fold 4: New best model! combined=0.9884
+2026-01-10 07:29:43,171 | INFO | Fold 4, Epoch 45/100
+2026-01-10 07:32:14,890 | INFO | Fold 4, Epoch 46/100
+2026-01-10 07:34:48,741 | INFO | Fold 4, Epoch 47/100
+2026-01-10 07:37:24,477 | INFO | Fold 4, Epoch 48/100
+2026-01-10 07:39:59,639 | INFO | Fold 4, Epoch 49/100
+2026-01-10 07:42:31,427 | INFO | Fold 4, Epoch 50/100
+2026-01-10 07:45:05,485 | INFO | Fold 4, Epoch 51/100
+2026-01-10 07:47:33,218 | INFO | Fold 4, Epoch 52/100
+2026-01-10 07:50:04,594 | INFO | Fold 4, Epoch 53/100
+2026-01-10 07:52:37,711 | INFO | Fold 4, Epoch 54/100
+2026-01-10 07:55:09,388 | INFO | Fold 4, Epoch 55/100
+2026-01-10 07:57:40,685 | INFO | Fold 4, Epoch 56/100
+2026-01-10 08:00:11,732 | INFO | Fold 4, Epoch 57/100
+2026-01-10 08:02:46,349 | INFO | Fold 4, Epoch 58/100
+2026-01-10 08:05:17,233 | INFO | Fold 4, Epoch 59/100
+2026-01-10 08:07:48,211 | INFO | Fold 4, Epoch 60/100
+2026-01-10 08:10:19,331 | INFO | Fold 4, Epoch 61/100
+2026-01-10 08:12:50,334 | INFO | Fold 4, Epoch 62/100
+2026-01-10 08:15:21,053 | INFO | Fold 4, Epoch 63/100
+2026-01-10 08:17:55,398 | INFO | Fold 4, Epoch 64/100
+2026-01-10 08:20:31,106 | INFO | Fold 4, Epoch 65/100
+2026-01-10 08:23:03,688 | INFO | Fold 4, Epoch 66/100
+2026-01-10 08:25:35,180 | INFO | Fold 4, Epoch 67/100
+2026-01-10 08:28:06,227 | INFO | Fold 4, Epoch 68/100
+2026-01-10 08:30:39,956 | INFO | Fold 4, Epoch 69/100
+2026-01-10 08:33:11,522 | INFO | Fold 4, Epoch 70/100
+2026-01-10 08:35:44,152 | INFO | Fold 4, Epoch 71/100
+2026-01-10 08:38:18,626 | INFO | Fold 4, Epoch 72/100
+2026-01-10 08:40:55,504 | INFO | Fold 4, Epoch 73/100
+2026-01-10 08:43:26,676 | INFO | Fold 4, Epoch 74/100
+2026-01-10 08:45:58,230 | INFO | Fold 4, Epoch 75/100
+2026-01-10 08:48:29,655 | INFO | Fold 4, Epoch 76/100
+2026-01-10 08:51:05,210 | INFO | Fold 4, Epoch 77/100
+2026-01-10 08:53:36,876 | INFO | Fold 4, Epoch 78/100
+2026-01-10 08:56:08,024 | INFO | Fold 4, Epoch 79/100
+2026-01-10 08:58:38,062 | INFO | ✓ Fold 4: New best model! combined=0.9886
+2026-01-10 08:58:38,063 | INFO | Fold 4, Epoch 80/100
+2026-01-10 09:01:13,618 | INFO | ✓ Fold 4: New best model! combined=0.9891
+2026-01-10 09:01:13,619 | INFO | Fold 4, Epoch 81/100
+2026-01-10 09:03:41,961 | INFO | Fold 4, Epoch 82/100
+2026-01-10 09:06:14,244 | INFO | Fold 4, Epoch 83/100
+2026-01-10 09:08:48,411 | INFO | Fold 4, Epoch 84/100
+2026-01-10 09:11:19,193 | INFO | Fold 4, Epoch 85/100
+2026-01-10 09:13:51,764 | INFO | Fold 4, Epoch 86/100
+2026-01-10 09:16:21,859 | INFO | Fold 4, Epoch 87/100
+2026-01-10 09:18:52,571 | INFO | Fold 4, Epoch 88/100
+2026-01-10 09:21:25,754 | INFO | Fold 4, Epoch 89/100
+2026-01-10 09:23:55,137 | INFO | Fold 4, Epoch 90/100
+2026-01-10 09:26:25,804 | INFO | Fold 4, Epoch 91/100
+2026-01-10 09:28:59,113 | INFO | Fold 4, Epoch 92/100
+2026-01-10 09:31:31,387 | INFO | Fold 4, Epoch 93/100
+2026-01-10 09:34:01,335 | INFO | Fold 4, Epoch 94/100
+2026-01-10 09:36:35,165 | INFO | Fold 4, Epoch 95/100
+2026-01-10 09:39:07,294 | INFO | Fold 4, Epoch 96/100
+2026-01-10 09:41:42,283 | INFO | Fold 4, Epoch 97/100
+2026-01-10 09:44:15,472 | INFO | Fold 4, Epoch 98/100
+2026-01-10 09:46:47,587 | INFO | Fold 4, Epoch 99/100
+2026-01-10 09:49:21,613 | INFO | Fold 4, Epoch 100/100
+2026-01-10 09:51:51,546 | INFO | Loading best model for fold 4...
+2026-01-10 09:51:52,699 | INFO | Fold 4: Final evaluation on test set
+2026-01-10 09:52:52,837 | INFO | ✓ Saved test predictions to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_4/test_predictions.npz
+2026-01-10 09:52:52,851 | INFO | ✓ Saved test metadata to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_4/test_metadata.jsonl
+2026-01-10 09:52:52,851 | INFO | Fold 4 test results: total_loss:0.8508 | cls_loss:0.0185 | reg_loss:0.8323 | cls_accuracy:0.9946 | cls_precision:1.0000 | cls_recall:0.9890 | cls_f1:0.9945 | cls_auc:0.9999 | reg_mae:1.2517 | reg_rmse:1.5690 | reg_mse:2.4618 | combined:0.9863
+2026-01-10 09:52:52,855 | INFO | ✓ Fold 4 complete!
+2026-01-10 09:52:52,860 | INFO | 
+================================================================================
+2026-01-10 09:52:52,860 | INFO | FOLD 5/5
+2026-01-10 09:52:52,860 | INFO | ================================================================================
+
+2026-01-10 09:52:52,860 | INFO | Device: cuda
+2026-01-10 09:52:52,860 | INFO | Building datasets for fold 5...
+2026-01-10 09:52:53,495 | INFO | Fold 5 - Train: 4139, Val: 1013, Test: 1472
+2026-01-10 09:52:53,947 | INFO | Training fold 5 for 100 epochs...
+2026-01-10 09:52:53,947 | INFO | Primary metric: combined (0.6*F1 + 0.4*(1-MAE/48.0))
+2026-01-10 09:52:53,947 | INFO | Fold 5, Epoch 1/100
+2026-01-10 09:55:30,559 | INFO | ✓ Fold 5: New best model! combined=0.7780
+2026-01-10 09:55:30,561 | INFO | Fold 5, Epoch 2/100
+2026-01-10 09:58:06,562 | INFO | ✓ Fold 5: New best model! combined=0.8996
+2026-01-10 09:58:06,563 | INFO | Fold 5, Epoch 3/100
+2026-01-10 10:00:42,296 | INFO | ✓ Fold 5: New best model! combined=0.9463
+2026-01-10 10:00:42,296 | INFO | Fold 5, Epoch 4/100
+2026-01-10 10:03:17,776 | INFO | ✓ Fold 5: New best model! combined=0.9642
+2026-01-10 10:03:17,777 | INFO | Fold 5, Epoch 5/100
+2026-01-10 10:05:51,009 | INFO | ✓ Fold 5: New best model! combined=0.9694
+2026-01-10 10:05:51,010 | INFO | Fold 5, Epoch 6/100
+2026-01-10 10:08:27,970 | INFO | Fold 5, Epoch 7/100
+2026-01-10 10:11:00,606 | INFO | Fold 5, Epoch 8/100
+2026-01-10 10:13:37,494 | INFO | ✓ Fold 5: New best model! combined=0.9724
+2026-01-10 10:13:37,495 | INFO | Fold 5, Epoch 9/100
+2026-01-10 10:16:14,959 | INFO | ✓ Fold 5: New best model! combined=0.9861
+2026-01-10 10:16:14,959 | INFO | Fold 5, Epoch 10/100
+2026-01-10 10:18:49,893 | INFO | Fold 5, Epoch 11/100
+2026-01-10 10:21:23,767 | INFO | Fold 5, Epoch 12/100
+2026-01-10 10:23:57,456 | INFO | Fold 5, Epoch 13/100
+2026-01-10 10:26:32,239 | INFO | ✓ Fold 5: New best model! combined=0.9863
+2026-01-10 10:26:32,240 | INFO | Fold 5, Epoch 14/100
+2026-01-10 10:29:09,588 | INFO | Fold 5, Epoch 15/100
+2026-01-10 10:31:45,882 | INFO | Fold 5, Epoch 16/100
+2026-01-10 10:34:24,628 | INFO | Fold 5, Epoch 17/100
+2026-01-10 10:37:00,471 | INFO | ✓ Fold 5: New best model! combined=0.9885
+2026-01-10 10:37:00,473 | INFO | Fold 5, Epoch 18/100
+2026-01-10 10:39:37,665 | INFO | Fold 5, Epoch 19/100
+2026-01-10 10:42:10,229 | INFO | Fold 5, Epoch 20/100
+2026-01-10 10:44:47,794 | INFO | Fold 5, Epoch 21/100
+2026-01-10 10:47:22,035 | INFO | Fold 5, Epoch 22/100
+2026-01-10 10:49:57,621 | INFO | Fold 5, Epoch 23/100
+2026-01-10 10:52:32,751 | INFO | ✓ Fold 5: New best model! combined=0.9886
+2026-01-10 10:52:32,752 | INFO | Fold 5, Epoch 24/100
+2026-01-10 10:55:09,737 | INFO | ✓ Fold 5: New best model! combined=0.9887
+2026-01-10 10:55:09,737 | INFO | Fold 5, Epoch 25/100
+2026-01-10 10:57:45,557 | INFO | ✓ Fold 5: New best model! combined=0.9893
+2026-01-10 10:57:45,558 | INFO | Fold 5, Epoch 26/100
+2026-01-10 11:00:21,849 | INFO | ✓ Fold 5: New best model! combined=0.9899
+2026-01-10 11:00:21,850 | INFO | Fold 5, Epoch 27/100
+2026-01-10 11:02:55,132 | INFO | Fold 5, Epoch 28/100
+2026-01-10 11:05:28,877 | INFO | Fold 5, Epoch 29/100
+2026-01-10 11:07:59,962 | INFO | Fold 5, Epoch 30/100
+2026-01-10 11:10:33,399 | INFO | Fold 5, Epoch 31/100
+2026-01-10 11:13:08,134 | INFO | Fold 5, Epoch 32/100
+2026-01-10 11:15:41,026 | INFO | Fold 5, Epoch 33/100
+2026-01-10 11:18:18,938 | INFO | ✓ Fold 5: New best model! combined=0.9900
+2026-01-10 11:18:18,939 | INFO | Fold 5, Epoch 34/100
+2026-01-10 11:20:51,463 | INFO | Fold 5, Epoch 35/100
+2026-01-10 11:23:26,947 | INFO | ✓ Fold 5: New best model! combined=0.9901
+2026-01-10 11:23:26,947 | INFO | Fold 5, Epoch 36/100
+2026-01-10 11:26:02,438 | INFO | Fold 5, Epoch 37/100
+2026-01-10 11:28:36,617 | INFO | Fold 5, Epoch 38/100
+2026-01-10 11:31:10,751 | INFO | Fold 5, Epoch 39/100
+2026-01-10 11:33:44,724 | INFO | Fold 5, Epoch 40/100
+2026-01-10 11:36:15,480 | INFO | Fold 5, Epoch 41/100
+2026-01-10 11:38:51,493 | INFO | Fold 5, Epoch 42/100
+2026-01-10 11:41:24,565 | INFO | Fold 5, Epoch 43/100
+2026-01-10 11:43:58,220 | INFO | Fold 5, Epoch 44/100
+2026-01-10 11:46:35,600 | INFO | Fold 5, Epoch 45/100
+2026-01-10 11:49:06,181 | INFO | Fold 5, Epoch 46/100
+2026-01-10 11:51:44,532 | INFO | Fold 5, Epoch 47/100
+2026-01-10 11:54:17,870 | INFO | Fold 5, Epoch 48/100
+2026-01-10 11:56:51,943 | INFO | Fold 5, Epoch 49/100
+2026-01-10 11:59:25,390 | INFO | Fold 5, Epoch 50/100
+2026-01-10 12:01:59,520 | INFO | Fold 5, Epoch 51/100
+2026-01-10 12:04:32,210 | INFO | Fold 5, Epoch 52/100
+2026-01-10 12:07:03,976 | INFO | Fold 5, Epoch 53/100
+2026-01-10 12:09:37,059 | INFO | Fold 5, Epoch 54/100
+2026-01-10 12:12:14,585 | INFO | Fold 5, Epoch 55/100
+2026-01-10 12:14:45,879 | INFO | Fold 5, Epoch 56/100
+2026-01-10 12:17:22,656 | INFO | Fold 5, Epoch 57/100
+2026-01-10 12:19:59,900 | INFO | Fold 5, Epoch 58/100
+2026-01-10 12:22:32,624 | INFO | Fold 5, Epoch 59/100
+2026-01-10 12:25:03,640 | INFO | Fold 5, Epoch 60/100
+2026-01-10 12:27:38,946 | INFO | Fold 5, Epoch 61/100
+2026-01-10 12:30:14,942 | INFO | Fold 5, Epoch 62/100
+2026-01-10 12:32:47,941 | INFO | Fold 5, Epoch 63/100
+2026-01-10 12:35:23,207 | INFO | Fold 5, Epoch 64/100
+2026-01-10 12:37:55,260 | INFO | Fold 5, Epoch 65/100
+2026-01-10 12:40:31,791 | INFO | Fold 5, Epoch 66/100
+2026-01-10 12:43:05,801 | INFO | Fold 5, Epoch 67/100
+2026-01-10 12:45:40,514 | INFO | Fold 5, Epoch 68/100
+2026-01-10 12:48:15,934 | INFO | Fold 5, Epoch 69/100
+2026-01-10 12:50:51,226 | INFO | Fold 5, Epoch 70/100
+2026-01-10 12:53:26,335 | INFO | Fold 5, Epoch 71/100
+2026-01-10 12:55:58,471 | INFO | Fold 5, Epoch 72/100
+2026-01-10 12:58:30,770 | INFO | ✓ Fold 5: New best model! combined=0.9902
+2026-01-10 12:58:30,771 | INFO | Fold 5, Epoch 73/100
+2026-01-10 13:01:03,616 | INFO | Fold 5, Epoch 74/100
+2026-01-10 13:03:38,020 | INFO | Fold 5, Epoch 75/100
+2026-01-10 13:06:11,125 | INFO | ✓ Fold 5: New best model! combined=0.9910
+2026-01-10 13:06:11,125 | INFO | Fold 5, Epoch 76/100
+2026-01-10 13:08:44,252 | INFO | Fold 5, Epoch 77/100
+2026-01-10 13:11:16,643 | INFO | Fold 5, Epoch 78/100
+2026-01-10 13:13:48,138 | INFO | Fold 5, Epoch 79/100
+2026-01-10 13:16:19,630 | INFO | Fold 5, Epoch 80/100
+2026-01-10 13:18:56,335 | INFO | ✓ Fold 5: New best model! combined=0.9910
+2026-01-10 13:18:56,336 | INFO | Fold 5, Epoch 81/100
+2026-01-10 13:21:30,423 | INFO | Fold 5, Epoch 82/100
+2026-01-10 13:24:06,880 | INFO | ✓ Fold 5: New best model! combined=0.9913
+2026-01-10 13:24:06,881 | INFO | Fold 5, Epoch 83/100
+2026-01-10 13:26:43,865 | INFO | Fold 5, Epoch 84/100
+2026-01-10 13:29:16,496 | INFO | Fold 5, Epoch 85/100
+2026-01-10 13:31:49,900 | INFO | Fold 5, Epoch 86/100
+2026-01-10 13:34:25,992 | INFO | Fold 5, Epoch 87/100
+2026-01-10 13:37:02,568 | INFO | ✓ Fold 5: New best model! combined=0.9919
+2026-01-10 13:37:02,569 | INFO | Fold 5, Epoch 88/100
+2026-01-10 13:39:37,775 | INFO | Fold 5, Epoch 89/100
+2026-01-10 13:42:15,065 | INFO | Fold 5, Epoch 90/100
+2026-01-10 13:44:47,315 | INFO | Fold 5, Epoch 91/100
+2026-01-10 13:47:21,424 | INFO | Fold 5, Epoch 92/100
+2026-01-10 13:49:56,590 | INFO | Fold 5, Epoch 93/100
+2026-01-10 13:52:31,735 | INFO | Fold 5, Epoch 94/100
+2026-01-10 13:55:06,149 | INFO | Fold 5, Epoch 95/100
+2026-01-10 13:57:42,126 | INFO | Fold 5, Epoch 96/100
+2026-01-10 14:00:13,699 | INFO | Fold 5, Epoch 97/100
+2026-01-10 14:02:46,493 | INFO | Fold 5, Epoch 98/100
+2026-01-10 14:05:22,470 | INFO | Fold 5, Epoch 99/100
+2026-01-10 14:07:56,211 | INFO | Fold 5, Epoch 100/100
+2026-01-10 14:10:28,979 | INFO | Loading best model for fold 5...
+2026-01-10 14:10:30,115 | INFO | Fold 5: Final evaluation on test set
+2026-01-10 14:11:27,802 | INFO | ✓ Saved test predictions to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_5/test_predictions.npz
+2026-01-10 14:11:27,816 | INFO | ✓ Saved test metadata to outputs/multitask_cls_conditioned/20260109-164308_5fold/fold_5/test_metadata.jsonl
+2026-01-10 14:11:27,816 | INFO | Fold 5 test results: total_loss:0.7000 | cls_loss:0.0237 | reg_loss:0.6763 | cls_accuracy:0.9939 | cls_precision:1.0000 | cls_recall:0.9876 | cls_f1:0.9938 | cls_auc:0.9999 | reg_mae:1.0802 | reg_rmse:1.3705 | reg_mse:1.8784 | combined:0.9873
+2026-01-10 14:11:27,819 | INFO | ✓ Fold 5 complete!
+2026-01-10 14:11:27,824 | INFO | 
+================================================================================
+2026-01-10 14:11:27,824 | INFO | CROSS-VALIDATION SUMMARY
+2026-01-10 14:11:27,824 | INFO | ================================================================================
+
+2026-01-10 14:11:27,825 | INFO | Mean ± Std across folds:
+2026-01-10 14:11:27,825 | INFO |   total_loss: 0.7277 ± 0.0654
+2026-01-10 14:11:27,825 | INFO |   cls_loss: 0.0275 ± 0.0106
+2026-01-10 14:11:27,825 | INFO |   reg_loss: 0.7003 ± 0.0675
+2026-01-10 14:11:27,825 | INFO |   cls_accuracy: 0.9927 ± 0.0019
+2026-01-10 14:11:27,825 | INFO |   cls_precision: 0.9997 ± 0.0006
+2026-01-10 14:11:27,825 | INFO |   cls_recall: 0.9854 ± 0.0033
+2026-01-10 14:11:27,825 | INFO |   cls_f1: 0.9925 ± 0.0019
+2026-01-10 14:11:27,825 | INFO |   cls_auc: 0.9999 ± 0.0001
+2026-01-10 14:11:27,825 | INFO |   reg_mae: 1.1028 ± 0.0767
+2026-01-10 14:11:27,825 | INFO |   reg_rmse: 1.4082 ± 0.0822
+2026-01-10 14:11:27,825 | INFO |   reg_mse: 1.9898 ± 0.2406
+2026-01-10 14:11:27,825 | INFO |   combined: 0.9863 ± 0.0011
+2026-01-10 14:11:27,831 | INFO | 
+✓ CV summary saved to outputs/multitask_cls_conditioned/20260109-164308_5fold/cv_summary.json
+2026-01-10 14:11:27,831 | INFO | 
+================================================================================
+2026-01-10 14:11:27,831 | INFO | GENERATING TEMPORAL GENERALIZATION ANALYSIS
+2026-01-10 14:11:27,831 | INFO | ================================================================================
+2026-01-10 14:11:27,834 | INFO | Processing fold 1/5...
+2026-01-10 14:12:29,238 | INFO |   ✓ Saved fold 1 temporal metrics
+2026-01-10 14:12:29,241 | INFO | Processing fold 2/5...
+2026-01-10 14:13:29,722 | INFO |   ✓ Saved fold 2 temporal metrics
+2026-01-10 14:13:29,726 | INFO | Processing fold 3/5...
+2026-01-10 14:14:29,376 | INFO |   ✓ Saved fold 3 temporal metrics
+2026-01-10 14:14:29,379 | INFO | Processing fold 4/5...
+2026-01-10 14:15:28,971 | INFO |   ✓ Saved fold 4 temporal metrics
+2026-01-10 14:15:28,972 | INFO | Processing fold 5/5...
+2026-01-10 14:16:28,785 | INFO |   ✓ Saved fold 5 temporal metrics
+2026-01-10 14:16:28,785 | INFO | Aggregating temporal results across 5 folds...
+2026-01-10 14:16:28,791 | INFO | ✓ Saved CV temporal metrics to outputs/multitask_cls_conditioned/20260109-164308_5fold/cv_temporal_metrics.json
+2026-01-10 14:16:28,791 | INFO | Generating CV temporal generalization plot...
+2026-01-10 14:16:29,458 | INFO | ✓ Temporal generalization analysis complete!
+2026-01-10 14:16:29,463 | INFO | 
+================================================================================
+2026-01-10 14:16:29,463 | INFO | CROSS-VALIDATION COMPLETE!
+2026-01-10 14:16:29,463 | INFO | ================================================================================
+2026-01-10 14:16:29,464 | INFO | Results saved to: outputs/multitask_cls_conditioned/20260109-164308_5fold

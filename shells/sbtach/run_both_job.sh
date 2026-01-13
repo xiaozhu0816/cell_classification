@@ -17,3 +17,5 @@ cd /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/
 
 # ---- 最关键：运行你的 experiment 脚本 ----
 bash /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/shells/run_both_experiments.sh
+
+
