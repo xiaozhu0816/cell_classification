@@ -15,8 +15,9 @@
 # ---- 进入你项目所在路径（非常重要） ----
 cd /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/
 
-python train_regression_cv.py --config configs/regression_infected.yaml --num-folds 5
+# python train_regression_cv.py --config configs/regression_infected.yaml --num-folds 5
 # python train_regression_cv.py --config configs/regression_uninfected.yaml --num-folds 5
+python train_regression_cv.py --config configs/regression_mixed.yaml --num-folds 5
 # python compare_regression_performance.py \
 #   --multitask "outputs/multitask_resnet50/20260105-155852_5fold" \
 #   --regression-infected "outputs/regression_infected/TIMESTAMP_5fold" \

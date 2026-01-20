@@ -17,4 +17,5 @@ cd /isilon/datalake/gurcan_rsch/scratch/WSI/zhengjie/CODE/cell_classification/
 
 # python train_multitask_cv.py --config configs/multitask_example.yaml --num-folds 5 
 
-python train_multitask_cv.py --config configs/multitask_cls_conditioned.yaml --num-folds 5
+# python train_multitask_cv.py --config configs/multitask_cls_conditioned.yaml --num-folds 5
+python train_multitask_cv.py --config configs/multitask_example_crop5pct.yaml --num-folds 5

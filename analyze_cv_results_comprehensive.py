@@ -645,6 +645,19 @@ def generate_worst_predictions_report(data, output_dir: Path):
     
     errors = np.abs(reg_preds - reg_labels)
     
+    # Ensure we have a consistent definition:
+    # - cls_probs: p(infected) (1D) or Nx2 probabilities
+    # - cls_pred_labels: predicted class label (0/1)
+    # - cls_confidence: confidence of the predicted class (max prob)
+    cls_probs = np.asarray(cls_probs)
+    if cls_probs.ndim == 1:
+        p_inf = cls_probs.astype(np.float32)
+        cls_pred_labels = (p_inf >= 0.5).astype(np.int64)
+        cls_confidence = np.where(cls_pred_labels == 1, p_inf, 1.0 - p_inf)
+    else:
+        cls_pred_labels = np.asarray(np.argmax(cls_probs, axis=1), dtype=np.int64)
+        cls_confidence = np.asarray(np.max(cls_probs, axis=1), dtype=np.float32)
+
     # Sort by error
     sorted_idx = np.argsort(errors)[::-1]
     
@@ -665,7 +678,7 @@ def generate_worst_predictions_report(data, output_dir: Path):
         pred_time = reg_preds[idx]
         error = errors[idx]
         true_class = 'Infected' if cls_labels[idx] == 1 else 'Uninfected'
-        confidence = np.max(cls_probs[idx])
+        confidence = float(cls_confidence[idx])
         image_path = image_paths[idx] if idx < len(image_paths) else 'N/A'
         
         report.append(f"{rank:<6} {true_time:<12.2f} {pred_time:<12.2f} {error:<10.2f} "
@@ -675,7 +688,7 @@ def generate_worst_predictions_report(data, output_dir: Path):
     report.append("="*80)
     
     # Misclassifications
-    misclass_mask = cls_preds != cls_labels
+    misclass_mask = cls_pred_labels != cls_labels
     num_misclass = misclass_mask.sum()
     
     report.append(f"CLASSIFICATION ERRORS: {num_misclass} total misclassifications")
@@ -688,8 +701,8 @@ def generate_worst_predictions_report(data, output_dir: Path):
         misclass_idx = np.where(misclass_mask)[0]
         for idx in misclass_idx[:20]:  # Top 20
             true_class = 'Infected' if cls_labels[idx] == 1 else 'Uninfected'
-            pred_class = 'Infected' if cls_preds[idx] == 1 else 'Uninfected'
-            confidence = np.max(cls_probs[idx])
+            pred_class = 'Infected' if cls_pred_labels[idx] == 1 else 'Uninfected'
+            confidence = float(cls_confidence[idx])
             true_time = reg_labels[idx]
             image_path = image_paths[idx] if idx < len(image_paths) else 'N/A'
             
@@ -713,7 +726,7 @@ def generate_worst_predictions_report(data, output_dir: Path):
     report.append(f"90th percentile error: {np.percentile(errors, 90):.3f} hours")
     report.append(f"95th percentile error: {np.percentile(errors, 95):.3f} hours")
     report.append("")
-    report.append(f"Classification accuracy: {(cls_preds == cls_labels).mean()*100:.2f}%")
+    report.append(f"Classification accuracy: {(cls_pred_labels == cls_labels).mean()*100:.2f}%")
     report.append(f"Misclassifications: {num_misclass} / {len(cls_labels)}")
     report.append("="*80)
     
@@ -722,6 +735,120 @@ def generate_worst_predictions_report(data, output_dir: Path):
         f.write('\n'.join(report))
     
     print(f"✓ Saved {output_file}")
+
+
+def export_paper_assets(cv_dir: Path):
+    """Export paper-ready tables + metric summaries derived from existing JSON outputs."""
+    paper_dir = cv_dir / "paper_assets"
+    paper_dir.mkdir(exist_ok=True, parents=True)
+
+    # 1) overall metrics table
+    summary_file = cv_dir / "cv_summary.json"
+    if summary_file.exists():
+        with open(summary_file, "r", encoding="utf-8") as f:
+            summary = json.load(f)
+
+        agg = summary.get("aggregated_metrics", {})
+        keys = [
+            "cls_accuracy",
+            "cls_precision",
+            "cls_recall",
+            "cls_f1",
+            "cls_auc",
+            "reg_mae",
+            "reg_rmse",
+        ]
+        lines = ["metric,mean,std,min,max"]
+        for k in keys:
+            if k not in agg:
+                continue
+            v = agg[k]
+            lines.append(f"{k},{v.get('mean','')},{v.get('std','')},{v.get('min','')},{v.get('max','')}")
+
+        (paper_dir / "paper_table_overall_metrics.csv").write_text("\n".join(lines), encoding="utf-8")
+
+    # 2) temporal classification table
+    temporal_file = cv_dir / "cv_temporal_metrics.json"
+    if temporal_file.exists():
+        with open(temporal_file, "r", encoding="utf-8") as f:
+            temp = json.load(f)
+        centers = temp.get("window_centers", [])
+        metrics = temp.get("aggregated_metrics", {})
+        header = ["window_center_h"]
+        cols = []
+        for m in ["accuracy", "f1", "auc", "precision", "recall"]:
+            if m in metrics and "mean" in metrics[m] and "std" in metrics[m]:
+                header.extend([f"{m}_mean", f"{m}_std"])
+                cols.append(m)
+
+        rows = [",".join(header)]
+        for i, c in enumerate(centers):
+            parts = [str(c)]
+            for m in cols:
+                parts.append(str(metrics[m]["mean"][i]))
+                parts.append(str(metrics[m]["std"][i]))
+            rows.append(",".join(parts))
+        (paper_dir / "paper_table_temporal_metrics.csv").write_text("\n".join(rows), encoding="utf-8")
+
+    # 3) a short, editable metrics snippet
+    snippet = []
+    if summary_file.exists():
+        agg = json.loads(summary_file.read_text(encoding="utf-8")).get("aggregated_metrics", {})
+        def _fmt(k, unit=""):
+            if k not in agg:
+                return None
+            mean = agg[k]["mean"]
+            std = agg[k]["std"]
+            if unit.strip() == "h":
+                return f"{k}: {mean:.3f} ± {std:.3f} {unit.strip()}"
+            return f"{k}: {mean:.4f} ± {std:.4f}{unit}"
+        snippet.append("Overall (5-fold, aggregated):")
+        for k, unit in [("cls_accuracy", ""), ("cls_f1", ""), ("cls_auc", ""), ("reg_mae", " h"), ("reg_rmse", " h")]:
+            s = _fmt(k, unit=unit)
+            if s:
+                snippet.append(f"- {s}")
+    (paper_dir / "paper_metrics_snippet.txt").write_text("\n".join(snippet), encoding="utf-8")
+
+
+def write_paper_draft_scaffold(cv_dir: Path):
+    """Create a lightweight paper draft scaffold (Markdown) near the results."""
+    paper_dir = cv_dir / "paper_assets"
+    paper_dir.mkdir(exist_ok=True, parents=True)
+
+    md = []
+    md.append("# Draft – Multitask infection state + progression time from microscopy\n")
+    md.append("## Candidate title\n")
+    md.append("Joint prediction of infection state and progression time from microscopy using a multi-task ResNet with temporal reliability profiling\n")
+    md.append("## Abstract (bullet scaffold)\n")
+    md.append("- Background: automated infection phenotyping from microscopy; need both state and stage.\n")
+    md.append("- Methods: multi-task ResNet50 predicting (i) infection status and (ii) progression time; 5-fold CV; temporal sliding-window analysis.\n")
+    md.append("- Results: include overall metrics + temporal early-stage difficulty; error profiling and reliability discussion.\n")
+    md.append("- Conclusion: joint modeling provides accurate state classification and hour-level staging with stage-dependent reliability.\n")
+
+    md.append("## Results folder\n")
+    md.append(f"- CV results: `{cv_dir}`\n")
+    md.append("- Key figures already generated: prediction_scatter, classification_by_time_window, cv_temporal_generalization, error_distribution_by_time_range, regression_residual_over_time\n")
+
+    md.append("## Key numbers (paste from paper_metrics_snippet.txt)\n")
+    md.append("\n")
+
+    md.append("## Figure list (proposed)\n")
+    md.append("1. Overview of task + model (diagram to be drawn).\n")
+    md.append("2. Classification performance overall + temporal windows (`classification_by_time_window.png`).\n")
+    md.append("3. Regression accuracy (scatter) + residual over time (`prediction_scatter.png`, `regression_residual_over_time.png`).\n")
+    md.append("4. Error distribution by time range and valley period (`error_distribution_by_time_range.png`, `valley_period_analysis.png`).\n")
+    md.append("5. Temporal generalization (`cv_temporal_generalization.png`).\n")
+
+    md.append("## Methods (what to describe)\n")
+    md.append("- Dataset: acquisition, labeling, time definition, splitting strategy (avoid leakage).\n")
+    md.append("- Model: ResNet50 backbone, two heads, losses and weighting, training details.\n")
+    md.append("- Evaluation: 5-fold CV, metrics, temporal windows (6h/3h), statistical reporting.\n")
+
+    md.append("## Notes / TODO\n")
+    md.append("- Verify worst_predictions_report classification section matches CV summary (should now be fixed).\n")
+    md.append("- Add dataset description + imaging interval + biological interpretation of early-stage/valley period.\n")
+
+    (paper_dir / "DRAFT_PAPER.md").write_text("\n".join(md), encoding="utf-8")
 
 
 def plot_error_distribution_by_time_range(data, output_dir: Path):
@@ -952,6 +1079,10 @@ def main():
     # NEW: Generate the two additional plots
     plot_error_distribution_by_time_range(data, cv_dir)
     plot_regression_residual_over_time(data, cv_dir)
+
+    # Paper-ready exports (tables + scaffold)
+    export_paper_assets(cv_dir)
+    write_paper_draft_scaffold(cv_dir)
     
     print("\n" + "="*80)
     print("✅ ALL ANALYSES COMPLETE!")
@@ -965,6 +1096,10 @@ def main():
     print("  6. worst_predictions_report.txt")
     print("  7. error_distribution_by_time_range.png  ← NEW")
     print("  8. regression_residual_over_time.png     ← NEW")
+    print("  9. paper_assets/paper_table_overall_metrics.csv")
+    print(" 10. paper_assets/paper_table_temporal_metrics.csv")
+    print(" 11. paper_assets/paper_metrics_snippet.txt")
+    print(" 12. paper_assets/DRAFT_PAPER.md")
     print("="*80)
     
     return 0

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import math
 from collections import Counter, defaultdict
+from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable, Dict, List, Optional, Tuple
@@ -21,6 +22,45 @@ from datasets import build_datasets, resolve_frame_policies, format_policy_summa
 from models import build_model
 from utils import AverageMeter, binary_metrics, build_transforms, get_logger, load_config, set_seed
 from rich import print
+
+
+@dataclass
+class _ClsTestPredictions:
+    cls_probs: np.ndarray
+    targets: np.ndarray
+
+
+def _collect_classification_test_predictions(
+    model: nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+) -> _ClsTestPredictions:
+    """Collect per-sample predicted probabilities on the test split.
+
+    This is used only for exporting a multitask-compatible `test_predictions.npz`.
+    It intentionally does not change the existing `evaluate()` behavior.
+    """
+    model.eval()
+    probs_list: List[np.ndarray] = []
+    targets_list: List[np.ndarray] = []
+
+    with torch.no_grad():
+        for images, labels, _meta in loader:
+            images = images.to(device, non_blocking=True)
+            logits = model(images)
+            logits = logits.view(-1)
+            probs = torch.sigmoid(logits).detach().cpu().numpy()
+            probs_list.append(probs)
+            targets_list.append(labels.detach().cpu().numpy().astype(np.int64))
+
+    if probs_list:
+        cls_probs = np.concatenate(probs_list, axis=0)
+        targets = np.concatenate(targets_list, axis=0)
+    else:
+        cls_probs = np.array([], dtype=np.float32)
+        targets = np.array([], dtype=np.int64)
+
+    return _ClsTestPredictions(cls_probs=cls_probs, targets=targets)
 
 def meta_batch_to_list(meta_batch: Any) -> List[Dict[str, Any]]:
     if isinstance(meta_batch, list):
@@ -58,6 +98,12 @@ def build_class_balanced_sampler(dataset) -> WeightedRandomSampler:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train infected vs uninfected classifier")
     parser.add_argument("--config", type=str, default="configs/resnet50_baseline.yaml", help="Path to YAML config")
+    parser.add_argument(
+        "--k-folds",
+        type=int,
+        default=None,
+        help="Override number of CV folds (takes precedence over training.k_folds in config)",
+    )
     return parser.parse_args()
 
 
@@ -374,7 +420,10 @@ def main() -> None:
     amp_device = device.type
     experiment_name = cfg.get("experiment_name", "cell_classification")
     training_cfg = cfg.get("training", {})
-    k_folds = max(1, int(training_cfg.get("k_folds", 1)))
+    if args.k_folds is not None:
+        k_folds = max(1, int(args.k_folds))
+    else:
+        k_folds = max(1, int(training_cfg.get("k_folds", 1)))
     run_id = cfg.get("run_id") or datetime.now().strftime("%Y%m%d-%H%M%S")
     task_cfg = get_task_config(cfg)
     analysis_cfg = get_analysis_config(cfg)
@@ -412,6 +461,7 @@ def main() -> None:
             logger,
             fold_log_dir,
             fold_ckpt_dir,
+            multitask_output_base=log_root,
         )
         fold_summaries.append(summary)
 
@@ -437,6 +487,7 @@ def run_fold(
     logger,
     log_dir: Path,
     checkpoint_dir: Path,
+    multitask_output_base: Optional[Path] = None,
 ) -> Dict:
     train_ds, val_ds, test_ds = build_datasets(
         data_cfg,
@@ -540,6 +591,54 @@ def run_fold(
         task_cfg=task_cfg,
         analysis_cfg=analysis_cfg,
     )
+
+    # Export a multitask-compatible fold directory for downstream analysis.
+    # This does not affect the existing train.py outputs; it adds an extra layout:
+    #   <log_root>/fold_{i}/results.json
+    #   <log_root>/fold_{i}/test_predictions.npz
+    #   <log_root>/fold_{i}/test_metadata.jsonl   (if available)
+    try:
+        if multitask_output_base is not None:
+            fold_dir = multitask_output_base / f"fold_{fold_idx + 1}"
+            fold_dir.mkdir(parents=True, exist_ok=True)
+
+            preds = _collect_classification_test_predictions(
+                model=model,
+                loader=test_loader,
+                device=device,
+            )
+
+            np.savez(
+                fold_dir / "test_predictions.npz",
+                time_preds=None,
+                time_targets=None,
+                cls_preds=preds.cls_probs,
+                cls_targets=preds.targets,
+            )
+
+            metadata_file = fold_dir / "test_metadata.jsonl"
+            if hasattr(test_ds, "get_metadata"):
+                with open(metadata_file, "w", encoding="utf-8") as f:
+                    for i in range(len(test_ds)):
+                        meta = test_ds.get_metadata(i)
+                        if not isinstance(meta, dict):
+                            meta = {"meta": meta}
+                        f.write(json.dumps(meta) + "\n")
+
+            fold_results = {
+                "fold_index": fold_idx,
+                "best_val_metric": float(best_score),
+                "test_metrics": {
+                    k: float(v) if isinstance(v, (int, float, np.number)) else v
+                    for k, v in test_metrics.items()
+                },
+            }
+            with open(fold_dir / "results.json", "w", encoding="utf-8") as f:
+                json.dump(fold_results, f, indent=2)
+
+            logger.info(f"✓ Exported multitask-style outputs to {fold_dir}")
+    except Exception as e:
+        logger.warning(f"Failed to export multitask-style outputs: {e}")
 
     return {
         "fold": fold_idx,

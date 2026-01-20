@@ -1,0 +1,142 @@
+% MDPI Cells LaTeX draft generated from the old Markdown-style draft,
+% updated to use the FINAL crop-5% experiment results.
+%
+% Assumptions:
+% - You will compile this inside the MDPI template directory where `Definitions/mdpi.cls` exists.
+% - Figures (PNGs) are copied next to this TeX file (or adjust paths).
+%
+\documentclass[journal,cells,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+%=================================================================
+% Add packages and commands here.
+%=================================================================
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Joint Prediction of Infection State and Progression Time from Microscopy Using a Multi-Task ResNet with Temporal Reliability Profiling}
+
+% Authors, for the paper (edit affiliations/emails as needed)
+\Author{Zhengjie Zhu$^{1,}$*\orcidA{}, Stephanie Trefry $^{2}$, Hao Lu $^{1}$ and Metin Nafi Gurcan $^{1}$}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Zhengjie Zhu, Stephanie Trefry, Hao Lu and Metin Nafi Gurcan}
+
+% Affiliations / Addresses
+\address{%
+$^{1}$ \quad Department of Artificial Intelligence and Informatics, Wake Forest University School of Medicine, Winston-Salem, NC, USA; \\
+$^{2}$ \quad [Affiliation 2]; \\
+}
+
+% Contact information of the corresponding author
+\corres{Correspondence: Zhengjie.Zhu@wfusm.edu;}
+
+% Abstract
+\abstract{Quantifying infection phenotypes from microscopy often requires both accurate discrimination of infected cells and estimation of infection progression stage. However, model performance may vary over time due to stage-dependent morphological changes and temporal distribution shift. We developed a multi-task convolutional neural network (ResNet50 backbone) to jointly predict (i) infection state (infected vs. mock-infected) and (ii) progression time from microscopy image patches of human brain microvascular endothelial cells (HBMVEC). Imaging included mock-infected controls (PBS) and cells infected with Venezuelan equine encephalitis virus (VEEV) vaccine strain TC-83 (MOI = 5). We evaluated performance using 5-fold cross-validation and performed temporal reliability profiling using sliding time windows (window = 6 h; stride = 3 h). For infected samples, progression time was defined as hours since infection; for mock-infected samples, time was defined as hours since experiment start. To mitigate possible information leakage due to the approximately \textasciitilde5\% field-of-view overlap between adjacent acquisition positions reported by GMU, the final experiment center-crops each frame to remove the outer 5\% border prior to resizing. Across five folds, the model achieved classification accuracy 0.9925 \ensuremath{\pm} 0.0010, F1-score 0.9924 \ensuremath{\pm} 0.0010, and AUC 0.9998 \ensuremath{\pm} 0.0001. Time prediction error was MAE 1.176 \ensuremath{\pm} 0.097 h and RMSE 1.491 \ensuremath{\pm} 0.102 h. Temporal profiling showed lower performance in early-stage windows (e.g., window center 3 h: accuracy 0.944; recall 0.883; AUC 0.991) with rapid improvement thereafter (from window center 9--12 h onward, accuracy/F1/AUC \ensuremath{\approx} 1.0).}
+
+% Keywords
+\keyword{microscopy; infection; multi-task learning; temporal staging; deep learning; ResNet; reliability profiling}
+
+\begin{document}
+
+\section{Introduction}
+Microscopy provides a direct, high-content view of infection-related cellular phenotypes, including changes in morphology, cytoplasmic texture, and subcellular organization over time. In many experimental workflows, a central need is to identify whether a cell is infected (infection state) and how far infection has progressed (infection stage). These questions are particularly relevant in time-course imaging where downstream conclusions often depend on correctly placing observations along a progression timeline.
+
+Human brain microvascular endothelial cells (HBMVEC) are a key cellular component of the blood--brain barrier and are widely used for studying neurotropic viral infection and host responses. In this study, we consider imaging data containing mock-infected controls (PBS) and infection with Venezuelan equine encephalitis virus (VEEV) vaccine strain TC-83. Reliable, automated inference of infection state and stage from imaging could support high-throughput phenotyping, screening, and quantitative characterization of progression dynamics.
+
+Deep learning has achieved strong performance in classification of cellular phenotypes from image patches. However, infection is inherently dynamic: early-stage phenotypes can be subtle, heterogeneous, or visually confounded with baseline variability, while later stages may show clearer and more uniform changes. As a result, models trained and evaluated only on pooled time points may mask stage-dependent performance variation, which can limit practical trust and interpretability.
+
+To address these challenges, we propose a multi-task learning framework that jointly predicts infection state and progression time from microscopy patches. Joint prediction encourages shared representations that align with biologically meaningful progression. Importantly, we complement overall accuracy reporting with temporal reliability profiling via sliding time windows, enabling explicit quantification of when the model is reliable and when uncertainty is expected.
+
+\section{Results}
+\subsection{Overall multi-task performance (5-fold cross-validation)}
+Across five CV folds, we observed highly consistent classification performance (accuracy 0.9925 \ensuremath{\pm} 0.0010, F1 0.9924 \ensuremath{\pm} 0.0010, AUC 0.9998 \ensuremath{\pm} 0.0001) and hour-level time prediction accuracy (MAE 1.176 \ensuremath{\pm} 0.097 h, RMSE 1.491 \ensuremath{\pm} 0.102 h) (Table~\ref{tab:overall_metrics}).
+
+% Overall metrics table (generated already in this folder)
+\input{paper_table_overall_metrics.tex}
+
+\subsection{Temporal reliability profiling reveals early-stage difficulty}
+We next evaluated classification performance across time using sliding windows (6 h window; 3 h stride). In early-stage windows (e.g., center = 3 h), performance was lower (accuracy 0.944; recall 0.883; AUC 0.991), indicating that early infection phenotypes may be subtle or heterogeneous. Performance improved rapidly with time (center = 6--9 h) and reached near-perfect metrics from center = 12 h onward (accuracy/F1/AUC \ensuremath{\approx} 1.0) (Table~\ref{tab:temporal_metrics}).
+
+% Temporal metrics table (generated already in this folder)
+\input{paper_table_temporal_metrics.tex}
+
+\subsection{Figures}
+Figures referenced below are expected to be available next to this \texttt{.tex} file.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{classification_by_time_window.png}
+\caption{Temporal reliability profiling of infection classification. Sliding-window classification performance across time (window = 6 h; stride = 3 h), reporting mean \ensuremath{\pm} SD across CV folds for accuracy, F1-score, and ROC-AUC. Performance is lower in early windows and becomes near-perfect after later windows.}
+\label{fig:cls_by_window}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{prediction_scatter.png}
+\caption{Time prediction accuracy. Scatter plot comparing predicted vs. ground-truth progression time across all CV test predictions, stratified by infection state. The diagonal indicates perfect agreement.}
+\label{fig:reg_scatter}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{regression_residual_over_time.png}
+\caption{Residual bias over time. Mean residual (prediction -- truth) over time for infected and mock-infected samples, computed in 1-hour bins and visualized as mean \ensuremath{\pm} 1 SD.}
+\label{fig:residual}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{error_distribution_by_time_range.png}
+\caption{Stage-dependent regression error distributions by time range and infection state. Absolute time prediction errors are stratified by infection state and time range.}
+\label{fig:error_by_time}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{valley_period_analysis.png}
+\caption{Valley-period focused error analysis. Comparison of a pre-defined ``valley'' period (13--19 h) with non-valley ranges, stratified by infection state.}
+\label{fig:valley}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{error_vs_classification_confidence.png}
+\caption{Confidence--error coupling. Relationship between classification confidence and regression error (absolute time error), supporting confidence-based quality control.}
+\label{fig:confidence_error}
+\end{figure}
+
+\section{Discussion}
+Our multi-task model achieved highly accurate infection state discrimination and hour-level staging on HBMVEC microscopy patches under 5-fold cross-validation. Beyond aggregate metrics, temporal reliability profiling revealed a clear stage dependence: early-stage windows exhibited reduced recall, while later windows achieved near-perfect classification performance.
+
+\section{Materials and Methods}
+\subsection{Dataset and annotations}
+Human brain microvascular endothelial cells (HBMVEC) were imaged under two conditions: mock infection (PBS) and infection with Venezuelan equine encephalitis virus (VEEV) vaccine strain TC-83 using a single viral stock (MOI = 5). Data were obtained from two wells: B2 (infected) and C4 (mock-infected). In the infected well, time points T0--T1 were treated as uninfected and time points T2--T96 were treated as infected. In the mock-infected well, time points T0--T96 were treated as mock-infected.
+
+Each patch was assigned (i) a binary infection state label and (ii) a continuous time target in hours. For infected samples, the regression target represents hours since infection; for mock-infected samples, the target represents hours since experiment start.
+
+To reduce information leakage due to within-field correlations and patch overlap, we used 5-fold cross-validation with splitting at the field-of-view/position level.
+
+\subsection{Anti-overlap preprocessing (final experiment)}
+Because GMU reported an approximate \textasciitilde5\% field-of-view overlap between adjacent acquisition positions, the final experiment applies a robust preprocessing step to reduce near-duplicate border content across folds: we remove the outer 5\% border of each frame by center cropping (retain central 90\%\,$\times$\,90\%), then resize to the model input resolution. This preprocessing is applied consistently to train/validation/test.
+
+\subsection{Model architecture}
+We used a ResNet50 convolutional backbone with two task-specific heads. The classification head outputs a scalar probability for infection, and the regression head outputs a continuous prediction for time (hours). The network was trained end-to-end with a joint objective combining a classification loss and a regression loss.
+
+\subsection{Training procedure}
+Models were trained using 5-fold cross-validation. For each fold, a ResNet50 multitask model initialized from ImageNet weights was trained for 100 epochs. Optimization used AdamW (learning rate $1\times10^{-4}$; weight decay $1\times10^{-4}$) with a cosine annealing schedule ($T_{\max}=100$; $\eta_{\min}=1\times10^{-6}$). Training used mixed precision (AMP) and global gradient-norm clipping (1.0). Input patches were resized to $512\times512$ pixels and augmented with random flips and random rotations.
+
+\subsection{Evaluation metrics}
+We report classification performance using accuracy, precision, recall, F1-score, and ROC-AUC. Regression performance is reported using mean absolute error (MAE) and root mean squared error (RMSE), both in hours. Temporal reliability profiling was performed using sliding time windows (window = 6 h; stride = 3 h), aggregating windowed metrics across folds.
+
+%=================================================================
+% References (placeholder)
+%=================================================================
+\reftitle{References}
+\begin{thebibliography}{999}
+\bibitem{ref-journal} Author1, A.; Author2, B. Title. \emph{Journal} \textbf{Year}, \emph{Volume}, pages.
+\end{thebibliography}
+
+\end{document}

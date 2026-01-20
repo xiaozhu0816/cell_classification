@@ -1,0 +1,1712 @@
+2026-01-15 16:48:55,063 | INFO | ================================================================================
+2026-01-15 16:48:55,063 | INFO | REGRESSION-ONLY MODEL - CROSS-VALIDATION TRAINING
+2026-01-15 16:48:55,063 | INFO | ================================================================================
+2026-01-15 16:48:55,063 | INFO | Number of folds: 5
+2026-01-15 16:48:55,063 | INFO | Output directory: outputs/regression_mixed/20260115-164855_5fold
+2026-01-15 16:48:55,090 | INFO | Random seed: 42
+2026-01-15 16:48:55,090 | INFO | 
+================================================================================
+2026-01-15 16:48:55,091 | INFO | FOLD 1/5
+2026-01-15 16:48:55,091 | INFO | ================================================================================
+
+2026-01-15 16:48:55,201 | INFO | Device: cuda
+2026-01-15 16:48:55,201 | INFO | Training on all samples (both infected and uninfected)
+2026-01-15 16:48:55,201 | INFO | Infection onset: 1.0h
+2026-01-15 16:48:55,201 | INFO | Clamp range: (0.0, 48.0)
+2026-01-15 16:48:55,202 | INFO | Building datasets for fold 1...
+2026-01-15 16:48:55,963 | INFO | Fold 1 - Train: 4048, Val: 1104, Test: 1472
+2026-01-15 16:48:56,887 | INFO | Model: ResNetRegressor
+2026-01-15 16:48:56,888 | INFO | Total parameters: 24,032,833
+2026-01-15 16:48:56,894 | INFO | Training fold 1 for 100 epochs...
+2026-01-15 16:48:56,894 | INFO | Primary metric: reg_mae (lower is better)
+2026-01-15 16:48:56,894 | INFO | Fold 1, Epoch 1/100
+2026-01-15 16:50:57,036 | INFO |   Train loss: 15.7194
+2026-01-15 16:51:35,302 | INFO |   Val: loss:6.5434 | reg_mae:7.0310 | reg_rmse:8.7290 | reg_mse:76.1954
+2026-01-15 16:51:37,136 | INFO | ✓ Fold 1: New best model! reg_mae=7.0310
+2026-01-15 16:51:37,136 | INFO | Fold 1, Epoch 2/100
+2026-01-15 16:53:39,222 | INFO |   Train loss: 3.8470
+2026-01-15 16:54:18,549 | INFO |   Val: loss:6.2721 | reg_mae:6.7662 | reg_rmse:7.6960 | reg_mse:59.2291
+2026-01-15 16:54:20,245 | INFO | ✓ Fold 1: New best model! reg_mae=6.7662
+2026-01-15 16:54:20,246 | INFO | Fold 1, Epoch 3/100
+2026-01-15 16:56:15,889 | INFO |   Train loss: 2.4397
+2026-01-15 16:56:55,101 | INFO |   Val: loss:2.7971 | reg_mae:3.2622 | reg_rmse:4.1635 | reg_mse:17.3346
+2026-01-15 16:56:56,832 | INFO | ✓ Fold 1: New best model! reg_mae=3.2622
+2026-01-15 16:56:56,833 | INFO | Fold 1, Epoch 4/100
+2026-01-15 16:58:54,404 | INFO |   Train loss: 2.1508
+2026-01-15 16:59:33,446 | INFO |   Val: loss:2.6717 | reg_mae:3.1600 | reg_rmse:3.6934 | reg_mse:13.6413
+2026-01-15 16:59:35,213 | INFO | ✓ Fold 1: New best model! reg_mae=3.1600
+2026-01-15 16:59:35,214 | INFO | Fold 1, Epoch 5/100
+2026-01-15 17:01:33,191 | INFO |   Train loss: 2.0996
+2026-01-15 17:02:12,236 | INFO |   Val: loss:1.8838 | reg_mae:2.3300 | reg_rmse:3.2322 | reg_mse:10.4471
+2026-01-15 17:02:13,943 | INFO | ✓ Fold 1: New best model! reg_mae=2.3300
+2026-01-15 17:02:13,944 | INFO | Fold 1, Epoch 6/100
+2026-01-15 17:04:11,700 | INFO |   Train loss: 2.0350
+2026-01-15 17:04:50,759 | INFO |   Val: loss:1.2652 | reg_mae:1.7060 | reg_rmse:2.2065 | reg_mse:4.8685
+2026-01-15 17:04:52,489 | INFO | ✓ Fold 1: New best model! reg_mae=1.7060
+2026-01-15 17:04:52,489 | INFO | Fold 1, Epoch 7/100
+2026-01-15 17:06:51,098 | INFO |   Train loss: 1.7699
+2026-01-15 17:07:29,831 | INFO |   Val: loss:2.7059 | reg_mae:3.1507 | reg_rmse:4.3856 | reg_mse:19.2339
+2026-01-15 17:07:29,831 | INFO | Fold 1, Epoch 8/100
+2026-01-15 17:09:24,364 | INFO |   Train loss: 1.6213
+2026-01-15 17:10:02,704 | INFO |   Val: loss:2.4122 | reg_mae:2.8776 | reg_rmse:3.6095 | reg_mse:13.0288
+2026-01-15 17:10:02,704 | INFO | Fold 1, Epoch 9/100
+2026-01-15 17:12:01,740 | INFO |   Train loss: 1.7144
+2026-01-15 17:12:40,721 | INFO |   Val: loss:1.2990 | reg_mae:1.7400 | reg_rmse:2.2389 | reg_mse:5.0128
+2026-01-15 17:12:40,721 | INFO | Fold 1, Epoch 10/100
+2026-01-15 17:14:37,284 | INFO |   Train loss: 1.6009
+2026-01-15 17:15:16,602 | INFO |   Val: loss:2.4931 | reg_mae:2.9726 | reg_rmse:3.4027 | reg_mse:11.5783
+2026-01-15 17:15:16,602 | INFO | Fold 1, Epoch 11/100
+2026-01-15 17:17:15,173 | INFO |   Train loss: 1.5329
+2026-01-15 17:17:54,135 | INFO |   Val: loss:2.3961 | reg_mae:2.8623 | reg_rmse:3.4756 | reg_mse:12.0801
+2026-01-15 17:17:54,135 | INFO | Fold 1, Epoch 12/100
+2026-01-15 17:19:52,380 | INFO |   Train loss: 1.5657
+2026-01-15 17:20:32,731 | INFO |   Val: loss:0.8393 | reg_mae:1.2476 | reg_rmse:1.8024 | reg_mse:3.2488
+2026-01-15 17:20:34,514 | INFO | ✓ Fold 1: New best model! reg_mae=1.2476
+2026-01-15 17:20:34,515 | INFO | Fold 1, Epoch 13/100
+2026-01-15 17:22:33,837 | INFO |   Train loss: 1.4381
+2026-01-15 17:23:13,104 | INFO |   Val: loss:2.5543 | reg_mae:3.0233 | reg_rmse:3.7236 | reg_mse:13.8650
+2026-01-15 17:23:13,104 | INFO | Fold 1, Epoch 14/100
+2026-01-15 17:25:12,788 | INFO |   Train loss: 1.4979
+2026-01-15 17:25:51,909 | INFO |   Val: loss:2.5563 | reg_mae:3.0176 | reg_rmse:3.9017 | reg_mse:15.2236
+2026-01-15 17:25:51,910 | INFO | Fold 1, Epoch 15/100
+2026-01-15 17:27:50,791 | INFO |   Train loss: 1.4698
+2026-01-15 17:28:28,909 | INFO |   Val: loss:1.2759 | reg_mae:1.7050 | reg_rmse:2.3141 | reg_mse:5.3550
+2026-01-15 17:28:28,909 | INFO | Fold 1, Epoch 16/100
+2026-01-15 17:30:24,069 | INFO |   Train loss: 1.4737
+2026-01-15 17:31:02,310 | INFO |   Val: loss:2.0573 | reg_mae:2.5212 | reg_rmse:3.2246 | reg_mse:10.3983
+2026-01-15 17:31:02,310 | INFO | Fold 1, Epoch 17/100
+2026-01-15 17:32:58,914 | INFO |   Train loss: 1.3266
+2026-01-15 17:33:36,808 | INFO |   Val: loss:1.4688 | reg_mae:1.9202 | reg_rmse:2.4701 | reg_mse:6.1016
+2026-01-15 17:33:36,809 | INFO | Fold 1, Epoch 18/100
+2026-01-15 17:35:34,458 | INFO |   Train loss: 1.3692
+2026-01-15 17:36:13,767 | INFO |   Val: loss:1.7691 | reg_mae:2.2243 | reg_rmse:2.8069 | reg_mse:7.8786
+2026-01-15 17:36:13,767 | INFO | Fold 1, Epoch 19/100
+2026-01-15 17:38:12,071 | INFO |   Train loss: 1.2440
+2026-01-15 17:38:50,081 | INFO |   Val: loss:1.3783 | reg_mae:1.8201 | reg_rmse:2.4550 | reg_mse:6.0268
+2026-01-15 17:38:50,081 | INFO | Fold 1, Epoch 20/100
+2026-01-15 17:40:51,599 | INFO |   Train loss: 1.3644
+2026-01-15 17:41:30,046 | INFO |   Val: loss:1.0588 | reg_mae:1.4856 | reg_rmse:2.0153 | reg_mse:4.0613
+2026-01-15 17:41:30,046 | INFO | Fold 1, Epoch 21/100
+2026-01-15 17:43:25,421 | INFO |   Train loss: 1.4977
+2026-01-15 17:44:04,299 | INFO |   Val: loss:1.8891 | reg_mae:2.3529 | reg_rmse:2.9990 | reg_mse:8.9940
+2026-01-15 17:44:04,299 | INFO | Fold 1, Epoch 22/100
+2026-01-15 17:46:03,354 | INFO |   Train loss: 1.3906
+2026-01-15 17:46:42,599 | INFO |   Val: loss:0.9485 | reg_mae:1.3771 | reg_rmse:1.7865 | reg_mse:3.1916
+2026-01-15 17:46:42,600 | INFO | Fold 1, Epoch 23/100
+2026-01-15 17:48:38,966 | INFO |   Train loss: 1.3314
+2026-01-15 17:49:17,236 | INFO |   Val: loss:1.2823 | reg_mae:1.7329 | reg_rmse:2.3629 | reg_mse:5.5831
+2026-01-15 17:49:17,236 | INFO | Fold 1, Epoch 24/100
+2026-01-15 17:51:12,246 | INFO |   Train loss: 1.4589
+2026-01-15 17:51:51,601 | INFO |   Val: loss:1.4561 | reg_mae:1.8967 | reg_rmse:2.4880 | reg_mse:6.1903
+2026-01-15 17:51:51,601 | INFO | Fold 1, Epoch 25/100
+2026-01-15 17:53:50,046 | INFO |   Train loss: 1.3423
+2026-01-15 17:54:27,991 | INFO |   Val: loss:1.1363 | reg_mae:1.5790 | reg_rmse:2.0537 | reg_mse:4.2179
+2026-01-15 17:54:27,991 | INFO | Fold 1, Epoch 26/100
+2026-01-15 17:56:26,198 | INFO |   Train loss: 1.2291
+2026-01-15 17:57:04,403 | INFO |   Val: loss:1.9793 | reg_mae:2.4340 | reg_rmse:3.0957 | reg_mse:9.5831
+2026-01-15 17:57:04,403 | INFO | Fold 1, Epoch 27/100
+2026-01-15 17:59:00,079 | INFO |   Train loss: 1.3057
+2026-01-15 17:59:38,981 | INFO |   Val: loss:0.8310 | reg_mae:1.2500 | reg_rmse:1.7282 | reg_mse:2.9865
+2026-01-15 17:59:38,981 | INFO | Fold 1, Epoch 28/100
+2026-01-15 18:01:33,413 | INFO |   Train loss: 1.2551
+2026-01-15 18:02:12,090 | INFO |   Val: loss:0.8049 | reg_mae:1.2137 | reg_rmse:1.6888 | reg_mse:2.8519
+2026-01-15 18:02:13,689 | INFO | ✓ Fold 1: New best model! reg_mae=1.2137
+2026-01-15 18:02:13,689 | INFO | Fold 1, Epoch 29/100
+2026-01-15 18:04:11,531 | INFO |   Train loss: 1.2054
+2026-01-15 18:04:50,583 | INFO |   Val: loss:1.1618 | reg_mae:1.5961 | reg_rmse:2.0923 | reg_mse:4.3777
+2026-01-15 18:04:50,583 | INFO | Fold 1, Epoch 30/100
+2026-01-15 18:06:45,236 | INFO |   Train loss: 1.2984
+2026-01-15 18:07:25,087 | INFO |   Val: loss:1.7543 | reg_mae:2.1950 | reg_rmse:2.9814 | reg_mse:8.8887
+2026-01-15 18:07:25,087 | INFO | Fold 1, Epoch 31/100
+2026-01-15 18:09:20,799 | INFO |   Train loss: 1.4573
+2026-01-15 18:10:00,192 | INFO |   Val: loss:1.2003 | reg_mae:1.6286 | reg_rmse:2.1702 | reg_mse:4.7096
+2026-01-15 18:10:00,192 | INFO | Fold 1, Epoch 32/100
+2026-01-15 18:11:58,293 | INFO |   Train loss: 1.2106
+2026-01-15 18:12:37,439 | INFO |   Val: loss:0.8884 | reg_mae:1.3001 | reg_rmse:1.7272 | reg_mse:2.9833
+2026-01-15 18:12:37,439 | INFO | Fold 1, Epoch 33/100
+2026-01-15 18:14:36,206 | INFO |   Train loss: 1.1817
+2026-01-15 18:15:14,837 | INFO |   Val: loss:1.7391 | reg_mae:2.1618 | reg_rmse:3.0826 | reg_mse:9.5021
+2026-01-15 18:15:14,837 | INFO | Fold 1, Epoch 34/100
+2026-01-15 18:17:10,862 | INFO |   Train loss: 1.2622
+2026-01-15 18:17:49,730 | INFO |   Val: loss:1.6204 | reg_mae:2.0599 | reg_rmse:2.6567 | reg_mse:7.0583
+2026-01-15 18:17:49,730 | INFO | Fold 1, Epoch 35/100
+2026-01-15 18:19:47,822 | INFO |   Train loss: 1.1131
+2026-01-15 18:20:25,858 | INFO |   Val: loss:0.8850 | reg_mae:1.2781 | reg_rmse:1.8077 | reg_mse:3.2679
+2026-01-15 18:20:25,858 | INFO | Fold 1, Epoch 36/100
+2026-01-15 18:22:23,895 | INFO |   Train loss: 1.1481
+2026-01-15 18:23:04,244 | INFO |   Val: loss:0.9441 | reg_mae:1.3542 | reg_rmse:1.8228 | reg_mse:3.3225
+2026-01-15 18:23:04,244 | INFO | Fold 1, Epoch 37/100
+2026-01-15 18:25:01,687 | INFO |   Train loss: 1.2374
+2026-01-15 18:25:40,902 | INFO |   Val: loss:1.1575 | reg_mae:1.5861 | reg_rmse:2.0949 | reg_mse:4.3887
+2026-01-15 18:25:40,902 | INFO | Fold 1, Epoch 38/100
+2026-01-15 18:27:35,855 | INFO |   Train loss: 1.1466
+2026-01-15 18:28:14,247 | INFO |   Val: loss:1.0960 | reg_mae:1.5246 | reg_rmse:1.9753 | reg_mse:3.9020
+2026-01-15 18:28:14,247 | INFO | Fold 1, Epoch 39/100
+2026-01-15 18:30:11,366 | INFO |   Train loss: 1.1472
+2026-01-15 18:30:51,381 | INFO |   Val: loss:1.3839 | reg_mae:1.8075 | reg_rmse:2.5335 | reg_mse:6.4186
+2026-01-15 18:30:51,381 | INFO | Fold 1, Epoch 40/100
+2026-01-15 18:32:48,354 | INFO |   Train loss: 1.1110
+2026-01-15 18:33:26,356 | INFO |   Val: loss:1.2194 | reg_mae:1.6579 | reg_rmse:2.0879 | reg_mse:4.3595
+2026-01-15 18:33:26,356 | INFO | Fold 1, Epoch 41/100
+2026-01-15 18:35:22,836 | INFO |   Train loss: 1.0384
+2026-01-15 18:36:00,460 | INFO |   Val: loss:1.3043 | reg_mae:1.7428 | reg_rmse:2.2032 | reg_mse:4.8542
+2026-01-15 18:36:00,460 | INFO | Fold 1, Epoch 42/100
+2026-01-15 18:37:58,680 | INFO |   Train loss: 1.0374
+2026-01-15 18:38:37,366 | INFO |   Val: loss:1.1609 | reg_mae:1.5875 | reg_rmse:2.2038 | reg_mse:4.8568
+2026-01-15 18:38:37,366 | INFO | Fold 1, Epoch 43/100
+2026-01-15 18:40:33,375 | INFO |   Train loss: 1.0133
+2026-01-15 18:41:11,811 | INFO |   Val: loss:0.6965 | reg_mae:1.0865 | reg_rmse:1.5110 | reg_mse:2.2833
+2026-01-15 18:41:13,515 | INFO | ✓ Fold 1: New best model! reg_mae=1.0865
+2026-01-15 18:41:13,515 | INFO | Fold 1, Epoch 44/100
+2026-01-15 18:43:09,104 | INFO |   Train loss: 1.0386
+2026-01-15 18:43:48,107 | INFO |   Val: loss:0.8004 | reg_mae:1.2011 | reg_rmse:1.6699 | reg_mse:2.7885
+2026-01-15 18:43:48,107 | INFO | Fold 1, Epoch 45/100
+2026-01-15 18:45:47,225 | INFO |   Train loss: 1.0204
+2026-01-15 18:46:25,776 | INFO |   Val: loss:0.9041 | reg_mae:1.3290 | reg_rmse:1.8032 | reg_mse:3.2516
+2026-01-15 18:46:25,776 | INFO | Fold 1, Epoch 46/100
+2026-01-15 18:48:22,778 | INFO |   Train loss: 0.9269
+2026-01-15 18:49:01,494 | INFO |   Val: loss:0.8356 | reg_mae:1.2482 | reg_rmse:1.7911 | reg_mse:3.2080
+2026-01-15 18:49:01,494 | INFO | Fold 1, Epoch 47/100
+2026-01-15 18:50:59,731 | INFO |   Train loss: 1.1149
+2026-01-15 18:51:37,390 | INFO |   Val: loss:1.4863 | reg_mae:1.9388 | reg_rmse:2.5355 | reg_mse:6.4287
+2026-01-15 18:51:37,391 | INFO | Fold 1, Epoch 48/100
+2026-01-15 18:53:34,034 | INFO |   Train loss: 0.9330
+2026-01-15 18:54:13,177 | INFO |   Val: loss:1.3208 | reg_mae:1.7732 | reg_rmse:2.1710 | reg_mse:4.7134
+2026-01-15 18:54:13,177 | INFO | Fold 1, Epoch 49/100
+2026-01-15 18:56:11,605 | INFO |   Train loss: 0.9770
+2026-01-15 18:56:50,599 | INFO |   Val: loss:0.7450 | reg_mae:1.1498 | reg_rmse:1.6047 | reg_mse:2.5751
+2026-01-15 18:56:50,599 | INFO | Fold 1, Epoch 50/100
+2026-01-15 18:58:47,509 | INFO |   Train loss: 0.9481
+2026-01-15 18:59:26,787 | INFO |   Val: loss:1.1694 | reg_mae:1.6108 | reg_rmse:2.1257 | reg_mse:4.5185
+2026-01-15 18:59:26,787 | INFO | Fold 1, Epoch 51/100
+2026-01-15 19:01:23,775 | INFO |   Train loss: 0.9756
+2026-01-15 19:02:01,925 | INFO |   Val: loss:0.7482 | reg_mae:1.1517 | reg_rmse:1.5266 | reg_mse:2.3305
+2026-01-15 19:02:01,925 | INFO | Fold 1, Epoch 52/100
+2026-01-15 19:04:00,054 | INFO |   Train loss: 0.9535
+2026-01-15 19:04:39,527 | INFO |   Val: loss:1.1065 | reg_mae:1.5222 | reg_rmse:2.1733 | reg_mse:4.7232
+2026-01-15 19:04:39,527 | INFO | Fold 1, Epoch 53/100
+2026-01-15 19:06:35,163 | INFO |   Train loss: 0.8657
+2026-01-15 19:07:14,332 | INFO |   Val: loss:0.8270 | reg_mae:1.2405 | reg_rmse:1.6635 | reg_mse:2.7672
+2026-01-15 19:07:14,332 | INFO | Fold 1, Epoch 54/100
+2026-01-15 19:09:11,554 | INFO |   Train loss: 0.8709
+2026-01-15 19:09:51,693 | INFO |   Val: loss:1.0726 | reg_mae:1.5091 | reg_rmse:1.9839 | reg_mse:3.9358
+2026-01-15 19:09:51,693 | INFO | Fold 1, Epoch 55/100
+2026-01-15 19:11:50,477 | INFO |   Train loss: 0.9179
+2026-01-15 19:12:28,759 | INFO |   Val: loss:0.7120 | reg_mae:1.1109 | reg_rmse:1.4988 | reg_mse:2.2463
+2026-01-15 19:12:28,759 | INFO | Fold 1, Epoch 56/100
+2026-01-15 19:14:27,098 | INFO |   Train loss: 0.9329
+2026-01-15 19:15:05,364 | INFO |   Val: loss:0.6709 | reg_mae:1.0605 | reg_rmse:1.4180 | reg_mse:2.0108
+2026-01-15 19:15:07,237 | INFO | ✓ Fold 1: New best model! reg_mae=1.0605
+2026-01-15 19:15:07,238 | INFO | Fold 1, Epoch 57/100
+2026-01-15 19:17:06,679 | INFO |   Train loss: 0.8580
+2026-01-15 19:17:45,550 | INFO |   Val: loss:1.2671 | reg_mae:1.6927 | reg_rmse:2.2895 | reg_mse:5.2416
+2026-01-15 19:17:45,550 | INFO | Fold 1, Epoch 58/100
+2026-01-15 19:19:41,204 | INFO |   Train loss: 0.8811
+2026-01-15 19:20:18,473 | INFO |   Val: loss:0.6091 | reg_mae:1.0051 | reg_rmse:1.3615 | reg_mse:1.8536
+2026-01-15 19:20:20,326 | INFO | ✓ Fold 1: New best model! reg_mae=1.0051
+2026-01-15 19:20:20,326 | INFO | Fold 1, Epoch 59/100
+2026-01-15 19:22:18,825 | INFO |   Train loss: 0.9178
+2026-01-15 19:22:57,806 | INFO |   Val: loss:1.1107 | reg_mae:1.5402 | reg_rmse:2.1745 | reg_mse:4.7284
+2026-01-15 19:22:57,806 | INFO | Fold 1, Epoch 60/100
+2026-01-15 19:24:58,296 | INFO |   Train loss: 0.8848
+2026-01-15 19:25:37,573 | INFO |   Val: loss:1.2395 | reg_mae:1.6848 | reg_rmse:2.1379 | reg_mse:4.5707
+2026-01-15 19:25:37,574 | INFO | Fold 1, Epoch 61/100
+2026-01-15 19:27:34,981 | INFO |   Train loss: 0.8269
+2026-01-15 19:28:13,439 | INFO |   Val: loss:0.7541 | reg_mae:1.1486 | reg_rmse:1.6698 | reg_mse:2.7883
+2026-01-15 19:28:13,440 | INFO | Fold 1, Epoch 62/100
+2026-01-15 19:30:08,527 | INFO |   Train loss: 0.8277
+2026-01-15 19:30:48,270 | INFO |   Val: loss:0.6205 | reg_mae:1.0204 | reg_rmse:1.3743 | reg_mse:1.8888
+2026-01-15 19:30:48,270 | INFO | Fold 1, Epoch 63/100
+2026-01-15 19:32:47,194 | INFO |   Train loss: 0.8264
+2026-01-15 19:33:26,748 | INFO |   Val: loss:0.8161 | reg_mae:1.2204 | reg_rmse:1.6557 | reg_mse:2.7414
+2026-01-15 19:33:26,748 | INFO | Fold 1, Epoch 64/100
+2026-01-15 19:35:23,723 | INFO |   Train loss: 0.8221
+2026-01-15 19:36:02,175 | INFO |   Val: loss:0.7419 | reg_mae:1.1451 | reg_rmse:1.5834 | reg_mse:2.5073
+2026-01-15 19:36:02,175 | INFO | Fold 1, Epoch 65/100
+2026-01-15 19:37:59,772 | INFO |   Train loss: 0.8145
+2026-01-15 19:38:39,158 | INFO |   Val: loss:0.8369 | reg_mae:1.2520 | reg_rmse:1.7153 | reg_mse:2.9422
+2026-01-15 19:38:39,158 | INFO | Fold 1, Epoch 66/100
+2026-01-15 19:40:38,093 | INFO |   Train loss: 0.8800
+2026-01-15 19:41:17,627 | INFO |   Val: loss:0.6003 | reg_mae:0.9788 | reg_rmse:1.4447 | reg_mse:2.0871
+2026-01-15 19:41:19,517 | INFO | ✓ Fold 1: New best model! reg_mae=0.9788
+2026-01-15 19:41:19,518 | INFO | Fold 1, Epoch 67/100
+2026-01-15 19:43:15,717 | INFO |   Train loss: 0.8304
+2026-01-15 19:43:54,890 | INFO |   Val: loss:0.8534 | reg_mae:1.2779 | reg_rmse:1.7008 | reg_mse:2.8927
+2026-01-15 19:43:54,891 | INFO | Fold 1, Epoch 68/100
+2026-01-15 19:45:50,326 | INFO |   Train loss: 0.7739
+2026-01-15 19:46:27,509 | INFO |   Val: loss:0.5878 | reg_mae:0.9732 | reg_rmse:1.4192 | reg_mse:2.0142
+2026-01-15 19:46:29,080 | INFO | ✓ Fold 1: New best model! reg_mae=0.9732
+2026-01-15 19:46:29,080 | INFO | Fold 1, Epoch 69/100
+2026-01-15 19:48:28,140 | INFO |   Train loss: 0.7982
+2026-01-15 19:49:06,849 | INFO |   Val: loss:0.6454 | reg_mae:1.0409 | reg_rmse:1.4880 | reg_mse:2.2140
+2026-01-15 19:49:06,850 | INFO | Fold 1, Epoch 70/100
+2026-01-15 19:51:05,023 | INFO |   Train loss: 0.7867
+2026-01-15 19:51:44,198 | INFO |   Val: loss:0.6784 | reg_mae:1.0792 | reg_rmse:1.4813 | reg_mse:2.1941
+2026-01-15 19:51:44,198 | INFO | Fold 1, Epoch 71/100
+2026-01-15 19:53:43,221 | INFO |   Train loss: 0.7619
+2026-01-15 19:54:22,201 | INFO |   Val: loss:0.5689 | reg_mae:0.9461 | reg_rmse:1.3687 | reg_mse:1.8734
+2026-01-15 19:54:23,927 | INFO | ✓ Fold 1: New best model! reg_mae=0.9461
+2026-01-15 19:54:23,927 | INFO | Fold 1, Epoch 72/100
+2026-01-15 19:56:25,038 | INFO |   Train loss: 0.7770
+2026-01-15 19:57:04,579 | INFO |   Val: loss:0.6511 | reg_mae:1.0443 | reg_rmse:1.4725 | reg_mse:2.1683
+2026-01-15 19:57:04,579 | INFO | Fold 1, Epoch 73/100
+2026-01-15 19:59:02,571 | INFO |   Train loss: 0.7384
+2026-01-15 19:59:42,077 | INFO |   Val: loss:0.6193 | reg_mae:1.0012 | reg_rmse:1.4406 | reg_mse:2.0754
+2026-01-15 19:59:42,077 | INFO | Fold 1, Epoch 74/100
+2026-01-15 20:01:38,340 | INFO |   Train loss: 0.7904
+2026-01-15 20:02:17,462 | INFO |   Val: loss:0.6780 | reg_mae:1.0763 | reg_rmse:1.5005 | reg_mse:2.2515
+2026-01-15 20:02:17,462 | INFO | Fold 1, Epoch 75/100
+2026-01-15 20:04:16,862 | INFO |   Train loss: 0.7303
+2026-01-15 20:04:55,442 | INFO |   Val: loss:0.6067 | reg_mae:0.9854 | reg_rmse:1.4048 | reg_mse:1.9734
+2026-01-15 20:04:55,442 | INFO | Fold 1, Epoch 76/100
+2026-01-15 20:06:51,815 | INFO |   Train loss: 0.7618
+2026-01-15 20:07:31,136 | INFO |   Val: loss:0.7635 | reg_mae:1.1778 | reg_rmse:1.5960 | reg_mse:2.5474
+2026-01-15 20:07:31,136 | INFO | Fold 1, Epoch 77/100
+2026-01-15 20:09:28,399 | INFO |   Train loss: 0.7561
+2026-01-15 20:10:07,238 | INFO |   Val: loss:0.5592 | reg_mae:0.9386 | reg_rmse:1.3491 | reg_mse:1.8200
+2026-01-15 20:10:09,111 | INFO | ✓ Fold 1: New best model! reg_mae=0.9386
+2026-01-15 20:10:09,112 | INFO | Fold 1, Epoch 78/100
+2026-01-15 20:12:05,725 | INFO |   Train loss: 0.7452
+2026-01-15 20:12:43,296 | INFO |   Val: loss:0.7635 | reg_mae:1.1849 | reg_rmse:1.5529 | reg_mse:2.4116
+2026-01-15 20:12:43,296 | INFO | Fold 1, Epoch 79/100
+2026-01-15 20:14:41,899 | INFO |   Train loss: 0.7395
+2026-01-15 20:15:20,783 | INFO |   Val: loss:0.5755 | reg_mae:0.9543 | reg_rmse:1.3828 | reg_mse:1.9120
+2026-01-15 20:15:20,784 | INFO | Fold 1, Epoch 80/100
+2026-01-15 20:17:16,699 | INFO |   Train loss: 0.7362
+2026-01-15 20:17:55,320 | INFO |   Val: loss:0.5416 | reg_mae:0.9215 | reg_rmse:1.3219 | reg_mse:1.7473
+2026-01-15 20:17:57,113 | INFO | ✓ Fold 1: New best model! reg_mae=0.9215
+2026-01-15 20:17:57,114 | INFO | Fold 1, Epoch 81/100
+2026-01-15 20:19:54,606 | INFO |   Train loss: 0.7135
+2026-01-15 20:20:33,549 | INFO |   Val: loss:0.6172 | reg_mae:1.0050 | reg_rmse:1.4198 | reg_mse:2.0159
+2026-01-15 20:20:33,549 | INFO | Fold 1, Epoch 82/100
+2026-01-15 20:22:32,523 | INFO |   Train loss: 0.7092
+2026-01-15 20:23:11,828 | INFO |   Val: loss:0.5719 | reg_mae:0.9546 | reg_rmse:1.3941 | reg_mse:1.9435
+2026-01-15 20:23:11,828 | INFO | Fold 1, Epoch 83/100
+2026-01-15 20:25:12,857 | INFO |   Train loss: 0.7355
+2026-01-15 20:25:51,671 | INFO |   Val: loss:0.5674 | reg_mae:0.9490 | reg_rmse:1.3704 | reg_mse:1.8781
+2026-01-15 20:25:51,671 | INFO | Fold 1, Epoch 84/100
+2026-01-15 20:27:49,171 | INFO |   Train loss: 0.6910
+2026-01-15 20:28:27,737 | INFO |   Val: loss:0.5698 | reg_mae:0.9512 | reg_rmse:1.3743 | reg_mse:1.8886
+2026-01-15 20:28:27,737 | INFO | Fold 1, Epoch 85/100
+2026-01-15 20:30:26,592 | INFO |   Train loss: 0.7332
+2026-01-15 20:31:03,804 | INFO |   Val: loss:0.5943 | reg_mae:0.9859 | reg_rmse:1.3829 | reg_mse:1.9123
+2026-01-15 20:31:03,804 | INFO | Fold 1, Epoch 86/100
+2026-01-15 20:33:01,461 | INFO |   Train loss: 0.7146
+2026-01-15 20:33:40,700 | INFO |   Val: loss:0.5943 | reg_mae:0.9868 | reg_rmse:1.3577 | reg_mse:1.8433
+2026-01-15 20:33:40,700 | INFO | Fold 1, Epoch 87/100
+2026-01-15 20:35:40,942 | INFO |   Train loss: 0.7026
+2026-01-15 20:36:20,174 | INFO |   Val: loss:0.6431 | reg_mae:1.0454 | reg_rmse:1.4547 | reg_mse:2.1162
+2026-01-15 20:36:20,174 | INFO | Fold 1, Epoch 88/100
+2026-01-15 20:38:14,385 | INFO |   Train loss: 0.6934
+2026-01-15 20:38:53,464 | INFO |   Val: loss:0.6221 | reg_mae:1.0184 | reg_rmse:1.4296 | reg_mse:2.0437
+2026-01-15 20:38:53,464 | INFO | Fold 1, Epoch 89/100
+2026-01-15 20:40:48,975 | INFO |   Train loss: 0.6993
+2026-01-15 20:41:27,985 | INFO |   Val: loss:0.5505 | reg_mae:0.9270 | reg_rmse:1.3563 | reg_mse:1.8396
+2026-01-15 20:41:27,986 | INFO | Fold 1, Epoch 90/100
+2026-01-15 20:43:21,886 | INFO |   Train loss: 0.6879
+2026-01-15 20:44:00,561 | INFO |   Val: loss:0.5947 | reg_mae:0.9891 | reg_rmse:1.3728 | reg_mse:1.8845
+2026-01-15 20:44:00,561 | INFO | Fold 1, Epoch 91/100
+2026-01-15 20:46:00,912 | INFO |   Train loss: 0.6671
+2026-01-15 20:46:39,380 | INFO |   Val: loss:0.5454 | reg_mae:0.9241 | reg_rmse:1.3321 | reg_mse:1.7745
+2026-01-15 20:46:39,380 | INFO | Fold 1, Epoch 92/100
+2026-01-15 20:48:37,198 | INFO |   Train loss: 0.6867
+2026-01-15 20:49:14,740 | INFO |   Val: loss:0.5444 | reg_mae:0.9158 | reg_rmse:1.3273 | reg_mse:1.7618
+2026-01-15 20:49:16,551 | INFO | ✓ Fold 1: New best model! reg_mae=0.9158
+2026-01-15 20:49:16,551 | INFO | Fold 1, Epoch 93/100
+2026-01-15 20:51:15,162 | INFO |   Train loss: 0.7127
+2026-01-15 20:51:54,269 | INFO |   Val: loss:0.5362 | reg_mae:0.9093 | reg_rmse:1.3231 | reg_mse:1.7506
+2026-01-15 20:51:56,143 | INFO | ✓ Fold 1: New best model! reg_mae=0.9093
+2026-01-15 20:51:56,143 | INFO | Fold 1, Epoch 94/100
+2026-01-15 20:53:54,131 | INFO |   Train loss: 0.6899
+2026-01-15 20:54:31,692 | INFO |   Val: loss:0.5587 | reg_mae:0.9409 | reg_rmse:1.3437 | reg_mse:1.8056
+2026-01-15 20:54:31,692 | INFO | Fold 1, Epoch 95/100
+2026-01-15 20:56:28,351 | INFO |   Train loss: 0.6593
+2026-01-15 20:57:06,486 | INFO |   Val: loss:0.5713 | reg_mae:0.9548 | reg_rmse:1.3647 | reg_mse:1.8624
+2026-01-15 20:57:06,486 | INFO | Fold 1, Epoch 96/100
+2026-01-15 20:59:07,625 | INFO |   Train loss: 0.6724
+2026-01-15 20:59:45,441 | INFO |   Val: loss:0.5611 | reg_mae:0.9454 | reg_rmse:1.3527 | reg_mse:1.8299
+2026-01-15 20:59:45,441 | INFO | Fold 1, Epoch 97/100
+2026-01-15 21:01:42,798 | INFO |   Train loss: 0.6415
+2026-01-15 21:02:20,930 | INFO |   Val: loss:0.5569 | reg_mae:0.9378 | reg_rmse:1.3377 | reg_mse:1.7895
+2026-01-15 21:02:20,930 | INFO | Fold 1, Epoch 98/100
+2026-01-15 21:04:19,104 | INFO |   Train loss: 0.6777
+2026-01-15 21:04:58,336 | INFO |   Val: loss:0.5795 | reg_mae:0.9661 | reg_rmse:1.4130 | reg_mse:1.9965
+2026-01-15 21:04:58,336 | INFO | Fold 1, Epoch 99/100
+2026-01-15 21:06:53,968 | INFO |   Train loss: 0.6739
+2026-01-15 21:07:32,432 | INFO |   Val: loss:0.5640 | reg_mae:0.9485 | reg_rmse:1.3642 | reg_mse:1.8609
+2026-01-15 21:07:32,432 | INFO | Fold 1, Epoch 100/100
+2026-01-15 21:09:30,695 | INFO |   Train loss: 0.6976
+2026-01-15 21:10:10,104 | INFO |   Val: loss:0.5663 | reg_mae:0.9495 | reg_rmse:1.3676 | reg_mse:1.8703
+2026-01-15 21:10:10,104 | INFO | Loading best model for fold 1...
+2026-01-15 21:10:11,676 | INFO | Fold 1: Final evaluation on test set
+2026-01-15 21:11:11,482 | INFO | Fold 1 test results: loss:0.6352 | reg_mae:1.0293 | reg_rmse:1.3440 | reg_mse:1.8064
+2026-01-15 21:11:11,492 | INFO | ✓ Saved test predictions to outputs/regression_mixed/20260115-164855_5fold/fold_1/test_predictions.npz
+2026-01-15 21:11:11,510 | INFO | ✓ Saved test metadata to outputs/regression_mixed/20260115-164855_5fold/fold_1/test_metadata.jsonl
+2026-01-15 21:11:11,513 | INFO | ✓ Fold 1 complete!
+2026-01-15 21:11:11,518 | INFO | 
+================================================================================
+2026-01-15 21:11:11,518 | INFO | FOLD 2/5
+2026-01-15 21:11:11,518 | INFO | ================================================================================
+
+2026-01-15 21:11:11,518 | INFO | Device: cuda
+2026-01-15 21:11:11,518 | INFO | Training on all samples (both infected and uninfected)
+2026-01-15 21:11:11,518 | INFO | Infection onset: 1.0h
+2026-01-15 21:11:11,518 | INFO | Clamp range: (0.0, 48.0)
+2026-01-15 21:11:11,519 | INFO | Building datasets for fold 2...
+2026-01-15 21:11:12,189 | INFO | Fold 2 - Train: 4141, Val: 1011, Test: 1472
+2026-01-15 21:11:12,622 | INFO | Model: ResNetRegressor
+2026-01-15 21:11:12,623 | INFO | Total parameters: 24,032,833
+2026-01-15 21:11:12,631 | INFO | Training fold 2 for 100 epochs...
+2026-01-15 21:11:12,631 | INFO | Primary metric: reg_mae (lower is better)
+2026-01-15 21:11:12,631 | INFO | Fold 2, Epoch 1/100
+2026-01-15 21:13:16,232 | INFO |   Train loss: 16.6180
+2026-01-15 21:13:48,196 | INFO |   Val: loss:8.0452 | reg_mae:8.5334 | reg_rmse:10.4478 | reg_mse:109.1558
+2026-01-15 21:13:49,763 | INFO | ✓ Fold 2: New best model! reg_mae=8.5334
+2026-01-15 21:13:49,764 | INFO | Fold 2, Epoch 2/100
+2026-01-15 21:15:50,517 | INFO |   Train loss: 4.6482
+2026-01-15 21:16:21,404 | INFO |   Val: loss:5.2054 | reg_mae:5.6922 | reg_rmse:7.1749 | reg_mse:51.4792
+2026-01-15 21:16:23,089 | INFO | ✓ Fold 2: New best model! reg_mae=5.6922
+2026-01-15 21:16:23,089 | INFO | Fold 2, Epoch 3/100
+2026-01-15 21:18:24,114 | INFO |   Train loss: 2.2993
+2026-01-15 21:18:56,567 | INFO |   Val: loss:2.6152 | reg_mae:3.0813 | reg_rmse:4.0548 | reg_mse:16.4414
+2026-01-15 21:18:58,312 | INFO | ✓ Fold 2: New best model! reg_mae=3.0813
+2026-01-15 21:18:58,313 | INFO | Fold 2, Epoch 4/100
+2026-01-15 21:20:59,114 | INFO |   Train loss: 1.9725
+2026-01-15 21:21:30,388 | INFO |   Val: loss:2.5439 | reg_mae:3.0023 | reg_rmse:3.8933 | reg_mse:15.1581
+2026-01-15 21:21:32,094 | INFO | ✓ Fold 2: New best model! reg_mae=3.0023
+2026-01-15 21:21:32,094 | INFO | Fold 2, Epoch 5/100
+2026-01-15 21:23:32,552 | INFO |   Train loss: 1.8959
+2026-01-15 21:24:03,630 | INFO |   Val: loss:1.9477 | reg_mae:2.4164 | reg_rmse:2.8715 | reg_mse:8.2453
+2026-01-15 21:24:05,333 | INFO | ✓ Fold 2: New best model! reg_mae=2.4164
+2026-01-15 21:24:05,333 | INFO | Fold 2, Epoch 6/100
+2026-01-15 21:26:04,283 | INFO |   Train loss: 1.8790
+2026-01-15 21:26:36,319 | INFO |   Val: loss:3.2962 | reg_mae:3.7602 | reg_rmse:4.7971 | reg_mse:23.0119
+2026-01-15 21:26:36,319 | INFO | Fold 2, Epoch 7/100
+2026-01-15 21:28:33,632 | INFO |   Train loss: 1.6927
+2026-01-15 21:29:06,170 | INFO |   Val: loss:1.7393 | reg_mae:2.1922 | reg_rmse:2.7556 | reg_mse:7.5931
+2026-01-15 21:29:07,840 | INFO | ✓ Fold 2: New best model! reg_mae=2.1922
+2026-01-15 21:29:07,841 | INFO | Fold 2, Epoch 8/100
+2026-01-15 21:31:10,431 | INFO |   Train loss: 1.5377
+2026-01-15 21:31:42,649 | INFO |   Val: loss:1.7330 | reg_mae:2.1756 | reg_rmse:3.0754 | reg_mse:9.4578
+2026-01-15 21:31:44,464 | INFO | ✓ Fold 2: New best model! reg_mae=2.1756
+2026-01-15 21:31:44,464 | INFO | Fold 2, Epoch 9/100
+2026-01-15 21:33:48,483 | INFO |   Train loss: 1.7016
+2026-01-15 21:34:19,603 | INFO |   Val: loss:2.3847 | reg_mae:2.8368 | reg_rmse:4.0326 | reg_mse:16.2620
+2026-01-15 21:34:19,603 | INFO | Fold 2, Epoch 10/100
+2026-01-15 21:36:22,463 | INFO |   Train loss: 1.8279
+2026-01-15 21:36:53,365 | INFO |   Val: loss:1.7571 | reg_mae:2.2048 | reg_rmse:2.7745 | reg_mse:7.6977
+2026-01-15 21:36:53,365 | INFO | Fold 2, Epoch 11/100
+2026-01-15 21:38:52,544 | INFO |   Train loss: 1.5127
+2026-01-15 21:39:23,613 | INFO |   Val: loss:1.3682 | reg_mae:1.7929 | reg_rmse:2.5053 | reg_mse:6.2764
+2026-01-15 21:39:25,365 | INFO | ✓ Fold 2: New best model! reg_mae=1.7929
+2026-01-15 21:39:25,365 | INFO | Fold 2, Epoch 12/100
+2026-01-15 21:41:28,223 | INFO |   Train loss: 1.5057
+2026-01-15 21:41:58,982 | INFO |   Val: loss:1.0076 | reg_mae:1.4347 | reg_rmse:1.8620 | reg_mse:3.4671
+2026-01-15 21:42:00,826 | INFO | ✓ Fold 2: New best model! reg_mae=1.4347
+2026-01-15 21:42:00,826 | INFO | Fold 2, Epoch 13/100
+2026-01-15 21:43:59,873 | INFO |   Train loss: 1.5971
+2026-01-15 21:44:30,661 | INFO |   Val: loss:1.5963 | reg_mae:2.0447 | reg_rmse:2.5598 | reg_mse:6.5525
+2026-01-15 21:44:30,661 | INFO | Fold 2, Epoch 14/100
+2026-01-15 21:46:32,559 | INFO |   Train loss: 1.5039
+2026-01-15 21:47:03,347 | INFO |   Val: loss:1.0588 | reg_mae:1.4909 | reg_rmse:1.8605 | reg_mse:3.4614
+2026-01-15 21:47:03,347 | INFO | Fold 2, Epoch 15/100
+2026-01-15 21:49:02,087 | INFO |   Train loss: 1.3680
+2026-01-15 21:49:33,029 | INFO |   Val: loss:1.1061 | reg_mae:1.5221 | reg_rmse:2.0565 | reg_mse:4.2292
+2026-01-15 21:49:33,030 | INFO | Fold 2, Epoch 16/100
+2026-01-15 21:51:34,742 | INFO |   Train loss: 1.4588
+2026-01-15 21:52:05,564 | INFO |   Val: loss:1.5838 | reg_mae:2.0243 | reg_rmse:2.6216 | reg_mse:6.8726
+2026-01-15 21:52:05,564 | INFO | Fold 2, Epoch 17/100
+2026-01-15 21:54:07,342 | INFO |   Train loss: 1.4646
+2026-01-15 21:54:38,057 | INFO |   Val: loss:1.4359 | reg_mae:1.8903 | reg_rmse:2.3127 | reg_mse:5.3487
+2026-01-15 21:54:38,057 | INFO | Fold 2, Epoch 18/100
+2026-01-15 21:56:40,370 | INFO |   Train loss: 1.5148
+2026-01-15 21:57:11,579 | INFO |   Val: loss:1.4709 | reg_mae:1.9145 | reg_rmse:2.5660 | reg_mse:6.5842
+2026-01-15 21:57:11,579 | INFO | Fold 2, Epoch 19/100
+2026-01-15 21:59:14,165 | INFO |   Train loss: 1.4465
+2026-01-15 21:59:45,036 | INFO |   Val: loss:1.8350 | reg_mae:2.2838 | reg_rmse:3.1198 | reg_mse:9.7333
+2026-01-15 21:59:45,036 | INFO | Fold 2, Epoch 20/100
+2026-01-15 22:01:47,361 | INFO |   Train loss: 1.2292
+2026-01-15 22:02:18,594 | INFO |   Val: loss:0.8823 | reg_mae:1.2710 | reg_rmse:1.7455 | reg_mse:3.0467
+2026-01-15 22:02:20,206 | INFO | ✓ Fold 2: New best model! reg_mae=1.2710
+2026-01-15 22:02:20,206 | INFO | Fold 2, Epoch 21/100
+2026-01-15 22:04:22,657 | INFO |   Train loss: 1.4441
+2026-01-15 22:04:53,448 | INFO |   Val: loss:2.0743 | reg_mae:2.5284 | reg_rmse:3.4098 | reg_mse:11.6267
+2026-01-15 22:04:53,448 | INFO | Fold 2, Epoch 22/100
+2026-01-15 22:06:56,298 | INFO |   Train loss: 1.3438
+2026-01-15 22:07:27,080 | INFO |   Val: loss:0.9121 | reg_mae:1.3158 | reg_rmse:1.7647 | reg_mse:3.1142
+2026-01-15 22:07:27,081 | INFO | Fold 2, Epoch 23/100
+2026-01-15 22:09:27,436 | INFO |   Train loss: 1.3211
+2026-01-15 22:09:58,468 | INFO |   Val: loss:1.8857 | reg_mae:2.3198 | reg_rmse:3.1924 | reg_mse:10.1913
+2026-01-15 22:09:58,468 | INFO | Fold 2, Epoch 24/100
+2026-01-15 22:12:01,474 | INFO |   Train loss: 1.3205
+2026-01-15 22:12:32,423 | INFO |   Val: loss:1.4492 | reg_mae:1.8771 | reg_rmse:2.6123 | reg_mse:6.8243
+2026-01-15 22:12:32,423 | INFO | Fold 2, Epoch 25/100
+2026-01-15 22:14:35,356 | INFO |   Train loss: 1.2928
+2026-01-15 22:15:06,600 | INFO |   Val: loss:1.2381 | reg_mae:1.6829 | reg_rmse:2.0558 | reg_mse:4.2263
+2026-01-15 22:15:06,600 | INFO | Fold 2, Epoch 26/100
+2026-01-15 22:17:07,230 | INFO |   Train loss: 1.3509
+2026-01-15 22:17:37,936 | INFO |   Val: loss:1.1168 | reg_mae:1.5499 | reg_rmse:1.9831 | reg_mse:3.9326
+2026-01-15 22:17:37,936 | INFO | Fold 2, Epoch 27/100
+2026-01-15 22:19:39,983 | INFO |   Train loss: 1.3044
+2026-01-15 22:20:10,943 | INFO |   Val: loss:1.0407 | reg_mae:1.4590 | reg_rmse:1.9068 | reg_mse:3.6360
+2026-01-15 22:20:10,943 | INFO | Fold 2, Epoch 28/100
+2026-01-15 22:22:15,294 | INFO |   Train loss: 1.3085
+2026-01-15 22:22:46,019 | INFO |   Val: loss:1.0968 | reg_mae:1.5174 | reg_rmse:2.1228 | reg_mse:4.5062
+2026-01-15 22:22:46,019 | INFO | Fold 2, Epoch 29/100
+2026-01-15 22:24:48,234 | INFO |   Train loss: 1.1846
+2026-01-15 22:25:18,974 | INFO |   Val: loss:1.0438 | reg_mae:1.4603 | reg_rmse:2.0014 | reg_mse:4.0054
+2026-01-15 22:25:18,974 | INFO | Fold 2, Epoch 30/100
+2026-01-15 22:27:20,389 | INFO |   Train loss: 1.1721
+2026-01-15 22:27:51,159 | INFO |   Val: loss:1.2624 | reg_mae:1.6847 | reg_rmse:2.2934 | reg_mse:5.2598
+2026-01-15 22:27:51,159 | INFO | Fold 2, Epoch 31/100
+2026-01-15 22:29:52,428 | INFO |   Train loss: 1.1963
+2026-01-15 22:30:23,177 | INFO |   Val: loss:1.4048 | reg_mae:1.8376 | reg_rmse:2.4339 | reg_mse:5.9240
+2026-01-15 22:30:23,177 | INFO | Fold 2, Epoch 32/100
+2026-01-15 22:32:26,953 | INFO |   Train loss: 1.1809
+2026-01-15 22:32:58,050 | INFO |   Val: loss:1.0787 | reg_mae:1.5014 | reg_rmse:1.8916 | reg_mse:3.5782
+2026-01-15 22:32:58,050 | INFO | Fold 2, Epoch 33/100
+2026-01-15 22:34:59,431 | INFO |   Train loss: 1.1534
+2026-01-15 22:35:30,651 | INFO |   Val: loss:1.1535 | reg_mae:1.5816 | reg_rmse:2.0629 | reg_mse:4.2556
+2026-01-15 22:35:30,652 | INFO | Fold 2, Epoch 34/100
+2026-01-15 22:37:36,288 | INFO |   Train loss: 1.1794
+2026-01-15 22:38:06,919 | INFO |   Val: loss:0.7960 | reg_mae:1.2152 | reg_rmse:1.5293 | reg_mse:2.3387
+2026-01-15 22:38:08,712 | INFO | ✓ Fold 2: New best model! reg_mae=1.2152
+2026-01-15 22:38:08,713 | INFO | Fold 2, Epoch 35/100
+2026-01-15 22:40:11,725 | INFO |   Train loss: 1.2096
+2026-01-15 22:40:42,615 | INFO |   Val: loss:0.7464 | reg_mae:1.1509 | reg_rmse:1.4939 | reg_mse:2.2318
+2026-01-15 22:40:44,341 | INFO | ✓ Fold 2: New best model! reg_mae=1.1509
+2026-01-15 22:40:44,342 | INFO | Fold 2, Epoch 36/100
+2026-01-15 22:42:46,396 | INFO |   Train loss: 1.2569
+2026-01-15 22:43:18,434 | INFO |   Val: loss:0.7944 | reg_mae:1.1893 | reg_rmse:1.6100 | reg_mse:2.5921
+2026-01-15 22:43:18,434 | INFO | Fold 2, Epoch 37/100
+2026-01-15 22:45:17,527 | INFO |   Train loss: 1.1139
+2026-01-15 22:45:48,303 | INFO |   Val: loss:0.7997 | reg_mae:1.1913 | reg_rmse:1.7074 | reg_mse:2.9152
+2026-01-15 22:45:48,303 | INFO | Fold 2, Epoch 38/100
+2026-01-15 22:47:50,566 | INFO |   Train loss: 1.1663
+2026-01-15 22:48:21,450 | INFO |   Val: loss:0.9315 | reg_mae:1.3467 | reg_rmse:1.9539 | reg_mse:3.8178
+2026-01-15 22:48:21,450 | INFO | Fold 2, Epoch 39/100
+2026-01-15 22:50:20,739 | INFO |   Train loss: 1.1579
+2026-01-15 22:50:51,529 | INFO |   Val: loss:0.6839 | reg_mae:1.0681 | reg_rmse:1.4224 | reg_mse:2.0231
+2026-01-15 22:50:53,384 | INFO | ✓ Fold 2: New best model! reg_mae=1.0681
+2026-01-15 22:50:53,384 | INFO | Fold 2, Epoch 40/100
+2026-01-15 22:52:51,934 | INFO |   Train loss: 1.1445
+2026-01-15 22:53:22,697 | INFO |   Val: loss:1.1281 | reg_mae:1.5354 | reg_rmse:2.1675 | reg_mse:4.6983
+2026-01-15 22:53:22,697 | INFO | Fold 2, Epoch 41/100
+2026-01-15 22:55:23,461 | INFO |   Train loss: 1.1427
+2026-01-15 22:55:55,337 | INFO |   Val: loss:1.3125 | reg_mae:1.7298 | reg_rmse:2.6091 | reg_mse:6.8076
+2026-01-15 22:55:55,337 | INFO | Fold 2, Epoch 42/100
+2026-01-15 22:57:54,861 | INFO |   Train loss: 1.1383
+2026-01-15 22:58:25,694 | INFO |   Val: loss:0.6861 | reg_mae:1.0792 | reg_rmse:1.4564 | reg_mse:2.1211
+2026-01-15 22:58:25,694 | INFO | Fold 2, Epoch 43/100
+2026-01-15 23:00:27,552 | INFO |   Train loss: 1.0212
+2026-01-15 23:00:58,367 | INFO |   Val: loss:1.2834 | reg_mae:1.7109 | reg_rmse:2.3052 | reg_mse:5.3140
+2026-01-15 23:00:58,367 | INFO | Fold 2, Epoch 44/100
+2026-01-15 23:03:02,363 | INFO |   Train loss: 1.0279
+2026-01-15 23:03:33,530 | INFO |   Val: loss:0.8067 | reg_mae:1.1892 | reg_rmse:1.7018 | reg_mse:2.8960
+2026-01-15 23:03:33,530 | INFO | Fold 2, Epoch 45/100
+2026-01-15 23:05:35,597 | INFO |   Train loss: 1.0763
+2026-01-15 23:06:06,389 | INFO |   Val: loss:1.1611 | reg_mae:1.5905 | reg_rmse:2.0501 | reg_mse:4.2028
+2026-01-15 23:06:06,390 | INFO | Fold 2, Epoch 46/100
+2026-01-15 23:08:10,858 | INFO |   Train loss: 1.0908
+2026-01-15 23:08:41,505 | INFO |   Val: loss:1.0713 | reg_mae:1.5005 | reg_rmse:1.9729 | reg_mse:3.8922
+2026-01-15 23:08:41,505 | INFO | Fold 2, Epoch 47/100
+2026-01-15 23:10:42,924 | INFO |   Train loss: 1.0428
+2026-01-15 23:11:15,416 | INFO |   Val: loss:0.9384 | reg_mae:1.3714 | reg_rmse:1.6867 | reg_mse:2.8450
+2026-01-15 23:11:15,416 | INFO | Fold 2, Epoch 48/100
+2026-01-15 23:13:16,214 | INFO |   Train loss: 1.0586
+2026-01-15 23:13:47,406 | INFO |   Val: loss:0.7615 | reg_mae:1.1429 | reg_rmse:1.5884 | reg_mse:2.5231
+2026-01-15 23:13:47,406 | INFO | Fold 2, Epoch 49/100
+2026-01-15 23:15:49,505 | INFO |   Train loss: 1.0360
+2026-01-15 23:16:20,170 | INFO |   Val: loss:0.7214 | reg_mae:1.1349 | reg_rmse:1.4304 | reg_mse:2.0460
+2026-01-15 23:16:20,170 | INFO | Fold 2, Epoch 50/100
+2026-01-15 23:18:22,662 | INFO |   Train loss: 1.0277
+2026-01-15 23:18:53,318 | INFO |   Val: loss:0.6959 | reg_mae:1.0823 | reg_rmse:1.5035 | reg_mse:2.2604
+2026-01-15 23:18:53,319 | INFO | Fold 2, Epoch 51/100
+2026-01-15 23:20:53,458 | INFO |   Train loss: 1.0930
+2026-01-15 23:21:24,384 | INFO |   Val: loss:0.7468 | reg_mae:1.1435 | reg_rmse:1.4888 | reg_mse:2.2165
+2026-01-15 23:21:24,384 | INFO | Fold 2, Epoch 52/100
+2026-01-15 23:23:26,190 | INFO |   Train loss: 1.0219
+2026-01-15 23:23:57,109 | INFO |   Val: loss:0.6439 | reg_mae:1.0263 | reg_rmse:1.3794 | reg_mse:1.9027
+2026-01-15 23:23:59,039 | INFO | ✓ Fold 2: New best model! reg_mae=1.0263
+2026-01-15 23:23:59,039 | INFO | Fold 2, Epoch 53/100
+2026-01-15 23:26:01,900 | INFO |   Train loss: 0.9959
+2026-01-15 23:26:32,568 | INFO |   Val: loss:0.8984 | reg_mae:1.3290 | reg_rmse:1.6694 | reg_mse:2.7868
+2026-01-15 23:26:32,568 | INFO | Fold 2, Epoch 54/100
+2026-01-15 23:28:33,798 | INFO |   Train loss: 0.9761
+2026-01-15 23:29:04,449 | INFO |   Val: loss:0.6451 | reg_mae:1.0275 | reg_rmse:1.3571 | reg_mse:1.8417
+2026-01-15 23:29:04,449 | INFO | Fold 2, Epoch 55/100
+2026-01-15 23:31:03,344 | INFO |   Train loss: 0.9971
+2026-01-15 23:31:33,994 | INFO |   Val: loss:0.8590 | reg_mae:1.2678 | reg_rmse:1.6484 | reg_mse:2.7172
+2026-01-15 23:31:33,994 | INFO | Fold 2, Epoch 56/100
+2026-01-15 23:33:35,398 | INFO |   Train loss: 0.9626
+2026-01-15 23:34:06,956 | INFO |   Val: loss:0.7531 | reg_mae:1.1445 | reg_rmse:1.5665 | reg_mse:2.4540
+2026-01-15 23:34:06,956 | INFO | Fold 2, Epoch 57/100
+2026-01-15 23:36:05,688 | INFO |   Train loss: 1.0017
+2026-01-15 23:36:36,869 | INFO |   Val: loss:0.8051 | reg_mae:1.1992 | reg_rmse:1.5744 | reg_mse:2.4786
+2026-01-15 23:36:36,869 | INFO | Fold 2, Epoch 58/100
+2026-01-15 23:38:39,357 | INFO |   Train loss: 0.9009
+2026-01-15 23:39:10,586 | INFO |   Val: loss:0.7098 | reg_mae:1.1029 | reg_rmse:1.4852 | reg_mse:2.2058
+2026-01-15 23:39:10,586 | INFO | Fold 2, Epoch 59/100
+2026-01-15 23:41:09,639 | INFO |   Train loss: 0.9644
+2026-01-15 23:41:40,299 | INFO |   Val: loss:0.6472 | reg_mae:1.0262 | reg_rmse:1.3925 | reg_mse:1.9390
+2026-01-15 23:41:42,092 | INFO | ✓ Fold 2: New best model! reg_mae=1.0262
+2026-01-15 23:41:42,093 | INFO | Fold 2, Epoch 60/100
+2026-01-15 23:43:43,102 | INFO |   Train loss: 0.9398
+2026-01-15 23:44:13,881 | INFO |   Val: loss:0.6325 | reg_mae:1.0255 | reg_rmse:1.3516 | reg_mse:1.8267
+2026-01-15 23:44:15,844 | INFO | ✓ Fold 2: New best model! reg_mae=1.0255
+2026-01-15 23:44:15,844 | INFO | Fold 2, Epoch 61/100
+2026-01-15 23:46:14,490 | INFO |   Train loss: 0.8852
+2026-01-15 23:46:45,142 | INFO |   Val: loss:0.7600 | reg_mae:1.1767 | reg_rmse:1.4727 | reg_mse:2.1690
+2026-01-15 23:46:45,142 | INFO | Fold 2, Epoch 62/100
+2026-01-15 23:48:46,459 | INFO |   Train loss: 0.9591
+2026-01-15 23:49:18,210 | INFO |   Val: loss:0.6357 | reg_mae:1.0279 | reg_rmse:1.3480 | reg_mse:1.8171
+2026-01-15 23:49:18,210 | INFO | Fold 2, Epoch 63/100
+2026-01-15 23:51:18,968 | INFO |   Train loss: 0.9016
+2026-01-15 23:51:49,789 | INFO |   Val: loss:0.7614 | reg_mae:1.1664 | reg_rmse:1.5208 | reg_mse:2.3129
+2026-01-15 23:51:49,789 | INFO | Fold 2, Epoch 64/100
+2026-01-15 23:53:50,507 | INFO |   Train loss: 0.8889
+2026-01-15 23:54:21,381 | INFO |   Val: loss:0.9085 | reg_mae:1.3151 | reg_rmse:1.7286 | reg_mse:2.9881
+2026-01-15 23:54:21,381 | INFO | Fold 2, Epoch 65/100
+2026-01-15 23:56:20,776 | INFO |   Train loss: 0.9254
+2026-01-15 23:56:51,617 | INFO |   Val: loss:0.9800 | reg_mae:1.3913 | reg_rmse:1.8666 | reg_mse:3.4841
+2026-01-15 23:56:51,618 | INFO | Fold 2, Epoch 66/100
+2026-01-15 23:58:56,121 | INFO |   Train loss: 0.9620
+2026-01-15 23:59:27,025 | INFO |   Val: loss:0.6986 | reg_mae:1.0938 | reg_rmse:1.4273 | reg_mse:2.0372
+2026-01-15 23:59:27,025 | INFO | Fold 2, Epoch 67/100
+2026-01-16 00:01:30,859 | INFO |   Train loss: 0.8533
+2026-01-16 00:02:01,833 | INFO |   Val: loss:0.6900 | reg_mae:1.0859 | reg_rmse:1.4267 | reg_mse:2.0355
+2026-01-16 00:02:01,833 | INFO | Fold 2, Epoch 68/100
+2026-01-16 00:04:02,579 | INFO |   Train loss: 0.9123
+2026-01-16 00:04:33,767 | INFO |   Val: loss:0.7022 | reg_mae:1.0865 | reg_rmse:1.4694 | reg_mse:2.1591
+2026-01-16 00:04:33,767 | INFO | Fold 2, Epoch 69/100
+2026-01-16 00:06:34,190 | INFO |   Train loss: 0.8465
+2026-01-16 00:07:05,010 | INFO |   Val: loss:0.7418 | reg_mae:1.1370 | reg_rmse:1.5013 | reg_mse:2.2540
+2026-01-16 00:07:05,010 | INFO | Fold 2, Epoch 70/100
+2026-01-16 00:09:08,547 | INFO |   Train loss: 0.8408
+2026-01-16 00:09:39,368 | INFO |   Val: loss:0.6355 | reg_mae:1.0192 | reg_rmse:1.3838 | reg_mse:1.9150
+2026-01-16 00:09:41,255 | INFO | ✓ Fold 2: New best model! reg_mae=1.0192
+2026-01-16 00:09:41,255 | INFO | Fold 2, Epoch 71/100
+2026-01-16 00:11:41,505 | INFO |   Train loss: 0.8651
+2026-01-16 00:12:12,384 | INFO |   Val: loss:0.8537 | reg_mae:1.2687 | reg_rmse:1.6173 | reg_mse:2.6156
+2026-01-16 00:12:12,384 | INFO | Fold 2, Epoch 72/100
+2026-01-16 00:14:13,078 | INFO |   Train loss: 0.8724
+2026-01-16 00:14:43,847 | INFO |   Val: loss:0.6269 | reg_mae:1.0147 | reg_rmse:1.3437 | reg_mse:1.8055
+2026-01-16 00:14:45,683 | INFO | ✓ Fold 2: New best model! reg_mae=1.0147
+2026-01-16 00:14:45,683 | INFO | Fold 2, Epoch 73/100
+2026-01-16 00:16:48,318 | INFO |   Train loss: 0.8009
+2026-01-16 00:17:19,571 | INFO |   Val: loss:0.6409 | reg_mae:1.0284 | reg_rmse:1.3572 | reg_mse:1.8421
+2026-01-16 00:17:19,571 | INFO | Fold 2, Epoch 74/100
+2026-01-16 00:19:20,582 | INFO |   Train loss: 0.8100
+2026-01-16 00:19:51,611 | INFO |   Val: loss:0.6470 | reg_mae:1.0319 | reg_rmse:1.3999 | reg_mse:1.9596
+2026-01-16 00:19:51,611 | INFO | Fold 2, Epoch 75/100
+2026-01-16 00:21:57,965 | INFO |   Train loss: 0.7702
+2026-01-16 00:22:28,637 | INFO |   Val: loss:0.6574 | reg_mae:1.0313 | reg_rmse:1.4348 | reg_mse:2.0585
+2026-01-16 00:22:28,637 | INFO | Fold 2, Epoch 76/100
+2026-01-16 00:24:33,299 | INFO |   Train loss: 0.8064
+2026-01-16 00:25:04,285 | INFO |   Val: loss:0.7912 | reg_mae:1.2083 | reg_rmse:1.5116 | reg_mse:2.2849
+2026-01-16 00:25:04,285 | INFO | Fold 2, Epoch 77/100
+2026-01-16 00:27:08,207 | INFO |   Train loss: 0.7996
+2026-01-16 00:27:39,083 | INFO |   Val: loss:0.5848 | reg_mae:0.9519 | reg_rmse:1.3088 | reg_mse:1.7131
+2026-01-16 00:27:41,183 | INFO | ✓ Fold 2: New best model! reg_mae=0.9519
+2026-01-16 00:27:41,184 | INFO | Fold 2, Epoch 78/100
+2026-01-16 00:29:42,580 | INFO |   Train loss: 0.8146
+2026-01-16 00:30:14,569 | INFO |   Val: loss:0.6007 | reg_mae:0.9702 | reg_rmse:1.3529 | reg_mse:1.8305
+2026-01-16 00:30:14,569 | INFO | Fold 2, Epoch 79/100
+2026-01-16 00:32:16,528 | INFO |   Train loss: 0.7921
+2026-01-16 00:32:47,259 | INFO |   Val: loss:0.5932 | reg_mae:0.9692 | reg_rmse:1.3095 | reg_mse:1.7147
+2026-01-16 00:32:47,259 | INFO | Fold 2, Epoch 80/100
+2026-01-16 00:34:50,314 | INFO |   Train loss: 0.8452
+2026-01-16 00:35:21,463 | INFO |   Val: loss:0.6760 | reg_mae:1.0635 | reg_rmse:1.4137 | reg_mse:1.9985
+2026-01-16 00:35:21,463 | INFO | Fold 2, Epoch 81/100
+2026-01-16 00:37:24,173 | INFO |   Train loss: 0.7578
+2026-01-16 00:37:55,104 | INFO |   Val: loss:0.5947 | reg_mae:0.9629 | reg_rmse:1.3286 | reg_mse:1.7652
+2026-01-16 00:37:55,104 | INFO | Fold 2, Epoch 82/100
+2026-01-16 00:39:58,067 | INFO |   Train loss: 0.7780
+2026-01-16 00:40:28,986 | INFO |   Val: loss:0.5979 | reg_mae:0.9729 | reg_rmse:1.3217 | reg_mse:1.7469
+2026-01-16 00:40:28,986 | INFO | Fold 2, Epoch 83/100
+2026-01-16 00:42:32,125 | INFO |   Train loss: 0.7999
+2026-01-16 00:43:03,040 | INFO |   Val: loss:0.6168 | reg_mae:1.0038 | reg_rmse:1.3306 | reg_mse:1.7705
+2026-01-16 00:43:03,040 | INFO | Fold 2, Epoch 84/100
+2026-01-16 00:45:07,366 | INFO |   Train loss: 0.7604
+2026-01-16 00:45:38,327 | INFO |   Val: loss:0.6249 | reg_mae:1.0134 | reg_rmse:1.3295 | reg_mse:1.7676
+2026-01-16 00:45:38,327 | INFO | Fold 2, Epoch 85/100
+2026-01-16 00:47:38,682 | INFO |   Train loss: 0.7344
+2026-01-16 00:48:09,847 | INFO |   Val: loss:0.5865 | reg_mae:0.9650 | reg_rmse:1.2976 | reg_mse:1.6836
+2026-01-16 00:48:09,847 | INFO | Fold 2, Epoch 86/100
+2026-01-16 00:50:14,286 | INFO |   Train loss: 0.7686
+2026-01-16 00:50:45,386 | INFO |   Val: loss:0.5942 | reg_mae:0.9706 | reg_rmse:1.3085 | reg_mse:1.7121
+2026-01-16 00:50:45,386 | INFO | Fold 2, Epoch 87/100
+2026-01-16 00:52:47,141 | INFO |   Train loss: 0.7427
+2026-01-16 00:53:18,019 | INFO |   Val: loss:0.5833 | reg_mae:0.9600 | reg_rmse:1.2969 | reg_mse:1.6818
+2026-01-16 00:53:18,020 | INFO | Fold 2, Epoch 88/100
+2026-01-16 00:55:19,351 | INFO |   Train loss: 0.7822
+2026-01-16 00:55:50,115 | INFO |   Val: loss:0.5679 | reg_mae:0.9358 | reg_rmse:1.2849 | reg_mse:1.6511
+2026-01-16 00:55:52,043 | INFO | ✓ Fold 2: New best model! reg_mae=0.9358
+2026-01-16 00:55:52,044 | INFO | Fold 2, Epoch 89/100
+2026-01-16 00:57:54,249 | INFO |   Train loss: 0.7202
+2026-01-16 00:58:24,957 | INFO |   Val: loss:0.5971 | reg_mae:0.9704 | reg_rmse:1.3260 | reg_mse:1.7583
+2026-01-16 00:58:24,957 | INFO | Fold 2, Epoch 90/100
+2026-01-16 01:00:25,743 | INFO |   Train loss: 0.7156
+2026-01-16 01:00:56,619 | INFO |   Val: loss:0.5754 | reg_mae:0.9482 | reg_rmse:1.2897 | reg_mse:1.6633
+2026-01-16 01:00:56,619 | INFO | Fold 2, Epoch 91/100
+2026-01-16 01:02:55,457 | INFO |   Train loss: 0.7606
+2026-01-16 01:03:26,378 | INFO |   Val: loss:0.6046 | reg_mae:0.9846 | reg_rmse:1.3247 | reg_mse:1.7549
+2026-01-16 01:03:26,378 | INFO | Fold 2, Epoch 92/100
+2026-01-16 01:05:26,813 | INFO |   Train loss: 0.7546
+2026-01-16 01:05:57,502 | INFO |   Val: loss:0.5935 | reg_mae:0.9677 | reg_rmse:1.3138 | reg_mse:1.7262
+2026-01-16 01:05:57,502 | INFO | Fold 2, Epoch 93/100
+2026-01-16 01:08:00,126 | INFO |   Train loss: 0.7288
+2026-01-16 01:08:30,758 | INFO |   Val: loss:0.5948 | reg_mae:0.9691 | reg_rmse:1.3174 | reg_mse:1.7356
+2026-01-16 01:08:30,758 | INFO | Fold 2, Epoch 94/100
+2026-01-16 01:10:31,185 | INFO |   Train loss: 0.7397
+2026-01-16 01:11:01,994 | INFO |   Val: loss:0.6102 | reg_mae:0.9979 | reg_rmse:1.3196 | reg_mse:1.7414
+2026-01-16 01:11:01,994 | INFO | Fold 2, Epoch 95/100
+2026-01-16 01:13:02,892 | INFO |   Train loss: 0.7188
+2026-01-16 01:13:33,762 | INFO |   Val: loss:0.5679 | reg_mae:0.9387 | reg_rmse:1.2821 | reg_mse:1.6439
+2026-01-16 01:13:33,762 | INFO | Fold 2, Epoch 96/100
+2026-01-16 01:15:34,089 | INFO |   Train loss: 0.7106
+2026-01-16 01:16:04,733 | INFO |   Val: loss:0.6073 | reg_mae:0.9980 | reg_rmse:1.3174 | reg_mse:1.7355
+2026-01-16 01:16:04,733 | INFO | Fold 2, Epoch 97/100
+2026-01-16 01:18:08,386 | INFO |   Train loss: 0.7112
+2026-01-16 01:18:39,231 | INFO |   Val: loss:0.5837 | reg_mae:0.9642 | reg_rmse:1.2961 | reg_mse:1.6800
+2026-01-16 01:18:39,231 | INFO | Fold 2, Epoch 98/100
+2026-01-16 01:20:42,732 | INFO |   Train loss: 0.7218
+2026-01-16 01:21:13,336 | INFO |   Val: loss:0.5637 | reg_mae:0.9366 | reg_rmse:1.2750 | reg_mse:1.6257
+2026-01-16 01:21:13,336 | INFO | Fold 2, Epoch 99/100
+2026-01-16 01:23:18,449 | INFO |   Train loss: 0.7329
+2026-01-16 01:23:49,196 | INFO |   Val: loss:0.5719 | reg_mae:0.9447 | reg_rmse:1.2876 | reg_mse:1.6578
+2026-01-16 01:23:49,196 | INFO | Fold 2, Epoch 100/100
+2026-01-16 01:25:48,470 | INFO |   Train loss: 0.7307
+2026-01-16 01:26:19,256 | INFO |   Val: loss:0.5898 | reg_mae:0.9701 | reg_rmse:1.3018 | reg_mse:1.6948
+2026-01-16 01:26:19,256 | INFO | Loading best model for fold 2...
+2026-01-16 01:26:20,880 | INFO | Fold 2: Final evaluation on test set
+2026-01-16 01:27:20,780 | INFO | Fold 2 test results: loss:0.6326 | reg_mae:1.0178 | reg_rmse:1.3455 | reg_mse:1.8103
+2026-01-16 01:27:20,793 | INFO | ✓ Saved test predictions to outputs/regression_mixed/20260115-164855_5fold/fold_2/test_predictions.npz
+2026-01-16 01:27:20,811 | INFO | ✓ Saved test metadata to outputs/regression_mixed/20260115-164855_5fold/fold_2/test_metadata.jsonl
+2026-01-16 01:27:20,815 | INFO | ✓ Fold 2 complete!
+2026-01-16 01:27:20,819 | INFO | 
+================================================================================
+2026-01-16 01:27:20,820 | INFO | FOLD 3/5
+2026-01-16 01:27:20,820 | INFO | ================================================================================
+
+2026-01-16 01:27:20,820 | INFO | Device: cuda
+2026-01-16 01:27:20,820 | INFO | Training on all samples (both infected and uninfected)
+2026-01-16 01:27:20,820 | INFO | Infection onset: 1.0h
+2026-01-16 01:27:20,820 | INFO | Clamp range: (0.0, 48.0)
+2026-01-16 01:27:20,820 | INFO | Building datasets for fold 3...
+2026-01-16 01:27:21,476 | INFO | Fold 3 - Train: 4141, Val: 1011, Test: 1472
+2026-01-16 01:27:21,893 | INFO | Model: ResNetRegressor
+2026-01-16 01:27:21,893 | INFO | Total parameters: 24,032,833
+2026-01-16 01:27:21,902 | INFO | Training fold 3 for 100 epochs...
+2026-01-16 01:27:21,902 | INFO | Primary metric: reg_mae (lower is better)
+2026-01-16 01:27:21,902 | INFO | Fold 3, Epoch 1/100
+2026-01-16 01:29:24,296 | INFO |   Train loss: 15.7108
+2026-01-16 01:29:55,022 | INFO |   Val: loss:5.7674 | reg_mae:6.2524 | reg_rmse:7.7462 | reg_mse:60.0041
+2026-01-16 01:29:56,822 | INFO | ✓ Fold 3: New best model! reg_mae=6.2524
+2026-01-16 01:29:56,822 | INFO | Fold 3, Epoch 2/100
+2026-01-16 01:32:00,529 | INFO |   Train loss: 3.9152
+2026-01-16 01:32:31,117 | INFO |   Val: loss:6.4309 | reg_mae:6.9269 | reg_rmse:7.6944 | reg_mse:59.2035
+2026-01-16 01:32:31,117 | INFO | Fold 3, Epoch 3/100
+2026-01-16 01:34:30,877 | INFO |   Train loss: 2.2721
+2026-01-16 01:35:01,739 | INFO |   Val: loss:4.9533 | reg_mae:5.4411 | reg_rmse:6.5589 | reg_mse:43.0194
+2026-01-16 01:35:03,523 | INFO | ✓ Fold 3: New best model! reg_mae=5.4411
+2026-01-16 01:35:03,524 | INFO | Fold 3, Epoch 4/100
+2026-01-16 01:37:05,166 | INFO |   Train loss: 1.9941
+2026-01-16 01:37:37,405 | INFO |   Val: loss:4.0229 | reg_mae:4.5077 | reg_rmse:5.5673 | reg_mse:30.9953
+2026-01-16 01:37:38,998 | INFO | ✓ Fold 3: New best model! reg_mae=4.5077
+2026-01-16 01:37:38,998 | INFO | Fold 3, Epoch 5/100
+2026-01-16 01:39:39,538 | INFO |   Train loss: 1.9202
+2026-01-16 01:40:10,211 | INFO |   Val: loss:1.8179 | reg_mae:2.2672 | reg_rmse:2.9378 | reg_mse:8.6304
+2026-01-16 01:40:11,907 | INFO | ✓ Fold 3: New best model! reg_mae=2.2672
+2026-01-16 01:40:11,907 | INFO | Fold 3, Epoch 6/100
+2026-01-16 01:42:12,986 | INFO |   Train loss: 2.0770
+2026-01-16 01:42:43,721 | INFO |   Val: loss:1.3783 | reg_mae:1.8209 | reg_rmse:2.3760 | reg_mse:5.6454
+2026-01-16 01:42:45,455 | INFO | ✓ Fold 3: New best model! reg_mae=1.8209
+2026-01-16 01:42:45,455 | INFO | Fold 3, Epoch 7/100
+2026-01-16 01:44:45,133 | INFO |   Train loss: 1.7091
+2026-01-16 01:45:16,027 | INFO |   Val: loss:3.5873 | reg_mae:4.0699 | reg_rmse:5.4969 | reg_mse:30.2163
+2026-01-16 01:45:16,027 | INFO | Fold 3, Epoch 8/100
+2026-01-16 01:47:18,588 | INFO |   Train loss: 1.7350
+2026-01-16 01:47:50,624 | INFO |   Val: loss:1.7684 | reg_mae:2.2049 | reg_rmse:3.2326 | reg_mse:10.4496
+2026-01-16 01:47:50,624 | INFO | Fold 3, Epoch 9/100
+2026-01-16 01:49:49,982 | INFO |   Train loss: 1.5749
+2026-01-16 01:50:20,983 | INFO |   Val: loss:1.6858 | reg_mae:2.1346 | reg_rmse:2.7183 | reg_mse:7.3890
+2026-01-16 01:50:20,983 | INFO | Fold 3, Epoch 10/100
+2026-01-16 01:52:21,384 | INFO |   Train loss: 1.5423
+2026-01-16 01:52:52,595 | INFO |   Val: loss:1.8043 | reg_mae:2.2568 | reg_rmse:2.8850 | reg_mse:8.3235
+2026-01-16 01:52:52,595 | INFO | Fold 3, Epoch 11/100
+2026-01-16 01:54:54,428 | INFO |   Train loss: 1.5440
+2026-01-16 01:55:26,721 | INFO |   Val: loss:1.8785 | reg_mae:2.3444 | reg_rmse:2.8244 | reg_mse:7.9774
+2026-01-16 01:55:26,722 | INFO | Fold 3, Epoch 12/100
+2026-01-16 01:57:28,776 | INFO |   Train loss: 1.5351
+2026-01-16 01:57:59,967 | INFO |   Val: loss:1.2162 | reg_mae:1.6434 | reg_rmse:2.1939 | reg_mse:4.8130
+2026-01-16 01:58:01,745 | INFO | ✓ Fold 3: New best model! reg_mae=1.6434
+2026-01-16 01:58:01,745 | INFO | Fold 3, Epoch 13/100
+2026-01-16 02:00:04,549 | INFO |   Train loss: 1.4347
+2026-01-16 02:00:36,529 | INFO |   Val: loss:1.2017 | reg_mae:1.6396 | reg_rmse:2.0771 | reg_mse:4.3145
+2026-01-16 02:00:38,159 | INFO | ✓ Fold 3: New best model! reg_mae=1.6396
+2026-01-16 02:00:38,159 | INFO | Fold 3, Epoch 14/100
+2026-01-16 02:02:38,282 | INFO |   Train loss: 1.3446
+2026-01-16 02:03:09,001 | INFO |   Val: loss:1.5347 | reg_mae:1.9782 | reg_rmse:2.5367 | reg_mse:6.4348
+2026-01-16 02:03:09,001 | INFO | Fold 3, Epoch 15/100
+2026-01-16 02:05:11,364 | INFO |   Train loss: 1.4061
+2026-01-16 02:05:42,264 | INFO |   Val: loss:1.9686 | reg_mae:2.4293 | reg_rmse:3.0013 | reg_mse:9.0078
+2026-01-16 02:05:42,264 | INFO | Fold 3, Epoch 16/100
+2026-01-16 02:07:43,239 | INFO |   Train loss: 1.5769
+2026-01-16 02:08:13,986 | INFO |   Val: loss:3.2899 | reg_mae:3.7601 | reg_rmse:4.8562 | reg_mse:23.5827
+2026-01-16 02:08:13,986 | INFO | Fold 3, Epoch 17/100
+2026-01-16 02:10:15,885 | INFO |   Train loss: 1.4592
+2026-01-16 02:10:46,584 | INFO |   Val: loss:0.8133 | reg_mae:1.2309 | reg_rmse:1.6008 | reg_mse:2.5625
+2026-01-16 02:10:48,311 | INFO | ✓ Fold 3: New best model! reg_mae=1.2309
+2026-01-16 02:10:48,311 | INFO | Fold 3, Epoch 18/100
+2026-01-16 02:12:49,306 | INFO |   Train loss: 1.5459
+2026-01-16 02:13:21,889 | INFO |   Val: loss:1.0097 | reg_mae:1.4430 | reg_rmse:1.8103 | reg_mse:3.2773
+2026-01-16 02:13:21,889 | INFO | Fold 3, Epoch 19/100
+2026-01-16 02:15:20,793 | INFO |   Train loss: 1.3981
+2026-01-16 02:15:53,263 | INFO |   Val: loss:1.7375 | reg_mae:2.1955 | reg_rmse:2.7092 | reg_mse:7.3398
+2026-01-16 02:15:53,263 | INFO | Fold 3, Epoch 20/100
+2026-01-16 02:17:53,654 | INFO |   Train loss: 1.4198
+2026-01-16 02:18:25,508 | INFO |   Val: loss:1.3374 | reg_mae:1.7732 | reg_rmse:2.3435 | reg_mse:5.4921
+2026-01-16 02:18:25,508 | INFO | Fold 3, Epoch 21/100
+2026-01-16 02:20:26,340 | INFO |   Train loss: 1.3899
+2026-01-16 02:20:57,070 | INFO |   Val: loss:0.9759 | reg_mae:1.3945 | reg_rmse:1.8479 | reg_mse:3.4148
+2026-01-16 02:20:57,070 | INFO | Fold 3, Epoch 22/100
+2026-01-16 02:22:57,641 | INFO |   Train loss: 1.3928
+2026-01-16 02:23:29,733 | INFO |   Val: loss:1.2631 | reg_mae:1.7101 | reg_rmse:2.1221 | reg_mse:4.5031
+2026-01-16 02:23:29,733 | INFO | Fold 3, Epoch 23/100
+2026-01-16 02:25:31,083 | INFO |   Train loss: 1.4158
+2026-01-16 02:26:03,293 | INFO |   Val: loss:0.8826 | reg_mae:1.2986 | reg_rmse:1.7619 | reg_mse:3.1044
+2026-01-16 02:26:03,293 | INFO | Fold 3, Epoch 24/100
+2026-01-16 02:28:03,668 | INFO |   Train loss: 1.3283
+2026-01-16 02:28:35,505 | INFO |   Val: loss:1.0208 | reg_mae:1.4349 | reg_rmse:2.0434 | reg_mse:4.1757
+2026-01-16 02:28:35,505 | INFO | Fold 3, Epoch 25/100
+2026-01-16 02:30:33,060 | INFO |   Train loss: 1.3165
+2026-01-16 02:31:03,955 | INFO |   Val: loss:1.3634 | reg_mae:1.7945 | reg_rmse:2.4178 | reg_mse:5.8457
+2026-01-16 02:31:03,956 | INFO | Fold 3, Epoch 26/100
+2026-01-16 02:33:04,307 | INFO |   Train loss: 1.1667
+2026-01-16 02:33:36,412 | INFO |   Val: loss:2.0048 | reg_mae:2.4474 | reg_rmse:3.4712 | reg_mse:12.0494
+2026-01-16 02:33:36,412 | INFO | Fold 3, Epoch 27/100
+2026-01-16 02:35:36,624 | INFO |   Train loss: 1.1889
+2026-01-16 02:36:07,363 | INFO |   Val: loss:0.8801 | reg_mae:1.2983 | reg_rmse:1.6901 | reg_mse:2.8565
+2026-01-16 02:36:07,364 | INFO | Fold 3, Epoch 28/100
+2026-01-16 02:38:08,349 | INFO |   Train loss: 1.2851
+2026-01-16 02:38:39,647 | INFO |   Val: loss:0.9389 | reg_mae:1.3611 | reg_rmse:1.7185 | reg_mse:2.9533
+2026-01-16 02:38:39,647 | INFO | Fold 3, Epoch 29/100
+2026-01-16 02:40:43,360 | INFO |   Train loss: 1.2299
+2026-01-16 02:41:14,088 | INFO |   Val: loss:0.9078 | reg_mae:1.3253 | reg_rmse:1.7352 | reg_mse:3.0110
+2026-01-16 02:41:14,089 | INFO | Fold 3, Epoch 30/100
+2026-01-16 02:43:15,637 | INFO |   Train loss: 1.1650
+2026-01-16 02:43:47,794 | INFO |   Val: loss:0.8699 | reg_mae:1.2829 | reg_rmse:1.6905 | reg_mse:2.8579
+2026-01-16 02:43:47,795 | INFO | Fold 3, Epoch 31/100
+2026-01-16 02:45:46,436 | INFO |   Train loss: 1.1681
+2026-01-16 02:46:18,236 | INFO |   Val: loss:1.0592 | reg_mae:1.4698 | reg_rmse:1.9753 | reg_mse:3.9017
+2026-01-16 02:46:18,237 | INFO | Fold 3, Epoch 32/100
+2026-01-16 02:48:17,870 | INFO |   Train loss: 1.2774
+2026-01-16 02:48:48,741 | INFO |   Val: loss:0.9535 | reg_mae:1.3730 | reg_rmse:1.7609 | reg_mse:3.1006
+2026-01-16 02:48:48,741 | INFO | Fold 3, Epoch 33/100
+2026-01-16 02:50:48,339 | INFO |   Train loss: 1.1363
+2026-01-16 02:51:19,070 | INFO |   Val: loss:0.9074 | reg_mae:1.3227 | reg_rmse:1.7084 | reg_mse:2.9186
+2026-01-16 02:51:19,071 | INFO | Fold 3, Epoch 34/100
+2026-01-16 02:53:18,376 | INFO |   Train loss: 1.1144
+2026-01-16 02:53:49,188 | INFO |   Val: loss:0.8899 | reg_mae:1.3069 | reg_rmse:1.6820 | reg_mse:2.8290
+2026-01-16 02:53:49,188 | INFO | Fold 3, Epoch 35/100
+2026-01-16 02:55:50,256 | INFO |   Train loss: 1.1522
+2026-01-16 02:56:21,068 | INFO |   Val: loss:1.3186 | reg_mae:1.7467 | reg_rmse:2.3196 | reg_mse:5.3805
+2026-01-16 02:56:21,068 | INFO | Fold 3, Epoch 36/100
+2026-01-16 02:58:21,243 | INFO |   Train loss: 1.0887
+2026-01-16 02:58:51,839 | INFO |   Val: loss:0.7322 | reg_mae:1.1392 | reg_rmse:1.4769 | reg_mse:2.1813
+2026-01-16 02:58:53,724 | INFO | ✓ Fold 3: New best model! reg_mae=1.1392
+2026-01-16 02:58:53,725 | INFO | Fold 3, Epoch 37/100
+2026-01-16 03:00:58,156 | INFO |   Train loss: 1.0920
+2026-01-16 03:01:30,285 | INFO |   Val: loss:0.9468 | reg_mae:1.3590 | reg_rmse:1.7793 | reg_mse:3.1658
+2026-01-16 03:01:30,285 | INFO | Fold 3, Epoch 38/100
+2026-01-16 03:03:29,939 | INFO |   Train loss: 1.0245
+2026-01-16 03:04:01,811 | INFO |   Val: loss:1.2336 | reg_mae:1.6576 | reg_rmse:2.2239 | reg_mse:4.9458
+2026-01-16 03:04:01,811 | INFO | Fold 3, Epoch 39/100
+2026-01-16 03:06:04,083 | INFO |   Train loss: 1.1242
+2026-01-16 03:06:35,260 | INFO |   Val: loss:0.8954 | reg_mae:1.3141 | reg_rmse:1.7164 | reg_mse:2.9461
+2026-01-16 03:06:35,260 | INFO | Fold 3, Epoch 40/100
+2026-01-16 03:08:38,256 | INFO |   Train loss: 1.1011
+2026-01-16 03:09:09,010 | INFO |   Val: loss:0.8402 | reg_mae:1.2554 | reg_rmse:1.6348 | reg_mse:2.6726
+2026-01-16 03:09:09,010 | INFO | Fold 3, Epoch 41/100
+2026-01-16 03:11:07,961 | INFO |   Train loss: 0.9802
+2026-01-16 03:11:39,834 | INFO |   Val: loss:0.7561 | reg_mae:1.1593 | reg_rmse:1.5660 | reg_mse:2.4522
+2026-01-16 03:11:39,834 | INFO | Fold 3, Epoch 42/100
+2026-01-16 03:13:42,023 | INFO |   Train loss: 1.1326
+2026-01-16 03:14:13,125 | INFO |   Val: loss:1.1010 | reg_mae:1.5050 | reg_rmse:2.0831 | reg_mse:4.3391
+2026-01-16 03:14:13,125 | INFO | Fold 3, Epoch 43/100
+2026-01-16 03:16:15,198 | INFO |   Train loss: 1.0555
+2026-01-16 03:16:46,439 | INFO |   Val: loss:0.7014 | reg_mae:1.1017 | reg_rmse:1.4552 | reg_mse:2.1176
+2026-01-16 03:16:48,199 | INFO | ✓ Fold 3: New best model! reg_mae=1.1017
+2026-01-16 03:16:48,200 | INFO | Fold 3, Epoch 44/100
+2026-01-16 03:18:51,093 | INFO |   Train loss: 0.9810
+2026-01-16 03:19:23,063 | INFO |   Val: loss:0.9962 | reg_mae:1.4144 | reg_rmse:1.8537 | reg_mse:3.4363
+2026-01-16 03:19:23,064 | INFO | Fold 3, Epoch 45/100
+2026-01-16 03:21:23,477 | INFO |   Train loss: 0.9854
+2026-01-16 03:21:56,215 | INFO |   Val: loss:0.7234 | reg_mae:1.1207 | reg_rmse:1.4630 | reg_mse:2.1402
+2026-01-16 03:21:56,215 | INFO | Fold 3, Epoch 46/100
+2026-01-16 03:23:57,797 | INFO |   Train loss: 1.0218
+2026-01-16 03:24:28,516 | INFO |   Val: loss:0.9222 | reg_mae:1.3458 | reg_rmse:1.7506 | reg_mse:3.0646
+2026-01-16 03:24:28,517 | INFO | Fold 3, Epoch 47/100
+2026-01-16 03:26:32,312 | INFO |   Train loss: 0.9990
+2026-01-16 03:27:05,790 | INFO |   Val: loss:0.6537 | reg_mae:1.0450 | reg_rmse:1.4096 | reg_mse:1.9870
+2026-01-16 03:27:07,748 | INFO | ✓ Fold 3: New best model! reg_mae=1.0450
+2026-01-16 03:27:07,748 | INFO | Fold 3, Epoch 48/100
+2026-01-16 03:29:05,690 | INFO |   Train loss: 0.9768
+2026-01-16 03:29:36,410 | INFO |   Val: loss:0.9572 | reg_mae:1.3610 | reg_rmse:1.8966 | reg_mse:3.5969
+2026-01-16 03:29:36,410 | INFO | Fold 3, Epoch 49/100
+2026-01-16 03:31:36,320 | INFO |   Train loss: 1.0038
+2026-01-16 03:32:07,311 | INFO |   Val: loss:0.6385 | reg_mae:1.0371 | reg_rmse:1.3827 | reg_mse:1.9120
+2026-01-16 03:32:09,025 | INFO | ✓ Fold 3: New best model! reg_mae=1.0371
+2026-01-16 03:32:09,025 | INFO | Fold 3, Epoch 50/100
+2026-01-16 03:34:12,625 | INFO |   Train loss: 0.9402
+2026-01-16 03:34:43,510 | INFO |   Val: loss:0.7551 | reg_mae:1.1601 | reg_rmse:1.5170 | reg_mse:2.3012
+2026-01-16 03:34:43,510 | INFO | Fold 3, Epoch 51/100
+2026-01-16 03:36:43,001 | INFO |   Train loss: 1.0676
+2026-01-16 03:37:13,713 | INFO |   Val: loss:0.7610 | reg_mae:1.1682 | reg_rmse:1.5237 | reg_mse:2.3216
+2026-01-16 03:37:13,713 | INFO | Fold 3, Epoch 52/100
+2026-01-16 03:39:13,715 | INFO |   Train loss: 0.9353
+2026-01-16 03:39:44,591 | INFO |   Val: loss:0.6756 | reg_mae:1.0687 | reg_rmse:1.4015 | reg_mse:1.9642
+2026-01-16 03:39:44,591 | INFO | Fold 3, Epoch 53/100
+2026-01-16 03:41:41,971 | INFO |   Train loss: 0.9367
+2026-01-16 03:42:12,653 | INFO |   Val: loss:0.9046 | reg_mae:1.3151 | reg_rmse:1.7786 | reg_mse:3.1635
+2026-01-16 03:42:12,653 | INFO | Fold 3, Epoch 54/100
+2026-01-16 03:44:12,506 | INFO |   Train loss: 0.9165
+2026-01-16 03:44:43,149 | INFO |   Val: loss:0.8494 | reg_mae:1.2679 | reg_rmse:1.6284 | reg_mse:2.6518
+2026-01-16 03:44:43,150 | INFO | Fold 3, Epoch 55/100
+2026-01-16 03:46:41,828 | INFO |   Train loss: 0.8958
+2026-01-16 03:47:12,554 | INFO |   Val: loss:0.6336 | reg_mae:1.0206 | reg_rmse:1.3763 | reg_mse:1.8941
+2026-01-16 03:47:14,345 | INFO | ✓ Fold 3: New best model! reg_mae=1.0206
+2026-01-16 03:47:14,345 | INFO | Fold 3, Epoch 56/100
+2026-01-16 03:49:13,862 | INFO |   Train loss: 0.9232
+2026-01-16 03:49:46,155 | INFO |   Val: loss:0.8824 | reg_mae:1.2967 | reg_rmse:1.7336 | reg_mse:3.0054
+2026-01-16 03:49:46,155 | INFO | Fold 3, Epoch 57/100
+2026-01-16 03:51:46,309 | INFO |   Train loss: 0.9519
+2026-01-16 03:52:17,456 | INFO |   Val: loss:0.8612 | reg_mae:1.2633 | reg_rmse:1.7262 | reg_mse:2.9798
+2026-01-16 03:52:17,456 | INFO | Fold 3, Epoch 58/100
+2026-01-16 03:54:18,130 | INFO |   Train loss: 0.8680
+2026-01-16 03:54:50,488 | INFO |   Val: loss:0.7607 | reg_mae:1.1620 | reg_rmse:1.5467 | reg_mse:2.3924
+2026-01-16 03:54:50,488 | INFO | Fold 3, Epoch 59/100
+2026-01-16 03:56:50,293 | INFO |   Train loss: 0.9054
+2026-01-16 03:57:20,992 | INFO |   Val: loss:0.9937 | reg_mae:1.4134 | reg_rmse:1.9075 | reg_mse:3.6386
+2026-01-16 03:57:20,992 | INFO | Fold 3, Epoch 60/100
+2026-01-16 03:59:22,467 | INFO |   Train loss: 0.8381
+2026-01-16 03:59:53,484 | INFO |   Val: loss:0.7503 | reg_mae:1.1482 | reg_rmse:1.5879 | reg_mse:2.5214
+2026-01-16 03:59:53,485 | INFO | Fold 3, Epoch 61/100
+2026-01-16 04:01:54,376 | INFO |   Train loss: 0.9056
+2026-01-16 04:02:26,867 | INFO |   Val: loss:0.6041 | reg_mae:0.9932 | reg_rmse:1.3497 | reg_mse:1.8217
+2026-01-16 04:02:28,632 | INFO | ✓ Fold 3: New best model! reg_mae=0.9932
+2026-01-16 04:02:28,632 | INFO | Fold 3, Epoch 62/100
+2026-01-16 04:04:28,895 | INFO |   Train loss: 0.8695
+2026-01-16 04:05:01,154 | INFO |   Val: loss:0.6762 | reg_mae:1.0800 | reg_rmse:1.3981 | reg_mse:1.9546
+2026-01-16 04:05:01,154 | INFO | Fold 3, Epoch 63/100
+2026-01-16 04:07:03,404 | INFO |   Train loss: 0.8639
+2026-01-16 04:07:35,966 | INFO |   Val: loss:0.7876 | reg_mae:1.1894 | reg_rmse:1.5989 | reg_mse:2.5566
+2026-01-16 04:07:35,966 | INFO | Fold 3, Epoch 64/100
+2026-01-16 04:09:36,558 | INFO |   Train loss: 0.8575
+2026-01-16 04:10:07,786 | INFO |   Val: loss:0.6916 | reg_mae:1.0859 | reg_rmse:1.4785 | reg_mse:2.1858
+2026-01-16 04:10:07,786 | INFO | Fold 3, Epoch 65/100
+2026-01-16 04:12:10,570 | INFO |   Train loss: 0.8271
+2026-01-16 04:12:41,420 | INFO |   Val: loss:0.5854 | reg_mae:0.9733 | reg_rmse:1.2879 | reg_mse:1.6587
+2026-01-16 04:12:43,429 | INFO | ✓ Fold 3: New best model! reg_mae=0.9733
+2026-01-16 04:12:43,429 | INFO | Fold 3, Epoch 66/100
+2026-01-16 04:14:47,550 | INFO |   Train loss: 0.8805
+2026-01-16 04:15:18,376 | INFO |   Val: loss:0.6943 | reg_mae:1.0947 | reg_rmse:1.4134 | reg_mse:1.9976
+2026-01-16 04:15:18,376 | INFO | Fold 3, Epoch 67/100
+2026-01-16 04:17:20,677 | INFO |   Train loss: 0.7722
+2026-01-16 04:17:51,871 | INFO |   Val: loss:0.5936 | reg_mae:0.9864 | reg_rmse:1.2857 | reg_mse:1.6531
+2026-01-16 04:17:51,872 | INFO | Fold 3, Epoch 68/100
+2026-01-16 04:19:53,894 | INFO |   Train loss: 0.7995
+2026-01-16 04:20:25,115 | INFO |   Val: loss:0.6107 | reg_mae:1.0016 | reg_rmse:1.3058 | reg_mse:1.7052
+2026-01-16 04:20:25,115 | INFO | Fold 3, Epoch 69/100
+2026-01-16 04:22:26,057 | INFO |   Train loss: 0.7572
+2026-01-16 04:22:57,196 | INFO |   Val: loss:0.6193 | reg_mae:1.0113 | reg_rmse:1.3183 | reg_mse:1.7380
+2026-01-16 04:22:57,196 | INFO | Fold 3, Epoch 70/100
+2026-01-16 04:24:59,579 | INFO |   Train loss: 0.7524
+2026-01-16 04:25:32,097 | INFO |   Val: loss:0.6704 | reg_mae:1.0699 | reg_rmse:1.3985 | reg_mse:1.9557
+2026-01-16 04:25:32,097 | INFO | Fold 3, Epoch 71/100
+2026-01-16 04:27:34,782 | INFO |   Train loss: 0.7641
+2026-01-16 04:28:05,430 | INFO |   Val: loss:0.8157 | reg_mae:1.2373 | reg_rmse:1.5763 | reg_mse:2.4847
+2026-01-16 04:28:05,430 | INFO | Fold 3, Epoch 72/100
+2026-01-16 04:30:10,038 | INFO |   Train loss: 0.7975
+2026-01-16 04:30:40,838 | INFO |   Val: loss:0.5427 | reg_mae:0.9202 | reg_rmse:1.2286 | reg_mse:1.5094
+2026-01-16 04:30:42,699 | INFO | ✓ Fold 3: New best model! reg_mae=0.9202
+2026-01-16 04:30:42,700 | INFO | Fold 3, Epoch 73/100
+2026-01-16 04:32:45,905 | INFO |   Train loss: 0.7436
+2026-01-16 04:33:16,662 | INFO |   Val: loss:0.7346 | reg_mae:1.1389 | reg_rmse:1.4873 | reg_mse:2.2120
+2026-01-16 04:33:16,662 | INFO | Fold 3, Epoch 74/100
+2026-01-16 04:35:17,948 | INFO |   Train loss: 0.8218
+2026-01-16 04:35:50,425 | INFO |   Val: loss:0.6105 | reg_mae:1.0004 | reg_rmse:1.3321 | reg_mse:1.7746
+2026-01-16 04:35:50,425 | INFO | Fold 3, Epoch 75/100
+2026-01-16 04:37:51,197 | INFO |   Train loss: 0.7239
+2026-01-16 04:38:23,401 | INFO |   Val: loss:0.6881 | reg_mae:1.0882 | reg_rmse:1.4203 | reg_mse:2.0172
+2026-01-16 04:38:23,401 | INFO | Fold 3, Epoch 76/100
+2026-01-16 04:40:25,427 | INFO |   Train loss: 0.7562
+2026-01-16 04:40:56,334 | INFO |   Val: loss:0.6178 | reg_mae:1.0092 | reg_rmse:1.3345 | reg_mse:1.7808
+2026-01-16 04:40:56,334 | INFO | Fold 3, Epoch 77/100
+2026-01-16 04:42:58,989 | INFO |   Train loss: 0.7499
+2026-01-16 04:43:29,778 | INFO |   Val: loss:0.6987 | reg_mae:1.0964 | reg_rmse:1.4506 | reg_mse:2.1042
+2026-01-16 04:43:29,778 | INFO | Fold 3, Epoch 78/100
+2026-01-16 04:45:31,643 | INFO |   Train loss: 0.7233
+2026-01-16 04:46:02,914 | INFO |   Val: loss:0.5705 | reg_mae:0.9613 | reg_rmse:1.2864 | reg_mse:1.6548
+2026-01-16 04:46:02,914 | INFO | Fold 3, Epoch 79/100
+2026-01-16 04:48:06,524 | INFO |   Train loss: 0.6942
+2026-01-16 04:48:37,411 | INFO |   Val: loss:0.6315 | reg_mae:1.0323 | reg_rmse:1.3286 | reg_mse:1.7651
+2026-01-16 04:48:37,411 | INFO | Fold 3, Epoch 80/100
+2026-01-16 04:50:40,127 | INFO |   Train loss: 0.7567
+2026-01-16 04:51:11,397 | INFO |   Val: loss:0.6020 | reg_mae:0.9939 | reg_rmse:1.3303 | reg_mse:1.7696
+2026-01-16 04:51:11,397 | INFO | Fold 3, Epoch 81/100
+2026-01-16 04:53:12,988 | INFO |   Train loss: 0.6900
+2026-01-16 04:53:43,884 | INFO |   Val: loss:0.6238 | reg_mae:1.0228 | reg_rmse:1.3303 | reg_mse:1.7698
+2026-01-16 04:53:43,884 | INFO | Fold 3, Epoch 82/100
+2026-01-16 04:55:44,841 | INFO |   Train loss: 0.7404
+2026-01-16 04:56:15,702 | INFO |   Val: loss:0.6829 | reg_mae:1.0902 | reg_rmse:1.4010 | reg_mse:1.9627
+2026-01-16 04:56:15,702 | INFO | Fold 3, Epoch 83/100
+2026-01-16 04:58:16,318 | INFO |   Train loss: 0.7160
+2026-01-16 04:58:47,677 | INFO |   Val: loss:0.6208 | reg_mae:1.0114 | reg_rmse:1.3689 | reg_mse:1.8739
+2026-01-16 04:58:47,677 | INFO | Fold 3, Epoch 84/100
+2026-01-16 05:00:51,607 | INFO |   Train loss: 0.7242
+2026-01-16 05:01:22,264 | INFO |   Val: loss:0.6213 | reg_mae:1.0138 | reg_rmse:1.3430 | reg_mse:1.8038
+2026-01-16 05:01:22,264 | INFO | Fold 3, Epoch 85/100
+2026-01-16 05:03:23,042 | INFO |   Train loss: 0.7092
+2026-01-16 05:03:53,743 | INFO |   Val: loss:0.5804 | reg_mae:0.9713 | reg_rmse:1.2963 | reg_mse:1.6803
+2026-01-16 05:03:53,743 | INFO | Fold 3, Epoch 86/100
+2026-01-16 05:05:53,388 | INFO |   Train loss: 0.7124
+2026-01-16 05:06:24,055 | INFO |   Val: loss:0.6227 | reg_mae:1.0159 | reg_rmse:1.3382 | reg_mse:1.7907
+2026-01-16 05:06:24,055 | INFO | Fold 3, Epoch 87/100
+2026-01-16 05:08:25,643 | INFO |   Train loss: 0.6842
+2026-01-16 05:08:58,164 | INFO |   Val: loss:0.5844 | reg_mae:0.9763 | reg_rmse:1.2828 | reg_mse:1.6457
+2026-01-16 05:08:58,164 | INFO | Fold 3, Epoch 88/100
+2026-01-16 05:10:58,896 | INFO |   Train loss: 0.6658
+2026-01-16 05:11:29,907 | INFO |   Val: loss:0.5729 | reg_mae:0.9611 | reg_rmse:1.2533 | reg_mse:1.5708
+2026-01-16 05:11:29,907 | INFO | Fold 3, Epoch 89/100
+2026-01-16 05:13:30,611 | INFO |   Train loss: 0.6703
+2026-01-16 05:14:02,808 | INFO |   Val: loss:0.5664 | reg_mae:0.9566 | reg_rmse:1.2529 | reg_mse:1.5696
+2026-01-16 05:14:02,808 | INFO | Fold 3, Epoch 90/100
+2026-01-16 05:16:04,610 | INFO |   Train loss: 0.6929
+2026-01-16 05:16:35,682 | INFO |   Val: loss:0.5983 | reg_mae:0.9922 | reg_rmse:1.3169 | reg_mse:1.7342
+2026-01-16 05:16:35,683 | INFO | Fold 3, Epoch 91/100
+2026-01-16 05:18:35,590 | INFO |   Train loss: 0.6810
+2026-01-16 05:19:06,296 | INFO |   Val: loss:0.5608 | reg_mae:0.9498 | reg_rmse:1.2550 | reg_mse:1.5751
+2026-01-16 05:19:06,296 | INFO | Fold 3, Epoch 92/100
+2026-01-16 05:21:04,517 | INFO |   Train loss: 0.7014
+2026-01-16 05:21:35,243 | INFO |   Val: loss:0.5693 | reg_mae:0.9603 | reg_rmse:1.2718 | reg_mse:1.6175
+2026-01-16 05:21:35,243 | INFO | Fold 3, Epoch 93/100
+2026-01-16 05:23:36,606 | INFO |   Train loss: 0.7120
+2026-01-16 05:24:07,855 | INFO |   Val: loss:0.6117 | reg_mae:1.0094 | reg_rmse:1.3458 | reg_mse:1.8111
+2026-01-16 05:24:07,855 | INFO | Fold 3, Epoch 94/100
+2026-01-16 05:26:09,068 | INFO |   Train loss: 0.6723
+2026-01-16 05:26:41,539 | INFO |   Val: loss:0.5636 | reg_mae:0.9539 | reg_rmse:1.2664 | reg_mse:1.6039
+2026-01-16 05:26:41,539 | INFO | Fold 3, Epoch 95/100
+2026-01-16 05:28:43,662 | INFO |   Train loss: 0.6583
+2026-01-16 05:29:14,802 | INFO |   Val: loss:0.5490 | reg_mae:0.9342 | reg_rmse:1.2442 | reg_mse:1.5480
+2026-01-16 05:29:14,802 | INFO | Fold 3, Epoch 96/100
+2026-01-16 05:31:16,857 | INFO |   Train loss: 0.6533
+2026-01-16 05:31:49,244 | INFO |   Val: loss:0.5607 | reg_mae:0.9475 | reg_rmse:1.2569 | reg_mse:1.5797
+2026-01-16 05:31:49,244 | INFO | Fold 3, Epoch 97/100
+2026-01-16 05:33:48,541 | INFO |   Train loss: 0.6675
+2026-01-16 05:34:19,594 | INFO |   Val: loss:0.5713 | reg_mae:0.9577 | reg_rmse:1.2812 | reg_mse:1.6415
+2026-01-16 05:34:19,594 | INFO | Fold 3, Epoch 98/100
+2026-01-16 05:36:18,505 | INFO |   Train loss: 0.6781
+2026-01-16 05:36:49,801 | INFO |   Val: loss:0.5714 | reg_mae:0.9602 | reg_rmse:1.2964 | reg_mse:1.6807
+2026-01-16 05:36:49,801 | INFO | Fold 3, Epoch 99/100
+2026-01-16 05:38:50,370 | INFO |   Train loss: 0.6759
+2026-01-16 05:39:21,604 | INFO |   Val: loss:0.5912 | reg_mae:0.9858 | reg_rmse:1.3247 | reg_mse:1.7549
+2026-01-16 05:39:21,604 | INFO | Fold 3, Epoch 100/100
+2026-01-16 05:41:23,291 | INFO |   Train loss: 0.6855
+2026-01-16 05:41:55,473 | INFO |   Val: loss:0.5587 | reg_mae:0.9464 | reg_rmse:1.2627 | reg_mse:1.5945
+2026-01-16 05:41:55,473 | INFO | Loading best model for fold 3...
+2026-01-16 05:41:57,234 | INFO | Fold 3: Final evaluation on test set
+2026-01-16 05:42:56,524 | INFO | Fold 3 test results: loss:0.6598 | reg_mae:1.0556 | reg_rmse:1.3685 | reg_mse:1.8727
+2026-01-16 05:42:56,538 | INFO | ✓ Saved test predictions to outputs/regression_mixed/20260115-164855_5fold/fold_3/test_predictions.npz
+2026-01-16 05:42:56,586 | INFO | ✓ Saved test metadata to outputs/regression_mixed/20260115-164855_5fold/fold_3/test_metadata.jsonl
+2026-01-16 05:42:56,589 | INFO | ✓ Fold 3 complete!
+2026-01-16 05:42:56,593 | INFO | 
+================================================================================
+2026-01-16 05:42:56,594 | INFO | FOLD 4/5
+2026-01-16 05:42:56,594 | INFO | ================================================================================
+
+2026-01-16 05:42:56,594 | INFO | Device: cuda
+2026-01-16 05:42:56,594 | INFO | Training on all samples (both infected and uninfected)
+2026-01-16 05:42:56,594 | INFO | Infection onset: 1.0h
+2026-01-16 05:42:56,594 | INFO | Clamp range: (0.0, 48.0)
+2026-01-16 05:42:56,594 | INFO | Building datasets for fold 4...
+2026-01-16 05:42:57,262 | INFO | Fold 4 - Train: 4139, Val: 1013, Test: 1472
+2026-01-16 05:42:57,794 | INFO | Model: ResNetRegressor
+2026-01-16 05:42:57,795 | INFO | Total parameters: 24,032,833
+2026-01-16 05:42:57,803 | INFO | Training fold 4 for 100 epochs...
+2026-01-16 05:42:57,803 | INFO | Primary metric: reg_mae (lower is better)
+2026-01-16 05:42:57,803 | INFO | Fold 4, Epoch 1/100
+2026-01-16 05:44:59,362 | INFO |   Train loss: 16.0318
+2026-01-16 05:45:30,413 | INFO |   Val: loss:7.3897 | reg_mae:7.8773 | reg_rmse:9.5263 | reg_mse:90.7495
+2026-01-16 05:45:32,024 | INFO | ✓ Fold 4: New best model! reg_mae=7.8773
+2026-01-16 05:45:32,025 | INFO | Fold 4, Epoch 2/100
+2026-01-16 05:47:36,128 | INFO |   Train loss: 3.9577
+2026-01-16 05:48:08,475 | INFO |   Val: loss:3.5783 | reg_mae:4.0468 | reg_rmse:5.3059 | reg_mse:28.1527
+2026-01-16 05:48:10,126 | INFO | ✓ Fold 4: New best model! reg_mae=4.0468
+2026-01-16 05:48:10,126 | INFO | Fold 4, Epoch 3/100
+2026-01-16 05:50:11,404 | INFO |   Train loss: 2.2957
+2026-01-16 05:50:44,185 | INFO |   Val: loss:2.3043 | reg_mae:2.7759 | reg_rmse:3.6302 | reg_mse:13.1780
+2026-01-16 05:50:45,994 | INFO | ✓ Fold 4: New best model! reg_mae=2.7759
+2026-01-16 05:50:45,994 | INFO | Fold 4, Epoch 4/100
+2026-01-16 05:52:46,306 | INFO |   Train loss: 2.1574
+2026-01-16 05:53:17,025 | INFO |   Val: loss:3.5649 | reg_mae:4.0494 | reg_rmse:5.5106 | reg_mse:30.3668
+2026-01-16 05:53:17,025 | INFO | Fold 4, Epoch 5/100
+2026-01-16 05:55:17,253 | INFO |   Train loss: 1.7760
+2026-01-16 05:55:49,715 | INFO |   Val: loss:1.6259 | reg_mae:2.0805 | reg_rmse:2.9714 | reg_mse:8.8295
+2026-01-16 05:55:51,651 | INFO | ✓ Fold 4: New best model! reg_mae=2.0805
+2026-01-16 05:55:51,652 | INFO | Fold 4, Epoch 6/100
+2026-01-16 05:57:55,307 | INFO |   Train loss: 1.8825
+2026-01-16 05:58:28,685 | INFO |   Val: loss:4.6468 | reg_mae:5.1181 | reg_rmse:6.7998 | reg_mse:46.2374
+2026-01-16 05:58:28,686 | INFO | Fold 4, Epoch 7/100
+2026-01-16 06:00:28,704 | INFO |   Train loss: 1.7776
+2026-01-16 06:00:59,684 | INFO |   Val: loss:3.0829 | reg_mae:3.5504 | reg_rmse:4.6703 | reg_mse:21.8114
+2026-01-16 06:00:59,684 | INFO | Fold 4, Epoch 8/100
+2026-01-16 06:03:00,466 | INFO |   Train loss: 1.6933
+2026-01-16 06:03:34,411 | INFO |   Val: loss:1.9620 | reg_mae:2.3965 | reg_rmse:3.2901 | reg_mse:10.8250
+2026-01-16 06:03:34,411 | INFO | Fold 4, Epoch 9/100
+2026-01-16 06:05:35,150 | INFO |   Train loss: 1.7378
+2026-01-16 06:06:06,645 | INFO |   Val: loss:1.6642 | reg_mae:2.1226 | reg_rmse:2.7276 | reg_mse:7.4398
+2026-01-16 06:06:06,645 | INFO | Fold 4, Epoch 10/100
+2026-01-16 06:08:04,086 | INFO |   Train loss: 1.6685
+2026-01-16 06:08:35,550 | INFO |   Val: loss:1.4661 | reg_mae:1.9191 | reg_rmse:2.3731 | reg_mse:5.6316
+2026-01-16 06:08:37,453 | INFO | ✓ Fold 4: New best model! reg_mae=1.9191
+2026-01-16 06:08:37,453 | INFO | Fold 4, Epoch 11/100
+2026-01-16 06:10:38,993 | INFO |   Train loss: 1.5316
+2026-01-16 06:11:10,147 | INFO |   Val: loss:1.6484 | reg_mae:2.0993 | reg_rmse:2.6609 | reg_mse:7.0802
+2026-01-16 06:11:10,148 | INFO | Fold 4, Epoch 12/100
+2026-01-16 06:13:08,661 | INFO |   Train loss: 1.5107
+2026-01-16 06:13:39,541 | INFO |   Val: loss:1.9601 | reg_mae:2.4090 | reg_rmse:3.2490 | reg_mse:10.5563
+2026-01-16 06:13:39,541 | INFO | Fold 4, Epoch 13/100
+2026-01-16 06:15:40,585 | INFO |   Train loss: 1.5810
+2026-01-16 06:16:13,412 | INFO |   Val: loss:1.7401 | reg_mae:2.2013 | reg_rmse:2.6900 | reg_mse:7.2361
+2026-01-16 06:16:13,412 | INFO | Fold 4, Epoch 14/100
+2026-01-16 06:18:13,086 | INFO |   Train loss: 1.4328
+2026-01-16 06:18:45,447 | INFO |   Val: loss:1.7560 | reg_mae:2.1962 | reg_rmse:2.8182 | reg_mse:7.9421
+2026-01-16 06:18:45,447 | INFO | Fold 4, Epoch 15/100
+2026-01-16 06:20:44,928 | INFO |   Train loss: 1.5569
+2026-01-16 06:21:15,894 | INFO |   Val: loss:2.0883 | reg_mae:2.5555 | reg_rmse:3.4159 | reg_mse:11.6682
+2026-01-16 06:21:15,894 | INFO | Fold 4, Epoch 16/100
+2026-01-16 06:23:19,073 | INFO |   Train loss: 1.3888
+2026-01-16 06:23:51,763 | INFO |   Val: loss:1.1186 | reg_mae:1.5518 | reg_rmse:1.9474 | reg_mse:3.7924
+2026-01-16 06:23:53,559 | INFO | ✓ Fold 4: New best model! reg_mae=1.5518
+2026-01-16 06:23:53,559 | INFO | Fold 4, Epoch 17/100
+2026-01-16 06:25:53,480 | INFO |   Train loss: 1.5227
+2026-01-16 06:26:24,362 | INFO |   Val: loss:1.8176 | reg_mae:2.2662 | reg_rmse:3.0026 | reg_mse:9.0156
+2026-01-16 06:26:24,363 | INFO | Fold 4, Epoch 18/100
+2026-01-16 06:28:22,875 | INFO |   Train loss: 1.4788
+2026-01-16 06:28:54,679 | INFO |   Val: loss:1.3757 | reg_mae:1.8241 | reg_rmse:2.3272 | reg_mse:5.4157
+2026-01-16 06:28:54,679 | INFO | Fold 4, Epoch 19/100
+2026-01-16 06:30:57,944 | INFO |   Train loss: 1.3336
+2026-01-16 06:31:29,146 | INFO |   Val: loss:1.5618 | reg_mae:2.0086 | reg_rmse:2.6051 | reg_mse:6.7866
+2026-01-16 06:31:29,146 | INFO | Fold 4, Epoch 20/100
+2026-01-16 06:33:29,573 | INFO |   Train loss: 1.4392
+2026-01-16 06:34:02,380 | INFO |   Val: loss:1.3825 | reg_mae:1.8295 | reg_rmse:2.3055 | reg_mse:5.3153
+2026-01-16 06:34:02,380 | INFO | Fold 4, Epoch 21/100
+2026-01-16 06:36:04,439 | INFO |   Train loss: 1.2769
+2026-01-16 06:36:36,733 | INFO |   Val: loss:2.0081 | reg_mae:2.4554 | reg_rmse:3.1592 | reg_mse:9.9807
+2026-01-16 06:36:36,733 | INFO | Fold 4, Epoch 22/100
+2026-01-16 06:38:37,256 | INFO |   Train loss: 1.3996
+2026-01-16 06:39:09,863 | INFO |   Val: loss:1.4158 | reg_mae:1.8490 | reg_rmse:2.5244 | reg_mse:6.3728
+2026-01-16 06:39:09,863 | INFO | Fold 4, Epoch 23/100
+2026-01-16 06:41:11,039 | INFO |   Train loss: 1.2422
+2026-01-16 06:41:43,091 | INFO |   Val: loss:1.3134 | reg_mae:1.7301 | reg_rmse:2.3883 | reg_mse:5.7039
+2026-01-16 06:41:43,092 | INFO | Fold 4, Epoch 24/100
+2026-01-16 06:43:41,185 | INFO |   Train loss: 1.2126
+2026-01-16 06:44:13,512 | INFO |   Val: loss:1.3008 | reg_mae:1.7307 | reg_rmse:2.2855 | reg_mse:5.2235
+2026-01-16 06:44:13,512 | INFO | Fold 4, Epoch 25/100
+2026-01-16 06:46:13,631 | INFO |   Train loss: 1.2251
+2026-01-16 06:46:44,451 | INFO |   Val: loss:1.4044 | reg_mae:1.8430 | reg_rmse:2.4057 | reg_mse:5.7874
+2026-01-16 06:46:44,451 | INFO | Fold 4, Epoch 26/100
+2026-01-16 06:48:43,852 | INFO |   Train loss: 1.2687
+2026-01-16 06:49:17,264 | INFO |   Val: loss:1.4379 | reg_mae:1.8776 | reg_rmse:2.4179 | reg_mse:5.8461
+2026-01-16 06:49:17,264 | INFO | Fold 4, Epoch 27/100
+2026-01-16 06:51:18,324 | INFO |   Train loss: 1.2635
+2026-01-16 06:51:50,282 | INFO |   Val: loss:0.9969 | reg_mae:1.4113 | reg_rmse:1.8947 | reg_mse:3.5900
+2026-01-16 06:51:52,051 | INFO | ✓ Fold 4: New best model! reg_mae=1.4113
+2026-01-16 06:51:52,052 | INFO | Fold 4, Epoch 28/100
+2026-01-16 06:53:55,334 | INFO |   Train loss: 1.4042
+2026-01-16 06:54:26,211 | INFO |   Val: loss:1.3369 | reg_mae:1.7683 | reg_rmse:2.2579 | reg_mse:5.0983
+2026-01-16 06:54:26,211 | INFO | Fold 4, Epoch 29/100
+2026-01-16 06:56:26,196 | INFO |   Train loss: 1.2596
+2026-01-16 06:56:57,537 | INFO |   Val: loss:1.3574 | reg_mae:1.8028 | reg_rmse:2.3314 | reg_mse:5.4353
+2026-01-16 06:56:57,538 | INFO | Fold 4, Epoch 30/100
+2026-01-16 06:59:00,672 | INFO |   Train loss: 1.1174
+2026-01-16 06:59:33,331 | INFO |   Val: loss:1.6348 | reg_mae:2.0725 | reg_rmse:2.7285 | reg_mse:7.4450
+2026-01-16 06:59:33,331 | INFO | Fold 4, Epoch 31/100
+2026-01-16 07:01:34,694 | INFO |   Train loss: 1.3816
+2026-01-16 07:02:07,007 | INFO |   Val: loss:1.1643 | reg_mae:1.5832 | reg_rmse:2.0743 | reg_mse:4.3026
+2026-01-16 07:02:07,007 | INFO | Fold 4, Epoch 32/100
+2026-01-16 07:04:05,966 | INFO |   Train loss: 1.2994
+2026-01-16 07:04:37,812 | INFO |   Val: loss:1.2338 | reg_mae:1.6645 | reg_rmse:2.2350 | reg_mse:4.9954
+2026-01-16 07:04:37,812 | INFO | Fold 4, Epoch 33/100
+2026-01-16 07:06:41,889 | INFO |   Train loss: 1.2218
+2026-01-16 07:07:14,365 | INFO |   Val: loss:1.2746 | reg_mae:1.6926 | reg_rmse:2.3887 | reg_mse:5.7059
+2026-01-16 07:07:14,365 | INFO | Fold 4, Epoch 34/100
+2026-01-16 07:09:12,411 | INFO |   Train loss: 1.2200
+2026-01-16 07:09:45,098 | INFO |   Val: loss:1.6159 | reg_mae:2.0639 | reg_rmse:2.6662 | reg_mse:7.1086
+2026-01-16 07:09:45,098 | INFO | Fold 4, Epoch 35/100
+2026-01-16 07:11:45,124 | INFO |   Train loss: 1.2071
+2026-01-16 07:12:16,002 | INFO |   Val: loss:1.6103 | reg_mae:2.0675 | reg_rmse:2.6259 | reg_mse:6.8954
+2026-01-16 07:12:16,003 | INFO | Fold 4, Epoch 36/100
+2026-01-16 07:14:15,269 | INFO |   Train loss: 1.0784
+2026-01-16 07:14:45,929 | INFO |   Val: loss:1.7824 | reg_mae:2.2362 | reg_rmse:2.8910 | reg_mse:8.3577
+2026-01-16 07:14:45,929 | INFO | Fold 4, Epoch 37/100
+2026-01-16 07:16:48,583 | INFO |   Train loss: 1.1482
+2026-01-16 07:17:19,295 | INFO |   Val: loss:1.1136 | reg_mae:1.5432 | reg_rmse:2.0017 | reg_mse:4.0068
+2026-01-16 07:17:19,295 | INFO | Fold 4, Epoch 38/100
+2026-01-16 07:19:17,464 | INFO |   Train loss: 1.0960
+2026-01-16 07:19:49,257 | INFO |   Val: loss:1.2523 | reg_mae:1.6788 | reg_rmse:2.2283 | reg_mse:4.9655
+2026-01-16 07:19:49,257 | INFO | Fold 4, Epoch 39/100
+2026-01-16 07:21:49,151 | INFO |   Train loss: 1.1440
+2026-01-16 07:22:21,723 | INFO |   Val: loss:1.4489 | reg_mae:1.8786 | reg_rmse:2.5443 | reg_mse:6.4736
+2026-01-16 07:22:21,723 | INFO | Fold 4, Epoch 40/100
+2026-01-16 07:24:22,845 | INFO |   Train loss: 1.1211
+2026-01-16 07:24:55,936 | INFO |   Val: loss:1.3227 | reg_mae:1.7594 | reg_rmse:2.2192 | reg_mse:4.9248
+2026-01-16 07:24:55,936 | INFO | Fold 4, Epoch 41/100
+2026-01-16 07:26:53,335 | INFO |   Train loss: 1.0602
+2026-01-16 07:27:25,353 | INFO |   Val: loss:1.5618 | reg_mae:2.0093 | reg_rmse:2.4762 | reg_mse:6.1318
+2026-01-16 07:27:25,353 | INFO | Fold 4, Epoch 42/100
+2026-01-16 07:29:29,195 | INFO |   Train loss: 1.0521
+2026-01-16 07:30:01,696 | INFO |   Val: loss:1.3047 | reg_mae:1.7287 | reg_rmse:2.2580 | reg_mse:5.0987
+2026-01-16 07:30:01,696 | INFO | Fold 4, Epoch 43/100
+2026-01-16 07:32:02,221 | INFO |   Train loss: 0.9728
+2026-01-16 07:32:34,422 | INFO |   Val: loss:1.2361 | reg_mae:1.6664 | reg_rmse:2.2511 | reg_mse:5.0676
+2026-01-16 07:32:34,422 | INFO | Fold 4, Epoch 44/100
+2026-01-16 07:34:33,925 | INFO |   Train loss: 1.0028
+2026-01-16 07:35:06,724 | INFO |   Val: loss:1.1638 | reg_mae:1.5885 | reg_rmse:2.1130 | reg_mse:4.4648
+2026-01-16 07:35:06,724 | INFO | Fold 4, Epoch 45/100
+2026-01-16 07:37:07,858 | INFO |   Train loss: 1.0555
+2026-01-16 07:37:40,297 | INFO |   Val: loss:1.1825 | reg_mae:1.6209 | reg_rmse:2.0316 | reg_mse:4.1275
+2026-01-16 07:37:40,297 | INFO | Fold 4, Epoch 46/100
+2026-01-16 07:39:41,317 | INFO |   Train loss: 0.9955
+2026-01-16 07:40:12,305 | INFO |   Val: loss:1.4328 | reg_mae:1.8734 | reg_rmse:2.4753 | reg_mse:6.1269
+2026-01-16 07:40:12,305 | INFO | Fold 4, Epoch 47/100
+2026-01-16 07:42:11,642 | INFO |   Train loss: 0.9709
+2026-01-16 07:42:43,953 | INFO |   Val: loss:1.2887 | reg_mae:1.7260 | reg_rmse:2.1805 | reg_mse:4.7544
+2026-01-16 07:42:43,953 | INFO | Fold 4, Epoch 48/100
+2026-01-16 07:44:41,921 | INFO |   Train loss: 0.9970
+2026-01-16 07:45:13,051 | INFO |   Val: loss:1.1252 | reg_mae:1.5533 | reg_rmse:2.0356 | reg_mse:4.1435
+2026-01-16 07:45:13,052 | INFO | Fold 4, Epoch 49/100
+2026-01-16 07:47:14,835 | INFO |   Train loss: 0.9493
+2026-01-16 07:47:46,669 | INFO |   Val: loss:1.3216 | reg_mae:1.7517 | reg_rmse:2.2423 | reg_mse:5.0278
+2026-01-16 07:47:46,669 | INFO | Fold 4, Epoch 50/100
+2026-01-16 07:49:45,991 | INFO |   Train loss: 0.9609
+2026-01-16 07:50:18,818 | INFO |   Val: loss:1.0962 | reg_mae:1.5242 | reg_rmse:1.9874 | reg_mse:3.9496
+2026-01-16 07:50:18,818 | INFO | Fold 4, Epoch 51/100
+2026-01-16 07:52:21,823 | INFO |   Train loss: 0.9152
+2026-01-16 07:52:52,652 | INFO |   Val: loss:1.0108 | reg_mae:1.4252 | reg_rmse:1.8487 | reg_mse:3.4175
+2026-01-16 07:52:52,652 | INFO | Fold 4, Epoch 52/100
+2026-01-16 07:54:54,937 | INFO |   Train loss: 0.9437
+2026-01-16 07:55:27,043 | INFO |   Val: loss:0.9928 | reg_mae:1.4056 | reg_rmse:1.8625 | reg_mse:3.4690
+2026-01-16 07:55:28,778 | INFO | ✓ Fold 4: New best model! reg_mae=1.4056
+2026-01-16 07:55:28,778 | INFO | Fold 4, Epoch 53/100
+2026-01-16 07:57:32,280 | INFO |   Train loss: 0.9253
+2026-01-16 07:58:04,649 | INFO |   Val: loss:0.9392 | reg_mae:1.3533 | reg_rmse:1.7605 | reg_mse:3.0994
+2026-01-16 07:58:06,435 | INFO | ✓ Fold 4: New best model! reg_mae=1.3533
+2026-01-16 07:58:06,435 | INFO | Fold 4, Epoch 54/100
+2026-01-16 08:00:05,356 | INFO |   Train loss: 0.9133
+2026-01-16 08:00:36,426 | INFO |   Val: loss:1.2981 | reg_mae:1.7262 | reg_rmse:2.3562 | reg_mse:5.5518
+2026-01-16 08:00:36,426 | INFO | Fold 4, Epoch 55/100
+2026-01-16 08:02:35,810 | INFO |   Train loss: 0.8908
+2026-01-16 08:03:07,305 | INFO |   Val: loss:1.0854 | reg_mae:1.4990 | reg_rmse:1.9602 | reg_mse:3.8425
+2026-01-16 08:03:07,305 | INFO | Fold 4, Epoch 56/100
+2026-01-16 08:05:07,634 | INFO |   Train loss: 0.8595
+2026-01-16 08:05:38,932 | INFO |   Val: loss:1.0004 | reg_mae:1.4147 | reg_rmse:1.8661 | reg_mse:3.4823
+2026-01-16 08:05:38,932 | INFO | Fold 4, Epoch 57/100
+2026-01-16 08:07:38,437 | INFO |   Train loss: 0.9140
+2026-01-16 08:08:09,427 | INFO |   Val: loss:1.3054 | reg_mae:1.7221 | reg_rmse:2.3457 | reg_mse:5.5025
+2026-01-16 08:08:09,427 | INFO | Fold 4, Epoch 58/100
+2026-01-16 08:10:08,365 | INFO |   Train loss: 0.8896
+2026-01-16 08:10:40,829 | INFO |   Val: loss:1.0165 | reg_mae:1.4341 | reg_rmse:1.8760 | reg_mse:3.5195
+2026-01-16 08:10:40,829 | INFO | Fold 4, Epoch 59/100
+2026-01-16 08:12:44,281 | INFO |   Train loss: 0.8553
+2026-01-16 08:13:16,136 | INFO |   Val: loss:1.1339 | reg_mae:1.5488 | reg_rmse:2.0874 | reg_mse:4.3571
+2026-01-16 08:13:16,136 | INFO | Fold 4, Epoch 60/100
+2026-01-16 08:15:18,708 | INFO |   Train loss: 0.8598
+2026-01-16 08:15:51,169 | INFO |   Val: loss:1.1476 | reg_mae:1.5652 | reg_rmse:2.0580 | reg_mse:4.2355
+2026-01-16 08:15:51,169 | INFO | Fold 4, Epoch 61/100
+2026-01-16 08:17:54,581 | INFO |   Train loss: 0.8148
+2026-01-16 08:18:27,400 | INFO |   Val: loss:1.0869 | reg_mae:1.5081 | reg_rmse:1.9915 | reg_mse:3.9660
+2026-01-16 08:18:27,400 | INFO | Fold 4, Epoch 62/100
+2026-01-16 08:20:27,329 | INFO |   Train loss: 0.8229
+2026-01-16 08:20:58,345 | INFO |   Val: loss:1.1546 | reg_mae:1.5767 | reg_rmse:2.0240 | reg_mse:4.0968
+2026-01-16 08:20:58,345 | INFO | Fold 4, Epoch 63/100
+2026-01-16 08:23:01,198 | INFO |   Train loss: 0.8256
+2026-01-16 08:23:31,988 | INFO |   Val: loss:1.0068 | reg_mae:1.4001 | reg_rmse:1.9671 | reg_mse:3.8696
+2026-01-16 08:23:31,988 | INFO | Fold 4, Epoch 64/100
+2026-01-16 08:25:31,589 | INFO |   Train loss: 0.8417
+2026-01-16 08:26:02,941 | INFO |   Val: loss:1.3546 | reg_mae:1.7700 | reg_rmse:2.3474 | reg_mse:5.5105
+2026-01-16 08:26:02,941 | INFO | Fold 4, Epoch 65/100
+2026-01-16 08:28:06,635 | INFO |   Train loss: 0.8211
+2026-01-16 08:28:39,500 | INFO |   Val: loss:1.3457 | reg_mae:1.7623 | reg_rmse:2.3425 | reg_mse:5.4871
+2026-01-16 08:28:39,500 | INFO | Fold 4, Epoch 66/100
+2026-01-16 08:30:38,680 | INFO |   Train loss: 0.8711
+2026-01-16 08:31:09,678 | INFO |   Val: loss:1.3587 | reg_mae:1.7794 | reg_rmse:2.3424 | reg_mse:5.4868
+2026-01-16 08:31:09,678 | INFO | Fold 4, Epoch 67/100
+2026-01-16 08:33:11,316 | INFO |   Train loss: 0.7971
+2026-01-16 08:33:43,639 | INFO |   Val: loss:1.0773 | reg_mae:1.4929 | reg_rmse:2.0076 | reg_mse:4.0305
+2026-01-16 08:33:43,639 | INFO | Fold 4, Epoch 68/100
+2026-01-16 08:35:43,622 | INFO |   Train loss: 0.8156
+2026-01-16 08:36:16,206 | INFO |   Val: loss:0.9437 | reg_mae:1.3532 | reg_rmse:1.7727 | reg_mse:3.1426
+2026-01-16 08:36:17,911 | INFO | ✓ Fold 4: New best model! reg_mae=1.3532
+2026-01-16 08:36:17,911 | INFO | Fold 4, Epoch 69/100
+2026-01-16 08:38:20,738 | INFO |   Train loss: 0.7915
+2026-01-16 08:38:52,950 | INFO |   Val: loss:0.9904 | reg_mae:1.3947 | reg_rmse:1.8906 | reg_mse:3.5743
+2026-01-16 08:38:52,950 | INFO | Fold 4, Epoch 70/100
+2026-01-16 08:40:53,207 | INFO |   Train loss: 0.8005
+2026-01-16 08:41:25,843 | INFO |   Val: loss:0.9651 | reg_mae:1.3804 | reg_rmse:1.8081 | reg_mse:3.2692
+2026-01-16 08:41:25,843 | INFO | Fold 4, Epoch 71/100
+2026-01-16 08:43:27,595 | INFO |   Train loss: 0.7089
+2026-01-16 08:44:00,088 | INFO |   Val: loss:1.0118 | reg_mae:1.4149 | reg_rmse:1.9014 | reg_mse:3.6154
+2026-01-16 08:44:00,088 | INFO | Fold 4, Epoch 72/100
+2026-01-16 08:45:59,395 | INFO |   Train loss: 0.7311
+2026-01-16 08:46:30,212 | INFO |   Val: loss:0.9532 | reg_mae:1.3592 | reg_rmse:1.8285 | reg_mse:3.3433
+2026-01-16 08:46:30,212 | INFO | Fold 4, Epoch 73/100
+2026-01-16 08:48:28,371 | INFO |   Train loss: 0.7128
+2026-01-16 08:49:00,860 | INFO |   Val: loss:0.9246 | reg_mae:1.3336 | reg_rmse:1.7486 | reg_mse:3.0578
+2026-01-16 08:49:02,677 | INFO | ✓ Fold 4: New best model! reg_mae=1.3336
+2026-01-16 08:49:02,678 | INFO | Fold 4, Epoch 74/100
+2026-01-16 08:51:02,562 | INFO |   Train loss: 0.7523
+2026-01-16 08:51:34,733 | INFO |   Val: loss:0.9910 | reg_mae:1.3957 | reg_rmse:1.8607 | reg_mse:3.4621
+2026-01-16 08:51:34,733 | INFO | Fold 4, Epoch 75/100
+2026-01-16 08:53:35,524 | INFO |   Train loss: 0.7505
+2026-01-16 08:54:07,844 | INFO |   Val: loss:0.8775 | reg_mae:1.2723 | reg_rmse:1.7242 | reg_mse:2.9730
+2026-01-16 08:54:09,750 | INFO | ✓ Fold 4: New best model! reg_mae=1.2723
+2026-01-16 08:54:09,750 | INFO | Fold 4, Epoch 76/100
+2026-01-16 08:56:11,215 | INFO |   Train loss: 0.7407
+2026-01-16 08:56:42,196 | INFO |   Val: loss:0.9295 | reg_mae:1.3478 | reg_rmse:1.7543 | reg_mse:3.0775
+2026-01-16 08:56:42,196 | INFO | Fold 4, Epoch 77/100
+2026-01-16 08:58:44,516 | INFO |   Train loss: 0.7467
+2026-01-16 08:59:16,896 | INFO |   Val: loss:1.0463 | reg_mae:1.4555 | reg_rmse:1.9408 | reg_mse:3.7666
+2026-01-16 08:59:16,896 | INFO | Fold 4, Epoch 78/100
+2026-01-16 09:01:19,395 | INFO |   Train loss: 0.7654
+2026-01-16 09:01:50,187 | INFO |   Val: loss:0.8863 | reg_mae:1.2790 | reg_rmse:1.7434 | reg_mse:3.0394
+2026-01-16 09:01:50,187 | INFO | Fold 4, Epoch 79/100
+2026-01-16 09:03:50,653 | INFO |   Train loss: 0.7162
+2026-01-16 09:04:23,456 | INFO |   Val: loss:1.0030 | reg_mae:1.4159 | reg_rmse:1.8541 | reg_mse:3.4375
+2026-01-16 09:04:23,457 | INFO | Fold 4, Epoch 80/100
+2026-01-16 09:06:24,914 | INFO |   Train loss: 0.6966
+2026-01-16 09:06:57,433 | INFO |   Val: loss:1.0526 | reg_mae:1.4699 | reg_rmse:1.9160 | reg_mse:3.6712
+2026-01-16 09:06:57,433 | INFO | Fold 4, Epoch 81/100
+2026-01-16 09:08:56,620 | INFO |   Train loss: 0.7147
+2026-01-16 09:09:28,058 | INFO |   Val: loss:0.9059 | reg_mae:1.3135 | reg_rmse:1.7332 | reg_mse:3.0040
+2026-01-16 09:09:28,058 | INFO | Fold 4, Epoch 82/100
+2026-01-16 09:11:26,838 | INFO |   Train loss: 0.7069
+2026-01-16 09:11:59,791 | INFO |   Val: loss:0.9193 | reg_mae:1.3248 | reg_rmse:1.7594 | reg_mse:3.0953
+2026-01-16 09:11:59,791 | INFO | Fold 4, Epoch 83/100
+2026-01-16 09:13:59,984 | INFO |   Train loss: 0.7023
+2026-01-16 09:14:30,867 | INFO |   Val: loss:0.9532 | reg_mae:1.3655 | reg_rmse:1.7928 | reg_mse:3.2143
+2026-01-16 09:14:30,867 | INFO | Fold 4, Epoch 84/100
+2026-01-16 09:16:31,120 | INFO |   Train loss: 0.6805
+2026-01-16 09:17:03,167 | INFO |   Val: loss:1.0015 | reg_mae:1.4095 | reg_rmse:1.8434 | reg_mse:3.3983
+2026-01-16 09:17:03,167 | INFO | Fold 4, Epoch 85/100
+2026-01-16 09:19:08,545 | INFO |   Train loss: 0.7049
+2026-01-16 09:19:41,663 | INFO |   Val: loss:0.8801 | reg_mae:1.2857 | reg_rmse:1.7160 | reg_mse:2.9445
+2026-01-16 09:19:41,663 | INFO | Fold 4, Epoch 86/100
+2026-01-16 09:21:42,233 | INFO |   Train loss: 0.6931
+2026-01-16 09:22:13,339 | INFO |   Val: loss:0.9429 | reg_mae:1.3564 | reg_rmse:1.7814 | reg_mse:3.1735
+2026-01-16 09:22:13,339 | INFO | Fold 4, Epoch 87/100
+2026-01-16 09:24:10,970 | INFO |   Train loss: 0.6723
+2026-01-16 09:24:44,500 | INFO |   Val: loss:0.9687 | reg_mae:1.3749 | reg_rmse:1.8075 | reg_mse:3.2670
+2026-01-16 09:24:44,500 | INFO | Fold 4, Epoch 88/100
+2026-01-16 09:26:46,433 | INFO |   Train loss: 0.6920
+2026-01-16 09:27:18,299 | INFO |   Val: loss:0.9528 | reg_mae:1.3553 | reg_rmse:1.8139 | reg_mse:3.2903
+2026-01-16 09:27:18,300 | INFO | Fold 4, Epoch 89/100
+2026-01-16 09:29:20,750 | INFO |   Train loss: 0.6850
+2026-01-16 09:29:52,903 | INFO |   Val: loss:0.9346 | reg_mae:1.3480 | reg_rmse:1.7732 | reg_mse:3.1444
+2026-01-16 09:29:52,903 | INFO | Fold 4, Epoch 90/100
+2026-01-16 09:31:55,741 | INFO |   Train loss: 0.7044
+2026-01-16 09:32:28,157 | INFO |   Val: loss:0.9166 | reg_mae:1.3272 | reg_rmse:1.7542 | reg_mse:3.0772
+2026-01-16 09:32:28,157 | INFO | Fold 4, Epoch 91/100
+2026-01-16 09:34:28,068 | INFO |   Train loss: 0.6839
+2026-01-16 09:35:00,147 | INFO |   Val: loss:0.9644 | reg_mae:1.3749 | reg_rmse:1.8029 | reg_mse:3.2506
+2026-01-16 09:35:00,147 | INFO | Fold 4, Epoch 92/100
+2026-01-16 09:37:04,397 | INFO |   Train loss: 0.6858
+2026-01-16 09:37:36,623 | INFO |   Val: loss:0.8974 | reg_mae:1.3027 | reg_rmse:1.7421 | reg_mse:3.0350
+2026-01-16 09:37:36,623 | INFO | Fold 4, Epoch 93/100
+2026-01-16 09:39:36,202 | INFO |   Train loss: 0.6627
+2026-01-16 09:40:09,465 | INFO |   Val: loss:0.9104 | reg_mae:1.3155 | reg_rmse:1.7604 | reg_mse:3.0989
+2026-01-16 09:40:09,465 | INFO | Fold 4, Epoch 94/100
+2026-01-16 09:42:07,747 | INFO |   Train loss: 0.6751
+2026-01-16 09:42:38,566 | INFO |   Val: loss:0.9206 | reg_mae:1.3269 | reg_rmse:1.7628 | reg_mse:3.1073
+2026-01-16 09:42:38,566 | INFO | Fold 4, Epoch 95/100
+2026-01-16 09:44:37,128 | INFO |   Train loss: 0.6641
+2026-01-16 09:45:08,049 | INFO |   Val: loss:0.9435 | reg_mae:1.3503 | reg_rmse:1.7825 | reg_mse:3.1772
+2026-01-16 09:45:08,049 | INFO | Fold 4, Epoch 96/100
+2026-01-16 09:47:09,262 | INFO |   Train loss: 0.6772
+2026-01-16 09:47:41,226 | INFO |   Val: loss:0.9555 | reg_mae:1.3657 | reg_rmse:1.8045 | reg_mse:3.2563
+2026-01-16 09:47:41,226 | INFO | Fold 4, Epoch 97/100
+2026-01-16 09:49:40,187 | INFO |   Train loss: 0.6952
+2026-01-16 09:50:12,695 | INFO |   Val: loss:0.9084 | reg_mae:1.3190 | reg_rmse:1.7475 | reg_mse:3.0537
+2026-01-16 09:50:12,695 | INFO | Fold 4, Epoch 98/100
+2026-01-16 09:52:12,894 | INFO |   Train loss: 0.6736
+2026-01-16 09:52:45,892 | INFO |   Val: loss:0.8974 | reg_mae:1.3037 | reg_rmse:1.7282 | reg_mse:2.9868
+2026-01-16 09:52:45,892 | INFO | Fold 4, Epoch 99/100
+2026-01-16 09:54:44,321 | INFO |   Train loss: 0.6631
+2026-01-16 09:55:16,507 | INFO |   Val: loss:0.9245 | reg_mae:1.3352 | reg_rmse:1.7603 | reg_mse:3.0987
+2026-01-16 09:55:16,507 | INFO | Fold 4, Epoch 100/100
+2026-01-16 09:57:18,669 | INFO |   Train loss: 0.6808
+2026-01-16 09:57:50,665 | INFO |   Val: loss:0.9241 | reg_mae:1.3307 | reg_rmse:1.7623 | reg_mse:3.1057
+2026-01-16 09:57:50,665 | INFO | Loading best model for fold 4...
+2026-01-16 09:57:52,141 | INFO | Fold 4: Final evaluation on test set
+2026-01-16 09:58:50,752 | INFO | Fold 4 test results: loss:0.7353 | reg_mae:1.1419 | reg_rmse:1.4637 | reg_mse:2.1423
+2026-01-16 09:58:50,764 | INFO | ✓ Saved test predictions to outputs/regression_mixed/20260115-164855_5fold/fold_4/test_predictions.npz
+2026-01-16 09:58:50,844 | INFO | ✓ Saved test metadata to outputs/regression_mixed/20260115-164855_5fold/fold_4/test_metadata.jsonl
+2026-01-16 09:58:50,848 | INFO | ✓ Fold 4 complete!
+2026-01-16 09:58:50,854 | INFO | 
+================================================================================
+2026-01-16 09:58:50,854 | INFO | FOLD 5/5
+2026-01-16 09:58:50,854 | INFO | ================================================================================
+
+2026-01-16 09:58:50,854 | INFO | Device: cuda
+2026-01-16 09:58:50,854 | INFO | Training on all samples (both infected and uninfected)
+2026-01-16 09:58:50,854 | INFO | Infection onset: 1.0h
+2026-01-16 09:58:50,854 | INFO | Clamp range: (0.0, 48.0)
+2026-01-16 09:58:50,854 | INFO | Building datasets for fold 5...
+2026-01-16 09:58:51,493 | INFO | Fold 5 - Train: 4139, Val: 1013, Test: 1472
+2026-01-16 09:58:51,922 | INFO | Model: ResNetRegressor
+2026-01-16 09:58:51,922 | INFO | Total parameters: 24,032,833
+2026-01-16 09:58:51,930 | INFO | Training fold 5 for 100 epochs...
+2026-01-16 09:58:51,930 | INFO | Primary metric: reg_mae (lower is better)
+2026-01-16 09:58:51,930 | INFO | Fold 5, Epoch 1/100
+2026-01-16 10:00:54,298 | INFO |   Train loss: 16.3237
+2026-01-16 10:01:26,194 | INFO |   Val: loss:6.5867 | reg_mae:7.0768 | reg_rmse:8.5702 | reg_mse:73.4482
+2026-01-16 10:01:27,907 | INFO | ✓ Fold 5: New best model! reg_mae=7.0768
+2026-01-16 10:01:27,907 | INFO | Fold 5, Epoch 2/100
+2026-01-16 10:03:29,692 | INFO |   Train loss: 3.8925
+2026-01-16 10:04:01,578 | INFO |   Val: loss:4.7426 | reg_mae:5.2225 | reg_rmse:6.4327 | reg_mse:41.3794
+2026-01-16 10:04:03,388 | INFO | ✓ Fold 5: New best model! reg_mae=5.2225
+2026-01-16 10:04:03,388 | INFO | Fold 5, Epoch 3/100
+2026-01-16 10:06:08,316 | INFO |   Train loss: 2.3079
+2026-01-16 10:06:40,246 | INFO |   Val: loss:4.7947 | reg_mae:5.2768 | reg_rmse:6.7883 | reg_mse:46.0805
+2026-01-16 10:06:40,246 | INFO | Fold 5, Epoch 4/100
+2026-01-16 10:08:42,741 | INFO |   Train loss: 2.2075
+2026-01-16 10:09:14,391 | INFO |   Val: loss:1.7978 | reg_mae:2.2568 | reg_rmse:2.8949 | reg_mse:8.3802
+2026-01-16 10:09:16,027 | INFO | ✓ Fold 5: New best model! reg_mae=2.2568
+2026-01-16 10:09:16,028 | INFO | Fold 5, Epoch 5/100
+2026-01-16 10:11:16,450 | INFO |   Train loss: 1.9232
+2026-01-16 10:11:48,739 | INFO |   Val: loss:1.3728 | reg_mae:1.8159 | reg_rmse:2.2716 | reg_mse:5.1599
+2026-01-16 10:11:50,565 | INFO | ✓ Fold 5: New best model! reg_mae=1.8159
+2026-01-16 10:11:50,565 | INFO | Fold 5, Epoch 6/100
+2026-01-16 10:13:52,374 | INFO |   Train loss: 1.8198
+2026-01-16 10:14:24,863 | INFO |   Val: loss:2.2302 | reg_mae:2.6933 | reg_rmse:3.4534 | reg_mse:11.9258
+2026-01-16 10:14:24,863 | INFO | Fold 5, Epoch 7/100
+2026-01-16 10:16:23,818 | INFO |   Train loss: 1.8178
+2026-01-16 10:16:56,051 | INFO |   Val: loss:1.6991 | reg_mae:2.1460 | reg_rmse:2.7066 | reg_mse:7.3259
+2026-01-16 10:16:56,051 | INFO | Fold 5, Epoch 8/100
+2026-01-16 10:18:57,638 | INFO |   Train loss: 1.7329
+2026-01-16 10:19:29,698 | INFO |   Val: loss:1.5836 | reg_mae:2.0406 | reg_rmse:2.5001 | reg_mse:6.2506
+2026-01-16 10:19:29,698 | INFO | Fold 5, Epoch 9/100
+2026-01-16 10:21:32,924 | INFO |   Train loss: 1.9482
+2026-01-16 10:22:04,947 | INFO |   Val: loss:1.3074 | reg_mae:1.7356 | reg_rmse:2.3777 | reg_mse:5.6533
+2026-01-16 10:22:06,732 | INFO | ✓ Fold 5: New best model! reg_mae=1.7356
+2026-01-16 10:22:06,732 | INFO | Fold 5, Epoch 10/100
+2026-01-16 10:24:09,940 | INFO |   Train loss: 1.6604
+2026-01-16 10:24:42,215 | INFO |   Val: loss:1.4688 | reg_mae:1.9200 | reg_rmse:2.3401 | reg_mse:5.4762
+2026-01-16 10:24:42,215 | INFO | Fold 5, Epoch 11/100
+2026-01-16 10:26:47,827 | INFO |   Train loss: 1.5488
+2026-01-16 10:27:19,852 | INFO |   Val: loss:1.2408 | reg_mae:1.6721 | reg_rmse:2.1252 | reg_mse:4.5164
+2026-01-16 10:27:21,479 | INFO | ✓ Fold 5: New best model! reg_mae=1.6721
+2026-01-16 10:27:21,479 | INFO | Fold 5, Epoch 12/100
+2026-01-16 10:29:24,427 | INFO |   Train loss: 1.6037
+2026-01-16 10:29:57,168 | INFO |   Val: loss:1.8043 | reg_mae:2.2591 | reg_rmse:2.7487 | reg_mse:7.5551
+2026-01-16 10:29:57,168 | INFO | Fold 5, Epoch 13/100
+2026-01-16 10:32:01,623 | INFO |   Train loss: 1.7101
+2026-01-16 10:32:34,003 | INFO |   Val: loss:2.3480 | reg_mae:2.8246 | reg_rmse:3.3499 | reg_mse:11.2220
+2026-01-16 10:32:34,003 | INFO | Fold 5, Epoch 14/100
+2026-01-16 10:34:34,899 | INFO |   Train loss: 1.5797
+2026-01-16 10:35:06,789 | INFO |   Val: loss:1.2807 | reg_mae:1.7204 | reg_rmse:2.2116 | reg_mse:4.8911
+2026-01-16 10:35:06,789 | INFO | Fold 5, Epoch 15/100
+2026-01-16 10:37:08,807 | INFO |   Train loss: 1.6303
+2026-01-16 10:37:41,356 | INFO |   Val: loss:1.4800 | reg_mae:1.9230 | reg_rmse:2.4334 | reg_mse:5.9213
+2026-01-16 10:37:41,356 | INFO | Fold 5, Epoch 16/100
+2026-01-16 10:39:41,620 | INFO |   Train loss: 1.4916
+2026-01-16 10:40:13,401 | INFO |   Val: loss:1.0042 | reg_mae:1.4300 | reg_rmse:1.8431 | reg_mse:3.3968
+2026-01-16 10:40:15,140 | INFO | ✓ Fold 5: New best model! reg_mae=1.4300
+2026-01-16 10:40:15,140 | INFO | Fold 5, Epoch 17/100
+2026-01-16 10:42:20,934 | INFO |   Train loss: 1.5128
+2026-01-16 10:42:52,805 | INFO |   Val: loss:3.0862 | reg_mae:3.5543 | reg_rmse:4.7185 | reg_mse:22.2638
+2026-01-16 10:42:52,805 | INFO | Fold 5, Epoch 18/100
+2026-01-16 10:44:54,014 | INFO |   Train loss: 1.4227
+2026-01-16 10:45:25,651 | INFO |   Val: loss:2.4127 | reg_mae:2.8807 | reg_rmse:3.6625 | reg_mse:13.4136
+2026-01-16 10:45:25,651 | INFO | Fold 5, Epoch 19/100
+2026-01-16 10:47:28,025 | INFO |   Train loss: 1.4383
+2026-01-16 10:48:00,493 | INFO |   Val: loss:2.1333 | reg_mae:2.5936 | reg_rmse:3.3410 | reg_mse:11.1623
+2026-01-16 10:48:00,494 | INFO | Fold 5, Epoch 20/100
+2026-01-16 10:50:00,671 | INFO |   Train loss: 1.4199
+2026-01-16 10:50:32,710 | INFO |   Val: loss:1.5793 | reg_mae:2.0282 | reg_rmse:2.7376 | reg_mse:7.4945
+2026-01-16 10:50:32,710 | INFO | Fold 5, Epoch 21/100
+2026-01-16 10:52:37,015 | INFO |   Train loss: 1.4403
+2026-01-16 10:53:09,235 | INFO |   Val: loss:1.0986 | reg_mae:1.5281 | reg_rmse:2.0190 | reg_mse:4.0765
+2026-01-16 10:53:09,236 | INFO | Fold 5, Epoch 22/100
+2026-01-16 10:55:12,581 | INFO |   Train loss: 1.2722
+2026-01-16 10:55:45,345 | INFO |   Val: loss:0.9866 | reg_mae:1.4281 | reg_rmse:1.7624 | reg_mse:3.1061
+2026-01-16 10:55:47,152 | INFO | ✓ Fold 5: New best model! reg_mae=1.4281
+2026-01-16 10:55:47,152 | INFO | Fold 5, Epoch 23/100
+2026-01-16 10:57:49,136 | INFO |   Train loss: 1.2808
+2026-01-16 10:58:21,397 | INFO |   Val: loss:1.1970 | reg_mae:1.6340 | reg_rmse:2.0606 | reg_mse:4.2462
+2026-01-16 10:58:21,397 | INFO | Fold 5, Epoch 24/100
+2026-01-16 11:00:26,037 | INFO |   Train loss: 1.3050
+2026-01-16 11:00:57,911 | INFO |   Val: loss:0.9795 | reg_mae:1.4056 | reg_rmse:1.8038 | reg_mse:3.2537
+2026-01-16 11:00:59,527 | INFO | ✓ Fold 5: New best model! reg_mae=1.4056
+2026-01-16 11:00:59,528 | INFO | Fold 5, Epoch 25/100
+2026-01-16 11:03:03,982 | INFO |   Train loss: 1.3093
+2026-01-16 11:03:36,012 | INFO |   Val: loss:1.2992 | reg_mae:1.7419 | reg_rmse:2.1338 | reg_mse:4.5530
+2026-01-16 11:03:36,012 | INFO | Fold 5, Epoch 26/100
+2026-01-16 11:05:37,736 | INFO |   Train loss: 1.2614
+2026-01-16 11:06:09,538 | INFO |   Val: loss:1.4182 | reg_mae:1.8661 | reg_rmse:2.3307 | reg_mse:5.4323
+2026-01-16 11:06:09,538 | INFO | Fold 5, Epoch 27/100
+2026-01-16 11:08:12,952 | INFO |   Train loss: 1.2016
+2026-01-16 11:08:45,117 | INFO |   Val: loss:0.9660 | reg_mae:1.4029 | reg_rmse:1.7081 | reg_mse:2.9176
+2026-01-16 11:08:46,722 | INFO | ✓ Fold 5: New best model! reg_mae=1.4029
+2026-01-16 11:08:46,722 | INFO | Fold 5, Epoch 28/100
+2026-01-16 11:10:47,108 | INFO |   Train loss: 1.2624
+2026-01-16 11:11:19,401 | INFO |   Val: loss:1.0410 | reg_mae:1.4610 | reg_rmse:1.9799 | reg_mse:3.9199
+2026-01-16 11:11:19,401 | INFO | Fold 5, Epoch 29/100
+2026-01-16 11:13:23,560 | INFO |   Train loss: 1.2443
+2026-01-16 11:13:55,192 | INFO |   Val: loss:1.5527 | reg_mae:1.9950 | reg_rmse:2.6865 | reg_mse:7.2174
+2026-01-16 11:13:55,192 | INFO | Fold 5, Epoch 30/100
+2026-01-16 11:15:53,928 | INFO |   Train loss: 1.2678
+2026-01-16 11:16:26,304 | INFO |   Val: loss:1.1651 | reg_mae:1.5824 | reg_rmse:2.1430 | reg_mse:4.5926
+2026-01-16 11:16:26,304 | INFO | Fold 5, Epoch 31/100
+2026-01-16 11:18:30,418 | INFO |   Train loss: 1.2172
+2026-01-16 11:19:02,907 | INFO |   Val: loss:0.9395 | reg_mae:1.3638 | reg_rmse:1.7488 | reg_mse:3.0585
+2026-01-16 11:19:04,616 | INFO | ✓ Fold 5: New best model! reg_mae=1.3638
+2026-01-16 11:19:04,616 | INFO | Fold 5, Epoch 32/100
+2026-01-16 11:21:07,742 | INFO |   Train loss: 1.1644
+2026-01-16 11:21:39,811 | INFO |   Val: loss:1.7721 | reg_mae:2.2394 | reg_rmse:2.7249 | reg_mse:7.4248
+2026-01-16 11:21:39,812 | INFO | Fold 5, Epoch 33/100
+2026-01-16 11:23:44,866 | INFO |   Train loss: 1.1543
+2026-01-16 11:24:17,091 | INFO |   Val: loss:1.1534 | reg_mae:1.5696 | reg_rmse:2.2919 | reg_mse:5.2530
+2026-01-16 11:24:17,091 | INFO | Fold 5, Epoch 34/100
+2026-01-16 11:26:16,858 | INFO |   Train loss: 1.2206
+2026-01-16 11:26:50,390 | INFO |   Val: loss:0.9078 | reg_mae:1.3119 | reg_rmse:1.7961 | reg_mse:3.2261
+2026-01-16 11:26:52,145 | INFO | ✓ Fold 5: New best model! reg_mae=1.3119
+2026-01-16 11:26:52,145 | INFO | Fold 5, Epoch 35/100
+2026-01-16 11:28:58,456 | INFO |   Train loss: 1.1062
+2026-01-16 11:29:30,321 | INFO |   Val: loss:0.8736 | reg_mae:1.2984 | reg_rmse:1.6679 | reg_mse:2.7819
+2026-01-16 11:29:32,188 | INFO | ✓ Fold 5: New best model! reg_mae=1.2984
+2026-01-16 11:29:32,188 | INFO | Fold 5, Epoch 36/100
+2026-01-16 11:31:36,796 | INFO |   Train loss: 1.3113
+2026-01-16 11:32:09,792 | INFO |   Val: loss:1.6448 | reg_mae:2.0941 | reg_rmse:2.7676 | reg_mse:7.6595
+2026-01-16 11:32:09,793 | INFO | Fold 5, Epoch 37/100
+2026-01-16 11:34:12,687 | INFO |   Train loss: 1.1618
+2026-01-16 11:34:44,410 | INFO |   Val: loss:1.0536 | reg_mae:1.4695 | reg_rmse:1.9431 | reg_mse:3.7757
+2026-01-16 11:34:44,410 | INFO | Fold 5, Epoch 38/100
+2026-01-16 11:36:45,153 | INFO |   Train loss: 1.1596
+2026-01-16 11:37:17,496 | INFO |   Val: loss:1.1746 | reg_mae:1.6133 | reg_rmse:2.0289 | reg_mse:4.1165
+2026-01-16 11:37:17,496 | INFO | Fold 5, Epoch 39/100
+2026-01-16 11:39:18,530 | INFO |   Train loss: 1.2098
+2026-01-16 11:39:50,822 | INFO |   Val: loss:1.0127 | reg_mae:1.4400 | reg_rmse:1.7863 | reg_mse:3.1909
+2026-01-16 11:39:50,822 | INFO | Fold 5, Epoch 40/100
+2026-01-16 11:41:54,654 | INFO |   Train loss: 1.1096
+2026-01-16 11:42:26,651 | INFO |   Val: loss:0.8719 | reg_mae:1.2833 | reg_rmse:1.7065 | reg_mse:2.9121
+2026-01-16 11:42:28,339 | INFO | ✓ Fold 5: New best model! reg_mae=1.2833
+2026-01-16 11:42:28,339 | INFO | Fold 5, Epoch 41/100
+2026-01-16 11:44:28,124 | INFO |   Train loss: 1.0673
+2026-01-16 11:45:00,123 | INFO |   Val: loss:0.7292 | reg_mae:1.1381 | reg_rmse:1.4630 | reg_mse:2.1403
+2026-01-16 11:45:01,825 | INFO | ✓ Fold 5: New best model! reg_mae=1.1381
+2026-01-16 11:45:01,825 | INFO | Fold 5, Epoch 42/100
+2026-01-16 11:47:02,984 | INFO |   Train loss: 0.9817
+2026-01-16 11:47:34,923 | INFO |   Val: loss:1.1750 | reg_mae:1.6069 | reg_rmse:2.0290 | reg_mse:4.1170
+2026-01-16 11:47:34,923 | INFO | Fold 5, Epoch 43/100
+2026-01-16 11:49:37,982 | INFO |   Train loss: 1.1137
+2026-01-16 11:50:10,531 | INFO |   Val: loss:1.1661 | reg_mae:1.5852 | reg_rmse:2.1029 | reg_mse:4.4223
+2026-01-16 11:50:10,531 | INFO | Fold 5, Epoch 44/100
+2026-01-16 11:52:12,391 | INFO |   Train loss: 0.9498
+2026-01-16 11:52:45,226 | INFO |   Val: loss:0.8034 | reg_mae:1.2049 | reg_rmse:1.5678 | reg_mse:2.4579
+2026-01-16 11:52:45,226 | INFO | Fold 5, Epoch 45/100
+2026-01-16 11:54:48,237 | INFO |   Train loss: 0.9953
+2026-01-16 11:55:20,678 | INFO |   Val: loss:0.7480 | reg_mae:1.1567 | reg_rmse:1.4522 | reg_mse:2.1090
+2026-01-16 11:55:20,678 | INFO | Fold 5, Epoch 46/100
+2026-01-16 11:57:20,400 | INFO |   Train loss: 1.0432
+2026-01-16 11:57:52,363 | INFO |   Val: loss:1.0517 | reg_mae:1.4882 | reg_rmse:1.8514 | reg_mse:3.4279
+2026-01-16 11:57:52,363 | INFO | Fold 5, Epoch 47/100
+2026-01-16 11:59:51,870 | INFO |   Train loss: 0.9344
+2026-01-16 12:00:24,871 | INFO |   Val: loss:0.8827 | reg_mae:1.2934 | reg_rmse:1.7032 | reg_mse:2.9008
+2026-01-16 12:00:24,871 | INFO | Fold 5, Epoch 48/100
+2026-01-16 12:02:26,800 | INFO |   Train loss: 1.0123
+2026-01-16 12:02:58,914 | INFO |   Val: loss:0.6520 | reg_mae:1.0527 | reg_rmse:1.3358 | reg_mse:1.7842
+2026-01-16 12:03:00,769 | INFO | ✓ Fold 5: New best model! reg_mae=1.0527
+2026-01-16 12:03:00,769 | INFO | Fold 5, Epoch 49/100
+2026-01-16 12:05:01,868 | INFO |   Train loss: 0.9182
+2026-01-16 12:05:33,941 | INFO |   Val: loss:0.9936 | reg_mae:1.4215 | reg_rmse:1.8265 | reg_mse:3.3360
+2026-01-16 12:05:33,941 | INFO | Fold 5, Epoch 50/100
+2026-01-16 12:07:36,149 | INFO |   Train loss: 1.0013
+2026-01-16 12:08:08,938 | INFO |   Val: loss:0.8653 | reg_mae:1.2906 | reg_rmse:1.6517 | reg_mse:2.7281
+2026-01-16 12:08:08,939 | INFO | Fold 5, Epoch 51/100
+2026-01-16 12:10:09,441 | INFO |   Train loss: 0.9635
+2026-01-16 12:10:41,368 | INFO |   Val: loss:1.0715 | reg_mae:1.5044 | reg_rmse:1.9201 | reg_mse:3.6870
+2026-01-16 12:10:41,369 | INFO | Fold 5, Epoch 52/100
+2026-01-16 12:12:46,032 | INFO |   Train loss: 0.9012
+2026-01-16 12:13:17,913 | INFO |   Val: loss:1.0584 | reg_mae:1.4688 | reg_rmse:2.0388 | reg_mse:4.1566
+2026-01-16 12:13:17,913 | INFO | Fold 5, Epoch 53/100
+2026-01-16 12:15:20,361 | INFO |   Train loss: 0.9025
+2026-01-16 12:15:53,724 | INFO |   Val: loss:0.6985 | reg_mae:1.0890 | reg_rmse:1.4274 | reg_mse:2.0375
+2026-01-16 12:15:53,724 | INFO | Fold 5, Epoch 54/100
+2026-01-16 12:17:55,008 | INFO |   Train loss: 0.9183
+2026-01-16 12:18:27,523 | INFO |   Val: loss:1.0030 | reg_mae:1.4263 | reg_rmse:1.8079 | reg_mse:3.2686
+2026-01-16 12:18:27,523 | INFO | Fold 5, Epoch 55/100
+2026-01-16 12:20:29,081 | INFO |   Train loss: 0.9909
+2026-01-16 12:21:01,008 | INFO |   Val: loss:0.9937 | reg_mae:1.4248 | reg_rmse:1.7660 | reg_mse:3.1189
+2026-01-16 12:21:01,008 | INFO | Fold 5, Epoch 56/100
+2026-01-16 12:22:57,945 | INFO |   Train loss: 1.0276
+2026-01-16 12:23:30,419 | INFO |   Val: loss:0.7293 | reg_mae:1.1246 | reg_rmse:1.4703 | reg_mse:2.1619
+2026-01-16 12:23:30,419 | INFO | Fold 5, Epoch 57/100
+2026-01-16 12:25:30,756 | INFO |   Train loss: 0.8524
+2026-01-16 12:26:02,939 | INFO |   Val: loss:0.8546 | reg_mae:1.2563 | reg_rmse:1.6565 | reg_mse:2.7439
+2026-01-16 12:26:02,939 | INFO | Fold 5, Epoch 58/100
+2026-01-16 12:28:02,828 | INFO |   Train loss: 0.8941
+2026-01-16 12:28:35,236 | INFO |   Val: loss:0.9733 | reg_mae:1.3823 | reg_rmse:1.8316 | reg_mse:3.3549
+2026-01-16 12:28:35,236 | INFO | Fold 5, Epoch 59/100
+2026-01-16 12:30:38,948 | INFO |   Train loss: 0.9056
+2026-01-16 12:31:11,857 | INFO |   Val: loss:0.7965 | reg_mae:1.1954 | reg_rmse:1.6097 | reg_mse:2.5912
+2026-01-16 12:31:11,857 | INFO | Fold 5, Epoch 60/100
+2026-01-16 12:33:12,646 | INFO |   Train loss: 1.0314
+2026-01-16 12:33:44,283 | INFO |   Val: loss:1.0650 | reg_mae:1.4882 | reg_rmse:1.9183 | reg_mse:3.6797
+2026-01-16 12:33:44,283 | INFO | Fold 5, Epoch 61/100
+2026-01-16 12:35:48,466 | INFO |   Train loss: 0.9165
+2026-01-16 12:36:21,362 | INFO |   Val: loss:0.7806 | reg_mae:1.1886 | reg_rmse:1.4996 | reg_mse:2.2488
+2026-01-16 12:36:21,362 | INFO | Fold 5, Epoch 62/100
+2026-01-16 12:38:20,400 | INFO |   Train loss: 0.8937
+2026-01-16 12:38:52,495 | INFO |   Val: loss:0.7151 | reg_mae:1.1028 | reg_rmse:1.4657 | reg_mse:2.1482
+2026-01-16 12:38:52,495 | INFO | Fold 5, Epoch 63/100
+2026-01-16 12:40:56,288 | INFO |   Train loss: 0.8075
+2026-01-16 12:41:28,804 | INFO |   Val: loss:0.7762 | reg_mae:1.1934 | reg_rmse:1.5183 | reg_mse:2.3051
+2026-01-16 12:41:28,804 | INFO | Fold 5, Epoch 64/100
+2026-01-16 12:43:30,203 | INFO |   Train loss: 0.8345
+2026-01-16 12:44:02,109 | INFO |   Val: loss:1.0376 | reg_mae:1.4599 | reg_rmse:1.8506 | reg_mse:3.4245
+2026-01-16 12:44:02,109 | INFO | Fold 5, Epoch 65/100
+2026-01-16 12:46:07,853 | INFO |   Train loss: 0.9053
+2026-01-16 12:46:40,215 | INFO |   Val: loss:0.8894 | reg_mae:1.2945 | reg_rmse:1.7119 | reg_mse:2.9307
+2026-01-16 12:46:40,215 | INFO | Fold 5, Epoch 66/100
+2026-01-16 12:48:40,735 | INFO |   Train loss: 0.8051
+2026-01-16 12:49:12,570 | INFO |   Val: loss:0.8408 | reg_mae:1.2380 | reg_rmse:1.6722 | reg_mse:2.7962
+2026-01-16 12:49:12,570 | INFO | Fold 5, Epoch 67/100
+2026-01-16 12:51:12,439 | INFO |   Train loss: 0.7896
+2026-01-16 12:51:44,359 | INFO |   Val: loss:0.8473 | reg_mae:1.2466 | reg_rmse:1.6650 | reg_mse:2.7721
+2026-01-16 12:51:44,359 | INFO | Fold 5, Epoch 68/100
+2026-01-16 12:53:45,019 | INFO |   Train loss: 0.7881
+2026-01-16 12:54:17,365 | INFO |   Val: loss:0.6919 | reg_mae:1.0860 | reg_rmse:1.4192 | reg_mse:2.0142
+2026-01-16 12:54:17,365 | INFO | Fold 5, Epoch 69/100
+2026-01-16 12:56:15,615 | INFO |   Train loss: 0.8195
+2026-01-16 12:56:48,151 | INFO |   Val: loss:0.8886 | reg_mae:1.2848 | reg_rmse:1.7230 | reg_mse:2.9688
+2026-01-16 12:56:48,151 | INFO | Fold 5, Epoch 70/100
+2026-01-16 12:58:46,631 | INFO |   Train loss: 0.8152
+2026-01-16 12:59:19,094 | INFO |   Val: loss:0.7798 | reg_mae:1.1895 | reg_rmse:1.4942 | reg_mse:2.2326
+2026-01-16 12:59:19,094 | INFO | Fold 5, Epoch 71/100
+2026-01-16 13:01:20,438 | INFO |   Train loss: 0.8264
+2026-01-16 13:01:52,504 | INFO |   Val: loss:0.8240 | reg_mae:1.2293 | reg_rmse:1.5999 | reg_mse:2.5596
+2026-01-16 13:01:52,504 | INFO | Fold 5, Epoch 72/100
+2026-01-16 13:04:01,151 | INFO |   Train loss: 0.7921
+2026-01-16 13:04:33,079 | INFO |   Val: loss:0.7095 | reg_mae:1.1031 | reg_rmse:1.4442 | reg_mse:2.0858
+2026-01-16 13:04:33,079 | INFO | Fold 5, Epoch 73/100
+2026-01-16 13:06:33,469 | INFO |   Train loss: 0.8180
+2026-01-16 13:07:05,846 | INFO |   Val: loss:0.7217 | reg_mae:1.1315 | reg_rmse:1.4294 | reg_mse:2.0431
+2026-01-16 13:07:05,846 | INFO | Fold 5, Epoch 74/100
+2026-01-16 13:09:11,514 | INFO |   Train loss: 0.7556
+2026-01-16 13:09:43,262 | INFO |   Val: loss:0.6261 | reg_mae:1.0156 | reg_rmse:1.3134 | reg_mse:1.7250
+2026-01-16 13:09:45,153 | INFO | ✓ Fold 5: New best model! reg_mae=1.0156
+2026-01-16 13:09:45,153 | INFO | Fold 5, Epoch 75/100
+2026-01-16 13:11:49,035 | INFO |   Train loss: 0.7757
+2026-01-16 13:12:21,004 | INFO |   Val: loss:0.6010 | reg_mae:0.9917 | reg_rmse:1.2759 | reg_mse:1.6278
+2026-01-16 13:12:22,879 | INFO | ✓ Fold 5: New best model! reg_mae=0.9917
+2026-01-16 13:12:22,880 | INFO | Fold 5, Epoch 76/100
+2026-01-16 13:14:28,857 | INFO |   Train loss: 0.7513
+2026-01-16 13:15:00,847 | INFO |   Val: loss:0.7474 | reg_mae:1.1420 | reg_rmse:1.5041 | reg_mse:2.2623
+2026-01-16 13:15:00,847 | INFO | Fold 5, Epoch 77/100
+2026-01-16 13:17:01,795 | INFO |   Train loss: 0.7442
+2026-01-16 13:17:33,736 | INFO |   Val: loss:0.9036 | reg_mae:1.3178 | reg_rmse:1.6955 | reg_mse:2.8747
+2026-01-16 13:17:33,736 | INFO | Fold 5, Epoch 78/100
+2026-01-16 13:19:41,314 | INFO |   Train loss: 0.7653
+2026-01-16 13:20:13,658 | INFO |   Val: loss:0.7833 | reg_mae:1.1804 | reg_rmse:1.5890 | reg_mse:2.5248
+2026-01-16 13:20:13,658 | INFO | Fold 5, Epoch 79/100
+2026-01-16 13:22:11,425 | INFO |   Train loss: 0.7590
+2026-01-16 13:22:43,931 | INFO |   Val: loss:0.6218 | reg_mae:1.0177 | reg_rmse:1.3165 | reg_mse:1.7332
+2026-01-16 13:22:43,931 | INFO | Fold 5, Epoch 80/100
+2026-01-16 13:24:42,976 | INFO |   Train loss: 0.7926
+2026-01-16 13:25:14,683 | INFO |   Val: loss:0.8708 | reg_mae:1.2844 | reg_rmse:1.6311 | reg_mse:2.6604
+2026-01-16 13:25:14,683 | INFO | Fold 5, Epoch 81/100
+2026-01-16 13:27:17,698 | INFO |   Train loss: 0.7729
+2026-01-16 13:27:50,216 | INFO |   Val: loss:0.7900 | reg_mae:1.1826 | reg_rmse:1.5456 | reg_mse:2.3889
+2026-01-16 13:27:50,216 | INFO | Fold 5, Epoch 82/100
+2026-01-16 13:29:50,922 | INFO |   Train loss: 0.7569
+2026-01-16 13:30:23,379 | INFO |   Val: loss:0.6398 | reg_mae:1.0406 | reg_rmse:1.3262 | reg_mse:1.7588
+2026-01-16 13:30:23,379 | INFO | Fold 5, Epoch 83/100
+2026-01-16 13:32:23,259 | INFO |   Train loss: 0.7596
+2026-01-16 13:32:54,898 | INFO |   Val: loss:0.6517 | reg_mae:1.0469 | reg_rmse:1.3671 | reg_mse:1.8688
+2026-01-16 13:32:54,898 | INFO | Fold 5, Epoch 84/100
+2026-01-16 13:34:57,554 | INFO |   Train loss: 0.7193
+2026-01-16 13:35:30,241 | INFO |   Val: loss:0.6328 | reg_mae:1.0252 | reg_rmse:1.3156 | reg_mse:1.7309
+2026-01-16 13:35:30,241 | INFO | Fold 5, Epoch 85/100
+2026-01-16 13:37:34,318 | INFO |   Train loss: 0.7233
+2026-01-16 13:38:06,915 | INFO |   Val: loss:0.6141 | reg_mae:1.0131 | reg_rmse:1.2790 | reg_mse:1.6359
+2026-01-16 13:38:06,915 | INFO | Fold 5, Epoch 86/100
+2026-01-16 13:40:09,916 | INFO |   Train loss: 0.7382
+2026-01-16 13:40:41,813 | INFO |   Val: loss:0.6374 | reg_mae:1.0273 | reg_rmse:1.3408 | reg_mse:1.7976
+2026-01-16 13:40:41,813 | INFO | Fold 5, Epoch 87/100
+2026-01-16 13:42:42,806 | INFO |   Train loss: 0.7118
+2026-01-16 13:43:15,114 | INFO |   Val: loss:0.6865 | reg_mae:1.0770 | reg_rmse:1.4229 | reg_mse:2.0245
+2026-01-16 13:43:15,114 | INFO | Fold 5, Epoch 88/100
+2026-01-16 13:45:16,528 | INFO |   Train loss: 0.7373
+2026-01-16 13:45:47,380 | INFO |   Val: loss:0.6660 | reg_mae:1.0600 | reg_rmse:1.3775 | reg_mse:1.8975
+2026-01-16 13:45:47,380 | INFO | Fold 5, Epoch 89/100
+2026-01-16 13:47:46,759 | INFO |   Train loss: 0.6965
+2026-01-16 13:48:19,336 | INFO |   Val: loss:0.6784 | reg_mae:1.0746 | reg_rmse:1.3869 | reg_mse:1.9235
+2026-01-16 13:48:19,337 | INFO | Fold 5, Epoch 90/100
+2026-01-16 13:50:20,286 | INFO |   Train loss: 0.7515
+2026-01-16 13:50:52,503 | INFO |   Val: loss:0.7018 | reg_mae:1.1000 | reg_rmse:1.4294 | reg_mse:2.0432
+2026-01-16 13:50:52,503 | INFO | Fold 5, Epoch 91/100
+2026-01-16 13:52:55,615 | INFO |   Train loss: 0.7152
+2026-01-16 13:53:27,697 | INFO |   Val: loss:0.6852 | reg_mae:1.0857 | reg_rmse:1.3886 | reg_mse:1.9281
+2026-01-16 13:53:27,697 | INFO | Fold 5, Epoch 92/100
+2026-01-16 13:55:33,196 | INFO |   Train loss: 0.7129
+2026-01-16 13:56:05,204 | INFO |   Val: loss:0.7225 | reg_mae:1.1286 | reg_rmse:1.4376 | reg_mse:2.0668
+2026-01-16 13:56:05,204 | INFO | Fold 5, Epoch 93/100
+2026-01-16 13:58:08,173 | INFO |   Train loss: 0.6940
+2026-01-16 13:58:40,057 | INFO |   Val: loss:0.6641 | reg_mae:1.0599 | reg_rmse:1.3739 | reg_mse:1.8875
+2026-01-16 13:58:40,057 | INFO | Fold 5, Epoch 94/100
+2026-01-16 14:00:39,619 | INFO |   Train loss: 0.7098
+2026-01-16 14:01:11,986 | INFO |   Val: loss:0.7213 | reg_mae:1.1242 | reg_rmse:1.4472 | reg_mse:2.0943
+2026-01-16 14:01:11,986 | INFO | Fold 5, Epoch 95/100
+2026-01-16 14:03:13,617 | INFO |   Train loss: 0.7318
+2026-01-16 14:03:46,064 | INFO |   Val: loss:0.6787 | reg_mae:1.0753 | reg_rmse:1.3833 | reg_mse:1.9136
+2026-01-16 14:03:46,064 | INFO | Fold 5, Epoch 96/100
+2026-01-16 14:05:50,067 | INFO |   Train loss: 0.7373
+2026-01-16 14:06:22,521 | INFO |   Val: loss:0.7590 | reg_mae:1.1720 | reg_rmse:1.4668 | reg_mse:2.1515
+2026-01-16 14:06:22,521 | INFO | Fold 5, Epoch 97/100
+2026-01-16 14:08:20,884 | INFO |   Train loss: 0.7177
+2026-01-16 14:08:53,594 | INFO |   Val: loss:0.6564 | reg_mae:1.0458 | reg_rmse:1.3733 | reg_mse:1.8859
+2026-01-16 14:08:53,595 | INFO | Fold 5, Epoch 98/100
+2026-01-16 14:10:57,319 | INFO |   Train loss: 0.7253
+2026-01-16 14:11:29,640 | INFO |   Val: loss:0.6615 | reg_mae:1.0501 | reg_rmse:1.3846 | reg_mse:1.9172
+2026-01-16 14:11:29,640 | INFO | Fold 5, Epoch 99/100
+2026-01-16 14:13:33,277 | INFO |   Train loss: 0.7146
+2026-01-16 14:14:05,132 | INFO |   Val: loss:0.6824 | reg_mae:1.0740 | reg_rmse:1.4055 | reg_mse:1.9754
+2026-01-16 14:14:05,132 | INFO | Fold 5, Epoch 100/100
+2026-01-16 14:16:08,601 | INFO |   Train loss: 0.6883
+2026-01-16 14:16:40,988 | INFO |   Val: loss:0.6945 | reg_mae:1.0923 | reg_rmse:1.4173 | reg_mse:2.0087
+2026-01-16 14:16:40,988 | INFO | Loading best model for fold 5...
+2026-01-16 14:16:42,532 | INFO | Fold 5: Final evaluation on test set
+2026-01-16 14:17:40,465 | INFO | Fold 5 test results: loss:0.7346 | reg_mae:1.1448 | reg_rmse:1.4538 | reg_mse:2.1135
+2026-01-16 14:17:40,476 | INFO | ✓ Saved test predictions to outputs/regression_mixed/20260115-164855_5fold/fold_5/test_predictions.npz
+2026-01-16 14:17:40,514 | INFO | ✓ Saved test metadata to outputs/regression_mixed/20260115-164855_5fold/fold_5/test_metadata.jsonl
+2026-01-16 14:17:40,518 | INFO | ✓ Fold 5 complete!
+2026-01-16 14:17:40,522 | INFO | 
+================================================================================
+2026-01-16 14:17:40,522 | INFO | CROSS-VALIDATION SUMMARY
+2026-01-16 14:17:40,522 | INFO | ================================================================================
+
+2026-01-16 14:17:40,523 | INFO | Mean ± Std across folds:
+2026-01-16 14:17:40,523 | INFO |   loss: 0.6795 ± 0.0463
+2026-01-16 14:17:40,523 | INFO |   reg_mae: 1.0779 ± 0.0548
+2026-01-16 14:17:40,523 | INFO |   reg_rmse: 1.3951 ± 0.0528
+2026-01-16 14:17:40,523 | INFO |   reg_mse: 1.9490 ± 0.1482
+2026-01-16 14:17:40,529 | INFO | 
+✓ CV summary saved to outputs/regression_mixed/20260115-164855_5fold/cv_summary.json
+2026-01-16 14:17:40,529 | INFO | 
+================================================================================
+2026-01-16 14:17:40,529 | INFO | CROSS-VALIDATION COMPLETE!
+2026-01-16 14:17:40,529 | INFO | ================================================================================
+2026-01-16 14:17:40,529 | INFO | Results saved to: outputs/regression_mixed/20260115-164855_5fold

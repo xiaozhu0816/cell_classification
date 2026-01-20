@@ -1,0 +1,12 @@
+
+Dataset overview
+Total TIFFs: 72 (infected=36, uninfected=36) | frames_per_hour=2.0
+Infected frame window: 1h–48h | stride=1
+Uninfected frames: use all (stride=1)
+Frame extraction policies by split:
+  train: frames_per_hour=2.00 | infected=[1.0,48.0] stride=1 | 
+uninfected=[0.0,48.0] stride=1
+  val: frames_per_hour=2.00 | infected=[1.0,48.0] stride=1 | 
+uninfected=[0.0,48.0] stride=1
+  test: frames_per_hour=2.00 | infected=[1.0,48.0] stride=1 | 
+uninfected=[0.0,48.0] stride=1

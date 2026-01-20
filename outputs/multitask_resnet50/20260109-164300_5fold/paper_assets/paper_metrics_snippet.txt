@@ -1,0 +1,6 @@
+Overall (5-fold, aggregated):
+- cls_accuracy: 0.9932 ± 0.0015
+- cls_f1: 0.9931 ± 0.0015
+- cls_auc: 0.9999 ± 0.0000
+- reg_mae: 1.144 ± 0.101 h
+- reg_rmse: 1.472 ± 0.106 h

@@ -1,0 +1,2 @@
+usage: train.py [-h] [--config CONFIG]
+train.py: error: unrecognized arguments: --k-folds 5

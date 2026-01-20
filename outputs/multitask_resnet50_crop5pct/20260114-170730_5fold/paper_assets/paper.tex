@@ -1,0 +1,73 @@
+% Draft LaTeX manuscript for the final crop-5% multitask experiment.
+% NOTE: This is a clean starting point (not MDPI-formatted yet).
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+\title{Joint prediction of infection state and progression time from microscopy using a multi-task ResNet with temporal reliability profiling}
+\author{(Authors omitted for draft)}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Automated analysis of microscopy time courses can support infection phenotyping by predicting both infection state and disease progression stage. We propose a multi-task deep learning approach that jointly predicts infection status and post-infection time from microscopy images. To further assess reliability over time, we compute performance within sliding temporal windows.
+
+Because the data provider (GMU) noted an approximate \textasciitilde5\% field-of-view overlap between adjacent acquisition positions, we adopt a simple, robust leakage-mitigation preprocessing step in the final experiment: we remove the outer 5\% border of each frame (center crop; retaining the central 90\%\,$\times$\,90\% region) prior to resizing.
+\end{abstract}
+
+\section{Introduction}
+(Write intro: HBMVEC infection microscopy, need state+stage prediction, limitations of single-task models.)
+
+\section{Methods}
+\subsection{Task definition}
+We train a multi-task model to predict (1) infection state (infected vs. mock/PBS) and (2) progression time (hours) from microscopy frames.
+
+\subsection{Leakage mitigation via border cropping (final setting)}
+To reduce potential near-duplicate content leakage caused by the reported \textasciitilde5\% field-of-view overlap, we center-crop each frame to remove the outer 5\% border before resizing to the model input size. This preprocessing is applied consistently to train/validation/test.
+
+\subsection{Model and training}
+(Insert: ResNet50 backbone, 2 heads, loss functions, optimizer details, augmentations, CV protocol.)
+
+\section{Results}
+\subsection{Overall cross-validation performance}
+Table~\ref{tab:overall_metrics} summarizes the final (crop-5\%) 5-fold cross-validation performance.
+
+\input{paper_table_overall_metrics.tex}
+
+\subsection{Temporal reliability profiling}
+We evaluate classification performance within sliding temporal windows (window size 6\,h, stride 3\,h). Table~\ref{tab:temporal_metrics} reports mean $\pm$ standard deviation across folds.
+
+\input{paper_table_temporal_metrics.tex}
+
+\subsection{Figures}
+(Insert your final figures here. For example:)
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\linewidth]{classification_by_time_window.png}
+\caption{Classification performance by temporal window (window size 6\,h, stride 3\,h).}
+\label{fig:cls_by_window}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\linewidth]{prediction_scatter.png}
+\caption{Regression scatter plot: predicted vs. true progression time.}
+\label{fig:reg_scatter}
+\end{figure}
+
+\section{Discussion}
+(Discuss: low early-stage recall, saturation after 9h, implications, remaining leakage risks.)
+
+\section{Conclusion}
+(One paragraph.)
+
+\end{document}
