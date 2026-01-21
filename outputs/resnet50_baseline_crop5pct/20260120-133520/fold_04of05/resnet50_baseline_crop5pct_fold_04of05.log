@@ -1,0 +1,1533 @@
+2026-01-21 02:30:41,769 | INFO | frame_policy[train]: frames_per_hour=2.00 | infected=[1.0,48.0] stride=1 | uninfected=[0.0,48.0] stride=1
+2026-01-21 02:30:41,769 | INFO | frame_policy[val]: frames_per_hour=2.00 | infected=[1.0,48.0] stride=1 | uninfected=[0.0,48.0] stride=1
+2026-01-21 02:30:41,769 | INFO | frame_policy[test]: frames_per_hour=2.00 | infected=[1.0,48.0] stride=1 | uninfected=[0.0,48.0] stride=1
+2026-01-21 02:30:41,770 | INFO | train split -> total:4139 | conditions[infected:2093, uninfected:2046] | labels[label0:2046, label1:2093]
+2026-01-21 02:30:41,772 | INFO | train TIFFs -> total:45 | per-condition[infected:23, uninfected:22] | avg-frames/TIFF[infected:91.0, uninfected:93.0]
+2026-01-21 02:30:41,773 | INFO | train stack membership (45 unique TIFFs): 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p11_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p12_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p14_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p16_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p18_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p19_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p20_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p21_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p24_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p25_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p27_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p28_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p29_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p2_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p30_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p31_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p32_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p33_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p35_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p3_t0-94_ec.tiff, ...
+2026-01-21 02:30:41,778 | INFO | Saved train stack list to outputs/resnet50_baseline_crop5pct/20260120-133520/fold_04of05/train_stacks.txt
+2026-01-21 02:30:41,779 | INFO | val split -> total:1013 | conditions[infected:455, uninfected:558] | labels[label0:558, label1:455]
+2026-01-21 02:30:41,779 | INFO | val TIFFs -> total:11 | per-condition[infected:5, uninfected:6] | avg-frames/TIFF[infected:91.0, uninfected:93.0]
+2026-01-21 02:30:41,779 | INFO | val stack membership (11 unique TIFFs): 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p10_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p17_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p1_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p22_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p23_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p13_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p20_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p25_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p28_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p30_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p7_t0-94_ec.tiff
+2026-01-21 02:30:41,783 | INFO | Saved val stack list to outputs/resnet50_baseline_crop5pct/20260120-133520/fold_04of05/val_stacks.txt
+2026-01-21 02:30:41,784 | INFO | test split -> total:1472 | conditions[infected:728, uninfected:744] | labels[label0:744, label1:728]
+2026-01-21 02:30:41,785 | INFO | test TIFFs -> total:16 | per-condition[infected:8, uninfected:8] | avg-frames/TIFF[infected:91.0, uninfected:93.0]
+2026-01-21 02:30:41,785 | INFO | test stack membership (16 unique TIFFs): 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p13_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p15_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p26_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p34_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p36_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p6_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p8_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p9_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p11_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p18_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p19_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p24_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p27_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p35_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p6_t0-94_ec.tiff, 20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p8_t0-94_ec.tiff
+2026-01-21 02:30:41,789 | INFO | Saved test stack list to outputs/resnet50_baseline_crop5pct/20260120-133520/fold_04of05/test_stacks.txt
+2026-01-21 02:30:42,207 | INFO | Fold 4/5 - Epoch 1/100
+2026-01-21 02:32:45,137 | INFO | train loss: 0.1599
+2026-01-21 02:33:16,169 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=0.60 | F1=0.75 | TP=273
+  thr=0.15 | P=0.99 | R=0.56 | F1=0.71 | TP=253
+  thr=0.20 | P=1.00 | R=0.52 | F1=0.69 | TP=238
+  thr=0.25 | P=1.00 | R=0.50 | F1=0.66 | TP=226
+  thr=0.30 | P=1.00 | R=0.48 | F1=0.65 | TP=220
+  thr=0.50 | P=1.00 | R=0.42 | F1=0.59 | TP=190
+2026-01-21 02:33:16,174 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.578 | precision:0.000 | recall:0.000 | f1:0.000 | auc:0.761
+2026-01-21 02:33:16,179 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.568 | precision:1.000 | recall:0.050 | f1:0.095 | auc:0.967
+2026-01-21 02:33:16,184 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.602 | precision:1.000 | recall:0.125 | f1:0.222 | auc:0.987
+2026-01-21 02:33:16,189 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.597 | precision:1.000 | recall:0.113 | f1:0.202 | auc:0.966
+2026-01-21 02:33:16,194 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:0.807 | precision:1.000 | recall:0.575 | f1:0.730 | auc:0.997
+2026-01-21 02:33:16,194 | INFO | val: accuracy:0.7384 | precision:1.0000 | recall:0.4176 | f1:0.5891 | auc:0.9717 | loss:0.9689
+2026-01-21 02:33:17,863 | INFO | New best model with auc 0.9717
+2026-01-21 02:33:17,864 | INFO | Fold 4/5 - Epoch 2/100
+2026-01-21 02:35:16,691 | INFO | train loss: 0.0342
+2026-01-21 02:35:48,460 | INFO | val threshold sweep:
+  thr=0.10 | P=0.81 | R=1.00 | F1=0.89 | TP=455
+  thr=0.15 | P=0.83 | R=1.00 | F1=0.91 | TP=455
+  thr=0.20 | P=0.85 | R=1.00 | F1=0.92 | TP=455
+  thr=0.25 | P=0.86 | R=1.00 | F1=0.93 | TP=455
+  thr=0.30 | P=0.87 | R=1.00 | F1=0.93 | TP=455
+  thr=0.50 | P=0.93 | R=1.00 | F1=0.96 | TP=455
+2026-01-21 02:35:48,465 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.940 | precision:0.875 | recall:1.000 | f1:0.933 | auc:1.000
+2026-01-21 02:35:48,470 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.864 | precision:0.769 | recall:1.000 | f1:0.870 | auc:1.000
+2026-01-21 02:35:48,475 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.875 | precision:0.784 | recall:1.000 | f1:0.879 | auc:1.000
+2026-01-21 02:35:48,480 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 02:35:48,485 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 02:35:48,485 | INFO | val: accuracy:0.9645 | precision:0.9267 | recall:1.0000 | f1:0.9619 | auc:1.0000 | loss:0.0779
+2026-01-21 02:35:50,054 | INFO | New best model with auc 1.0000
+2026-01-21 02:35:50,054 | INFO | Fold 4/5 - Epoch 3/100
+2026-01-21 02:37:50,326 | INFO | train loss: 0.0249
+2026-01-21 02:38:21,480 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 02:38:21,485 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:38:21,490 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:38:21,495 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:38:21,500 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:38:21,505 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:38:21,505 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0025
+2026-01-21 02:38:23,081 | INFO | New best model with auc 1.0000
+2026-01-21 02:38:23,081 | INFO | Fold 4/5 - Epoch 4/100
+2026-01-21 02:40:21,833 | INFO | train loss: 0.0133
+2026-01-21 02:40:52,776 | INFO | val threshold sweep:
+  thr=0.10 | P=0.85 | R=1.00 | F1=0.92 | TP=455
+  thr=0.15 | P=0.88 | R=1.00 | F1=0.93 | TP=455
+  thr=0.20 | P=0.89 | R=1.00 | F1=0.94 | TP=455
+  thr=0.25 | P=0.92 | R=1.00 | F1=0.96 | TP=455
+  thr=0.30 | P=0.92 | R=1.00 | F1=0.96 | TP=455
+  thr=0.50 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+2026-01-21 02:40:52,781 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:40:52,786 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.943 | precision:0.889 | recall:1.000 | f1:0.941 | auc:1.000
+2026-01-21 02:40:52,791 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.886 | precision:0.800 | recall:1.000 | f1:0.889 | auc:1.000
+2026-01-21 02:40:52,796 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.972 | precision:0.941 | recall:1.000 | f1:0.970 | auc:1.000
+2026-01-21 02:40:52,801 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:40:52,801 | INFO | val: accuracy:0.9793 | precision:0.9559 | recall:1.0000 | f1:0.9774 | auc:1.0000 | loss:0.0536
+2026-01-21 02:40:52,801 | INFO | Fold 4/5 - Epoch 5/100
+2026-01-21 02:42:52,358 | INFO | train loss: 0.0132
+2026-01-21 02:43:24,864 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 02:43:24,869 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:43:24,874 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:43:24,879 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:43:24,884 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:43:24,889 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:43:24,889 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0025
+2026-01-21 02:43:24,889 | INFO | Fold 4/5 - Epoch 6/100
+2026-01-21 02:45:25,996 | INFO | train loss: 0.0109
+2026-01-21 02:45:57,255 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+2026-01-21 02:45:57,260 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:1.000 | recall:0.986 | f1:0.993 | auc:1.000
+2026-01-21 02:45:57,265 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:45:57,270 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:45:57,275 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:45:57,280 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:45:57,280 | INFO | val: accuracy:0.9990 | precision:1.0000 | recall:0.9978 | f1:0.9989 | auc:1.0000 | loss:0.0039
+2026-01-21 02:45:57,280 | INFO | Fold 4/5 - Epoch 7/100
+2026-01-21 02:47:58,532 | INFO | train loss: 0.0073
+2026-01-21 02:48:29,596 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 02:48:29,601 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:48:29,606 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:48:29,611 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:48:29,616 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:48:29,621 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:48:29,621 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0009
+2026-01-21 02:48:29,621 | INFO | Fold 4/5 - Epoch 8/100
+2026-01-21 02:50:29,404 | INFO | train loss: 0.0040
+2026-01-21 02:51:00,144 | INFO | val threshold sweep:
+  thr=0.10 | P=0.86 | R=1.00 | F1=0.93 | TP=455
+  thr=0.15 | P=0.89 | R=1.00 | F1=0.94 | TP=455
+  thr=0.20 | P=0.91 | R=1.00 | F1=0.95 | TP=455
+  thr=0.25 | P=0.93 | R=1.00 | F1=0.96 | TP=455
+  thr=0.30 | P=0.93 | R=1.00 | F1=0.96 | TP=455
+  thr=0.50 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+2026-01-21 02:51:00,150 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.964 | precision:0.921 | recall:1.000 | f1:0.959 | auc:1.000
+2026-01-21 02:51:00,155 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.932 | precision:0.870 | recall:1.000 | f1:0.930 | auc:1.000
+2026-01-21 02:51:00,160 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.977 | precision:0.952 | recall:1.000 | f1:0.976 | auc:1.000
+2026-01-21 02:51:00,165 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.977 | precision:0.952 | recall:1.000 | f1:0.976 | auc:1.000
+2026-01-21 02:51:00,169 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:51:00,170 | INFO | val: accuracy:0.9822 | precision:0.9619 | recall:1.0000 | f1:0.9806 | auc:1.0000 | loss:0.0512
+2026-01-21 02:51:00,170 | INFO | Fold 4/5 - Epoch 9/100
+2026-01-21 02:53:01,361 | INFO | train loss: 0.0021
+2026-01-21 02:53:32,349 | INFO | val threshold sweep:
+  thr=0.10 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.15 | P=0.97 | R=1.00 | F1=0.98 | TP=455
+  thr=0.20 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.50 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+2026-01-21 02:53:32,355 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:53:32,360 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.977 | precision:0.952 | recall:1.000 | f1:0.976 | auc:1.000
+2026-01-21 02:53:32,365 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.977 | precision:0.952 | recall:1.000 | f1:0.976 | auc:1.000
+2026-01-21 02:53:32,370 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 02:53:32,374 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:53:32,375 | INFO | val: accuracy:0.9951 | precision:0.9891 | recall:1.0000 | f1:0.9945 | auc:1.0000 | loss:0.0129
+2026-01-21 02:53:32,375 | INFO | Fold 4/5 - Epoch 10/100
+2026-01-21 02:55:32,012 | INFO | train loss: 0.0029
+2026-01-21 02:56:03,117 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=453
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=453
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=453
+2026-01-21 02:56:03,122 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.982 | precision:0.986 | recall:0.971 | f1:0.978 | auc:0.997
+2026-01-21 02:56:03,127 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:56:03,132 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:56:03,137 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:56:03,142 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:56:03,142 | INFO | val: accuracy:0.9970 | precision:0.9978 | recall:0.9956 | f1:0.9967 | auc:0.9999 | loss:0.0107
+2026-01-21 02:56:03,142 | INFO | Fold 4/5 - Epoch 11/100
+2026-01-21 02:58:02,803 | INFO | train loss: 0.0039
+2026-01-21 02:58:33,657 | INFO | val threshold sweep:
+  thr=0.10 | P=0.89 | R=1.00 | F1=0.94 | TP=455
+  thr=0.15 | P=0.90 | R=1.00 | F1=0.95 | TP=455
+  thr=0.20 | P=0.91 | R=1.00 | F1=0.95 | TP=455
+  thr=0.25 | P=0.93 | R=1.00 | F1=0.96 | TP=455
+  thr=0.30 | P=0.93 | R=1.00 | F1=0.97 | TP=455
+  thr=0.50 | P=0.95 | R=1.00 | F1=0.97 | TP=455
+2026-01-21 02:58:33,662 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.952 | precision:0.897 | recall:1.000 | f1:0.946 | auc:1.000
+2026-01-21 02:58:33,667 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.898 | precision:0.816 | recall:1.000 | f1:0.899 | auc:1.000
+2026-01-21 02:58:33,672 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.920 | precision:0.851 | recall:1.000 | f1:0.920 | auc:1.000
+2026-01-21 02:58:33,677 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 02:58:33,682 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 02:58:33,682 | INFO | val: accuracy:0.9743 | precision:0.9459 | recall:1.0000 | f1:0.9722 | auc:1.0000 | loss:0.0684
+2026-01-21 02:58:33,682 | INFO | Fold 4/5 - Epoch 12/100
+2026-01-21 03:00:35,049 | INFO | train loss: 0.0026
+2026-01-21 03:01:06,000 | INFO | val threshold sweep:
+  thr=0.10 | P=0.94 | R=1.00 | F1=0.97 | TP=455
+  thr=0.15 | P=0.95 | R=1.00 | F1=0.97 | TP=455
+  thr=0.20 | P=0.95 | R=1.00 | F1=0.98 | TP=455
+  thr=0.25 | P=0.95 | R=1.00 | F1=0.98 | TP=455
+  thr=0.30 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.50 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+2026-01-21 03:01:06,005 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:01:06,010 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.943 | precision:0.889 | recall:1.000 | f1:0.941 | auc:1.000
+2026-01-21 03:01:06,015 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.966 | precision:0.930 | recall:1.000 | f1:0.964 | auc:1.000
+2026-01-21 03:01:06,020 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 03:01:06,025 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:01:06,025 | INFO | val: accuracy:0.9911 | precision:0.9806 | recall:1.0000 | f1:0.9902 | auc:1.0000 | loss:0.0240
+2026-01-21 03:01:06,025 | INFO | Fold 4/5 - Epoch 13/100
+2026-01-21 03:03:06,958 | INFO | train loss: 0.0011
+2026-01-21 03:03:38,681 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:03:38,686 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:03:38,691 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:03:38,696 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:03:38,701 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:03:38,706 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:03:38,706 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0015
+2026-01-21 03:03:38,706 | INFO | Fold 4/5 - Epoch 14/100
+2026-01-21 03:05:39,498 | INFO | train loss: 0.0035
+2026-01-21 03:06:10,523 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:06:10,528 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:06:10,533 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:06:10,538 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:06:10,543 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:06:10,548 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:06:10,548 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0025
+2026-01-21 03:06:10,548 | INFO | Fold 4/5 - Epoch 15/100
+2026-01-21 03:08:11,397 | INFO | train loss: 0.0023
+2026-01-21 03:08:42,961 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:08:42,966 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:08:42,971 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:08:42,976 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:08:42,981 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:08:42,986 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:08:42,986 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0008
+2026-01-21 03:08:42,986 | INFO | Fold 4/5 - Epoch 16/100
+2026-01-21 03:10:42,456 | INFO | train loss: 0.0010
+2026-01-21 03:11:14,141 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:11:14,147 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:11:14,152 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:11:14,157 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:11:14,162 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:11:14,167 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:11:14,167 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0002
+2026-01-21 03:11:14,167 | INFO | Fold 4/5 - Epoch 17/100
+2026-01-21 03:13:14,594 | INFO | train loss: 0.0034
+2026-01-21 03:13:46,679 | INFO | val threshold sweep:
+  thr=0.10 | P=0.90 | R=1.00 | F1=0.95 | TP=455
+  thr=0.15 | P=0.91 | R=1.00 | F1=0.95 | TP=455
+  thr=0.20 | P=0.93 | R=1.00 | F1=0.96 | TP=455
+  thr=0.25 | P=0.93 | R=1.00 | F1=0.96 | TP=455
+  thr=0.30 | P=0.93 | R=1.00 | F1=0.97 | TP=455
+  thr=0.50 | P=0.95 | R=1.00 | F1=0.98 | TP=455
+2026-01-21 03:13:46,684 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 03:13:46,689 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.955 | precision:0.909 | recall:1.000 | f1:0.952 | auc:1.000
+2026-01-21 03:13:46,694 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.932 | precision:0.870 | recall:1.000 | f1:0.930 | auc:1.000
+2026-01-21 03:13:46,699 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.938 | precision:0.879 | recall:1.000 | f1:0.936 | auc:1.000
+2026-01-21 03:13:46,704 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:13:46,704 | INFO | val: accuracy:0.9773 | precision:0.9519 | recall:1.0000 | f1:0.9753 | auc:1.0000 | loss:0.0553
+2026-01-21 03:13:46,704 | INFO | Fold 4/5 - Epoch 18/100
+2026-01-21 03:15:46,038 | INFO | train loss: 0.0016
+2026-01-21 03:16:16,912 | INFO | val threshold sweep:
+  thr=0.10 | P=0.85 | R=1.00 | F1=0.92 | TP=455
+  thr=0.15 | P=0.88 | R=1.00 | F1=0.94 | TP=455
+  thr=0.20 | P=0.90 | R=1.00 | F1=0.95 | TP=455
+  thr=0.25 | P=0.91 | R=1.00 | F1=0.95 | TP=455
+  thr=0.30 | P=0.92 | R=1.00 | F1=0.96 | TP=455
+  thr=0.50 | P=0.95 | R=1.00 | F1=0.98 | TP=455
+2026-01-21 03:16:16,917 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.988 | precision:0.972 | recall:1.000 | f1:0.986 | auc:1.000
+2026-01-21 03:16:16,922 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.943 | precision:0.889 | recall:1.000 | f1:0.941 | auc:1.000
+2026-01-21 03:16:16,927 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.920 | precision:0.851 | recall:1.000 | f1:0.920 | auc:1.000
+2026-01-21 03:16:16,932 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.955 | precision:0.909 | recall:1.000 | f1:0.952 | auc:1.000
+2026-01-21 03:16:16,937 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 03:16:16,937 | INFO | val: accuracy:0.9773 | precision:0.9519 | recall:1.0000 | f1:0.9753 | auc:1.0000 | loss:0.0585
+2026-01-21 03:16:16,937 | INFO | Fold 4/5 - Epoch 19/100
+2026-01-21 03:18:20,154 | INFO | train loss: 0.0017
+2026-01-21 03:18:51,131 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:18:51,136 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:18:51,141 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:18:51,146 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:18:51,151 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:18:51,156 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:18:51,156 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0009
+2026-01-21 03:18:51,156 | INFO | Fold 4/5 - Epoch 20/100
+2026-01-21 03:20:54,091 | INFO | train loss: 0.0018
+2026-01-21 03:21:25,062 | INFO | val threshold sweep:
+  thr=0.10 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.15 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.20 | P=0.97 | R=1.00 | F1=0.98 | TP=455
+  thr=0.25 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:21:25,067 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:21:25,072 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:21:25,077 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:21:25,082 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:21:25,087 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:21:25,087 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0108
+2026-01-21 03:21:25,087 | INFO | Fold 4/5 - Epoch 21/100
+2026-01-21 03:23:29,188 | INFO | train loss: 0.0034
+2026-01-21 03:24:00,588 | INFO | val threshold sweep:
+  thr=0.10 | P=0.94 | R=1.00 | F1=0.97 | TP=455
+  thr=0.15 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.20 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.25 | P=0.97 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.50 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+2026-01-21 03:24:00,593 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:24:00,598 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:24:00,603 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.977 | precision:0.952 | recall:1.000 | f1:0.976 | auc:1.000
+2026-01-21 03:24:00,608 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:24:00,613 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:24:00,613 | INFO | val: accuracy:0.9951 | precision:0.9891 | recall:1.0000 | f1:0.9945 | auc:1.0000 | loss:0.0139
+2026-01-21 03:24:00,614 | INFO | Fold 4/5 - Epoch 22/100
+2026-01-21 03:26:02,297 | INFO | train loss: 0.0046
+2026-01-21 03:26:33,268 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+2026-01-21 03:26:33,273 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:26:33,278 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:26:33,283 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:26:33,288 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:26:33,293 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:0.994 | precision:1.000 | recall:0.988 | f1:0.994 | auc:1.000
+2026-01-21 03:26:33,293 | INFO | val: accuracy:0.9990 | precision:1.0000 | recall:0.9978 | f1:0.9989 | auc:1.0000 | loss:0.0025
+2026-01-21 03:26:33,293 | INFO | Fold 4/5 - Epoch 23/100
+2026-01-21 03:28:33,755 | INFO | train loss: 0.0013
+2026-01-21 03:29:05,431 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:29:05,437 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:29:05,441 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:29:05,446 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:29:05,451 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:29:05,456 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:29:05,456 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0006
+2026-01-21 03:29:05,457 | INFO | Fold 4/5 - Epoch 24/100
+2026-01-21 03:31:04,995 | INFO | train loss: 0.0030
+2026-01-21 03:31:36,153 | INFO | val threshold sweep:
+  thr=0.10 | P=0.97 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:31:36,158 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:31:36,163 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:31:36,168 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:31:36,173 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:31:36,178 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:31:36,178 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0056
+2026-01-21 03:31:36,178 | INFO | Fold 4/5 - Epoch 25/100
+2026-01-21 03:33:39,142 | INFO | train loss: 0.0009
+2026-01-21 03:34:10,384 | INFO | val threshold sweep:
+  thr=0.10 | P=0.94 | R=1.00 | F1=0.97 | TP=455
+  thr=0.15 | P=0.95 | R=1.00 | F1=0.97 | TP=455
+  thr=0.20 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.25 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.30 | P=0.96 | R=1.00 | F1=0.98 | TP=455
+  thr=0.50 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+2026-01-21 03:34:10,389 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.970 | precision:0.933 | recall:1.000 | f1:0.966 | auc:1.000
+2026-01-21 03:34:10,395 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.966 | precision:0.930 | recall:1.000 | f1:0.964 | auc:1.000
+2026-01-21 03:34:10,399 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:34:10,404 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 03:34:10,409 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:34:10,409 | INFO | val: accuracy:0.9901 | precision:0.9785 | recall:1.0000 | f1:0.9891 | auc:1.0000 | loss:0.0224
+2026-01-21 03:34:10,409 | INFO | Fold 4/5 - Epoch 26/100
+2026-01-21 03:36:11,161 | INFO | train loss: 0.0008
+2026-01-21 03:36:42,246 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:36:42,251 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:36:42,256 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:36:42,261 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:36:42,266 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:36:42,271 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:36:42,271 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0045
+2026-01-21 03:36:42,271 | INFO | Fold 4/5 - Epoch 27/100
+2026-01-21 03:38:43,503 | INFO | train loss: 0.0008
+2026-01-21 03:39:14,642 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:39:14,647 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:39:14,652 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:39:14,657 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:39:14,662 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:39:14,667 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:39:14,667 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2026-01-21 03:39:14,667 | INFO | Fold 4/5 - Epoch 28/100
+2026-01-21 03:41:15,006 | INFO | train loss: 0.0007
+2026-01-21 03:41:47,013 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:41:47,018 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:41:47,023 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:41:47,028 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:41:47,033 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:41:47,038 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:41:47,038 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0004
+2026-01-21 03:41:47,039 | INFO | Fold 4/5 - Epoch 29/100
+2026-01-21 03:43:46,547 | INFO | train loss: 0.0008
+2026-01-21 03:44:17,256 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:44:17,261 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:44:17,266 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:44:17,271 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:44:17,276 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:44:17,281 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:44:17,281 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0007
+2026-01-21 03:44:17,281 | INFO | Fold 4/5 - Epoch 30/100
+2026-01-21 03:46:16,622 | INFO | train loss: 0.0011
+2026-01-21 03:46:47,648 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:46:47,653 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:46:47,658 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:46:47,663 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:46:47,668 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:46:47,673 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:46:47,673 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2026-01-21 03:46:47,673 | INFO | Fold 4/5 - Epoch 31/100
+2026-01-21 03:48:48,877 | INFO | train loss: 0.0012
+2026-01-21 03:49:19,786 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:49:19,791 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:49:19,796 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:49:19,801 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:49:19,806 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:49:19,811 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:49:19,811 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2026-01-21 03:49:19,811 | INFO | Fold 4/5 - Epoch 32/100
+2026-01-21 03:51:21,334 | INFO | train loss: 0.0023
+2026-01-21 03:51:52,594 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=454
+2026-01-21 03:51:52,599 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:1.000 | recall:0.986 | f1:0.993 | auc:1.000
+2026-01-21 03:51:52,604 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:51:52,609 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:51:52,614 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:51:52,619 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:51:52,619 | INFO | val: accuracy:0.9990 | precision:1.0000 | recall:0.9978 | f1:0.9989 | auc:1.0000 | loss:0.0059
+2026-01-21 03:51:52,619 | INFO | Fold 4/5 - Epoch 33/100
+2026-01-21 03:53:54,424 | INFO | train loss: 0.0015
+2026-01-21 03:54:25,352 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:54:25,358 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 03:54:25,363 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 03:54:25,368 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:54:25,372 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:54:25,377 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:54:25,377 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0082
+2026-01-21 03:54:25,378 | INFO | Fold 4/5 - Epoch 34/100
+2026-01-21 03:56:28,515 | INFO | train loss: 0.0016
+2026-01-21 03:56:59,224 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 03:56:59,229 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:56:59,234 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:56:59,239 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:56:59,244 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 03:56:59,249 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:56:59,249 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0018
+2026-01-21 03:56:59,249 | INFO | Fold 4/5 - Epoch 35/100
+2026-01-21 03:58:59,116 | INFO | train loss: 0.0011
+2026-01-21 03:59:29,728 | INFO | val threshold sweep:
+  thr=0.10 | P=0.95 | R=1.00 | F1=0.98 | TP=455
+  thr=0.15 | P=0.97 | R=1.00 | F1=0.98 | TP=455
+  thr=0.20 | P=0.97 | R=1.00 | F1=0.98 | TP=455
+  thr=0.25 | P=0.97 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.97 | R=1.00 | F1=0.99 | TP=455
+  thr=0.50 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+2026-01-21 03:59:29,733 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:59:29,738 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.977 | precision:0.952 | recall:1.000 | f1:0.976 | auc:1.000
+2026-01-21 03:59:29,743 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.955 | precision:0.909 | recall:1.000 | f1:0.952 | auc:1.000
+2026-01-21 03:59:29,748 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.977 | precision:0.952 | recall:1.000 | f1:0.976 | auc:1.000
+2026-01-21 03:59:29,753 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 03:59:29,753 | INFO | val: accuracy:0.9901 | precision:0.9785 | recall:1.0000 | f1:0.9891 | auc:1.0000 | loss:0.0209
+2026-01-21 03:59:29,753 | INFO | Fold 4/5 - Epoch 36/100
+2026-01-21 04:01:31,642 | INFO | train loss: 0.0009
+2026-01-21 04:02:02,634 | INFO | val threshold sweep:
+  thr=0.10 | P=0.92 | R=1.00 | F1=0.96 | TP=455
+  thr=0.15 | P=0.93 | R=1.00 | F1=0.96 | TP=455
+  thr=0.20 | P=0.94 | R=1.00 | F1=0.97 | TP=455
+  thr=0.25 | P=0.94 | R=1.00 | F1=0.97 | TP=455
+  thr=0.30 | P=0.94 | R=1.00 | F1=0.97 | TP=455
+  thr=0.50 | P=0.95 | R=1.00 | F1=0.97 | TP=455
+2026-01-21 04:02:02,639 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.970 | precision:0.933 | recall:1.000 | f1:0.966 | auc:1.000
+2026-01-21 04:02:02,644 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.943 | precision:0.889 | recall:1.000 | f1:0.941 | auc:1.000
+2026-01-21 04:02:02,649 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.920 | precision:0.851 | recall:1.000 | f1:0.920 | auc:1.000
+2026-01-21 04:02:02,654 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.960 | precision:0.920 | recall:1.000 | f1:0.958 | auc:1.000
+2026-01-21 04:02:02,659 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:02:02,659 | INFO | val: accuracy:0.9763 | precision:0.9499 | recall:1.0000 | f1:0.9743 | auc:1.0000 | loss:0.0618
+2026-01-21 04:02:02,659 | INFO | Fold 4/5 - Epoch 37/100
+2026-01-21 04:04:02,084 | INFO | train loss: 0.0010
+2026-01-21 04:04:33,220 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:04:33,225 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:04:33,230 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:04:33,235 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:04:33,240 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 04:04:33,245 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:04:33,245 | INFO | val: accuracy:0.9970 | precision:0.9934 | recall:1.0000 | f1:0.9967 | auc:1.0000 | loss:0.0064
+2026-01-21 04:04:33,245 | INFO | Fold 4/5 - Epoch 38/100
+2026-01-21 04:06:32,677 | INFO | train loss: 0.0003
+2026-01-21 04:07:03,628 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:07:03,634 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:07:03,639 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:07:03,644 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:07:03,649 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:07:03,653 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:07:03,653 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0033
+2026-01-21 04:07:03,654 | INFO | Fold 4/5 - Epoch 39/100
+2026-01-21 04:09:04,127 | INFO | train loss: 0.0001
+2026-01-21 04:09:35,113 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:09:35,119 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:09:35,124 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:09:35,128 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:09:35,133 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:09:35,138 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:09:35,138 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0012
+2026-01-21 04:09:35,139 | INFO | Fold 4/5 - Epoch 40/100
+2026-01-21 04:11:35,153 | INFO | train loss: 0.0012
+2026-01-21 04:12:06,397 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:12:06,402 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 04:12:06,407 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:12:06,412 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:12:06,417 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:12:06,422 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:12:06,422 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0015
+2026-01-21 04:12:06,422 | INFO | Fold 4/5 - Epoch 41/100
+2026-01-21 04:14:05,595 | INFO | train loss: 0.0011
+2026-01-21 04:14:36,426 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:14:36,431 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:14:36,436 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:14:36,441 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:14:36,446 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:14:36,451 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:14:36,451 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0018
+2026-01-21 04:14:36,451 | INFO | Fold 4/5 - Epoch 42/100
+2026-01-21 04:16:36,029 | INFO | train loss: 0.0004
+2026-01-21 04:17:06,966 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:17:06,971 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:17:06,976 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:17:06,981 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:17:06,986 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:17:06,991 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:17:06,991 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2026-01-21 04:17:06,991 | INFO | Fold 4/5 - Epoch 43/100
+2026-01-21 04:19:05,544 | INFO | train loss: 0.0006
+2026-01-21 04:19:36,551 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:19:36,556 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:19:36,561 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:19:36,566 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:19:36,571 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:19:36,576 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:19:36,576 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0000
+2026-01-21 04:19:36,576 | INFO | Fold 4/5 - Epoch 44/100
+2026-01-21 04:21:35,634 | INFO | train loss: 0.0005
+2026-01-21 04:22:06,890 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.50 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:22:06,895 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 04:22:06,900 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:22:06,905 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:22:06,910 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:0.994 | precision:0.988 | recall:1.000 | f1:0.994 | auc:1.000
+2026-01-21 04:22:06,915 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:22:06,915 | INFO | val: accuracy:0.9970 | precision:0.9934 | recall:1.0000 | f1:0.9967 | auc:1.0000 | loss:0.0060
+2026-01-21 04:22:06,915 | INFO | Fold 4/5 - Epoch 45/100
+2026-01-21 04:24:07,302 | INFO | train loss: 0.0008
+2026-01-21 04:24:38,050 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:24:38,055 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:24:38,060 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:24:38,065 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:24:38,070 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:24:38,075 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:24:38,075 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0051
+2026-01-21 04:24:38,075 | INFO | Fold 4/5 - Epoch 46/100
+2026-01-21 04:26:40,243 | INFO | train loss: 0.0002
+2026-01-21 04:27:11,119 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:27:11,124 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:27:11,129 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:27:11,134 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:27:11,139 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:27:11,144 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:27:11,144 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0006
+2026-01-21 04:27:11,144 | INFO | Fold 4/5 - Epoch 47/100
+2026-01-21 04:29:10,612 | INFO | train loss: 0.0001
+2026-01-21 04:29:41,970 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:29:41,976 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:29:41,981 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:29:41,986 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:29:41,990 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:29:41,995 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:29:41,995 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0010
+2026-01-21 04:29:41,996 | INFO | Fold 4/5 - Epoch 48/100
+2026-01-21 04:31:43,558 | INFO | train loss: 0.0001
+2026-01-21 04:32:15,315 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:32:15,320 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:32:15,325 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:32:15,330 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:32:15,335 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:32:15,340 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:32:15,340 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0015
+2026-01-21 04:32:15,340 | INFO | Fold 4/5 - Epoch 49/100
+2026-01-21 04:34:16,344 | INFO | train loss: 0.0001
+2026-01-21 04:34:48,060 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:34:48,065 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:34:48,070 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:34:48,075 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:34:48,080 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:34:48,085 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:34:48,085 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0010
+2026-01-21 04:34:48,085 | INFO | Fold 4/5 - Epoch 50/100
+2026-01-21 04:36:46,420 | INFO | train loss: 0.0001
+2026-01-21 04:37:17,282 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:37:17,287 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:37:17,292 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:37:17,297 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:37:17,302 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:37:17,307 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:37:17,307 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0021
+2026-01-21 04:37:17,307 | INFO | Fold 4/5 - Epoch 51/100
+2026-01-21 04:39:18,175 | INFO | train loss: 0.0001
+2026-01-21 04:39:49,189 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:39:49,194 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:39:49,199 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:39:49,204 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:39:49,209 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:39:49,214 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:39:49,214 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0002
+2026-01-21 04:39:49,214 | INFO | Fold 4/5 - Epoch 52/100
+2026-01-21 04:41:47,799 | INFO | train loss: 0.0001
+2026-01-21 04:42:18,616 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:42:18,621 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:42:18,626 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:42:18,631 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:42:18,636 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:42:18,641 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:42:18,641 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0021
+2026-01-21 04:42:18,642 | INFO | Fold 4/5 - Epoch 53/100
+2026-01-21 04:44:17,818 | INFO | train loss: 0.0003
+2026-01-21 04:44:49,590 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:44:49,596 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:44:49,601 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:44:49,606 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:44:49,611 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:44:49,616 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:44:49,616 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0001
+2026-01-21 04:44:49,616 | INFO | Fold 4/5 - Epoch 54/100
+2026-01-21 04:46:50,125 | INFO | train loss: 0.0005
+2026-01-21 04:47:21,247 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:47:21,252 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:47:21,257 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:47:21,262 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:47:21,267 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:47:21,272 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:47:21,272 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0039
+2026-01-21 04:47:21,272 | INFO | Fold 4/5 - Epoch 55/100
+2026-01-21 04:49:21,326 | INFO | train loss: 0.0001
+2026-01-21 04:49:52,241 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:49:52,247 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:49:52,252 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:49:52,257 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:49:52,261 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:49:52,266 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:49:52,266 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0015
+2026-01-21 04:49:52,267 | INFO | Fold 4/5 - Epoch 56/100
+2026-01-21 04:51:53,174 | INFO | train loss: 0.0000
+2026-01-21 04:52:23,993 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:52:23,998 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:52:24,003 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:52:24,008 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:52:24,013 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:52:24,018 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:52:24,018 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0014
+2026-01-21 04:52:24,018 | INFO | Fold 4/5 - Epoch 57/100
+2026-01-21 04:54:25,045 | INFO | train loss: 0.0001
+2026-01-21 04:54:56,528 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:54:56,533 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:54:56,538 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:54:56,543 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:54:56,548 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:54:56,553 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:54:56,553 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0015
+2026-01-21 04:54:56,553 | INFO | Fold 4/5 - Epoch 58/100
+2026-01-21 04:56:55,699 | INFO | train loss: 0.0001
+2026-01-21 04:57:26,535 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:57:26,540 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 04:57:26,545 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:57:26,550 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:57:26,555 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:57:26,560 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:57:26,560 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0039
+2026-01-21 04:57:26,560 | INFO | Fold 4/5 - Epoch 59/100
+2026-01-21 04:59:26,933 | INFO | train loss: 0.0001
+2026-01-21 04:59:57,846 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 04:59:57,851 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 04:59:57,856 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 04:59:57,861 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:59:57,866 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:59:57,871 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 04:59:57,871 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0027
+2026-01-21 04:59:57,872 | INFO | Fold 4/5 - Epoch 60/100
+2026-01-21 05:01:59,566 | INFO | train loss: 0.0007
+2026-01-21 05:02:31,450 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:02:31,455 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:02:31,460 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:02:31,465 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:02:31,470 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:02:31,475 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:02:31,475 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0031
+2026-01-21 05:02:31,475 | INFO | Fold 4/5 - Epoch 61/100
+2026-01-21 05:04:34,181 | INFO | train loss: 0.0001
+2026-01-21 05:05:05,987 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:05:05,992 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:05:05,997 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:05:06,002 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:05:06,007 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:05:06,012 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:05:06,012 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0023
+2026-01-21 05:05:06,012 | INFO | Fold 4/5 - Epoch 62/100
+2026-01-21 05:07:08,616 | INFO | train loss: 0.0001
+2026-01-21 05:07:39,678 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:07:39,684 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:07:39,689 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:07:39,694 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:07:39,698 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:07:39,703 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:07:39,703 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0035
+2026-01-21 05:07:39,704 | INFO | Fold 4/5 - Epoch 63/100
+2026-01-21 05:09:42,544 | INFO | train loss: 0.0000
+2026-01-21 05:10:13,364 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:10:13,369 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:10:13,374 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:10:13,379 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:10:13,384 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:10:13,389 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:10:13,389 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0041
+2026-01-21 05:10:13,389 | INFO | Fold 4/5 - Epoch 64/100
+2026-01-21 05:12:14,296 | INFO | train loss: 0.0001
+2026-01-21 05:12:44,888 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:12:44,894 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:12:44,899 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:12:44,904 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:12:44,909 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:12:44,914 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:12:44,914 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0025
+2026-01-21 05:12:44,914 | INFO | Fold 4/5 - Epoch 65/100
+2026-01-21 05:14:43,098 | INFO | train loss: 0.0001
+2026-01-21 05:15:14,706 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:15:14,711 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:15:14,716 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:15:14,721 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:15:14,726 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:15:14,731 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:15:14,731 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0050
+2026-01-21 05:15:14,731 | INFO | Fold 4/5 - Epoch 66/100
+2026-01-21 05:17:15,032 | INFO | train loss: 0.0000
+2026-01-21 05:17:46,968 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:17:46,974 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:17:46,979 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:17:46,983 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:17:46,988 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:17:46,993 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:17:46,993 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0045
+2026-01-21 05:17:46,993 | INFO | Fold 4/5 - Epoch 67/100
+2026-01-21 05:19:46,990 | INFO | train loss: 0.0001
+2026-01-21 05:20:18,422 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:20:18,428 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:20:18,433 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:20:18,437 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:20:18,442 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:20:18,447 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:20:18,447 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0012
+2026-01-21 05:20:18,448 | INFO | Fold 4/5 - Epoch 68/100
+2026-01-21 05:22:18,721 | INFO | train loss: 0.0002
+2026-01-21 05:22:50,560 | INFO | val threshold sweep:
+  thr=0.10 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.98 | R=1.00 | F1=0.99 | TP=455
+  thr=0.50 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:22:50,565 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:22:50,570 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:22:50,575 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:22:50,580 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:22:50,585 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:22:50,585 | INFO | val: accuracy:0.9970 | precision:0.9934 | recall:1.0000 | f1:0.9967 | auc:1.0000 | loss:0.0099
+2026-01-21 05:22:50,585 | INFO | Fold 4/5 - Epoch 69/100
+2026-01-21 05:24:54,092 | INFO | train loss: 0.0000
+2026-01-21 05:25:25,051 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:25:25,056 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:25:25,061 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:25:25,066 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:25:25,071 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:25:25,076 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:25:25,076 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0042
+2026-01-21 05:25:25,076 | INFO | Fold 4/5 - Epoch 70/100
+2026-01-21 05:27:25,025 | INFO | train loss: 0.0002
+2026-01-21 05:27:57,008 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:27:57,016 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:27:57,021 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:27:57,026 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:27:57,031 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:27:57,036 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:27:57,036 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0033
+2026-01-21 05:27:57,036 | INFO | Fold 4/5 - Epoch 71/100
+2026-01-21 05:29:56,347 | INFO | train loss: 0.0001
+2026-01-21 05:30:27,242 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:30:27,247 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:30:27,252 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:30:27,257 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:30:27,262 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:30:27,267 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:30:27,267 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0045
+2026-01-21 05:30:27,267 | INFO | Fold 4/5 - Epoch 72/100
+2026-01-21 05:32:27,538 | INFO | train loss: 0.0001
+2026-01-21 05:32:58,239 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:32:58,244 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:32:58,249 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:32:58,254 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:32:58,259 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:32:58,264 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:32:58,264 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0026
+2026-01-21 05:32:58,264 | INFO | Fold 4/5 - Epoch 73/100
+2026-01-21 05:34:57,681 | INFO | train loss: 0.0000
+2026-01-21 05:35:28,926 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:35:28,931 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:35:28,936 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:35:28,941 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:35:28,946 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:35:28,951 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:35:28,951 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0032
+2026-01-21 05:35:28,951 | INFO | Fold 4/5 - Epoch 74/100
+2026-01-21 05:37:28,990 | INFO | train loss: 0.0000
+2026-01-21 05:37:59,842 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:37:59,847 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:37:59,852 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:37:59,857 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:37:59,862 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:37:59,867 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:37:59,867 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0048
+2026-01-21 05:37:59,867 | INFO | Fold 4/5 - Epoch 75/100
+2026-01-21 05:40:00,342 | INFO | train loss: 0.0000
+2026-01-21 05:40:31,439 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:40:31,445 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:40:31,450 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:40:31,455 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:40:31,459 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:40:31,464 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:40:31,464 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0019
+2026-01-21 05:40:31,465 | INFO | Fold 4/5 - Epoch 76/100
+2026-01-21 05:42:30,567 | INFO | train loss: 0.0002
+2026-01-21 05:43:01,409 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:43:01,415 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:43:01,420 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:43:01,425 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:43:01,429 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:43:01,434 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:43:01,434 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0032
+2026-01-21 05:43:01,435 | INFO | Fold 4/5 - Epoch 77/100
+2026-01-21 05:45:04,560 | INFO | train loss: 0.0005
+2026-01-21 05:45:35,264 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:45:35,269 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:45:35,274 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:45:35,279 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:45:35,284 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:45:35,288 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:45:35,289 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0046
+2026-01-21 05:45:35,289 | INFO | Fold 4/5 - Epoch 78/100
+2026-01-21 05:47:35,109 | INFO | train loss: 0.0001
+2026-01-21 05:48:06,095 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:48:06,100 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:48:06,105 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:48:06,110 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:48:06,115 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:48:06,120 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:48:06,120 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0036
+2026-01-21 05:48:06,120 | INFO | Fold 4/5 - Epoch 79/100
+2026-01-21 05:50:08,819 | INFO | train loss: 0.0000
+2026-01-21 05:50:39,765 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:50:39,770 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:0.994 | precision:0.986 | recall:1.000 | f1:0.993 | auc:1.000
+2026-01-21 05:50:39,775 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:50:39,780 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:50:39,785 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:50:39,790 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:50:39,790 | INFO | val: accuracy:0.9980 | precision:0.9956 | recall:1.0000 | f1:0.9978 | auc:1.0000 | loss:0.0053
+2026-01-21 05:50:39,790 | INFO | Fold 4/5 - Epoch 80/100
+2026-01-21 05:52:40,945 | INFO | train loss: 0.0000
+2026-01-21 05:53:11,872 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:53:11,877 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:53:11,882 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:53:11,887 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:53:11,892 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:53:11,897 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:53:11,897 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0039
+2026-01-21 05:53:11,897 | INFO | Fold 4/5 - Epoch 81/100
+2026-01-21 05:55:13,154 | INFO | train loss: 0.0002
+2026-01-21 05:55:44,128 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:55:44,133 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:55:44,138 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 05:55:44,143 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:55:44,148 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:55:44,153 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:55:44,153 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0029
+2026-01-21 05:55:44,153 | INFO | Fold 4/5 - Epoch 82/100
+2026-01-21 05:57:43,500 | INFO | train loss: 0.0000
+2026-01-21 05:58:14,583 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 05:58:14,589 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:58:14,594 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:58:14,598 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:58:14,603 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:58:14,608 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 05:58:14,608 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0008
+2026-01-21 05:58:14,608 | INFO | Fold 4/5 - Epoch 83/100
+2026-01-21 06:00:16,992 | INFO | train loss: 0.0000
+2026-01-21 06:00:48,050 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:00:48,055 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:00:48,060 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:00:48,065 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:00:48,070 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:00:48,075 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:00:48,075 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0014
+2026-01-21 06:00:48,075 | INFO | Fold 4/5 - Epoch 84/100
+2026-01-21 06:02:47,695 | INFO | train loss: 0.0001
+2026-01-21 06:03:19,609 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:03:19,614 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:03:19,620 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:03:19,625 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:03:19,629 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:03:19,634 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:03:19,634 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0008
+2026-01-21 06:03:19,635 | INFO | Fold 4/5 - Epoch 85/100
+2026-01-21 06:05:22,069 | INFO | train loss: 0.0000
+2026-01-21 06:05:53,279 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:05:53,285 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:05:53,290 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:05:53,295 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:05:53,300 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:05:53,305 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:05:53,305 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0016
+2026-01-21 06:05:53,305 | INFO | Fold 4/5 - Epoch 86/100
+2026-01-21 06:07:55,377 | INFO | train loss: 0.0000
+2026-01-21 06:08:26,660 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:08:26,665 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:08:26,670 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:08:26,675 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:08:26,680 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:08:26,685 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:08:26,685 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0012
+2026-01-21 06:08:26,685 | INFO | Fold 4/5 - Epoch 87/100
+2026-01-21 06:10:27,719 | INFO | train loss: 0.0000
+2026-01-21 06:10:58,921 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:10:58,927 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:10:58,932 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:10:58,937 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:10:58,942 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:10:58,947 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:10:58,947 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0011
+2026-01-21 06:10:58,947 | INFO | Fold 4/5 - Epoch 88/100
+2026-01-21 06:12:59,016 | INFO | train loss: 0.0001
+2026-01-21 06:13:30,221 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:13:30,226 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:13:30,231 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:13:30,236 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:13:30,241 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:13:30,246 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:13:30,246 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0014
+2026-01-21 06:13:30,246 | INFO | Fold 4/5 - Epoch 89/100
+2026-01-21 06:15:31,645 | INFO | train loss: 0.0002
+2026-01-21 06:16:03,526 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:16:03,532 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:16:03,537 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:16:03,541 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:16:03,547 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:16:03,551 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:16:03,552 | INFO | val: accuracy:1.0000 | precision:1.0000 | recall:1.0000 | f1:1.0000 | auc:1.0000 | loss:0.0009
+2026-01-21 06:16:03,552 | INFO | Fold 4/5 - Epoch 90/100
+2026-01-21 06:18:04,003 | INFO | train loss: 0.0000
+2026-01-21 06:18:34,812 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:18:34,817 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:18:34,822 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:18:34,827 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:18:34,832 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:18:34,837 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:18:34,837 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0020
+2026-01-21 06:18:34,837 | INFO | Fold 4/5 - Epoch 91/100
+2026-01-21 06:20:35,371 | INFO | train loss: 0.0000
+2026-01-21 06:21:07,773 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:21:07,778 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:21:07,783 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:21:07,788 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:21:07,793 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:21:07,800 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:21:07,800 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0032
+2026-01-21 06:21:07,800 | INFO | Fold 4/5 - Epoch 92/100
+2026-01-21 06:23:10,682 | INFO | train loss: 0.0002
+2026-01-21 06:23:42,757 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:23:42,762 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:23:42,767 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:23:42,772 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:23:42,777 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:23:42,782 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:23:42,782 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0022
+2026-01-21 06:23:42,782 | INFO | Fold 4/5 - Epoch 93/100
+2026-01-21 06:25:45,638 | INFO | train loss: 0.0000
+2026-01-21 06:26:16,529 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:26:16,534 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:26:16,539 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:26:16,544 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:26:16,549 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:26:16,553 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:26:16,554 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0032
+2026-01-21 06:26:16,554 | INFO | Fold 4/5 - Epoch 94/100
+2026-01-21 06:28:18,350 | INFO | train loss: 0.0000
+2026-01-21 06:28:49,948 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:28:49,953 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:28:49,958 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:28:49,963 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:28:49,968 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:28:49,973 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:28:49,973 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0028
+2026-01-21 06:28:49,973 | INFO | Fold 4/5 - Epoch 95/100
+2026-01-21 06:30:49,059 | INFO | train loss: 0.0001
+2026-01-21 06:31:20,030 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:31:20,035 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:31:20,040 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:31:20,045 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:31:20,050 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:31:20,055 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:31:20,055 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0028
+2026-01-21 06:31:20,055 | INFO | Fold 4/5 - Epoch 96/100
+2026-01-21 06:33:19,751 | INFO | train loss: 0.0000
+2026-01-21 06:33:50,724 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:33:50,729 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:33:50,734 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:33:50,739 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:33:50,744 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:33:50,749 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:33:50,749 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0022
+2026-01-21 06:33:50,750 | INFO | Fold 4/5 - Epoch 97/100
+2026-01-21 06:35:52,886 | INFO | train loss: 0.0001
+2026-01-21 06:36:25,334 | INFO | val threshold sweep:
+  thr=0.10 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:36:25,339 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:36:25,344 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:36:25,349 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:36:25,354 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:36:25,359 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:36:25,359 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0015
+2026-01-21 06:36:25,359 | INFO | Fold 4/5 - Epoch 98/100
+2026-01-21 06:38:27,364 | INFO | train loss: 0.0000
+2026-01-21 06:38:58,117 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.20 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.25 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.30 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:38:58,123 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:38:58,127 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:38:58,132 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:38:58,137 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:38:58,142 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:38:58,142 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0046
+2026-01-21 06:38:58,142 | INFO | Fold 4/5 - Epoch 99/100
+2026-01-21 06:41:01,287 | INFO | train loss: 0.0000
+2026-01-21 06:41:33,221 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=0.99 | TP=455
+  thr=0.15 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:41:33,226 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:41:33,231 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:41:33,236 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:41:33,241 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:41:33,246 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:41:33,246 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0026
+2026-01-21 06:41:33,246 | INFO | Fold 4/5 - Epoch 100/100
+2026-01-21 06:43:31,740 | INFO | train loss: 0.0000
+2026-01-21 06:44:03,481 | INFO | val threshold sweep:
+  thr=0.10 | P=0.99 | R=1.00 | F1=1.00 | TP=455
+  thr=0.15 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.20 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.25 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.30 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+  thr=0.50 | P=1.00 | R=1.00 | F1=1.00 | TP=455
+2026-01-21 06:44:03,486 | INFO | val time bin [0.0h, 8.0h): samples=166 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:44:03,491 | INFO | val time bin [8.0h, 12.0h): samples=88 | accuracy:0.989 | precision:0.976 | recall:1.000 | f1:0.988 | auc:1.000
+2026-01-21 06:44:03,496 | INFO | val time bin [12.0h, 16.0h): samples=88 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:44:03,501 | INFO | val time bin [16.0h, 24.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:44:03,506 | INFO | val time bin [24.0h, 32.0h): samples=176 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:44:03,506 | INFO | val: accuracy:0.9990 | precision:0.9978 | recall:1.0000 | f1:0.9989 | auc:1.0000 | loss:0.0019
+2026-01-21 06:44:03,506 | INFO | Evaluating on test split
+2026-01-21 06:45:01,047 | INFO | test threshold sweep:
+  thr=0.10 | P=1.00 | R=0.99 | F1=1.00 | TP=722
+  thr=0.15 | P=1.00 | R=0.99 | F1=1.00 | TP=721
+  thr=0.20 | P=1.00 | R=0.99 | F1=0.99 | TP=720
+  thr=0.25 | P=1.00 | R=0.99 | F1=0.99 | TP=719
+  thr=0.30 | P=1.00 | R=0.99 | F1=0.99 | TP=719
+  thr=0.50 | P=1.00 | R=0.99 | F1=0.99 | TP=719
+2026-01-21 06:45:01,052 | INFO | test time bin [0.0h, 8.0h): samples=240 | accuracy:0.963 | precision:1.000 | recall:0.920 | f1:0.958 | auc:0.998
+2026-01-21 06:45:01,057 | INFO | test time bin [8.0h, 12.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:45:01,062 | INFO | test time bin [12.0h, 16.0h): samples=128 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:45:01,067 | INFO | test time bin [16.0h, 24.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:45:01,072 | INFO | test time bin [24.0h, 32.0h): samples=256 | accuracy:1.000 | precision:1.000 | recall:1.000 | f1:1.000 | auc:1.000
+2026-01-21 06:45:01,072 | INFO | test: accuracy:0.9939 | precision:1.0000 | recall:0.9876 | f1:0.9938 | auc:0.9999 | loss:0.0278
+2026-01-21 06:45:59,623 | INFO | ✓ Exported multitask-style outputs to outputs/resnet50_baseline_crop5pct/20260120-133520/fold_4

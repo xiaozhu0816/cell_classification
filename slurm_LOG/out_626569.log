@@ -10,3 +10,31 @@ uninfected=[0.0,48.0] stride=1
 uninfected=[0.0,48.0] stride=1
   test: frames_per_hour=2.00 | infected=[1.0,48.0] stride=1 | 
 uninfected=[0.0,48.0] stride=1
+
+Cross-validation summary
+Fold 1: val_auc=0.9997 | test_auc=0.9996 | 
+ckpt=checkpoints/resnet50_baseline_crop5pct/20260120-133520/fold_01of05/best.pt
+Fold 2: val_auc=1.0000 | test_auc=0.9998 | 
+ckpt=checkpoints/resnet50_baseline_crop5pct/20260120-133520/fold_02of05/best.pt
+Fold 3: val_auc=1.0000 | test_auc=0.9997 | 
+ckpt=checkpoints/resnet50_baseline_crop5pct/20260120-133520/fold_03of05/best.pt
+Fold 4: val_auc=1.0000 | test_auc=0.9999 | 
+ckpt=checkpoints/resnet50_baseline_crop5pct/20260120-133520/fold_04of05/best.pt
+Fold 5: val_auc=1.0000 | test_auc=0.9998 | 
+ckpt=checkpoints/resnet50_baseline_crop5pct/20260120-133520/fold_05of05/best.pt
+
+VAL metrics (mean across folds):
+  accuracy: 0.9964
+  auc: 0.9999
+  f1: 0.9965
+  precision: 0.9963
+  recall: 0.9967
+
+TEST metrics (mean across folds):
+  accuracy: 0.9927
+  auc: 0.9998
+  f1: 0.9925
+  precision: 1.0000
+  recall: 0.9852
+Saved cross-validation summary to 
+outputs/resnet50_baseline_crop5pct/20260120-133520/cv_summary.json

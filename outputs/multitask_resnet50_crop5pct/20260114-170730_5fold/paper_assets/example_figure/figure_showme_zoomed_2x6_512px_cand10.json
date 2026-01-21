@@ -1,0 +1,24 @@
+{
+  "mock_tiffs": [
+    "..\\..\\DATA\\GMU_cell_1023\\HBMVEC\\Uninfected_well\\no_labels\\20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_c4_p31_t0-94_ec.tiff"
+  ],
+  "infected_tiffs": [
+    "..\\..\\DATA\\GMU_cell_1023\\HBMVEC\\Infected_well\\no_labels\\20251023hbmvecp510x30minintervalinfectedvsuninfected_s5_b2_p26_t0-94_ec.tiff"
+  ],
+  "rows_per_condition": 1,
+  "hours": [
+    0.0,
+    4.0,
+    8.0,
+    16.0,
+    24.0,
+    36.0
+  ],
+  "frames_per_hour": 2.0,
+  "crop_border_fraction": 0.05,
+  "center_crop_size": 512,
+  "min_contrast_percentile": 1.0,
+  "max_contrast_percentile": 99.0,
+  "candidate_index": 10,
+  "candidate_seed": 20260121
+}

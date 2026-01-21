@@ -95,6 +95,12 @@ def _parse_args() -> argparse.Namespace:
         default=None,
         help="Center-crop by removing this fraction on each side (e.g., 0.05); overrides config",
     )
+    p.add_argument(
+        "--center-crop-size",
+        type=int,
+        default=None,
+        help="If set, center-crop each frame to this many pixels (e.g., 512) for a zoomed-in panel.",
+    )
     p.add_argument("--out", type=str, required=True, help="Output PNG path")
     p.add_argument("--dpi", type=int, default=300, help="PNG DPI")
     p.add_argument("--min-contrast-percentile", type=float, default=1.0, help="Lower percentile for display")
@@ -144,6 +150,7 @@ def _render_montage(
     hours: List[float],
     frames_per_hour: float,
     crop_border_fraction: Optional[float],
+    center_crop_size: Optional[int],
     min_contrast_percentile: float,
     max_contrast_percentile: float,
     dpi: int,
@@ -172,6 +179,7 @@ def _render_montage(
             idx = _frame_index_for_hour(h, frames_per_hour, stack.shape[0])
             frame = stack[idx]
             frame = _center_crop_border(frame, crop_border_fraction or 0.0)
+            frame = _center_crop_pixels(frame, center_crop_size)
             frame = _prepare_display(frame, min_contrast_percentile, max_contrast_percentile)
             ax = axes[row, col]
             ax.imshow(frame, cmap="gray")
@@ -212,6 +220,21 @@ def _center_crop_border(frame: np.ndarray, crop_border_fraction: float) -> np.nd
     y0, y1 = dy, max(dy + 1, h - dy)
     x0, x1 = dx, max(dx + 1, w - dx)
     return frame[..., y0:y1, x0:x1]
+
+
+def _center_crop_pixels(frame: np.ndarray, size: Optional[int]) -> np.ndarray:
+    """Crop the center to (size x size) pixels."""
+    if size is None:
+        return frame
+    size = int(size)
+    if size <= 0:
+        return frame
+    h, w = frame.shape[-2], frame.shape[-1]
+    if h < size or w < size:
+        size = min(h, w)
+    y0 = (h - size) // 2
+    x0 = (w - size) // 2
+    return frame[..., y0 : y0 + size, x0 : x0 + size]
 
 
 def _frame_index_for_hour(hour: float, frames_per_hour: float, max_frames: int) -> int:
@@ -291,6 +314,7 @@ def main() -> None:
             hours=hours,
             frames_per_hour=frames_per_hour,
             crop_border_fraction=crop_border_fraction,
+            center_crop_size=args.center_crop_size,
             min_contrast_percentile=args.min_contrast_percentile,
             max_contrast_percentile=args.max_contrast_percentile,
             dpi=args.dpi,
@@ -305,6 +329,7 @@ def main() -> None:
             "hours": hours,
             "frames_per_hour": frames_per_hour,
             "crop_border_fraction": crop_border_fraction,
+            "center_crop_size": args.center_crop_size,
             "min_contrast_percentile": args.min_contrast_percentile,
             "max_contrast_percentile": args.max_contrast_percentile,
             "candidate_index": i,
