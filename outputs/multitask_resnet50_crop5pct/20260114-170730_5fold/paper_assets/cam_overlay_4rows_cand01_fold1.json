@@ -1,0 +1,8 @@
+{
+  "checkpoint": "\\\\medctr.ad.wfubmc.edu\\dfs\\gurcan_rsch$\\scratch\\WSI\\zhengjie\\CODE\\cell_classification\\outputs\\multitask_resnet50_crop5pct\\20260114-170730_5fold\\fold_1\\checkpoints\\best.pt",
+  "config": "configs/multitask_example_crop5pct.yaml",
+  "manifest": "\\\\medctr.ad.wfubmc.edu\\dfs\\gurcan_rsch$\\scratch\\WSI\\zhengjie\\CODE\\cell_classification\\outputs\\multitask_resnet50_crop5pct\\20260114-170730_5fold\\paper_assets\\figure_showme_4rows_cand01.json",
+  "cmap": "jet",
+  "alpha": 0.5,
+  "model_kind": "multitask"
+}
